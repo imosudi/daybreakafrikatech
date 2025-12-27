@@ -1,0 +1,4 @@
+Flask-WTF==1.2.1        # Forms & CSRF
+python-dotenv==1.0.1    # Environment configs
+gunicorn==22.0.0        # Alternative WSGI server
+psycopg2-binary==2.9.9  # PostgreSQL migration later
