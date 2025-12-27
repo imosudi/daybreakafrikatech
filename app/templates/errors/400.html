@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block title %}Bad Request{% endblock %}
+
+{% block content %}
+<h1>400 - Bad Request</h1>
+<p>The request could not be understood by the server.</p>
+<a href="{{ url_for('main.home') }}">Return Home</a>
+{% endblock %}
