@@ -1,11 +1,185 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+{% extends "base.html" %}
+
+{% block title %}Home – Daybreak Afrika Technologies{% endblock %}
+
+{% block content %}
+
+<section class="hero">
+    <div class="hero-content">
+        <h1>
+            Building <span class="gradient-text">Future-Ready</span><br>
+            Enterprise Infrastructure
+        </h1>
+
+        <p>
+            From intelligent APIs to custom AI solutions, we deliver scalable technology
+            that transforms enterprises. Trusted by government agencies, educational institutions,
+            and industry leaders across Africa.
+        </p>
+
+        <div class="cta-buttons">
+            <a href="{{ url_for('solution_finder.solution_finder_page') }}" class="btn btn-primary">
+                Find Your Solution
+            </a>
+            <a href="{{ url_for('developer.sandbox') }}" class="btn btn-secondary">
+                Developer Portal
+            </a>
+        </div>
+    </div>
+</section>
+
+<section class="services">
+    <div class="section-header">
+        <h2>Integrated Technology Solutions</h2>
+        <p>One platform. Complete digital transformation.</p>
+    </div>
+
+    <div class="service-grid">
+
+        <!-- Identity & API -->
+        <div class="service-card">
+            <div class="service-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24">
+                    <defs>
+                        <linearGradient id="svc-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#00B4D8"/>
+                            <stop offset="100%" stop-color="#00F5FF"/>
+                        </linearGradient>
+                    </defs>
+                    <path d="M12 1l9 4v6c0 5-3.8 9.7-9 11-5.2-1.3-9-6-9-11V5l9-4z"/>
+                    <path d="M9 12l2 2 4-4"/>
+                </svg>
+            </div>
+            <h3>Identity & API Solutions</h3>
+            <p>Developer-friendly authentication, authorisation, and API gateways with secure sandbox environments.</p>
+            <a href="{{ url_for('developer.sandbox') }}">Explore APIs →</a>
+        </div>
+
+        <!-- Enterprise AI -->
+        <div class="service-card">
+            <div class="service-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24">
+                    <rect x="7" y="7" width="10" height="10" rx="2"/>
+                    <path d="M4 12h3M17 12h3M12 4v3M12 17v3"/>
+                </svg>
+            </div>
+            <h3>Custom Enterprise AI</h3>
+            <p>Agent-based intelligence, digital twins, and AI-driven automation for complex organisations.</p>
+            <a href="{{ url_for('ai.ai_home') }}">Learn More →</a>
+        </div>
+
+        <!-- Full-Stack -->
+        <div class="service-card">
+            <div class="service-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24">
+                    <path d="M3 4h18v14H3z"/>
+                    <path d="M8 20h8"/>
+                </svg>
+            </div>
+            <h3>Full-Stack Development</h3>
+            <p>Mission-critical platforms engineered for performance, security, and long-term scalability.</p>
+            <a href="{{ url_for('solutions.solutions_index') }}">View Portfolio →</a>
+        </div>
+
+        <!-- 5G & Cloud -->
+        <div class="service-card">
+            <div class="service-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="3"/>
+                    <path d="M2 12h4M18 12h4M12 2v4M12 18v4"/>
+                </svg>
+            </div>
+            <h3>5G Networking & Cloud</h3>
+            <p>Resilient cloud and 5G-ready infrastructure powering data-intensive AI and enterprise systems.</p>
+            <a href="{{ url_for('solutions.solutions_index') }}">Infrastructure →</a>
+        </div>
+
     
-</body>
-</html>
+
+        <!-- Digital Twins -->
+        <div class="service-card">
+            <div class="service-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24">
+                    <rect x="3" y="3" width="7" height="7"/>
+                    <rect x="14" y="14" width="7" height="7"/>
+                    <path d="M10 10l4 4"/>
+                </svg>
+            </div>
+            <h3>Digital Twin Modelling</h3>
+            <p>Simulation-driven insight for planning, optimisation, and real-time operational decision-making.</p>
+            <a href="{{ url_for('ai.ai_home') }}">Explore Technology →</a>
+        </div>
+
+        <!-- NEW: Web & App Development -->
+        <div class="service-card">
+            <div class="service-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24">
+                    <path d="M4 6h16v10H4z"/>
+                    <path d="M9 20h6"/>
+                </svg>
+            </div>
+            <h3>Web & App Development</h3>
+            <p>Intuitive, high-performance web and mobile applications that convert ideas into business impact.</p>
+            <a href="{{ url_for('solutions.solutions_index') }}">Build With Us →</a>
+        </div>
+
+        <!-- NEW: Automation & Monitoring -->
+        <div class="service-card">
+            <div class="service-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24">
+                    <path d="M4 12h16"/>
+                    <circle cx="8" cy="12" r="2"/>
+                    <circle cx="16" cy="12" r="2"/>
+                </svg>
+            </div>
+            <h3>Automation & Monitoring</h3>
+            <p>Operational automation and real-time monitoring built on cost-efficient, open-source platforms.</p>
+            <a href="{{ url_for('solutions.solutions_index') }}">Improve Efficiency →</a>
+        </div>
+
+        <!-- NEW: IT Consultancy -->
+        <div class="service-card">
+            <div class="service-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24">
+                    <circle cx="12" cy="8" r="4"/>
+                    <path d="M4 20c1.5-4 14.5-4 16 0"/>
+                </svg>
+            </div>
+            <h3>IT Consultancy</h3>
+            <p>Independent, transparent IT advisory services with clear technical planning and execution guidance.</p>
+            <a href="{{ url_for('solutions.solutions_index') }}">Get Advice →</a>
+        </div>
+
+    </div>
+</section>
+
+
+<section class="trust-section">
+    <div class="trust-content">
+        <div class="section-header">
+            <h2>Trusted by Leading Institutions</h2>
+            <p>Proven expertise in mission-critical deployments</p>
+        </div>
+
+        <div class="trust-stats">
+            <div class="stat">
+                <div class="stat-number">15+</div>
+                <div class="stat-label">Years of Excellence</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">100+</div>
+                <div class="stat-label">Enterprise Clients</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">99.9%</div>
+                <div class="stat-label">Uptime SLA</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">24/7</div>
+                <div class="stat-label">Expert Support</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
