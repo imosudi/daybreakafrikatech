@@ -1,0 +1,36 @@
+<!-- templates/ai/index.html -->
+ {% extends "base.html" %}
+
+{% block title %}AI Services - Daybreak Afrika Technologies{% endblock %}
+
+{% block content %}
+<section class="hero" style="min-height: 60vh;">
+    <div class="hero-content">
+        <h1>Enterprise <span class="gradient-text">AI Solutions</span></h1>
+        <p>Custom AI and intelligent automation for your business</p>
+    </div>
+</section>
+
+<section class="services">
+    <div class="service-grid">
+        <div class="service-card">
+            <div class="service-icon">🔮</div>
+            <h3>Digital Twin Modeling</h3>
+            <p>Virtual replicas of physical systems for simulation and optimization.</p>
+            <a href="{{ url_for('ai.digital_twins') }}">Learn More →</a>
+        </div>
+        <div class="service-card">
+            <div class="service-icon">🎯</div>
+            <h3>Agent-Based Modeling</h3>
+            <p>Simulate complex systems with intelligent autonomous agents.</p>
+            <a href="{{ url_for('ai.agent_modeling') }}">Learn More →</a>
+        </div>
+        <div class="service-card">
+            <div class="service-icon">⚡</div>
+            <h3>Process Automation</h3>
+            <p>AI-powered business process automation and optimization.</p>
+            <a href="{{ url_for('ai.automation') }}">Learn More →</a>
+        </div>
+    </div>
+</section>
+{% endblock %}

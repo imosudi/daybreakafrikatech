@@ -1,0 +1,59 @@
+<!-- templates/solution_finder/index.html -->
+ {% extends "base.html" %}
+
+{% block title %}Solution Finder - Daybreak Afrika Technologies{% endblock %}
+
+{% block content %}
+<section class="hero" style="min-height: 60vh;">
+    <div class="hero-content">
+        <h1>Find Your <span class="gradient-text">Perfect Solution</span></h1>
+        <p>Answer a few questions to discover the best technology solutions for your business</p>
+    </div>
+</section>
+
+<section class="services">
+    <div class="service-card" style="max-width: 800px; margin: 0 auto;">
+        <h3>Tell us about your needs</h3>
+        <p>We'll recommend the best solutions based on your requirements.</p>
+        <form id="assessment-form" style="margin-top: 2rem;">
+            <div style="margin-bottom: 1.5rem;">
+                <label style="display: block; margin-bottom: 0.5rem;">What's your primary goal?</label>
+                <select name="goal" style="width: 100%; padding: 0.75rem; border-radius: 4px; background: rgba(255,255,255,0.1); color: white; border: 1px solid rgba(0,180,216,0.3);">
+                    <option value="">Select a goal</option>
+                    <option value="automation">Automate business processes</option>
+                    <option value="infrastructure">Improve IT infrastructure</option>
+                    <option value="development">Build custom applications</option>
+                    <option value="security">Enhance security</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Get Recommendations</button>
+        </form>
+        <div id="results" style="margin-top: 2rem; display: none;">
+            <h3>Recommended Solutions</h3>
+            <div id="recommendations"></div>
+        </div>
+    </div>
+</section>
+
+<script>
+document.getElementById('assessment-form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    const data = Object.fromEntries(formData);
+    
+    const response = await fetch('{{ url_for("solution_finder.assess") }}', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(data)
+    });
+    
+    const results = await response.json();
+    document.getElementById('results').style.display = 'block';
+    document.getElementById('recommendations').innerHTML = `
+        <p><strong>Primary:</strong> ${results.primary}</p>
+        <p><strong>Also consider:</strong> ${results.secondary.join(', ')}</p>
+        <p>${results.reasoning}</p>
+    `;
+});
+</script>
+{% endblock %}

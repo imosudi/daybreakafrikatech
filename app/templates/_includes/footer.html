@@ -8,8 +8,8 @@
             <ul>
                 <li><a href="{{ url_for('developer.sandbox') }}">Identity & APIs</a></li>
                 <li><a href="{{ url_for('ai.ai_home') }}">Enterprise AI</a></li>
-                <li><a href="{{ url_for('solutions.solutions_index') }}">Full-Stack Development</a></li>
-                <li><a href="{{ url_for('solutions.solutions_index') }}">Managed IT</a></li>
+                <li><a href="{{ url_for('solutions.index') }}">Full-Stack Development</a></li>
+                <li><a href="{{ url_for('solutions.index') }}">Managed IT</a></li>
             </ul>
         </div>
 
@@ -38,12 +38,14 @@
             <ul>
                 <li><a href="mailto:info@daybreakafrika.com">info@daybreakafrika.com</a></li>
                 <li><a href="tel:+234">+234 805 8079 900</a></li>
-                <li>Lagos, Nigeria</li>
+                <!--li><a href="tel:+43">+43 677 6484 8414</a></li>
+                <li>Lagos, Nigeria | Vienna, Austria</li-->
+                <li>Lagos, Nigeria </li>
             </ul>
         </div>
     </div>
 
     <div class="copyright text-center small">
-        <p>&copy; Daybreak Afrika Technologies. All rights reserved.</p>
+        <p> <p>&copy; {{ moment().format('YYYY') }}  Daybreak Afrika Technologies. All rights reserved.</p>
     </div>
 </footer>

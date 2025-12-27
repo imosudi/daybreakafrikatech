@@ -1,0 +1,42 @@
+<!-- templates/solutions/index.html -->
+{% extends "base.html" %}
+
+{% block title %}Solutions - Daybreak Afrika Technologies{% endblock %}
+
+{% block content %}
+<section class="hero" style="min-height: 60vh;">
+    <div class="hero-content">
+        <h1>Enterprise <span class="gradient-text">Solutions</span></h1>
+        <p>Comprehensive IT infrastructure and digital transformation services</p>
+    </div>
+</section>
+
+<section class="services">
+    <div class="service-grid">
+        <div class="service-card">
+            <div class="service-icon">🌐</div>
+            <h3>IT Infrastructure</h3>
+            <p>Managed IT services and infrastructure solutions for enterprise needs.</p>
+            <a href="{{ url_for('solutions.infrastructure') }}">Learn More →</a>
+        </div>
+        <div class="service-card">
+            <div class="service-icon">📡</div>
+            <h3>5G Networking</h3>
+            <p>Advanced networking solutions for high-performance connectivity.</p>
+            <a href="{{ url_for('solutions.networking') }}">Learn More →</a>
+        </div>
+        <div class="service-card">
+            <div class="service-icon">☁️</div>
+            <h3>Cloud Computing</h3>
+            <p>Scalable cloud infrastructure and migration services.</p>
+            <a href="{{ url_for('solutions.cloud') }}">Learn More →</a>
+        </div>
+        <div class="service-card">
+            <div class="service-icon">🛡️</div>
+            <h3>Cybersecurity</h3>
+            <p>Comprehensive security solutions and resilience planning.</p>
+            <a href="{{ url_for('solutions.security') }}">Learn More →</a>
+        </div>
+    </div>
+</section>
+{% endblock %}

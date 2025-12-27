@@ -1,0 +1,41 @@
+<!-- templates/developer/index.html -->
+ {% extends "base.html" %}
+
+{% block title %}Developer Portal - Daybreak Afrika Technologies{% endblock %}
+
+{% block content %}
+<section class="hero" style="min-height: 60vh;">
+    <div class="hero-content">
+        <h1><span class="gradient-text">Developer</span> Portal</h1>
+        <p>Build powerful applications with our enterprise APIs</p>
+        <div class="cta-buttons">
+            <a href="{{ url_for('developer.docs') }}" class="btn btn-primary">API Documentation</a>
+            <a href="{{ url_for('developer.sandbox') }}" class="btn btn-secondary">Try Sandbox</a>
+        </div>
+    </div>
+</section>
+
+<section class="services">
+    <div class="section-header">
+        <h2>API Solutions</h2>
+        <p>Production-ready APIs for modern applications</p>
+    </div>
+    <div class="service-grid">
+        <div class="service-card">
+            <div class="service-icon">🔐</div>
+            <h3>Identity API</h3>
+            <p>Enterprise authentication and user management.</p>
+        </div>
+        <div class="service-card">
+            <div class="service-icon">📊</div>
+            <h3>Analytics API</h3>
+            <p>Real-time data analytics and reporting.</p>
+        </div>
+        <div class="service-card">
+            <div class="service-icon">🤖</div>
+            <h3>AI Integration API</h3>
+            <p>Machine learning and AI service integration.</p>
+        </div>
+    </div>
+</section>
+{% endblock %}

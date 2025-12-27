@@ -19,6 +19,7 @@
 
     <!-- ================= CUSTOM STYLES ================= -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    {{ moment.include_moment() }}
 
     {% block extra_css %}{% endblock %}
 </head>
