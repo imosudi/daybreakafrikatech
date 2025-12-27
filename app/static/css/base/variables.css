@@ -1,0 +1,18 @@
+:root {
+    --bg-main: #0A1128;
+    --surface-nav: rgba(10, 17, 40, 0.95);
+    --text-primary: #F8F9FA;
+    --text-muted: rgba(248, 249, 250, 0.7);
+    --accent: #00F5FF;
+    --border-subtle: rgba(0, 180, 216, 0.1);
+    --radius: 12px;
+}
+
+[data-theme="light"] {
+    --bg-main: #F8F9FA;
+    --surface-nav: rgba(255, 255, 255, 0.95);
+    --text-primary: #0A1128;
+    --text-muted: #555;
+    --accent: #0066CC;
+    --border-subtle: rgba(0, 0, 0, 0.1);
+}

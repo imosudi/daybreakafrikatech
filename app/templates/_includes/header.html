@@ -1,0 +1,51 @@
+<!-- ================= HEADER / NAV ================= -->
+<header>
+    <nav>
+        <div class="nav-container">
+            <a href="{{ url_for('main.home') }}" class="logo">
+                <img
+                    src="{{ url_for('static', filename='images/logo.png') }}"
+                    alt="Daybreak Afrika Technologies"
+                    class="logo-img">
+                <span>Daybreak Afrika</span>
+            </a>
+
+            <ul class="nav-links">
+                <li>
+                    <a href="{{ url_for('main.home') }}"
+                       class="{% if request.endpoint == 'main.home' %}active{% endif %}">
+                        Home
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{{ url_for('solutions.solutions_index') }}"
+                       class="{% if request.endpoint and 'solutions' in request.endpoint %}active{% endif %}">
+                        Solutions
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{{ url_for('developer.sandbox') }}"
+                       class="{% if request.endpoint and 'developer' in request.endpoint %}active{% endif %}">
+                        Developer Portal
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{{ url_for('ai.ai_home') }}"
+                       class="{% if request.endpoint and 'ai' in request.endpoint %}active{% endif %}">
+                        AI Services
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{{ url_for('solution_finder.solution_finder_page') }}"
+                       class="{% if request.endpoint and 'solution_finder' in request.endpoint %}active{% endif %}">
+                        Solution Finder
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
