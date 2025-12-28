@@ -5,6 +5,10 @@
 {% block content %}
 
 <section class="hero">
+    <div class="hero-canvas">
+        <canvas id="heroFloatingCanvas"></canvas>
+    </div>
+
     <div class="hero-content">
         <h1>
             Building <span class="gradient-text">Future-Ready</span><br>
@@ -181,5 +185,76 @@
         </div>
     </div>
 </section>
+<script>
+const heroItems = [
+    { label: "Identity APIs", icon: "🔐", color: "#00E5FF" },
+    { label: "Enterprise AI", icon: "🤖", color: "#7CDBFF" },
+    { label: "5G & Cloud", icon: "☁️", color: "#90CAF9" },
+    { label: "Automation", icon: "⚙️", color: "#B39DDB" },
+    { label: "Digital Twins", icon: "🔄", color: "#80CBC4" },
+    { label: "Secure Platforms", icon: "💻", color: "#81D4FA" }
+];
+</script>
+<script>
+(() => {
+    const canvas = document.getElementById("heroFloatingCanvas");
+    if (!canvas) return;
+
+    const ctx = canvas.getContext("2d");
+    let w, h;
+
+    function resize() {
+        w = canvas.width = canvas.offsetWidth;
+        h = canvas.height = canvas.offsetHeight;
+    }
+    resize();
+    window.addEventListener("resize", resize);
+
+    class FloatingItem {
+        constructor(data) {
+            this.data = data;
+            this.reset();
+        }
+
+        reset() {
+            this.x = Math.random() * w;
+            this.y = Math.random() * h;
+            this.speed = 0.2 + Math.random() * 0.4;
+            this.size = 18 + Math.random() * 6;
+            this.alpha = 0.25 + Math.random() * 0.25;
+        }
+
+        update() {
+            this.y -= this.speed;
+            if (this.y < -40) this.reset(), this.y = h + 40;
+        }
+
+        draw() {
+            ctx.globalAlpha = this.alpha;
+            ctx.font = `${this.size}px system-ui`;
+            ctx.textAlign = "center";
+            ctx.fillStyle = this.data.color;
+            ctx.fillText(this.data.icon, this.x, this.y);
+
+            ctx.globalAlpha = this.alpha * 0.8;
+            ctx.font = "12px system-ui";
+            ctx.fillText(this.data.label, this.x, this.y + 18);
+        }
+    }
+
+    const items = heroItems.map(i => new FloatingItem(i));
+
+    function animate() {
+        ctx.clearRect(0, 0, w, h);
+        items.forEach(item => {
+            item.update();
+            item.draw();
+        });
+        requestAnimationFrame(animate);
+    }
+
+    animate();
+})();
+</script>
 
 {% endblock %}
