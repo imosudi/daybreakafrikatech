@@ -1,4 +1,3 @@
-<!-- templates/solutions/index.html -->
 {% extends "base.html" %}
 
 {% block title %}Solutions | Daybreak Afrika Technologies{% endblock %}
@@ -7,53 +6,85 @@
 <section class="hero" style="min-height: 60vh;">
     <div class="hero-content">
         <h1>Enterprise <span class="gradient-text">Solutions</span></h1>
-        <p>Comprehensive IT infrastructure and digital transformation services</p>
+        <p>
+            Deploy resilient, secure, and scalable technology across your organisation.
+            From infrastructure to AI, we deliver solutions that support mission-critical operations and business growth.
+        </p>
     </div>
 </section>
-
 
 <section class="services services--solutions">
     <div class="service-grid">
 
         <article class="service-card">
-            <div class="service-icon">🌐</div>
+            <div class="service-icon" aria-hidden="true">
+                {% include "_includes/icons/infrastructure.svg" %}
+            </div>
             <h3>IT Infrastructure</h3>
-            <p>Managed IT services and enterprise-grade infrastructure.</p>
+            <p>
+                Reliable, enterprise-grade systems that keep your business running.
+                Servers, storage, and managed operations designed for uptime and performance.
+            </p>
             <a href="{{ url_for('solutions.infrastructure') }}">Learn More →</a>
         </article>
 
         <article class="service-card">
-            <div class="service-icon">📡</div>
+            <div class="service-icon" aria-hidden="true">
+                {% include "_includes/icons/networking.svg" %}
+            </div>
             <h3>Networking & Connectivity</h3>
-            <p>High-performance networking, fibre, and 5G-ready solutions.</p>
+            <p>
+                High-speed networking and connectivity solutions built for scale and resilience.
+                Fibre, SD-WAN, and 5G-ready architectures for modern enterprises.
+            </p>
             <a href="{{ url_for('solutions.networking') }}">Learn More →</a>
         </article>
 
         <article class="service-card">
-            <div class="service-icon">☁️</div>
+            <div class="service-icon" aria-hidden="true">
+                {% include "_includes/icons/cloud.svg" %}
+            </div>
             <h3>Cloud Computing</h3>
-            <p>Secure, scalable cloud architecture and migrations.</p>
+            <p>
+                Secure, scalable cloud architecture, migration, and managed cloud operations.
+                Built for performance, compliance, and cost efficiency.
+            </p>
             <a href="{{ url_for('solutions.cloud') }}">Learn More →</a>
         </article>
 
         <article class="service-card">
-            <div class="service-icon">💻</div>
+            <div class="service-icon" aria-hidden="true">
+                {% include "_includes/icons/software.svg" %}
+            </div>
             <h3>Enterprise Software</h3>
-            <p>Bespoke software solutions for operational efficiency.</p>
+            <p>
+                Bespoke software and integration platforms for operational efficiency.
+                Web and mobile systems designed for enterprise-grade reliability.
+            </p>
             <a href="{{ url_for('solutions.software') }}">Learn More →</a>
         </article>
 
         <article class="service-card">
-            <div class="service-icon">🤖</div>
+            <div class="service-icon" aria-hidden="true">
+                {% include "_includes/icons/ai.svg" %}
+            </div>
             <h3>Artificial Intelligence</h3>
-            <p>AI-driven automation, analytics, and decision intelligence.</p>
+            <p>
+                AI-driven automation, analytics, and decision intelligence.
+                Delivering real-world operational improvements across teams and systems.
+            </p>
             <a href="{{ url_for('solutions.ai') }}">Learn More →</a>
         </article>
 
         <article class="service-card">
-            <div class="service-icon">🛡️</div>
+            <div class="service-icon" aria-hidden="true">
+                {% include "_includes/icons/security.svg" %}
+            </div>
             <h3>Cybersecurity</h3>
-            <p>Defensive security, monitoring, and cyber resilience.</p>
+            <p>
+                Defence-first security services, monitoring, and incident response.
+                Protection against threats while maintaining compliance and continuity.
+            </p>
             <a href="{{ url_for('solutions.security') }}">Learn More →</a>
         </article>
 

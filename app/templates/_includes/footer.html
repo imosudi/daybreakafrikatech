@@ -1,51 +1,94 @@
-
-
+<!--templates/_includes/footer.html-->
 <!-- ================= FOOTER ================= -->
-<footer>
-    <div class="footer-content">
-        <div class="footer-section">
-            <h3>Solutions</h3>
-            <ul>
-                <li><a href="{{ url_for('developer.sandbox') }}">Identity & APIs</a></li>
-                <li><a href="{{ url_for('ai.ai_home') }}">Enterprise AI</a></li>
-                <li><a href="{{ url_for('solutions.index') }}">Full-Stack Development</a></li>
-                <li><a href="{{ url_for('solutions.index') }}">Managed IT</a></li>
-            </ul>
-        </div>
+<footer class="bg-light border-top mt-auto">
+    <div class="container py-5">
 
-        <div class="footer-section">
-            <h3>Company</h3>
-            <ul>
-                <li><a href="/about">About Us</a></li>
-                <li><a href="/team">Leadership Team</a></li>
-                <li><a href="/portfolio">Case Studies</a></li>
-                <li><a href="/careers">Careers</a></li>
-            </ul>
-        </div>
+        <div class="row gy-4">
 
-        <div class="footer-section">
-            <h3>Resources</h3>
-            <ul>
-                <li><a href="{{ url_for('developer.sandbox') }}">API Documentation</a></li>
-                <li><a href="{{ url_for('solution_finder.solution_finder_page') }}">Solution Finder</a></li>
-                <li><a href="/support">Support Center</a></li>
-                <li><a href="/contact">Contact Us</a></li>
-            </ul>
-        </div>
+            <!-- Solutions -->
+            <div class="col-6 col-md-3">
+                <h6 class="text-uppercase fw-semibold mb-3">Solutions</h6>
+                <ul class="list-unstyled small">
+                    <li>
+                        <a href="{{ url_for('developer.sandbox') }}" class="text-decoration-none">
+                            Identity & APIs
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ url_for('ai.ai_home') }}" class="text-decoration-none">
+                            Enterprise AI
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ url_for('solutions.index') }}" class="text-decoration-none">
+                            Full-Stack Development
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ url_for('solutions.index') }}" class="text-decoration-none">
+                            Managed IT
+                        </a>
+                    </li>
+                </ul>
+            </div>
 
-        <div class="footer-section">
-            <h3>Contact</h3>
-            <ul>
-                <li><a href="mailto:info@daybreakafrika.com">info@daybreakafrika.com.ng</a></li>
-                <li><a href="tel:+234">+234 805 8079 900</a></li>
-                <!--li><a href="tel:+43">+43 677 6484 8414</a></li>
-                <li>Lagos, Nigeria | Vienna, Austria</li-->
-                <li>Lagos, Nigeria </li>
-            </ul>
+            <!-- Company -->
+            <div class="col-6 col-md-3">
+                <h6 class="text-uppercase fw-semibold mb-3">Company</h6>
+                <ul class="list-unstyled small">
+                    <li><a href="/about" class="text-decoration-none">About Us</a></li>
+                    <li><a href="/team" class="text-decoration-none">Leadership Team</a></li>
+                    <li><a href="/portfolio" class="text-decoration-none">Case Studies</a></li>
+                    <li><a href="/careers" class="text-decoration-none">Careers</a></li>
+                </ul>
+            </div>
+
+            <!-- Resources -->
+            <div class="col-6 col-md-3">
+                <h6 class="text-uppercase fw-semibold mb-3">Resources</h6>
+                <ul class="list-unstyled small">
+                    <li>
+                        <a href="{{ url_for('developer.sandbox') }}" class="text-decoration-none">
+                            API Documentation
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ url_for('solution_finder.solution_finder_page') }}" class="text-decoration-none">
+                            Solution Finder
+                        </a>
+                    </li>
+                    <li><a href="/support" class="text-decoration-none">Support Center</a></li>
+                    <li><a href="/contact" class="text-decoration-none">Contact Us</a></li>
+                </ul>
+            </div>
+
+            <!-- Contact -->
+            <div class="col-6 col-md-3">
+                <h6 class="text-uppercase fw-semibold mb-3">Contact</h6>
+                <ul class="list-unstyled small">
+                    <li>
+                        <a href="mailto:info@daybreakafrika.com" class="text-decoration-none">
+                            info@daybreakafrika.com
+                        </a>
+                    </li>
+                    <li>
+                        <a href="tel:+2348058079900" class="text-decoration-none">
+                            +234 805 807 9900
+                        </a>
+                    </li>
+                    <li class="text-muted">
+                        Lagos, Nigeria
+                    </li>
+                </ul>
+            </div>
+
         </div>
     </div>
 
-    <div class="copyright text-center small">
-        <p> <p>&copy; {{ moment().format('YYYY') }}  Daybreak Afrika Technologies. All rights reserved.</p>
+    <!-- Copyright -->
+    <div class="border-top py-3">
+        <div class="container text-center small text-muted">
+            &copy; {{ moment().format('YYYY') }} Daybreak Afrika Technologies. All rights reserved.
+        </div>
     </div>
 </footer>
