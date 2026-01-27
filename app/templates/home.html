@@ -1,5 +1,4 @@
-
-<!-- templates/home.html -->
+{# templates/home.html #}
 {% extends "base.html" %}
 
 {% block title %}Home – Daybreak Afrika Technologies{% endblock %}
@@ -7,23 +6,23 @@
 {% block content %}
 
 <!-- ================= HERO ================= -->
-<section class="hero">
+<section class="hero" aria-labelledby="hero-heading">
     <div class="hero-canvas" aria-hidden="true">
         <canvas id="heroFloatingCanvas"></canvas>
     </div>
 
     <div class="hero-content">
-        <h1>
+        <h1 id="hero-heading">
             Building <span class="gradient-text">Future-Ready</span><br>
             Enterprise Infrastructure
         </h1>
 
-        <p>
-            From intelligent APIs to custom AI solutions, we deliver scalable technology
-            that transforms enterprises across Africa.
+        <p class="hero-lead">
+            Trusted IT, cloud, networking, and intelligent systems powering
+            secure, scalable enterprises across Africa.
         </p>
 
-        <div class="cta-buttons">
+        <div class="cta-buttons" role="group" aria-label="Primary actions">
             <a href="{{ url_for('solution_finder.solution_finder_page') }}"
                class="btn btn-primary">
                 Find Your Solution
@@ -38,67 +37,52 @@
 </section>
 
 <!-- ================= SERVICES ================= -->
-<section class="services">
+<section class="services" aria-labelledby="services-heading">
     <header class="section-header">
-        <h2>Integrated Technology Solutions</h2>
-        <p>One platform. Complete digital transformation.</p>
+        <h2 id="services-heading">Integrated Technology Solutions</h2>
+        <p>Designed for performance, security, and long-term growth.</p>
     </header>
 
     <div class="service-grid">
-
         {% set services = [
             {
                 "title": "Identity & API Solutions",
-                "desc": "Developer-friendly authentication, authorisation, and secure API gateways.",
+                "desc": "Secure identity verification, authentication, and developer-friendly APIs.",
                 "link": url_for('developer.sandbox'),
                 "cta": "Explore APIs →",
                 "svg": "identity"
             },
             {
-                "title": "Custom Enterprise AI",
-                "desc": "Agent-based intelligence, digital twins, and AI-driven automation.",
+                "title": "Enterprise AI & Automation",
+                "desc": "Agent-based systems, digital twins, and intelligent automation.",
                 "link": url_for('ai.ai_home'),
-                "cta": "Learn More →",
+                "cta": "Discover AI →",
                 "svg": "ai"
             },
             {
-                "title": "Full-Stack Development",
-                "desc": "Mission-critical platforms engineered for performance and scalability.",
+                "title": "Cloud & 5G Infrastructure",
+                "desc": "Resilient cloud, MEC, and 5G-ready enterprise networking.",
                 "link": url_for('solutions.index'),
-                "cta": "View Portfolio →",
-                "svg": "stack"
-            },
-            {
-                "title": "5G Networking & Cloud",
-                "desc": "Resilient cloud and 5G-ready infrastructure for data-intensive systems.",
-                "link": url_for('solutions.index'),
-                "cta": "Infrastructure →",
+                "cta": "View Infrastructure →",
                 "svg": "cloud"
             },
             {
-                "title": "Digital Twin Modelling",
-                "desc": "Simulation-driven insight for optimisation and real-time decisions.",
-                "link": url_for('ai.ai_home'),
-                "cta": "Explore Technology →",
-                "svg": "twin"
+                "title": "Custom Software Platforms",
+                "desc": "Mission-critical web and backend systems built to scale.",
+                "link": url_for('solutions.index'),
+                "cta": "See Projects →",
+                "svg": "stack"
             },
             {
-                "title": "Web & App Development",
-                "desc": "High-performance web and mobile applications with measurable impact.",
+                "title": "Security & Monitoring",
+                "desc": "Firewalls, monitoring, redundancy, and operational visibility.",
                 "link": url_for('solutions.index'),
-                "cta": "Build With Us →",
-                "svg": "web"
-            },
-            {
-                "title": "Automation & Monitoring",
-                "desc": "Operational automation and real-time monitoring on open platforms.",
-                "link": url_for('solutions.index'),
-                "cta": "Improve Efficiency →",
+                "cta": "Improve Security →",
                 "svg": "automation"
             },
             {
                 "title": "IT Consultancy",
-                "desc": "Independent advisory services with clear execution guidance.",
+                "desc": "Independent advisory aligned to your business strategy.",
                 "link": url_for('solutions.index'),
                 "cta": "Get Advice →",
                 "svg": "consult"
@@ -106,46 +90,63 @@
         ] %}
 
         {% for s in services %}
-        <article class="service-card">
+        <article class="service-card" tabindex="0">
             <div class="service-icon" aria-hidden="true">
                 {% include "_includes/icons/" ~ s.svg ~ ".svg" %}
             </div>
 
             <h3>{{ s.title }}</h3>
             <p>{{ s.desc }}</p>
-            <a href="{{ s.link }}">{{ s.cta }}</a>
+
+            <a href="{{ s.link }}" aria-label="{{ s.title }}">
+                {{ s.cta }}
+            </a>
         </article>
         {% endfor %}
-
     </div>
 </section>
 
-<!-- ================= TRUST ================= -->
-<section class="trust-section">
+<!-- ================= TRUST & STATS ================= -->
+<section class="trust-section" aria-labelledby="trust-heading">
     <div class="trust-content">
         <header class="section-header">
-            <h2>Trusted by Leading Institutions</h2>
-            <p>Proven expertise in mission-critical deployments</p>
+            <h2 id="trust-heading">Trusted by Leading Institutions</h2>
+            <p>Proven delivery across enterprise and public sector environments.</p>
         </header>
 
         <div class="trust-stats">
             {% set stats = [
-                {'number': '15+', 'label': 'Years of Excellence'},
-                {'number': '100+', 'label': 'Enterprise Clients'},
-                {'number': '99.9%', 'label': 'Uptime SLA'},
+                {'number': '15+', 'label': 'Years of Experience'},
+                {'number': '100+', 'label': 'Enterprise Deployments'},
+                {'number': '99.9%', 'label': 'Infrastructure Uptime'},
                 {'number': '24/7', 'label': 'Expert Support'}
             ] %}
 
             {% for s in stats %}
             <div class="stat">
-                <div class="stat-number"
-                     data-target="{{ s.number | replace('+','') | replace('%','') }}">
+                <strong class="stat-number"
+                        data-target="{{ s.number | replace('+','') | replace('%','') }}">
                     {{ s.number }}
-                </div>
-                <div class="stat-label">{{ s.label }}</div>
+                </strong>
+                <span class="stat-label">{{ s.label }}</span>
             </div>
             {% endfor %}
         </div>
+    </div>
+</section>
+
+<!-- ================= FOOTNOTE ================= -->
+<section class="platform-note" aria-labelledby="platform-heading">
+    <div class="container">
+        <h2 id="platform-heading">KYC Identity Verification SaaS Platform</h2>
+        <p>
+            Presented by Daybreak Afrika Technology. A scalable, secure,
+            regulation-aligned identity verification platform integrating
+            Nigerian NIN, vNIN, phone, passport, driver’s licence, and voter data.
+        </p>
+        <small>
+            © 2026 Daybreak Afrika Technology. All rights reserved.
+        </small>
     </div>
 </section>
 
@@ -162,32 +163,38 @@
     if (!canvas) return;
 
     const ctx = canvas.getContext('2d');
-    let w, h;
+    let w = 0, h = 0, running = true;
 
     const resize = () => {
         w = canvas.width = canvas.offsetWidth;
         h = canvas.height = canvas.offsetHeight;
     };
+    new ResizeObserver(resize).observe(canvas);
     resize();
-    addEventListener('resize', resize);
+
+    document.addEventListener('visibilitychange', () => {
+        running = !document.hidden;
+    });
 
     const icons = [
-        { t:'🔐', c:'#00E5FF' }, { t:'🤖', c:'#7CDBFF' },
-        { t:'☁️', c:'#90CAF9' }, { t:'⚙️', c:'#B39DDB' },
-        { t:'🔄', c:'#80CBC4' }, { t:'💻', c:'#81D4FA' }
+        { t:'🔐', c:'#00E5FF' },
+        { t:'🤖', c:'#7CDBFF' },
+        { t:'☁️', c:'#90CAF9' },
+        { t:'⚙️', c:'#B39DDB' }
     ];
 
     const items = icons.map(i => ({
         ...i,
-        x: Math.random()*w,
-        y: Math.random()*h,
-        s: 0.2 + Math.random()*0.4,
-        z: 18 + Math.random()*6,
-        a: 0.25 + Math.random()*0.25
+        x: Math.random() * w,
+        y: Math.random() * h,
+        s: 0.25 + Math.random() * 0.35,
+        z: 18 + Math.random() * 6,
+        a: 0.25 + Math.random() * 0.25
     }));
 
     const animate = () => {
-        ctx.clearRect(0,0,w,h);
+        if (!running) return requestAnimationFrame(animate);
+        ctx.clearRect(0, 0, w, h);
         items.forEach(o => {
             o.y -= o.s;
             if (o.y < -40) o.y = h + 40;
@@ -203,31 +210,36 @@
 })();
 </script>
 
-<!-- ================= STATS COUNTUP ================= -->
+<!-- ================= STATS COUNT-UP ================= -->
 <script defer>
 (() => {
     if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
-    document.querySelectorAll('.stat-number').forEach(el => {
-        const target = Number(el.dataset.target);
-        if (!target) return;
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (!entry.isIntersecting) return;
+            const el = entry.target;
+            const target = Number(el.dataset.target);
+            let value = 0;
+            const step = Math.max(1, target / 60);
 
-        let val = 0;
-        const step = Math.max(1, target / 100);
+            const tick = () => {
+                value += step;
+                if (value < target) {
+                    el.textContent = Math.floor(value);
+                    requestAnimationFrame(tick);
+                } else {
+                    el.textContent = target;
+                }
+            };
+            tick();
+            observer.unobserve(el);
+        });
+    }, { threshold: 0.6 });
 
-        const tick = () => {
-            val += step;
-            if (val < target) {
-                el.textContent = Math.floor(val);
-                requestAnimationFrame(tick);
-            } else {
-                el.textContent = target;
-            }
-        };
-        tick();
-    });
+    document.querySelectorAll('.stat-number')
+        .forEach(el => observer.observe(el));
 })();
 </script>
 
 {% endblock %}
-

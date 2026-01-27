@@ -1,6 +1,8 @@
 from flask import Blueprint, render_template
 import logging
 
+import jinja2
+
 
 errors_bp = Blueprint("errors", __name__)
 
@@ -31,3 +33,11 @@ def internal_server_error(error):
 @errors_bp.app_errorhandler(502)
 def bad_gateway(error):
     return render_template("errors/502.html"), 502  
+
+
+# -------- Jinja2 Errors --------
+jinja2.exceptions.TemplateNotFound
+@errors_bp.app_errorhandler(jinja2.exceptions.TemplateNotFound)
+def template_not_found(error):
+    logging.error(f"Template not found: {error}")
+    return render_template("errors/404.html"), 404  

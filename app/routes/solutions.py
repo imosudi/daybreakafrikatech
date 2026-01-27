@@ -30,6 +30,18 @@ def cloud():
 def software():
     return render_template("solutions/software.html")
 
+@solutions_bp.route("/software/deepfakedefence/", endpoint="deepfakedefence")
+def deepfakedefence():
+    return render_template("solutions/software/deepfakedefence.html")
+
+@solutions_bp.route("/software/sentinelpi/", endpoint="sentinelpi")
+def sentinelpi():
+    return render_template("solutions/software/sentinelpi.html")
+
+@solutions_bp.route("/software/kycidenetity/", endpoint="kycidenetity")
+def kycidenetity():
+    return render_template("solutions/software/kycidenetity.html")
+
 
 @solutions_bp.route("/ai/", endpoint="ai")
 def ai():

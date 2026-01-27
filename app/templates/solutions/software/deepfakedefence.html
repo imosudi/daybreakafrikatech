@@ -1,0 +1,1265 @@
+
+<!--template for Deepfake Defence Hub - AI-Powered Media Authentication -->
+<!--templates/solutions/software/deepfakedefence.html-->
+{% extends "base.html" %}
+
+{% block title %}Deepfake Defence Hub - AI-Powered Media Authentication | Daybreak Afrika Technologies{% endblock %}
+
+{% block extra_css %}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+    /* ========================================
+    DEEPFAKE DEFENCE HUB - PREMIUM DESIGN
+    Brand-Aligned Theme
+    ======================================== */
+
+    /* ==========================================================
+    THEME BRIDGE - inherit from base.html
+    ========================================================== */
+
+
+    :root {
+        /* Brand Colors - Daybreak Afrika Aligned */
+        --ddf-primary: var(--brand-primary);
+        --ddf-primary-light: #4de3ff;
+        --ddf-primary-dark: #0099cc;
+        --ddf-secondary: #7c3aed;
+        --ddf-accent: #10b981;
+        --ddf-warning: #f59e0b;
+        --ddf-danger: #ef4444;
+        
+        /* Neutrals - Professional Dark Theme */
+        --ddf-bg-dark: var(--brand-bg-dark);
+        --ddf-bg-darker: #050810;
+        --ddf-surface: var(--brand-bg-glass);
+        --ddf-surface-light: #252545;
+        --ddf-border: var(--brand-border);
+        --ddf-text-primary: var(--brand-text);
+        --ddf-text-secondary: var(--brand-muted);
+        --ddf-text-muted: #6b6b8f;
+        
+        /* Effects */
+        --ddf-glow-primary: rgba(0, 212, 255, 0.3);
+        --ddf-glow-secondary: rgba(124, 58, 237, 0.25);
+        --ddf-glow-danger: rgba(239, 68, 68, 0.2);
+        --ddf-shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+        --ddf-shadow-md: 0 8px 24px rgba(0, 0, 0, 0.4);
+        --ddf-shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.5);
+        
+        /* Spacing */
+        --ddf-space-xs: 0.5rem;
+        --ddf-space-sm: 1rem;
+        --ddf-space-md: 1.5rem;
+        --ddf-space-lg: 2.5rem;
+        --ddf-space-xl: 4rem;
+        --ddf-space-2xl: 6rem;
+        
+        /* Border Radius */
+        --ddf-radius-sm: 8px;
+        --ddf-radius-md: 12px;
+        --ddf-radius-lg: 16px;
+        --ddf-radius-xl: 24px;
+        
+        /* Typography */
+        --ddf-font-sans: 'Space Grotesk', system-ui, sans-serif;
+        --ddf-font-mono: 'IBM Plex Mono', monospace;
+        
+        /* Transitions */
+        --ddf-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .ddf-hero {
+        position: relative;
+        min-height: 100svh;
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+    }
+
+    .ddf-hero-content {
+        grid-template-columns: 1fr; /* mobile first */
+    }
+
+
+    /* Ambient Glow */
+    .ddf-hero::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: 
+            radial-gradient(circle at 20% 30%, var(--ddf-glow-primary) 0%, transparent 50%),
+            radial-gradient(circle at 80% 70%, var(--ddf-glow-danger) 0%, transparent 50%),
+            radial-gradient(circle at 50% 50%, var(--ddf-glow-secondary) 0%, transparent 60%);
+        animation: ambientPulse 12s ease-in-out infinite alternate;
+        opacity: 0.4;
+    }
+
+    @keyframes ambientPulse {
+        0% { transform: scale(1); opacity: 0.3; }
+        100% { transform: scale(1.1); opacity: 0.5; }
+    }
+
+
+
+    @keyframes alertFloat {
+        0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+        10% { opacity: 0.3; }
+        50% { opacity: 0.5; }
+        90% { opacity: 0.2; }
+        100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+    }
+
+    .ddf-hero-content {
+        position: relative;
+        z-index: 10;
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: var(--ddf-space-2xl) var(--ddf-space-lg);
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: var(--ddf-space-2xl);
+        align-items: center;
+    }
+
+    .ddf-hero-text {
+        animation: slideInLeft 0.8s ease-out;
+    }
+
+    @keyframes slideInLeft {
+        from { opacity: 0; transform: translateX(-30px); }
+        to { opacity: 1; transform: translateX(0); }
+    }
+
+    /* Alert Badge */
+    .ddf-alert-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: var(--ddf-space-xs);
+        padding: var(--ddf-space-xs) var(--ddf-space-md);
+        background: rgba(239, 68, 68, 0.15);
+        border: 1px solid rgba(239, 68, 68, 0.4);
+        border-radius: 100px;
+        font-size: 0.75rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: #ff6b6b;
+        margin-bottom: var(--ddf-space-md);
+        animation: fadeInDown 0.6s ease-out;
+    }
+
+    .ddf-alert-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 18px;
+        height: 18px;
+        background: var(--ddf-danger);
+        border-radius: 50%;
+        color: white;
+        font-size: 0.65rem;
+        animation: urgentPulse 2s ease-in-out infinite;
+    }
+
+    @keyframes urgentPulse {
+        0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7); }
+        50% { transform: scale(1.1); box-shadow: 0 0 0 8px rgba(239, 68, 68, 0); }
+    }
+
+    @keyframes fadeInDown {
+        from { opacity: 0; transform: translateY(-15px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    .ddf-hero h1 {
+        font-size: clamp(2.5rem, 6vw, 5rem);
+        font-weight: 800;
+        line-height: 1.1;
+        margin: 0 0 var(--ddf-space-md);
+        letter-spacing: -0.03em;
+        animation: fadeInUp 0.8s ease-out 0.2s backwards;
+    }
+
+    .ddf-hero h1 span {
+        background: linear-gradient(135deg, var(--ddf-primary) 0%, var(--ddf-secondary) 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    @keyframes fadeInUp {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    .ddf-hero-lead {
+        font-size: clamp(1.1rem, 1.8vw, 1.4rem);
+        color: var(--ddf-text-secondary);
+        max-width: 600px;
+        margin-bottom: var(--ddf-space-lg);
+        line-height: 1.7;
+        animation: fadeInUp 0.8s ease-out 0.4s backwards;
+    }
+
+    .ddf-hero-features {
+        display: flex;
+        gap: var(--ddf-space-md);
+        flex-wrap: wrap;
+        margin-bottom: var(--ddf-space-xl);
+        animation: fadeInUp 0.8s ease-out 0.6s backwards;
+    }
+
+    .ddf-feature-pill {
+        display: flex;
+        align-items: center;
+        gap: var(--ddf-space-xs);
+        padding: 0.6rem 1.2rem;
+        background: rgba(0, 212, 255, 0.1);
+        border: 1px solid rgba(0, 212, 255, 0.3);
+        border-radius: 100px;
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: var(--ddf-primary-light);
+        transition: var(--ddf-transition);
+    }
+
+    .ddf-feature-pill:hover {
+        background: rgba(0, 212, 255, 0.15);
+        border-color: var(--ddf-primary);
+        transform: translateY(-2px);
+    }
+
+    .ddf-feature-pill i {
+        color: var(--ddf-accent);
+    }
+
+    .ddf-hero-cta {
+        display: flex;
+        gap: var(--ddf-space-md);
+        flex-wrap: wrap;
+        animation: fadeInUp 0.8s ease-out 0.8s backwards;
+    }
+
+    /* Hero Visual - Threat Monitor */
+    .ddf-hero-visual {
+        animation: slideInRight 0.8s ease-out 0.4s backwards;
+    }
+
+    @keyframes slideInRight {
+        from { opacity: 0; transform: translateX(30px); }
+        to { opacity: 1; transform: translateX(0); }
+    }
+
+    .ddf-threat-monitor {
+        background: var(--ddf-surface);
+        border: 1px solid var(--ddf-border);
+        border-radius: var(--ddf-radius-lg);
+        padding: var(--ddf-space-lg);
+        box-shadow: var(--ddf-shadow-lg);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .ddf-threat-monitor::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: linear-gradient(90deg, var(--ddf-primary), var(--ddf-danger), var(--ddf-primary));
+        background-size: 200% 100%;
+        animation: scanLine 3s linear infinite;
+    }
+
+    @keyframes scanLine {
+        0% { background-position: 200% 0; }
+        100% { background-position: -200% 0; }
+    }
+
+    .ddf-monitor-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: var(--ddf-space-md);
+        padding-bottom: var(--ddf-space-sm);
+        border-bottom: 1px solid var(--ddf-border);
+    }
+
+    .ddf-monitor-title {
+        /* font-family: var(--ddf-font-mono); */
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        font-size: 0.85rem;
+        color: var(--ddf-primary);
+        font-weight: 600;
+    }
+
+    .ddf-monitor-status {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 0.75rem;
+        color: var(--ddf-accent);
+    }
+
+    .ddf-status-dot {
+        width: 8px;
+        height: 8px;
+        background: var(--ddf-accent);
+        border-radius: 50%;
+        animation: statusBlink 2s ease-in-out infinite;
+    }
+
+    @keyframes statusBlink {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.3; }
+    }
+
+    .ddf-threat-grid {
+        display: grid;
+        gap: var(--ddf-space-sm);
+    }
+
+    .ddf-threat-item {
+        display: flex;
+        align-items: center;
+        gap: var(--ddf-space-md);
+        padding: var(--ddf-space-sm);
+        background: rgba(0, 212, 255, 0.05);
+        border-left: 3px solid var(--ddf-primary);
+        border-radius: var(--ddf-radius-sm);
+        transition: var(--ddf-transition);
+        animation: slideInRight 0.5s ease-out backwards;
+    }
+
+    .ddf-threat-item:nth-child(1) { animation-delay: 0.1s; }
+    .ddf-threat-item:nth-child(2) { animation-delay: 0.2s; border-left-color: var(--ddf-warning); }
+    .ddf-threat-item:nth-child(3) { animation-delay: 0.3s; border-left-color: var(--ddf-danger); }
+    .ddf-threat-item:nth-child(4) { animation-delay: 0.4s; border-left-color: var(--ddf-accent); }
+
+    .ddf-threat-item:hover {
+        background: rgba(0, 212, 255, 0.1);
+        transform: translateX(5px);
+    }
+
+    .ddf-threat-icon {
+        font-size: 1.5rem;
+    }
+
+    .ddf-threat-info {
+        flex: 1;
+    }
+
+    .ddf-threat-type {
+        font-size: 0.8rem;
+        font-weight: 600;
+        color: var(--ddf-text-primary);
+        margin-bottom: 0.2rem;
+    }
+
+    .ddf-threat-desc {
+        font-size: 0.7rem;
+        color: var(--ddf-text-muted);
+        /* font-family: var(--ddf-font-mono); */
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+
+    .ddf-threat-status {
+        font-size: 0.7rem;
+        font-weight: 600;
+        padding: 0.3rem 0.6rem;
+        border-radius: 4px;
+        /* font-family: var(--ddf-font-mono); */
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+
+    .ddf-threat-status.detected {
+        background: rgba(239, 68, 68, 0.2);
+        color: #ff6b6b;
+    }
+
+    .ddf-threat-status.verified {
+        background: rgba(16, 185, 129, 0.2);
+        color: var(--ddf-accent);
+    }
+
+    /* ========================================
+    BUTTONS
+    ======================================== */
+
+    .ddf-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: var(--ddf-space-xs);
+        padding: 1rem 2rem;
+        /*font-family: var(--ddf-font-sans);*/
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        font-size: 1rem;
+        font-weight: 600;
+        text-decoration: none;
+        border-radius: var(--ddf-radius-md);
+        transition: var(--ddf-transition);
+        cursor: pointer;
+        border: none;
+        white-space: nowrap;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .ddf-btn::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+        transform: translateX(-100%);
+        transition: transform 0.6s;
+    }
+
+    .ddf-btn:hover::before {
+        transform: translateX(100%);
+    }
+
+    .ddf-btn-primary {
+        background: linear-gradient(135deg, var(--ddf-primary) 0%, var(--ddf-primary-dark) 100%);
+        color: var(--ddf-bg-dark);
+        box-shadow: 0 4px 16px var(--ddf-glow-primary);
+    }
+
+    .ddf-btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 24px var(--ddf-glow-primary);
+        color: var(--ddf-bg-dark);
+    }
+
+    .ddf-btn-secondary {
+        background: transparent;
+        color: var(--ddf-primary);
+        border: 2px solid var(--ddf-primary);
+    }
+
+    .ddf-btn-secondary:hover {
+        background: rgba(0, 212, 255, 0.1);
+        color: var(--ddf-primary-light);
+        border-color: var(--ddf-primary-light);
+        transform: translateY(-2px);
+    }
+
+    /* ========================================
+    SECTIONS
+    ======================================== */
+
+    .ddf-section {
+        padding: var(--ddf-space-2xl) var(--ddf-space-lg);
+        position: relative;
+    }
+
+    .ddf-section--alt {
+        background: var(--ddf-bg-dark);
+    }
+
+    .ddf-section--border {
+        border-top: 1px solid rgba(0, 212, 255, 0.1);
+    }
+
+    .ddf-container {
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+
+    .ddf-section-header {
+        max-width: 900px;
+        margin: 0 auto var(--ddf-space-xl);
+        text-align: center;
+    }
+
+    .ddf-section-label {
+        display: inline-flex;
+        align-items: center;
+        gap: var(--ddf-space-xs);
+        font-size: 0.75rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        color: var(--ddf-primary);
+        margin-bottom: var(--ddf-space-sm);
+        padding: 0.4rem 1rem;
+        background: rgba(0, 212, 255, 0.1);
+        border: 1px solid rgba(0, 212, 255, 0.3);
+        border-radius: 100px;
+    }
+
+    .ddf-section-label::before {
+        content: '';
+        width: 6px;
+        height: 6px;
+        background: var(--ddf-primary);
+        border-radius: 50%;
+        animation: labelPulse 2s ease-in-out infinite;
+    }
+
+    @keyframes labelPulse {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.4; }
+    }
+
+    .ddf-section h2 {
+        font-size: clamp(2rem, 5vw, 3.5rem);
+        font-weight: 800;
+        line-height: 1.2;
+        margin: 0 0 var(--ddf-space-md);
+        letter-spacing: -0.02em;
+    }
+
+    .ddf-section-intro {
+        font-size: 1.2rem;
+        color: var(--ddf-text-secondary);
+        line-height: 1.7;
+    }
+
+    /* ========================================
+    THREAT CARDS
+    ======================================== */
+
+    .ddf-threats {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: var(--ddf-space-lg);
+        margin-top: var(--ddf-space-xl);
+    }
+
+    .ddf-threat-card {
+        background: var(--ddf-surface);
+        border: 1px solid var(--ddf-border);
+        border-radius: var(--ddf-radius-lg);
+        padding: var(--ddf-space-lg);
+        transition: var(--ddf-transition);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .ddf-threat-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background: linear-gradient(90deg, var(--ddf-danger), var(--ddf-warning));
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.4s ease;
+    }
+
+    .ddf-threat-card:hover::before {
+        transform: scaleX(1);
+    }
+
+    .ddf-threat-card:hover {
+        transform: translateY(-8px);
+        border-color: var(--ddf-primary);
+        box-shadow: var(--ddf-shadow-lg), 0 0 40px var(--ddf-glow-primary);
+    }
+
+    .ddf-threat-card-icon {
+        width: 56px;
+        height: 56px;
+        background: linear-gradient(135deg, rgba(239, 68, 68, 0.2), rgba(245, 158, 11, 0.2));
+        border-radius: var(--ddf-radius-md);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.75rem;
+        margin-bottom: var(--ddf-space-md);
+    }
+
+    .ddf-threat-card h3 {
+        font-size: 1.3rem;
+        font-weight: 700;
+        margin: 0 0 var(--ddf-space-sm);
+        color: var(--ddf-text-primary);
+    }
+
+    .ddf-threat-card p {
+        color: var(--ddf-text-secondary);
+        line-height: 1.6;
+        margin: 0;
+    }
+
+    /* ========================================
+    PRINCIPLES GRID
+    ======================================== */
+
+    .ddf-principles {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: var(--ddf-space-xl);
+        margin-top: var(--ddf-space-xl);
+    }
+
+    .ddf-principle {
+        position: relative;
+        padding-top: var(--ddf-space-md);
+    }
+
+    .ddf-principle-number {
+        position: absolute;
+        top: -10px;
+        left: 0;
+        width: 48px;
+        height: 48px;
+        background: linear-gradient(135deg, var(--ddf-primary), var(--ddf-secondary));
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 800;
+        font-size: 1.3rem;
+        color: var(--ddf-bg-dark);
+        box-shadow: 0 4px 16px var(--ddf-glow-primary);
+    }
+
+    .ddf-principle h3 {
+        font-size: 1.4rem;
+        font-weight: 700;
+        margin: 0 0 var(--ddf-space-sm);
+    }
+
+    .ddf-principle p {
+        color: var(--ddf-text-secondary);
+        line-height: 1.7;
+        margin: 0;
+    }
+
+    /* ========================================
+    ARCHITECTURE TIMELINE
+    ======================================== */
+
+    .ddf-architecture {
+        max-width: 900px;
+        margin: var(--ddf-space-xl) auto 0;
+    }
+
+    .ddf-arch-layer {
+        display: flex;
+        gap: var(--ddf-space-lg);
+        margin-bottom: var(--ddf-space-xl);
+        position: relative;
+        padding-left: var(--ddf-space-lg);
+    }
+
+    .ddf-arch-layer::before {
+        content: '';
+        position: absolute;
+        left: 23px;
+        top: 50px;
+        bottom: -40px;
+        width: 2px;
+        background: linear-gradient(180deg, var(--ddf-primary), transparent);
+    }
+
+    .ddf-arch-layer:last-child::before {
+        display: none;
+    }
+
+    .ddf-arch-number {
+        flex-shrink: 0;
+        width: 48px;
+        height: 48px;
+        background: linear-gradient(135deg, var(--ddf-primary), var(--ddf-secondary));
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 800;
+        font-size: 1.2rem;
+        color: var(--ddf-bg-dark);
+        box-shadow: 0 0 20px var(--ddf-glow-primary);
+        z-index: 1;
+    }
+
+    .ddf-arch-content {
+        flex: 1;
+        padding-top: 0.7rem;
+    }
+
+    .ddf-arch-content h3 {
+        font-size: 1.3rem;
+        font-weight: 700;
+        margin: 0 0 0.4rem;
+        color: var(--ddf-text-primary);
+    }
+
+    .ddf-arch-content p {
+        color: var(--ddf-text-secondary);
+        margin: 0;
+        line-height: 1.6;
+    }
+
+    /* ========================================
+    DEPLOYMENT CARDS
+    ======================================== */
+
+    .ddf-deployments {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: var(--ddf-space-lg);
+        margin-top: var(--ddf-space-xl);
+    }
+
+    .ddf-deployment {
+        background: var(--ddf-surface);
+        border: 1px solid var(--ddf-border);
+        border-radius: var(--ddf-radius-lg);
+        padding: var(--ddf-space-lg);
+        text-align: center;
+        transition: var(--ddf-transition);
+    }
+
+    .ddf-deployment:hover {
+        border-color: var(--ddf-secondary);
+        box-shadow: 0 8px 24px var(--ddf-glow-secondary);
+        transform: translateY(-4px);
+    }
+
+    .ddf-deployment-icon {
+        font-size: 2.5rem;
+        margin-bottom: var(--ddf-space-md);
+    }
+
+    .ddf-deployment h3 {
+        font-size: 1.2rem;
+        font-weight: 700;
+        margin: 0 0 var(--ddf-space-xs);
+        color: var(--ddf-text-primary);
+    }
+
+    .ddf-deployment p {
+        font-size: 0.95rem;
+        color: var(--ddf-text-secondary);
+        margin: 0;
+        line-height: 1.6;
+    }
+
+    /* ========================================
+    IMPACT SECTION
+    ======================================== */
+
+    .ddf-impact-section {
+        background: linear-gradient(135deg, rgba(0, 212, 255, 0.1) 0%, rgba(124, 58, 237, 0.1) 100%);
+        position: relative;
+    }
+
+    .ddf-impact-section::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: 
+            radial-gradient(circle at 20% 50%, var(--ddf-glow-primary) 0%, transparent 50%),
+            radial-gradient(circle at 80% 50%, var(--ddf-glow-secondary) 0%, transparent 50%);
+        opacity: 0.3;
+    }
+
+    .ddf-impact-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: var(--ddf-space-lg);
+        margin-top: var(--ddf-space-xl);
+        position: relative;
+        z-index: 1;
+    }
+
+    .ddf-impact-item {
+        background: rgba(26, 31, 46, 0.8);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(0, 212, 255, 0.2);
+        border-radius: var(--ddf-radius-lg);
+        padding: var(--ddf-space-lg);
+        transition: var(--ddf-transition);
+    }
+
+    .ddf-impact-item:hover {
+        background: rgba(26, 31, 46, 0.95);
+        border-color: var(--ddf-primary);
+        transform: translateY(-4px);
+        box-shadow: 0 8px 24px var(--ddf-glow-primary);
+    }
+
+    .ddf-impact-icon {
+        width: 56px;
+        height: 56px;
+        background: linear-gradient(135deg, rgba(0, 212, 255, 0.2), rgba(124, 58, 237, 0.2));
+        border-radius: var(--ddf-radius-md);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.75rem;
+        margin-bottom: var(--ddf-space-md);
+    }
+
+    .ddf-impact-item h3 {
+        font-size: 1.3rem;
+        font-weight: 700;
+        margin: 0 0 var(--ddf-space-xs);
+        color: var(--ddf-text-primary);
+    }
+
+    .ddf-impact-item p {
+        color: var(--ddf-text-secondary);
+        margin: 0;
+        line-height: 1.6;
+    }
+
+    /* ========================================
+    CTA SECTION
+    ======================================== */
+
+    .ddf-cta-section {
+        padding: calc(var(--ddf-space-2xl) * 1.5) var(--ddf-space-lg);
+        text-align: center;
+        background: linear-gradient(165deg, var(--ddf-bg-dark) 0%, var(--ddf-bg-darker) 100%);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .ddf-cta-section::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 800px;
+        height: 800px;
+        background: radial-gradient(circle, var(--ddf-glow-primary) 0%, transparent 70%);
+        transform: translate(-50%, -50%);
+        animation: ctaPulse 8s ease-in-out infinite;
+    }
+
+    @keyframes ctaPulse {
+        0%, 100% { opacity: 0.2; transform: translate(-50%, -50%) scale(1); }
+        50% { opacity: 0.4; transform: translate(-50%, -50%) scale(1.1); }
+    }
+
+    .ddf-cta-content {
+        position: relative;
+        z-index: 1;
+        max-width: 900px;
+        margin: 0 auto;
+    }
+
+    .ddf-cta-section h2 {
+        font-size: clamp(2rem, 5vw, 3.5rem);
+        margin-bottom: var(--ddf-space-md);
+    }
+
+    .ddf-cta-section p {
+        font-size: 1.3rem;
+        color: var(--ddf-text-secondary);
+        margin-bottom: var(--ddf-space-xl);
+        line-height: 1.7;
+    }
+
+    .ddf-cta-buttons {
+        display: flex;
+        gap: var(--ddf-space-md);
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    /* ========================================
+    RESPONSIVE
+    ======================================== */
+
+    @media (max-width: 1024px) {
+        .ddf-hero-content {
+            grid-template-columns: 1fr;
+            gap: var(--ddf-space-xl);
+        }
+        
+        .ddf-hero-visual {
+            order: -1;
+        }
+    }
+
+    @media (max-width: 768px) {
+        :root {
+            --ddf-space-xl: 3rem;
+            --ddf-space-2xl: 4rem;
+        }
+        
+        .ddf-hero {
+            min-height: 75vh;
+        }
+        
+        .ddf-section {
+            padding: var(--ddf-space-xl) var(--ddf-space-md);
+        }
+        
+        .ddf-hero-features {
+            flex-direction: column;
+            gap: var(--ddf-space-sm);
+        }
+        
+        .ddf-hero-cta,
+        .ddf-cta-buttons {
+            flex-direction: column;
+            width: 100%;
+        }
+        
+        .ddf-btn {
+            width: 100%;
+        }
+        
+        .ddf-threats,
+        .ddf-principles,
+        .ddf-deployments,
+        .ddf-impact-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    /* ========================================
+    ACCESSIBILITY
+    ======================================== */
+
+    @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.01ms !important;
+        }
+    }
+
+    .ddf-btn:focus-visible,
+    .ddf-threat-card:focus-visible,
+    .ddf-deployment:focus-visible {
+        outline: 3px solid var(--ddf-primary);
+        outline-offset: 4px;
+}
+</style>
+{% endblock %}
+
+{% block content %}
+
+<section class="ddf-hero" aria-labelledby="ddf-hero-title">
+  <div class="ddf-hero-content">
+    <div class="ddf-hero-text">
+
+                <div class="ddf-alert-badge">
+                    <div class="ddf-alert-icon">!</div>
+                    <span>Critical Infrastructure Protection</span>
+                </div>
+                <h1>Deepfake Defence Hub</h1>
+                <p>Real-time media authentication and broadcast integrity for the age of AI-generated misinformation. 
+                    Protect your credibility before it's compromised.
+                </p>
+                <div class="ddf-hero-features">
+                    <div class="ddf-feature-pill">
+                        <i class="bi bi-shield-check"></i>
+                        <span>Vendor-Neutral</span>
+                    </div>
+                    <div class="ddf-feature-pill">
+                        <i class="bi bi-lightning-charge"></i>
+                        <span>Real-Time Analysis</span>
+                    </div>
+                    <div class="ddf-feature-pill">
+                        <i class="bi bi-broadcast"></i>
+                        <span>Broadcast-Ready</span>
+                    </div>
+                </div>
+                    
+                <div class="ddf-hero-cta">
+                    <a href="{#{ url_for('contact.contact') }#}" class="ddf-btn ddf-btn-primary">
+                        <span>Schedule Consultation</span>
+                        <i class="bi bi-arrow-right"></i>
+                    </a>
+                    <a href="{{ url_for('solutions.index') }}" class="ddf-btn ddf-btn-secondary">
+                        <span>Explore Solutions</span>
+                    </a>
+                </div>
+            </div>
+            <div class="ddf-hero-visual">
+                <div class="ddf-threat-monitor">
+                    <div class="ddf-monitor-header">
+                        <div class="ddf-threat-item" role="listitem">
+                            LIVE THREAT MONITOR
+                        </div>
+                        <div class="ddf-monitor-status">
+                            <span class="ddf-status-dot"></span>
+                            <span>ACTIVE</span>
+                        </div>
+                    </div>
+                        
+                    <div class="ddf-threat-grid">
+                        <div class="ddf-threat-item">
+                            <div class="ddf-threat-icon"  aria-hidden="true">🎥</div>
+                            <div class="ddf-threat-info">
+                                <div class="ddf-threat-type">Video Deepfake</div>
+                                <div class="ddf-threat-desc">Face swap detected</div>
+                            </div>
+                            <div class="ddf-threat-status detected">BLOCKED</div>
+                        </div>
+                            
+                        <div class="ddf-threat-item">
+                            <div class="ddf-threat-icon" aria-hidden="true">🎙️</div>
+                            <div class="ddf-threat-info">
+                                <div class="ddf-threat-type">Audio Clone</div>
+                                <div class="ddf-threat-desc">Voice synthesis alert</div>
+                            </div>
+                            <div class="ddf-threat-status detected">FLAGGED</div>
+                        </div>
+                            
+                        <div class="ddf-threat-item">
+                            <div class="ddf-threat-icon" aria-hidden="true">📄</div>
+                            <div class="ddf-threat-info">
+                                <div class="ddf-threat-type">Metadata Analysis</div>
+                                <div class="ddf-threat-desc">Provenance verified</div>
+                            </div>
+                            <div class="ddf-threat-status verified">VERIFIED</div>
+                        </div>
+                            
+                        <div class="ddf-threat-item">
+                            <div class="ddf-threat-icon" aria-hidden="true">🔐</div>
+                            <div class="ddf-threat-info">
+                                <div class="ddf-threat-type">Cryptographic Check</div>
+                                <div class="ddf-threat-desc">Chain of custody intact</div>
+                            </div>
+                            <div class="ddf-threat-status verified">SECURE</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>  
+</section>
+
+<section class="solution-content">
+    <!-- ===== CONTEXT SECTION ===== -->
+    <section class="ddf-section">
+        <div class="ddf-container">
+            <div class="ddf-section-header">
+                <span class="ddf-section-label">The Challenge</span>
+                <h2>Why Deepfake Defence Matters</h2>
+                <p class="ddf-section-intro">
+                    Advances in generative AI have made synthetic audio and video indistinguishable 
+                    from authentic media. For broadcasters, this introduces asymmetric risk: a single 
+                    manipulated clip can erode decades of trust within minutes.
+                </p>
+            </div>
+            
+            <p style="max-width: 900px; margin: 0 auto; color: var(--ddf-text-secondary); font-size: 1.1rem; line-height: 1.7; text-align: center;">
+                The Deepfake Defence Hub is an enterprise-grade software framework that embeds 
+                automated, real-time detection, verification, and governance directly into 
+                newsroom and broadcast workflows.
+            </p>
+        </div>
+    </section>
+
+    <!-- ===== THREAT LANDSCAPE ===== -->
+    <section class="ddf-section ddf-section--alt ddf-section--border">
+        <div class="ddf-container">
+            <div class="ddf-section-header">
+                <span class="ddf-section-label">Threat Assessment</span>
+                <h2>Emerging Attack Vectors</h2>
+            </div>
+            
+            <div class="ddf-threats">
+                {% set threats = [
+                    {
+                        'icon': '🎭',
+                        'title': 'Synthetic Impersonation',
+                        'desc': 'Fabricated speeches, anchors, and eyewitness footage that fool human observers and erode audience trust.'
+                    },
+                    {
+                        'icon': '⚠️',
+                        'title': 'Operational Blind Spots',
+                        'desc': 'Live ingest pipelines lack real-time authentication, creating critical vulnerability windows.'
+                    },
+                    {
+                        'icon': '🔍',
+                        'title': 'Provenance Gaps',
+                        'desc': 'No immutable audit trail for media authenticity and chain of custody verification.'
+                    },
+                    {
+                        'icon': '⚡',
+                        'title': 'Velocity Risk',
+                        'desc': 'Social platforms amplify manipulated content faster than editorial controls can respond.'
+                    }
+                ] %}
+                
+                {% for threat in threats %}
+                <article class="ddf-threat-card">
+                    <div class="ddf-threat-card-icon">{{ threat.icon }}</div>
+                    <h3>{{ threat.title }}</h3>
+                    <p>{{ threat.desc }}</p>
+                </article>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== DESIGN PRINCIPLES ===== -->
+    <section class="ddf-section ddf-section--border">
+        <div class="ddf-container">
+            <div class="ddf-section-header">
+                <span class="ddf-section-label">Foundation</span>
+                <h2>Design Principles</h2>
+            </div>
+            
+            <div class="ddf-principles">
+                {% set principles = [
+                    {
+                        'num': '1',
+                        'title': 'Vendor-Neutral & Modular',
+                        'desc': 'Detection engines, AI models, and verification components are fully replaceable, avoiding platform lock-in and enabling long-term evolution.'
+                    },
+                    {
+                        'num': '2',
+                        'title': 'Real-Time & Explainable',
+                        'desc': 'Sub-second analysis suitable for live broadcasts, with human-readable risk scores and confidence metrics.'
+                    },
+                    {
+                        'num': '3',
+                        'title': 'Interoperable by Design',
+                        'desc': 'API-first integration with CMS, MAM, playout automation, and identity systems for seamless workflows.'
+                    },
+                    {
+                        'num': '4',
+                        'title': 'Audit-Ready',
+                        'desc': 'Cryptographic provenance and immutable records support compliance, training, and forensic review.'
+                    }
+                ] %}
+                
+                {% for principle in principles %}
+                <article class="ddf-principle">
+                    <div class="ddf-principle-number">{{ principle.num }}</div>
+                    <h3>{{ principle.title }}</h3>
+                    <p>{{ principle.desc }}</p>
+                </article>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== ARCHITECTURE ===== -->
+    <section class="ddf-section ddf-section--alt ddf-section--border">
+        <div class="ddf-container">
+            <div class="ddf-section-header">
+                <span class="ddf-section-label">System Design</span>
+                <h2>Architecture Overview</h2>
+                <p class="ddf-section-intro">
+                    Six interconnected layers provide comprehensive protection from ingestion to broadcast.
+                </p>
+            </div>
+            
+            <div class="ddf-architecture">
+                {% set layers = [
+                    {'num': '1', 'title': 'Media Ingestion Layer', 'desc': 'Live feeds, files, and OSINT capture with real-time preprocessing'},
+                    {'num': '2', 'title': 'AI Detection Layer', 'desc': 'Video, audio, and multimodal analysis using ensemble detection models'},
+                    {'num': '3', 'title': 'Verification & Provenance', 'desc': 'Cryptographic signatures and distributed ledger-based trust chains'},
+                    {'num': '4', 'title': 'Threat Intelligence', 'desc': 'Campaign detection and pattern correlation across media sources'},
+                    {'num': '5', 'title': 'Editorial Governance', 'desc': 'Customizable alerts, approval workflows, and escalation protocols'},
+                    {'num': '6', 'title': 'Infrastructure Layer', 'desc': 'Secure, scalable cloud or hybrid deployment with HA architecture'}
+                ] %}
+                
+                {% for layer in layers %}
+                <div class="ddf-arch-layer">
+                    <div class="ddf-arch-number">{{ layer.num }}</div>
+                    <div class="ddf-arch-content">
+                        <h3>{{ layer.title }}</h3>
+                        <p>{{ layer.desc }}</p>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== DEPLOYMENT ===== -->
+    <section class="ddf-section ddf-section--border">
+        <div class="ddf-container">
+            <div class="ddf-section-header">
+                <span class="ddf-section-label">Implementation</span>
+                <h2>Deployment & Integration</h2>
+                <p class="ddf-section-intro">
+                    Flexible deployment models tailored to broadcast latency, sovereignty, 
+                    and resilience requirements.
+                </p>
+            </div>
+            
+            <div class="ddf-deployments">
+                {% set deployments = [
+                    {'icon': '🖥️', 'title': 'On-Premise Edge', 'desc': 'GPU-accelerated nodes for latency-sensitive real-time detection'},
+                    {'icon': '☁️', 'title': 'Private Cloud', 'desc': 'Sovereign cloud deployment for core services and data residency'},
+                    {'icon': '🔄', 'title': 'High Availability', 'desc': 'Active-active architectures with automatic failover'},
+                    {'icon': '🔌', 'title': 'System Integration', 'desc': 'Seamless integration with CMS, MAM, IAM, and playout systems'}
+                ] %}
+                
+                {% for deployment in deployments %}
+                <article class="ddf-deployment">
+                    <div class="ddf-deployment-icon">{{ deployment.icon }}</div>
+                    <h3>{{ deployment.title }}</h3>
+                    <p>{{ deployment.desc }}</p>
+                </article>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== STRATEGIC IMPACT ===== -->
+    <section class="ddf-section ddf-impact-section">
+        <div class="ddf-container">
+            <div class="ddf-section-header">
+                <span class="ddf-section-label">Strategic Value</span>
+                <h2>Transform Crisis Management Into Trust Preservation</h2>
+                <p class="ddf-section-intro">
+                    By embedding real-time authentication and governance into production workflows, 
+                    broadcasters move from reactive crisis management to proactive trust preservation.
+                </p>
+            </div>
+            
+            <div class="ddf-impact-grid">
+                {% set impacts = [
+                    {'icon': '🛡️', 'title': 'Protect Editorial Credibility', 'desc': 'Real-time authentication prevents misinformation broadcast and protects brand reputation'},
+                    {'icon': '⚖️', 'title': 'Reduce Legal Exposure', 'desc': 'Immutable audit trails support regulatory compliance and legal defence'},
+                    {'icon': '🏆', 'title': 'Demonstrate Leadership', 'desc': 'Lead the industry in responsible AI adoption and ethical journalism'},
+                    {'icon': '📊', 'title': 'Measurable Trust Asset', 'desc': 'Transform audience trust into a quantifiable operational metric'}
+                ] %}
+                
+                {% for impact in impacts %}
+                <article class="ddf-impact-item">
+                    <div class="ddf-impact-icon">{{ impact.icon }}</div>
+                    <h3>{{ impact.title }}</h3>
+                    <p>{{ impact.desc }}</p>
+                </article>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CTA SECTION ===== -->
+    <section class="ddf-cta-section">
+        <div class="ddf-cta-content">
+            <h2>Ready to Protect Your Broadcast Integrity?</h2>
+            <p>
+                Let's discuss how the Deepfake Defence Hub can secure your media workflows 
+                and preserve audience trust in the age of AI-generated content.
+            </p>
+            <div class="ddf-cta-buttons">
+                <a href="{#{ url_for('contact.contact') }#}" class="ddf-btn ddf-btn-primary">
+                    <span>Schedule a Consultation</span>
+                    <i class="bi bi-arrow-right"></i>
+                </a>
+                <a href="{{ url_for('solutions.index') }}" class="ddf-btn ddf-btn-secondary">
+                    <span>Explore Other Solutions</span>
+                </a>
+            </div>
+        </div>
+    </section>
+</section>
+
+{% endblock %}
+

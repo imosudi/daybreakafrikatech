@@ -1,0 +1,969 @@
+{# templates/about_us.html #}
+{% extends "base.html" %}
+
+{% block title %}About Us – Daybreak Afrika Technologies{% endblock %}
+
+{% block extra_css %}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+    /* ========================================
+    ABOUT US - PREMIUM DESIGN SYSTEM
+    Brand-Aligned Theme
+    ======================================== */
+
+    :root {
+        /* Brand Colors - Harmonized with main.css */
+        --about-primary: #00B4D8;
+        --about-primary-light: #00F5FF;
+        --about-primary-dark: #0066CC;
+        --about-secondary: #7CDBFF;
+        --about-accent: #10b981;
+        
+        /* Neutrals - Matched to main.css */
+        --about-bg-dark: #0A1128;
+        --about-bg-darker: #050810;
+        --about-surface: rgba(255, 255, 255, 0.02);
+        --about-surface-light: rgba(255, 255, 255, 0.05);
+        --about-border: rgba(0, 180, 216, 0.1);
+        --about-text-primary: #F8F9FA;
+        --about-text-secondary: rgba(248, 249, 250, 0.7);
+        --about-text-muted: rgba(248, 249, 250, 0.5);
+        
+        /* Effects */
+        --about-glow-primary: rgba(0, 180, 216, 0.3);
+        --about-glow-accent: rgba(16, 185, 129, 0.2);
+        --about-shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+        --about-shadow-md: 0 8px 24px rgba(0, 0, 0, 0.4);
+        --about-shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.5);
+        
+        /* Spacing */
+        --about-space-xs: 0.5rem;
+        --about-space-sm: 1rem;
+        --about-space-md: 1.5rem;
+        --about-space-lg: 2.5rem;
+        --about-space-xl: 4rem;
+        --about-space-2xl: 6rem;
+        
+        /* Border Radius */
+        --about-radius-sm: 8px;
+        --about-radius-md: 12px;
+        --about-radius-lg: 16px;
+        
+        /* Typography */
+        --about-font-sans: 'Space Grotesk', system-ui, sans-serif;
+        --about-font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        
+        /* Transitions */
+        --about-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* ========================================
+    HERO SECTION
+    ======================================== */
+
+    .about-hero {
+        position: relative;
+        min-height: 70vh;
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+        padding: 6rem 2rem 4rem;
+    }
+
+    .about-hero::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: 
+            radial-gradient(circle at 30% 40%, var(--about-glow-primary) 0%, transparent 50%),
+            radial-gradient(circle at 70% 60%, var(--about-glow-accent) 0%, transparent 50%);
+        animation: ambientPulse 12s ease-in-out infinite alternate;
+        opacity: 0.4;
+    }
+
+    @keyframes ambientPulse {
+        0% { transform: scale(1); opacity: 0.3; }
+        100% { transform: scale(1.1); opacity: 0.5; }
+    }
+
+    .about-hero-content {
+        position: relative;
+        z-index: 10;
+        max-width: 1200px;
+        margin: 0 auto;
+        text-align: center;
+        animation: fadeInUp 0.8s ease-out;
+    }
+
+    @keyframes fadeInUp {
+        from { opacity: 0; transform: translateY(30px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    .about-hero h1 {
+        font-size: clamp(2.5rem, 5vw, 4rem);
+        font-weight: 800;
+        line-height: 1.2;
+        margin: 0 0 var(--about-space-md);
+        letter-spacing: -0.02em;
+    }
+
+    .about-hero h1 span {
+        background: linear-gradient(135deg, #0066CC 0%, #00B4D8 50%, #00F5FF 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    .about-hero-lead {
+        font-size: clamp(1.1rem, 1.5vw, 1.35rem);
+        color: var(--about-text-secondary);
+        max-width: 700px;
+        margin: 0 auto;
+        line-height: 1.7;
+    }
+
+    /* ========================================
+    SECTIONS
+    ======================================== */
+
+    .about-section {
+        padding: var(--about-space-2xl) var(--about-space-lg);
+        position: relative;
+    }
+
+    .about-section--alt {
+        background: var(--about-bg-dark);
+    }
+
+    .about-section--border {
+        border-top: 1px solid var(--about-border);
+    }
+
+    .about-container {
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+
+    .about-section-header {
+        max-width: 900px;
+        margin: 0 auto var(--about-space-xl);
+        text-align: center;
+    }
+
+    .about-section-label {
+        display: inline-flex;
+        align-items: center;
+        gap: var(--about-space-xs);
+        font-size: 0.75rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        color: #00B4D8;
+        margin-bottom: var(--about-space-sm);
+        padding: 0.4rem 1rem;
+        background: rgba(0, 180, 216, 0.1);
+        border: 1px solid rgba(0, 180, 216, 0.3);
+        border-radius: 100px;
+    }
+
+    .about-section-label::before {
+        content: '';
+        width: 6px;
+        height: 6px;
+        background: #00B4D8;
+        border-radius: 50%;
+        animation: labelPulse 2s ease-in-out infinite;
+    }
+
+    @keyframes labelPulse {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.4; }
+    }
+
+    .about-section h2 {
+        font-size: clamp(2rem, 4vw, 3rem);
+        font-weight: 800;
+        line-height: 1.2;
+        margin: 0 0 var(--about-space-md);
+        letter-spacing: -0.02em;
+    }
+
+    .about-section-intro {
+        font-size: 1.15rem;
+        color: var(--about-text-secondary);
+        line-height: 1.7;
+        margin-bottom: var(--about-space-lg);
+    }
+
+    .about-section p {
+        color: var(--about-text-secondary);
+        line-height: 1.7;
+        margin-bottom: var(--about-space-md);
+    }
+
+    .about-section p.emphasis {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: #00B4D8;
+        text-align: center;
+        margin-top: var(--about-space-lg);
+    }
+
+    /* ========================================
+    WHO WE ARE - HIGHLIGHT BOX
+    ======================================== */
+
+    .about-intro {
+        max-width: 900px;
+        margin: 0 auto;
+    }
+
+    .about-highlight {
+        padding: var(--about-space-lg);
+        background: var(--about-surface);
+        border: 1px solid var(--about-border);
+        border-left: 4px solid #00B4D8;
+        border-radius: var(--about-radius-lg);
+        margin-top: var(--about-space-lg);
+    }
+
+    /* ========================================
+    SERVICE LIST
+    ======================================== */
+
+    .about-service-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: var(--about-space-md);
+        margin-top: var(--about-space-xl);
+    }
+
+    .about-service-item {
+        display: flex;
+        align-items: center;
+        gap: var(--about-space-sm);
+        padding: var(--about-space-md);
+        background: var(--about-surface);
+        border: 1px solid var(--about-border);
+        border-radius: var(--about-radius-sm);
+        transition: var(--about-transition);
+    }
+
+    .about-service-item:hover {
+        background: var(--about-surface-light);
+        border-color: #00B4D8;
+        transform: translateX(8px);
+    }
+
+    .about-service-item::before {
+        content: '▸';
+        color: #10b981;
+        font-size: 1.2rem;
+        flex-shrink: 0;
+    }
+
+    .about-service-item span {
+        color: var(--about-text-secondary);
+        line-height: 1.5;
+    }
+
+    /* ========================================
+    EXPERTISE GRID
+    ======================================== */
+
+    .about-expertise-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: var(--about-space-lg);
+        margin-top: var(--about-space-xl);
+    }
+
+    .about-expertise-card {
+        background: var(--about-surface);
+        border: 1px solid var(--about-border);
+        border-radius: var(--about-radius-lg);
+        padding: var(--about-space-lg);
+        transition: var(--about-transition);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .about-expertise-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background: linear-gradient(90deg, #0066CC, #00B4D8);
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.4s ease;
+    }
+
+    .about-expertise-card:hover::before {
+        transform: scaleX(1);
+    }
+
+    .about-expertise-card:hover {
+        border-color: #00B4D8;
+        box-shadow: 0 8px 24px rgba(0, 180, 216, 0.2);
+        transform: translateY(-4px);
+    }
+
+    .about-expertise-icon {
+        width: 48px;
+        height: 48px;
+        background: linear-gradient(135deg, rgba(0, 180, 216, 0.2), rgba(16, 185, 129, 0.2));
+        border-radius: var(--about-radius-md);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        margin-bottom: var(--about-space-md);
+    }
+
+    .about-expertise-card h3 {
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: var(--about-text-primary);
+        margin: 0;
+    }
+
+    /* ========================================
+    HOW WE HELP
+    ======================================== */
+
+    .about-help-list {
+        display: grid;
+        gap: var(--about-space-md);
+        margin-top: var(--about-space-xl);
+        max-width: 900px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .about-help-item {
+        display: flex;
+        align-items: flex-start;
+        gap: var(--about-space-md);
+        padding: var(--about-space-md) var(--about-space-lg);
+        background: rgba(0, 180, 216, 0.05);
+        border-left: 3px solid #00B4D8;
+        border-radius: var(--about-radius-sm);
+        transition: var(--about-transition);
+    }
+
+    .about-help-item:hover {
+        background: rgba(0, 180, 216, 0.1);
+        transform: translateX(8px);
+        border-left-color: #00F5FF;
+    }
+
+    .about-help-icon {
+        flex-shrink: 0;
+        width: 32px;
+        height: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, #00B4D8, #7CDBFF);
+        border-radius: 50%;
+        color: #0A1128;
+        font-weight: 700;
+    }
+
+    .about-help-item span {
+        color: var(--about-text-secondary);
+        line-height: 1.6;
+    }
+
+    /* ========================================
+    TEAM GRID
+    ======================================== */
+
+    .about-team-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: var(--about-space-xl);
+        margin-top: var(--about-space-xl);
+    }
+
+    .about-team-card {
+        background: var(--about-surface);
+        border: 1px solid var(--about-border);
+        border-radius: var(--about-radius-lg);
+        padding: var(--about-space-xl);
+        text-align: center;
+        transition: var(--about-transition);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .about-team-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: linear-gradient(90deg, #0066CC, #00B4D8, #10b981);
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.4s ease;
+    }
+
+    .about-team-card:hover::before {
+        transform: scaleX(1);
+    }
+
+    .about-team-card:hover {
+        border-color: #00B4D8;
+        box-shadow: var(--about-shadow-lg), 0 0 40px rgba(0, 180, 216, 0.2);
+        transform: translateY(-8px);
+    }
+
+    .about-team-avatar {
+        width: 100px;
+        height: 100px;
+        margin: 0 auto var(--about-space-md);
+        background: linear-gradient(135deg, #00B4D8, #7CDBFF);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: #0A1128;
+        box-shadow: 0 4px 16px rgba(0, 180, 216, 0.3);
+    }
+
+    .about-team-card h3 {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--about-text-primary);
+        margin: 0 0 var(--about-space-xs);
+    }
+
+    .about-team-role {
+        font-size: 0.95rem;
+        font-weight: 600;
+        color: #00B4D8;
+        margin-bottom: var(--about-space-md);
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+
+    .about-team-card p {
+        color: var(--about-text-secondary);
+        line-height: 1.6;
+        font-size: 0.95rem;
+        margin: 0;
+    }
+
+    /* ========================================
+    KEY POINTS
+    ======================================== */
+
+    .about-keypoints {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: var(--about-space-lg);
+        margin-top: var(--about-space-xl);
+    }
+
+    .about-keypoint-card {
+        background: var(--about-surface);
+        border: 1px solid var(--about-border);
+        border-radius: var(--about-radius-lg);
+        padding: var(--about-space-lg);
+        transition: var(--about-transition);
+    }
+
+    .about-keypoint-card:hover {
+        border-color: #10b981;
+        box-shadow: 0 8px 24px rgba(16, 185, 129, 0.15);
+        transform: translateY(-4px);
+    }
+
+    .about-keypoint-icon {
+        width: 56px;
+        height: 56px;
+        background: linear-gradient(135deg, rgba(0, 180, 216, 0.2), rgba(16, 185, 129, 0.2));
+        border-radius: var(--about-radius-md);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.75rem;
+        margin-bottom: var(--about-space-md);
+    }
+
+    .about-keypoint-card h3 {
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: var(--about-text-primary);
+        margin: 0 0 var(--about-space-xs);
+    }
+
+    .about-keypoint-card p {
+        color: var(--about-text-secondary);
+        margin: 0;
+        line-height: 1.6;
+    }
+
+    /* ========================================
+    CONTACT SECTION
+    ======================================== */
+
+    .about-contact-section {
+        background: linear-gradient(135deg, rgba(0, 180, 216, 0.1) 0%, rgba(16, 185, 129, 0.1) 100%);
+        position: relative;
+    }
+
+    .about-contact-section::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: 
+            radial-gradient(circle at 20% 50%, rgba(0, 180, 216, 0.3) 0%, transparent 50%),
+            radial-gradient(circle at 80% 50%, rgba(16, 185, 129, 0.2) 0%, transparent 50%);
+        opacity: 0.3;
+    }
+
+    .about-contact-content {
+        position: relative;
+        z-index: 1;
+        max-width: 900px;
+        margin: 0 auto;
+        text-align: center;
+    }
+
+    .about-contact-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: var(--about-space-lg);
+        margin-top: var(--about-space-xl);
+    }
+
+    .about-contact-item {
+        background: rgba(26, 31, 46, 0.8);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(0, 180, 216, 0.2);
+        border-radius: var(--about-radius-lg);
+        padding: var(--about-space-lg);
+        transition: var(--about-transition);
+    }
+
+    .about-contact-item:hover {
+        background: rgba(26, 31, 46, 0.95);
+        border-color: #00B4D8;
+        transform: translateY(-4px);
+        box-shadow: 0 8px 24px rgba(0, 180, 216, 0.3);
+    }
+
+    .about-contact-icon {
+        font-size: 2rem;
+        margin-bottom: var(--about-space-sm);
+    }
+
+    .about-contact-item h3 {
+        font-size: 0.85rem;
+        font-weight: 700;
+        color: #00B4D8;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        margin: 0 0 var(--about-space-xs);
+    }
+
+    .about-contact-item p {
+        color: var(--about-text-secondary);
+        margin: 0;
+        line-height: 1.6;
+    }
+
+    .about-contact-item a {
+        color: #00F5FF;
+        text-decoration: none;
+        transition: var(--about-transition);
+    }
+
+    .about-contact-item a:hover {
+        color: #00B4D8;
+    }
+
+    .about-closing {
+        margin-top: var(--about-space-2xl);
+        padding: var(--about-space-xl);
+        background: rgba(0, 180, 216, 0.1);
+        border: 1px solid rgba(0, 180, 216, 0.3);
+        border-radius: var(--about-radius-lg);
+        text-align: center;
+    }
+
+    .about-closing p {
+        font-size: 1.5rem;
+        font-weight: 700;
+        background: linear-gradient(135deg, #0066CC 0%, #00B4D8 50%, #00F5FF 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        margin: 0;
+    }
+
+    /* ========================================
+    RESPONSIVE
+    ======================================== */
+
+    @media (max-width: 768px) {
+        :root {
+            --about-space-xl: 3rem;
+            --about-space-2xl: 4rem;
+        }
+        
+        .about-hero {
+            min-height: 60vh;
+            padding: 5rem 1.5rem 3rem;
+        }
+        
+        .about-section {
+            padding: var(--about-space-xl) var(--about-space-md);
+        }
+        
+        .about-service-grid,
+        .about-expertise-grid,
+        .about-team-grid,
+        .about-keypoints,
+        .about-contact-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    /* ========================================
+    ACCESSIBILITY
+    ======================================== */
+
+    @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.01ms !important;
+        }
+    }
+
+    .about-team-card:focus-visible,
+    .about-keypoint-card:focus-visible,
+    .about-contact-item:focus-visible {
+        outline: 3px solid #00F5FF;
+        outline-offset: 4px;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+
+<!-- ================= HERO ================= -->
+<section class="about-hero" aria-labelledby="about-heading">
+    <div class="about-hero-content">
+        <h1 id="about-heading">
+            About <span>Daybreak Afrika</span> Technologies
+        </h1>
+        <p class="about-hero-lead">
+            Empowering organisations through intelligent, secure, and future-ready technology.
+        </p>
+    </div>
+</section>
+
+<!-- ================= WHO WE ARE ================= -->
+<section class="about-section" aria-labelledby="who-we-are">
+    <div class="about-container">
+        <div class="about-section-header">
+            <span class="about-section-label">Who We Are</span>
+            <h2 id="who-we-are">Trusted Partners in Digital Transformation</h2>
+        </div>
+        
+        <div class="about-intro">
+            <p class="about-section-intro">
+                <strong>DAYBREAK AFRIKA TECHNOLOGIES</strong> is a trusted provider of innovative
+                IT and communication solutions, dedicated to helping businesses thrive in an
+                increasingly digital world.
+            </p>
+            
+            <p>
+                We don't just deliver services — we build long-term partnerships grounded in 
+                trust, performance, and strategic value. We specialise in designing and implementing 
+                reliable, scalable, and secure systems that align technology infrastructure with 
+                business objectives, improving efficiency, productivity, and resilience.
+            </p>
+            
+            <div class="about-highlight">
+                <p class="emphasis">We do IT right.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ================= MISSION ================= -->
+<section class="about-section about-section--alt about-section--border" aria-labelledby="mission-heading">
+    <div class="about-container">
+        <div class="about-section-header">
+            <span class="about-section-label">Our Mission</span>
+            <h2 id="mission-heading">Driving Business Innovation</h2>
+        </div>
+        
+        <p class="about-section-intro" style="max-width: 800px; margin: 0 auto; text-align: center;">
+            To deliver cost-effective, holistic IT and communication solutions that meet
+            the evolving demands of modern businesses. Through experienced engineering
+            and comprehensive service delivery, we empower organisations to remain
+            competitive, innovative, and agile.
+        </p>
+    </div>
+</section>
+
+<!-- ================= WHAT WE DO ================= -->
+<section class="about-section about-section--border" aria-labelledby="services-heading">
+    <div class="about-container">
+        <div class="about-section-header">
+            <span class="about-section-label">What We Do</span>
+            <h2 id="services-heading">Comprehensive IT Solutions</h2>
+        </div>
+
+        <div class="about-service-grid">
+            {% set services = [
+                'Managed IT Services (LAN, WAN, VPN)',
+                'Wireless Infrastructure & Long-Distance Connectivity',
+                'IP Telephony & Unified Communications',
+                'Enterprise Server Deployment (Web, Mail, Collaboration)',
+                'Firewall Systems, Web Filtering & Routing',
+                'Virtualisation, Multi-Access Edge & Cloud Computing',
+                'Security Gateway Development',
+                'Structured Ethernet & Power Cabling',
+                'ICT Project Research & Feasibility Studies',
+                'Network Administration & Monitoring',
+                '4G/LTE and 5G SA/NSA Enterprise Solutions',
+                'Automation, Integration & Redundancy',
+                'Backup & Storage Management',
+                'Linux & Networking Training (including VR-based labs)',
+                'System Analysis & Project Management',
+                'Agent-Based Modelling, Digital Twins & Simulation',
+                'CCTV System Design & Deployment',
+                'On-site and Remote Technical Support'
+            ] %}
+            
+            {% for service in services %}
+            <div class="about-service-item">
+                <span>{{ service }}</span>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- ================= TECHNICAL EXPERTISE ================= -->
+<section class="about-section about-section--alt about-section--border" aria-labelledby="expertise-heading">
+    <div class="about-container">
+        <div class="about-section-header">
+            <span class="about-section-label">Technical Expertise</span>
+            <h2 id="expertise-heading">Enterprise-Grade Solutions</h2>
+            <p class="about-section-intro">
+                Our multidisciplinary engineering team delivers secure, scalable,
+                and enterprise-grade solutions across diverse industries.
+            </p>
+        </div>
+
+        <div class="about-expertise-grid">
+            {% set expertise = [
+                {'icon': '🌐', 'title': 'Enterprise Networking & Multi-Site Infrastructure'},
+                {'icon': '💻', 'title': 'Custom Software & Web Platform Development'},
+                {'icon': '🖥️', 'title': 'Enterprise Server Design & Implementation'},
+                {'icon': '🔒', 'title': 'Cybersecurity, Firewalls & Access Control'},
+                {'icon': '⚡', 'title': 'Programmable & Non-Programmable Circuit Design'},
+                {'icon': '📡', 'title': 'Enterprise 4G/LTE & 5G Networking'},
+                {'icon': '☁️', 'title': 'Multi-Access Edge Computing (MEC)'},
+                {'icon': '🔄', 'title': 'Cloud Computing, Virtualisation & Disaster Recovery'}
+            ] %}
+            
+            {% for item in expertise %}
+            <article class="about-expertise-card">
+                <div class="about-expertise-icon">{{ item.icon }}</div>
+                <h3>{{ item.title }}</h3>
+            </article>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- ================= HOW WE HELP ================= -->
+<section class="about-section about-section--border" aria-labelledby="help-heading">
+    <div class="about-container">
+        <div class="about-section-header">
+            <span class="about-section-label">How We Help</span>
+            <h2 id="help-heading">Partnership Approach</h2>
+            <p class="about-section-intro">
+                We begin with a thorough assessment of your business goals and existing
+                technology environment, enabling us to deliver solutions that enhance
+                performance, security, and resilience.
+            </p>
+        </div>
+
+        <div class="about-help-list">
+            {% set help_items = [
+                'Act as your dedicated IT department',
+                'Complement and strengthen in-house IT teams',
+                'Implement and manage large-scale infrastructure projects',
+                'Conduct security audits and system optimisation',
+                'Deliver bespoke programming and systems integration',
+                'Host intranet-based services independent of public internet'
+            ] %}
+            
+            {% for item in help_items %}
+            <div class="about-help-item">
+                <div class="about-help-icon">✓</div>
+                <span>{{ item }}</span>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- ================= TEAM ================= -->
+<!--section class="about-section about-section--alt about-section--border" aria-labelledby="team-heading">
+    <div class="about-container">
+        <div class="about-section-header">
+            <span class="about-section-label">Our Team</span>
+            <h2 id="team-heading">Technical Leadership</h2>
+        </div>
+
+        <div class="about-team-grid">
+            <article class="about-team-card">
+                <div class="about-team-avatar">MI</div>
+                <h3>Mosudi Isiaka</h3>
+                <p class="about-team-role">CTO / Team Lead, Enterprise Solutions</p>
+                <p>
+                    MEng Telecommunication Engineering, BEng Electrical & Computer Engineering,
+                    MITx certified. Over 15 years' experience in enterprise networking,
+                    VPNs, cloud systems, WAN optimisation, and structured cabling.
+                </p>
+            </article>
+
+            <article class="about-team-card">
+                <div class="about-team-avatar">HS</div>
+                <h3>Hassan Saheed</h3>
+                <p class="about-team-role">IT Director</p>
+                <p>
+                    Electronics engineering specialist with strengths in circuit design,
+                    AV systems, power electronics, and technical leadership.
+                </p>
+            </article>
+
+            <article class="about-team-card">
+                <div class="about-team-avatar">OM</div>
+                <h3>Oyebode Michael</h3>
+                <p class="about-team-role">System Analyst</p>
+                <p>
+                    Linux-certified systems analyst with experience in financial modelling,
+                    system implementation, market development, and project management.
+                </p>
+            </article>
+        </div>
+    </div>
+</section-->
+
+<!-- ================= WHY CHOOSE US ================= -->
+<section class="about-section about-section--border" aria-labelledby="why-heading">
+    <div class="about-container">
+        <div class="about-section-header">
+            <span class="about-section-label">Why Choose Us</span>
+            <h2 id="why-heading">Our Competitive Edge</h2>
+        </div>
+        
+        <div class="about-keypoints">
+            {% set keypoints = [
+                {
+                    'icon': '🎯',
+                    'title': 'Proven Expertise',
+                    'desc': 'Highly experienced multidisciplinary team with 15+ years delivering enterprise solutions'
+                },
+                {
+                    'icon': '🔄',
+                    'title': 'End-to-End Delivery',
+                    'desc': 'Complete infrastructure, software, training, and support from a single trusted partner'
+                },
+                {
+                    'icon': '🤝',
+                    'title': 'Client-Focused',
+                    'desc': 'Solutions strategically aligned to your unique business objectives and requirements'
+                },
+                {
+                    'icon': '🚀',
+                    'title': 'Future-Ready',
+                    'desc': 'Built for scalability, resilience, and continuous innovation as your business grows'
+                }
+            ] %}
+            
+            {% for point in keypoints %}
+            <article class="about-keypoint-card">
+                <div class="about-keypoint-icon">{{ point.icon }}</div>
+                <h3>{{ point.title }}</h3>
+                <p>{{ point.desc }}</p>
+            </article>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<!--section class="about-section about-contact-section" aria-labelledby="contact-heading">
+    <div class="about-container">
+        <div class="about-contact-content">
+            <div class="about-section-header">
+                <span class="about-section-label">Get In Touch</span>
+                <h2 id="contact-heading">Contact Us</h2>
+            </div>
+
+            <div class="about-contact-grid">
+                <div class="about-contact-item">
+                    <div class="about-contact-icon">📍</div>
+                    <h3>Location</h3>
+                    <p>44, Oworo Road<br>Oworonshoki, Lagos<br>Nigeria</p>
+                </div>
+
+                <div class="about-contact-item">
+                    <div class="about-contact-icon">📞</div>
+                    <h3>Phone</h3>
+                    <p>
+                        <a href="tel:+2348098673498">+234 809 867 3498</a><br>
+                        <a href="tel:+436812066266">+43 681 20662665</a>
+                    </p>
+                </div>
+
+                <div class="about-contact-item">
+                    <div class="about-contact-icon">📧</div>
+                    <h3>Email</h3>
+                    <p>
+                        <a href="mailto:daybreakafrikatech@gmail.com">daybreakafrikatech@gmail.com</a>
+                    </p>
+                </div>
+
+                <div class="about-contact-item">
+                    <div class="about-contact-icon">🌐</div>
+                    <h3>Website</h3>
+                    <p>
+                        <a href="http://daybreakafrika.com.ng" target="_blank" rel="noopener">daybreakafrika.com.ng</a>
+                    </p>
+                </div>
+            </div>
+
+            <div class="about-closing">
+                <p>Empowering your business through intelligent technology.</p>
+            </div>
+        </div>
+    </div>
+</section-->
+
+{% endblock %}

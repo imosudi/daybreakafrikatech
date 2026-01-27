@@ -1,0 +1,1419 @@
+<!-- KYC Identity Verification Platform -->
+<!--templates/solutions/software/kycidentity.html-->
+{% extends "base.html" %}
+
+{% block title %}KYC Identity Verification Platform | Daybreak Afrika Technologies{% endblock %}
+
+{% block extra_css %}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+    /* ========================================
+    KYC PLATFORM - PREMIUM DESIGN SYSTEM
+    Brand-Aligned Theme with Enhanced UX
+    ======================================== */
+
+    :root {
+        /* Brand Colors - Harmonized with main.css */
+        --kyc-primary: #00B4D8;
+        --kyc-primary-light: #00F5FF;
+        --kyc-primary-dark: #0066CC;
+        --kyc-secondary: #7CDBFF;
+        --kyc-accent: #10b981;
+        --kyc-warning: #f59e0b;
+        --kyc-danger: #ef4444;
+        
+        /* Neutrals - Matched to main.css */
+        --kyc-bg-dark: #0A1128;
+        --kyc-bg-darker: #050810;
+        --kyc-surface: rgba(255, 255, 255, 0.02);
+        --kyc-surface-light: rgba(255, 255, 255, 0.05);
+        --kyc-border: rgba(0, 180, 216, 0.1);
+        --kyc-text-primary: #F8F9FA;
+        --kyc-text-secondary: rgba(248, 249, 250, 0.7);
+        --kyc-text-muted: rgba(248, 249, 250, 0.5);
+        
+        /* Effects - Harmonized with main.css palette */
+        --kyc-glow-primary: rgba(0, 180, 216, 0.3);
+        --kyc-glow-secondary: rgba(124, 219, 255, 0.25);
+        --kyc-glow-accent: rgba(16, 185, 129, 0.2);
+        --kyc-shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+        --kyc-shadow-md: 0 8px 24px rgba(0, 0, 0, 0.4);
+        --kyc-shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.5);
+        
+        /* Spacing */
+        --kyc-space-xs: 0.5rem;
+        --kyc-space-sm: 1rem;
+        --kyc-space-md: 1.5rem;
+        --kyc-space-lg: 2.5rem;
+        --kyc-space-xl: 4rem;
+        --kyc-space-2xl: 6rem;
+        
+        /* Border Radius */
+        --kyc-radius-sm: 8px;
+        --kyc-radius-md: 12px;
+        --kyc-radius-lg: 16px;
+        --kyc-radius-xl: 24px;
+        
+        /* Typography */
+        --kyc-font-sans: 'Space Grotesk', system-ui, sans-serif;
+        --kyc-font-mono: 'IBM Plex Mono', monospace;
+        --kyc-font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        
+        /* Transitions */
+        --kyc-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* ========================================
+    HERO SECTION - IMMERSIVE & IMPACTFUL
+    ======================================== */
+
+    .kyc-hero {
+        position: relative;
+        min-height: 100svh;
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+    }
+
+    /* Ambient Glow */
+    .kyc-hero::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: 
+            radial-gradient(circle at 20% 30%, var(--kyc-glow-primary) 0%, transparent 50%),
+            radial-gradient(circle at 80% 70%, var(--kyc-glow-secondary) 0%, transparent 50%),
+            radial-gradient(circle at 50% 50%, var(--kyc-glow-accent) 0%, transparent 60%);
+        animation: ambientPulse 12s ease-in-out infinite alternate;
+        opacity: 0.4;
+    }
+
+    @keyframes ambientPulse {
+        0% { transform: scale(1); opacity: 0.3; }
+        100% { transform: scale(1.1); opacity: 0.5; }
+    }
+
+    .kyc-hero-content {
+        position: relative;
+        z-index: 10;
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: var(--kyc-space-2xl) var(--kyc-space-lg);
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: var(--kyc-space-2xl);
+        align-items: center;
+    }
+
+    .kyc-hero-text {
+        animation: slideInLeft 0.8s ease-out;
+    }
+
+    @keyframes slideInLeft {
+        from { opacity: 0; transform: translateX(-30px); }
+        to { opacity: 1; transform: translateX(0); }
+    }
+
+    /* Status Badge */
+    .kyc-status-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: var(--kyc-space-xs);
+        padding: var(--kyc-space-xs) var(--kyc-space-md);
+        background: rgba(16, 185, 129, 0.12);
+        border: 1px solid rgba(16, 185, 129, 0.35);
+        border-radius: 100px;
+        font-size: 0.75rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: #10b981;
+        margin-bottom: var(--kyc-space-md);
+        animation: fadeInDown 0.6s ease-out;
+    }
+
+    .kyc-status-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 18px;
+        height: 18px;
+        background: var(--kyc-accent);
+        border-radius: 50%;
+        color: white;
+        font-size: 0.65rem;
+        animation: activePulse 2s ease-in-out infinite;
+    }
+
+    @keyframes activePulse {
+        0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+        50% { transform: scale(1.1); box-shadow: 0 0 0 8px rgba(16, 185, 129, 0); }
+    }
+
+    @keyframes fadeInDown {
+        from { opacity: 0; transform: translateY(-15px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    .kyc-hero h1 {
+        font-size: clamp(2.5rem, 6vw, 5rem);
+        font-weight: 800;
+        line-height: 1.1;
+        margin: 0 0 var(--kyc-space-md);
+        letter-spacing: -0.03em;
+        animation: fadeInUp 0.8s ease-out 0.2s backwards;
+    }
+
+    .kyc-hero h1 span {
+        background: linear-gradient(135deg, #0066CC 0%, #00B4D8 50%, #00F5FF 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    @keyframes fadeInUp {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    .kyc-hero-lead {
+        font-size: clamp(1.1rem, 1.8vw, 1.4rem);
+        color: var(--kyc-text-secondary);
+        max-width: 600px;
+        margin-bottom: var(--kyc-space-lg);
+        line-height: 1.7;
+        animation: fadeInUp 0.8s ease-out 0.4s backwards;
+    }
+
+    .kyc-hero-features {
+        display: flex;
+        gap: var(--kyc-space-md);
+        flex-wrap: wrap;
+        margin-bottom: var(--kyc-space-xl);
+        animation: fadeInUp 0.8s ease-out 0.6s backwards;
+    }
+
+    .kyc-feature-pill {
+        display: flex;
+        align-items: center;
+        gap: var(--kyc-space-xs);
+        padding: 0.6rem 1.2rem;
+        background: rgba(0, 180, 216, 0.1);
+        border: 1px solid rgba(0, 180, 216, 0.3);
+        border-radius: 100px;
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: #00F5FF;
+        transition: var(--kyc-transition);
+    }
+
+    .kyc-feature-pill:hover {
+        background: rgba(0, 180, 216, 0.15);
+        border-color: #00B4D8;
+        transform: translateY(-2px);
+    }
+
+    .kyc-feature-pill i {
+        color: var(--kyc-accent);
+    }
+
+    .kyc-hero-cta {
+        display: flex;
+        gap: var(--kyc-space-md);
+        flex-wrap: wrap;
+        animation: fadeInUp 0.8s ease-out 0.8s backwards;
+    }
+
+    /* Hero Visual - Verification Flow */
+    .kyc-hero-visual {
+        animation: slideInRight 0.8s ease-out 0.4s backwards;
+    }
+
+    @keyframes slideInRight {
+        from { opacity: 0; transform: translateX(30px); }
+        to { opacity: 1; transform: translateX(0); }
+    }
+
+    .kyc-verification-flow {
+        background: var(--kyc-surface);
+        border: 1px solid var(--kyc-border);
+        border-radius: var(--kyc-radius-lg);
+        padding: var(--kyc-space-lg);
+        box-shadow: var(--kyc-shadow-lg);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .kyc-verification-flow::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: linear-gradient(90deg, var(--kyc-primary), var(--kyc-accent), var(--kyc-primary));
+        background-size: 200% 100%;
+        animation: scanLine 3s linear infinite;
+    }
+
+    @keyframes scanLine {
+        0% { background-position: 200% 0; }
+        100% { background-position: -200% 0; }
+    }
+
+    .kyc-flow-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: var(--kyc-space-md);
+        padding-bottom: var(--kyc-space-sm);
+        border-bottom: 1px solid var(--kyc-border);
+    }
+
+    .kyc-flow-title {
+        font-family: var(--kyc-font-body);
+        font-size: 0.85rem;
+        color: #00B4D8;
+        font-weight: 600;
+    }
+
+    .kyc-flow-status {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 0.75rem;
+        color: var(--kyc-accent);
+    }
+
+    .kyc-status-dot {
+        width: 8px;
+        height: 8px;
+        background: var(--kyc-accent);
+        border-radius: 50%;
+        animation: statusBlink 2s ease-in-out infinite;
+    }
+
+    @keyframes statusBlink {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.3; }
+    }
+
+    .kyc-step-grid {
+        display: grid;
+        gap: var(--kyc-space-sm);
+    }
+
+    .kyc-step-item {
+        display: flex;
+        align-items: center;
+        gap: var(--kyc-space-md);
+        padding: var(--kyc-space-sm);
+        background: rgba(0, 180, 216, 0.05);
+        border-left: 3px solid #00B4D8;
+        border-radius: var(--kyc-radius-sm);
+        transition: var(--kyc-transition);
+        animation: slideInRight 0.5s ease-out backwards;
+    }
+
+    .kyc-step-item:nth-child(1) { animation-delay: 0.1s; border-left-color: #10b981; }
+    .kyc-step-item:nth-child(2) { animation-delay: 0.2s; border-left-color: #00B4D8; }
+    .kyc-step-item:nth-child(3) { animation-delay: 0.3s; border-left-color: #7CDBFF; }
+    .kyc-step-item:nth-child(4) { animation-delay: 0.4s; border-left-color: #f59e0b; }
+
+    .kyc-step-item:hover {
+        background: rgba(0, 180, 216, 0.1);
+        transform: translateX(5px);
+    }
+
+    .kyc-step-icon {
+        font-size: 1.5rem;
+    }
+
+    .kyc-step-info {
+        flex: 1;
+    }
+
+    .kyc-step-type {
+        font-size: 0.8rem;
+        font-weight: 600;
+        color: var(--kyc-text-primary);
+        margin-bottom: 0.2rem;
+    }
+
+    .kyc-step-desc {
+        font-size: 0.7rem;
+        color: var(--kyc-text-muted);
+        font-family: var(--kyc-font-body);
+    }
+
+    .kyc-step-status {
+        font-size: 0.7rem;
+        font-weight: 600;
+        padding: 0.3rem 0.6rem;
+        border-radius: 4px;
+        font-family: var(--kyc-font-body);
+    }
+
+    .kyc-step-status.verified {
+        background: rgba(16, 185, 129, 0.2);
+        color: #10b981;
+    }
+
+    .kyc-step-status.active {
+        background: rgba(0, 180, 216, 0.2);
+        color: #00F5FF;
+    }
+
+    /* ========================================
+    BUTTONS
+    ======================================== */
+
+    .kyc-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: var(--kyc-space-xs);
+        padding: 1rem 2rem;
+        font-family: var(--kyc-font-body);
+        font-size: 1rem;
+        font-weight: 600;
+        text-decoration: none;
+        border-radius: var(--kyc-radius-md);
+        transition: var(--kyc-transition);
+        cursor: pointer;
+        border: none;
+        white-space: nowrap;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .kyc-btn::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+        transform: translateX(-100%);
+        transition: transform 0.6s;
+    }
+
+    .kyc-btn:hover::before {
+        transform: translateX(100%);
+    }
+
+    .kyc-btn-primary {
+        background: linear-gradient(135deg, #0066CC 0%, #00B4D8 100%);
+        color: #FFFFFF;
+        box-shadow: 0 4px 16px rgba(0, 180, 216, 0.3);
+    }
+
+    .kyc-btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 30px rgba(0, 180, 216, 0.4);
+        color: #FFFFFF;
+    }
+
+    .kyc-btn-secondary {
+        background: transparent;
+        color: #00B4D8;
+        border: 2px solid #00B4D8;
+    }
+
+    .kyc-btn-secondary:hover {
+        background: rgba(0, 180, 216, 0.1);
+        color: #00F5FF;
+        border-color: #00F5FF;
+        transform: translateY(-2px);
+    }
+
+    /* ========================================
+    SECTIONS
+    ======================================== */
+
+    .kyc-section {
+        padding: var(--kyc-space-2xl) var(--kyc-space-lg);
+        position: relative;
+    }
+
+    .kyc-section--alt {
+        background: var(--kyc-bg-dark);
+    }
+
+    .kyc-section--border {
+        border-top: 1px solid rgba(0, 180, 216, 0.1);
+    }
+
+    .kyc-container {
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+
+    .kyc-section-header {
+        max-width: 900px;
+        margin: 0 auto var(--kyc-space-xl);
+        text-align: center;
+    }
+
+    .kyc-section-label {
+        display: inline-flex;
+        align-items: center;
+        gap: var(--kyc-space-xs);
+        font-size: 0.75rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        color: #00B4D8;
+        margin-bottom: var(--kyc-space-sm);
+        padding: 0.4rem 1rem;
+        background: rgba(0, 180, 216, 0.1);
+        border: 1px solid rgba(0, 180, 216, 0.3);
+        border-radius: 100px;
+    }
+
+    .kyc-section-label::before {
+        content: '';
+        width: 6px;
+        height: 6px;
+        background: #00B4D8;
+        border-radius: 50%;
+        animation: labelPulse 2s ease-in-out infinite;
+    }
+
+    @keyframes labelPulse {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.4; }
+    }
+
+    .kyc-section h2 {
+        font-size: clamp(2rem, 5vw, 3.5rem);
+        font-weight: 800;
+        line-height: 1.2;
+        margin: 0 0 var(--kyc-space-md);
+        letter-spacing: -0.02em;
+    }
+
+    .kyc-section-intro {
+        font-size: 1.2rem;
+        color: var(--kyc-text-secondary);
+        line-height: 1.7;
+    }
+
+    /* ========================================
+    FEATURE CARDS
+    ======================================== */
+
+    .kyc-features {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: var(--kyc-space-lg);
+        margin-top: var(--kyc-space-xl);
+    }
+
+    .kyc-feature-card {
+        background: var(--kyc-surface);
+        border: 1px solid var(--kyc-border);
+        border-radius: var(--kyc-radius-lg);
+        padding: var(--kyc-space-lg);
+        transition: var(--kyc-transition);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .kyc-feature-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background: linear-gradient(90deg, var(--kyc-primary), var(--kyc-accent));
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.4s ease;
+    }
+
+    .kyc-feature-card:hover::before {
+        transform: scaleX(1);
+    }
+
+    .kyc-feature-card:hover {
+        transform: translateY(-8px);
+        border-color: var(--kyc-primary);
+        box-shadow: var(--kyc-shadow-lg), 0 0 40px var(--kyc-glow-primary);
+    }
+
+    .kyc-feature-card-icon {
+        width: 56px;
+        height: 56px;
+        background: linear-gradient(135deg, rgba(0, 180, 216, 0.2), rgba(16, 185, 129, 0.2));
+        border-radius: var(--kyc-radius-md);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.75rem;
+        margin-bottom: var(--kyc-space-md);
+    }
+
+    .kyc-feature-card h3 {
+        font-size: 1.3rem;
+        font-weight: 700;
+        margin: 0 0 var(--kyc-space-sm);
+        color: var(--kyc-text-primary);
+    }
+
+    .kyc-feature-card p {
+        color: var(--kyc-text-secondary);
+        line-height: 1.6;
+        margin: 0;
+    }
+
+    /* ========================================
+    DATA SOURCES GRID
+    ======================================== */
+
+    .kyc-data-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: var(--kyc-space-lg);
+        margin-top: var(--kyc-space-xl);
+    }
+
+    .kyc-data-category {
+        background: var(--kyc-surface);
+        border: 1px solid var(--kyc-border);
+        border-radius: var(--kyc-radius-lg);
+        padding: var(--kyc-space-lg);
+        transition: var(--kyc-transition);
+    }
+
+    .kyc-data-category:hover {
+        border-color: var(--kyc-secondary);
+        box-shadow: 0 8px 24px var(--kyc-glow-secondary);
+        transform: translateY(-4px);
+    }
+
+    .kyc-data-category h3 {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: #7CDBFF;
+        margin: 0 0 var(--kyc-space-md);
+        display: flex;
+        align-items: center;
+        gap: var(--kyc-space-sm);
+    }
+
+    .kyc-data-category h3::before {
+        content: '';
+        width: 4px;
+        height: 24px;
+        background: linear-gradient(180deg, #7CDBFF, #00B4D8);
+        border-radius: 2px;
+    }
+
+    .kyc-data-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .kyc-data-list li {
+        padding: var(--kyc-space-xs) 0;
+        color: var(--kyc-text-secondary);
+        font-family: var(--kyc-font-body);
+        font-size: 0.95rem;
+        display: flex;
+        align-items: center;
+        gap: var(--kyc-space-sm);
+    }
+
+    .kyc-data-list li::before {
+        content: '✓';
+        color: #10b981;
+        font-weight: 700;
+        font-size: 0.9rem;
+    }
+
+    /* ========================================
+    BENEFITS LIST
+    ======================================== */
+
+    .kyc-benefits {
+        display: grid;
+        gap: var(--kyc-space-md);
+        margin-top: var(--kyc-space-xl);
+        max-width: 900px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .kyc-benefit {
+        display: flex;
+        align-items: flex-start;
+        gap: var(--kyc-space-md);
+        padding: var(--kyc-space-md) var(--kyc-space-lg);
+        background: rgba(0, 180, 216, 0.05);
+        border-left: 3px solid #00B4D8;
+        border-radius: var(--kyc-radius-sm);
+        transition: var(--kyc-transition);
+    }
+
+    .kyc-benefit:hover {
+        background: rgba(0, 180, 216, 0.1);
+        transform: translateX(8px);
+        border-left-color: #00F5FF;
+    }
+
+    .kyc-benefit-icon {
+        flex-shrink: 0;
+        width: 32px;
+        height: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #00B4D8;
+        font-size: 1.5rem;
+    }
+
+    .kyc-benefit-content {
+        flex: 1;
+    }
+
+    .kyc-benefit strong {
+        display: block;
+        color: var(--kyc-text-primary);
+        font-weight: 600;
+        margin-bottom: 0.25rem;
+        font-size: 1.05rem;
+    }
+
+    .kyc-benefit p {
+        color: var(--kyc-text-secondary);
+        margin: 0;
+        line-height: 1.6;
+    }
+
+    /* ========================================
+    USE CASES
+    ======================================== */
+
+    .kyc-usecases {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: var(--kyc-space-lg);
+        margin-top: var(--kyc-space-xl);
+    }
+
+    .kyc-usecase {
+        background: linear-gradient(135deg, rgba(0, 180, 216, 0.08) 0%, rgba(16, 185, 129, 0.05) 100%);
+        border: 1px solid var(--kyc-border);
+        border-radius: var(--kyc-radius-lg);
+        padding: var(--kyc-space-lg);
+        transition: var(--kyc-transition);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .kyc-usecase::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 4px;
+        background: linear-gradient(180deg, #00B4D8, #10b981);
+        transform: scaleY(0);
+        transform-origin: top;
+        transition: transform 0.3s ease;
+    }
+
+    .kyc-usecase:hover {
+        transform: translateY(-4px);
+        border-color: #00B4D8;
+        box-shadow: 0 8px 24px rgba(0, 180, 216, 0.3);
+    }
+
+    .kyc-usecase:hover::before {
+        transform: scaleY(1);
+    }
+
+    .kyc-usecase h3 {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: var(--kyc-text-primary);
+        margin: 0 0 var(--kyc-space-sm);
+    }
+
+    .kyc-usecase ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .kyc-usecase ul li {
+        padding: 0.4rem 0;
+        color: var(--kyc-text-secondary);
+        display: flex;
+        align-items: center;
+        gap: var(--kyc-space-sm);
+    }
+
+    .kyc-usecase ul li::before {
+        content: '→';
+        color: #00F5FF;
+        font-weight: 600;
+    }
+
+    /* ========================================
+    IMPLEMENTATION TIMELINE
+    ======================================== */
+
+    .kyc-implementation {
+        max-width: 900px;
+        margin: var(--kyc-space-xl) auto 0;
+    }
+
+    .kyc-impl-step {
+        display: flex;
+        gap: var(--kyc-space-lg);
+        margin-bottom: var(--kyc-space-xl);
+        position: relative;
+        padding-left: var(--kyc-space-lg);
+    }
+
+    .kyc-impl-step::before {
+        content: '';
+        position: absolute;
+        left: 23px;
+        top: 50px;
+        bottom: -40px;
+        width: 2px;
+        background: linear-gradient(180deg, var(--kyc-primary), transparent);
+    }
+
+    .kyc-impl-step:last-child::before {
+        display: none;
+    }
+
+    .kyc-impl-number {
+        flex-shrink: 0;
+        width: 48px;
+        height: 48px;
+        background: linear-gradient(135deg, #00B4D8, #7CDBFF);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 800;
+        font-size: 1.2rem;
+        color: #0A1128;
+        box-shadow: 0 0 20px rgba(0, 180, 216, 0.3);
+        z-index: 1;
+    }
+
+    .kyc-impl-content {
+        flex: 1;
+        padding-top: 0.7rem;
+    }
+
+    .kyc-impl-content h3 {
+        font-size: 1.3rem;
+        font-weight: 700;
+        margin: 0 0 0.4rem;
+        color: var(--kyc-text-primary);
+    }
+
+    .kyc-impl-content p {
+        color: var(--kyc-text-secondary);
+        margin: 0;
+        line-height: 1.6;
+    }
+
+    /* ========================================
+    VALUE PROPOSITION
+    ======================================== */
+
+    .kyc-value-section {
+        background: linear-gradient(135deg, rgba(0, 180, 216, 0.1) 0%, rgba(16, 185, 129, 0.1) 100%);
+        position: relative;
+    }
+
+    .kyc-value-section::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: 
+            radial-gradient(circle at 20% 50%, rgba(0, 180, 216, 0.3) 0%, transparent 50%),
+            radial-gradient(circle at 80% 50%, rgba(16, 185, 129, 0.2) 0%, transparent 50%);
+        opacity: 0.3;
+    }
+
+    .kyc-value-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: var(--kyc-space-lg);
+        margin-top: var(--kyc-space-xl);
+        position: relative;
+        z-index: 1;
+    }
+
+    .kyc-value-item {
+        background: rgba(26, 31, 46, 0.8);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(0, 180, 216, 0.2);
+        border-radius: var(--kyc-radius-lg);
+        padding: var(--kyc-space-lg);
+        transition: var(--kyc-transition);
+    }
+
+    .kyc-value-item:hover {
+        background: rgba(26, 31, 46, 0.95);
+        border-color: #00B4D8;
+        transform: translateY(-4px);
+        box-shadow: 0 8px 24px rgba(0, 180, 216, 0.3);
+    }
+
+    .kyc-value-icon {
+        width: 56px;
+        height: 56px;
+        background: linear-gradient(135deg, rgba(0, 180, 216, 0.2), rgba(16, 185, 129, 0.2));
+        border-radius: var(--kyc-radius-md);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.75rem;
+        margin-bottom: var(--kyc-space-md);
+    }
+
+    .kyc-value-item strong {
+        display: block;
+        font-size: 1.1rem;
+        font-weight: 700;
+        margin-bottom: 0.4rem;
+        color: var(--kyc-text-primary);
+    }
+
+    .kyc-value-item p {
+        color: var(--kyc-text-secondary);
+        margin: 0;
+        line-height: 1.6;
+    }
+
+    /* ========================================
+    CTA SECTION
+    ======================================== */
+
+    .kyc-cta-section {
+        padding: calc(var(--kyc-space-2xl) * 1.5) var(--kyc-space-lg);
+        text-align: center;
+        background: linear-gradient(165deg, var(--kyc-bg-dark) 0%, var(--kyc-bg-darker) 100%);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .kyc-cta-section::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 800px;
+        height: 800px;
+        background: radial-gradient(circle, rgba(0, 180, 216, 0.3) 0%, transparent 70%);
+        transform: translate(-50%, -50%);
+        animation: ctaPulse 8s ease-in-out infinite;
+    }
+
+    @keyframes ctaPulse {
+        0%, 100% { opacity: 0.2; transform: translate(-50%, -50%) scale(1); }
+        50% { opacity: 0.4; transform: translate(-50%, -50%) scale(1.1); }
+    }
+
+    .kyc-cta-content {
+        position: relative;
+        z-index: 1;
+        max-width: 900px;
+        margin: 0 auto;
+    }
+
+    .kyc-cta-section h2 {
+        font-size: clamp(2rem, 5vw, 3.5rem);
+        margin-bottom: var(--kyc-space-md);
+    }
+
+    .kyc-cta-section p {
+        font-size: 1.3rem;
+        color: var(--kyc-text-secondary);
+        margin-bottom: var(--kyc-space-xl);
+        line-height: 1.7;
+    }
+
+    .kyc-cta-buttons {
+        display: flex;
+        gap: var(--kyc-space-md);
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    /* ========================================
+    RESPONSIVE
+    ======================================== */
+
+    @media (max-width: 1024px) {
+        .kyc-hero-content {
+            grid-template-columns: 1fr;
+            gap: var(--kyc-space-xl);
+        }
+        
+        .kyc-hero-visual {
+            order: -1;
+        }
+    }
+
+    @media (max-width: 768px) {
+        :root {
+            --kyc-space-xl: 3rem;
+            --kyc-space-2xl: 4rem;
+        }
+        
+        .kyc-hero {
+            min-height: 75vh;
+        }
+        
+        .kyc-section {
+            padding: var(--kyc-space-xl) var(--kyc-space-md);
+        }
+        
+        .kyc-hero-features {
+            flex-direction: column;
+            gap: var(--kyc-space-sm);
+        }
+        
+        .kyc-hero-cta,
+        .kyc-cta-buttons {
+            flex-direction: column;
+            width: 100%;
+        }
+        
+        .kyc-btn {
+            width: 100%;
+        }
+        
+        .kyc-features,
+        .kyc-data-grid,
+        .kyc-value-grid,
+        .kyc-usecases {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    /* ========================================
+    ACCESSIBILITY
+    ======================================== */
+
+    @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.01ms !important;
+        }
+    }
+
+    .kyc-btn:focus-visible,
+    .kyc-feature-card:focus-visible,
+    .kyc-benefit:focus-visible {
+        outline: 3px solid #00F5FF;
+        outline-offset: 4px;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+
+<section class="kyc-hero" aria-labelledby="kyc-hero-title">
+    <div class="kyc-hero-content">
+        <div class="kyc-hero-text">
+            <div class="kyc-status-badge">
+                <div class="kyc-status-icon">✓</div>
+                <span>NDPR Compliant Platform</span>
+            </div>
+            
+            <h1 id="kyc-hero-title">
+                <span>KYC Identity</span><br>
+                Verification Platform
+            </h1>
+            
+            <p class="kyc-hero-lead">
+                Scalable, API-driven identity verification engineered for Nigerian regulatory 
+                compliance across banking, fintech, and telecommunications sectors.
+            </p>
+            
+            <div class="kyc-hero-features">
+                <div class="kyc-feature-pill">
+                    <i class="bi bi-shield-check"></i>
+                    <span>NIN Verification</span>
+                </div>
+                <div class="kyc-feature-pill">
+                    <i class="bi bi-code-slash"></i>
+                    <span>GraphQL API</span>
+                </div>
+                <div class="kyc-feature-pill">
+                    <i class="bi bi-cloud-check"></i>
+                    <span>Cloud-Native</span>
+                </div>
+            </div>
+            
+            <div class="kyc-hero-cta">
+                <a href="{#{ url_for('contact.contact') }#}" class="kyc-btn kyc-btn-primary">
+                    <span>Request Demo</span>
+                    <i class="bi bi-arrow-right"></i>
+                </a>
+                <a href="{{ url_for('developer.sandbox') }}" class="kyc-btn kyc-btn-secondary">
+                    <span>API Documentation</span>
+                </a>
+            </div>
+        </div>
+        
+        <div class="kyc-hero-visual">
+            <div class="kyc-verification-flow">
+                <div class="kyc-flow-header">
+                    <div class="kyc-flow-title">VERIFICATION PIPELINE</div>
+                    <div class="kyc-flow-status">
+                        <span class="kyc-status-dot"></span>
+                        <span>OPERATIONAL</span>
+                    </div>
+                </div>
+                
+                <div class="kyc-step-grid" role="list">
+                    <div class="kyc-step-item" role="listitem">
+                        <div class="kyc-step-icon" aria-hidden="true">🆔</div>
+                        <div class="kyc-step-info">
+                            <div class="kyc-step-type">NIN Validation</div>
+                            <div class="kyc-step-desc">NIMC integration</div>
+                        </div>
+                        <div class="kyc-step-status verified">VERIFIED</div>
+                    </div>
+                    
+                    <div class="kyc-step-item" role="listitem">
+                        <div class="kyc-step-icon" aria-hidden="true">📄</div>
+                        <div class="kyc-step-info">
+                            <div class="kyc-step-type">Document Check</div>
+                            <div class="kyc-step-desc">OCR + Liveness</div>
+                        </div>
+                        <div class="kyc-step-status active">ACTIVE</div>
+                    </div>
+                    
+                    <div class="kyc-step-item" role="listitem">
+                        <div class="kyc-step-icon" aria-hidden="true">📱</div>
+                        <div class="kyc-step-info">
+                            <div class="kyc-step-type">Phone Verification</div>
+                            <div class="kyc-step-desc">SMS + Voice OTP</div>
+                        </div>
+                        <div class="kyc-step-status verified">VERIFIED</div>
+                    </div>
+                    
+                    <div class="kyc-step-item" role="listitem">
+                        <div class="kyc-step-icon" aria-hidden="true">🔐</div>
+                        <div class="kyc-step-info">
+                            <div class="kyc-step-type">Compliance Audit</div>
+                            <div class="kyc-step-desc">NDPR logging</div>
+                        </div>
+                        <div class="kyc-step-status active">LOGGED</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== OVERVIEW SECTION ===== -->
+<section class="kyc-section">
+    <div class="kyc-container">
+        <div class="kyc-section-header">
+            <span class="kyc-section-label">Overview</span>
+            <h2>Identity Verification at Scale</h2>
+            <p class="kyc-section-intro">
+                Know Your Customer (KYC) compliance is foundational across banking, fintech, healthcare, 
+                and telecommunications. Our platform provides unified, developer-friendly infrastructure 
+                for multi-point identity verification that meets Nigerian regulatory standards.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- ===== DATA SOURCES ===== -->
+<section class="kyc-section kyc-section--alt kyc-section--border">
+    <div class="kyc-container">
+        <div class="kyc-section-header">
+            <span class="kyc-section-label">Data Sources</span>
+            <h2>Supported Identity Data Points</h2>
+        </div>
+        
+        <div class="kyc-data-grid">
+            <article class="kyc-data-category">
+                <h3>National Identity</h3>
+                <ul class="kyc-data-list">
+                    <li>National Identification Number (NIN)</li>
+                    <li>Virtual NIN (vNIN) for privacy</li>
+                    <li>NIN-linked phone verification</li>
+                </ul>
+            </article>
+            
+            <article class="kyc-data-category">
+                <h3>Government Documents</h3>
+                <ul class="kyc-data-list">
+                    <li>Driver's licence</li>
+                    <li>International passport</li>
+                    <li>Voter's card</li>
+                    <li>Document OCR + validation</li>
+                </ul>
+            </article>
+        </div>
+    </div>
+</section>
+
+<!-- ===== OBJECTIVES ===== -->
+<section class="kyc-section kyc-section--border">
+    <div class="kyc-container">
+        <div class="kyc-section-header">
+            <span class="kyc-section-label">Mission</span>
+            <h2>Core Objectives</h2>
+        </div>
+        
+        <div class="kyc-features">
+            {% set objectives = [
+                {
+                    'icon': '🛡️',
+                    'title': 'Security & Compliance',
+                    'desc': 'Enhanced fraud protection with strict adherence to Nigerian KYC regulations and NDPR requirements.'
+                },
+                {
+                    'icon': '⚡',
+                    'title': 'Scalability & Performance',
+                    'desc': 'Cloud-native architecture handles high-volume verification requests with sub-second response times.'
+                },
+                {
+                    'icon': '💻',
+                    'title': 'Developer Experience',
+                    'desc': 'Modern GraphQL API with SDKs, comprehensive docs, and sandbox environments for testing.'
+                },
+                {
+                    'icon': '🎯',
+                    'title': 'User Experience',
+                    'desc': 'Streamlined verification flows minimizing friction while maintaining security rigor.'
+                }
+            ] %}
+            
+            {% for obj in objectives %}
+            <article class="kyc-feature-card">
+                <div class="kyc-feature-card-icon">{{ obj.icon }}</div>
+                <h3>{{ obj.title }}</h3>
+                <p>{{ obj.desc }}</p>
+            </article>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- ===== KEY BENEFITS ===== -->
+<section class="kyc-section kyc-section--alt kyc-section--border">
+    <div class="kyc-container">
+        <div class="kyc-section-header">
+            <span class="kyc-section-label">Benefits</span>
+            <h2>Strategic Value Delivery</h2>
+        </div>
+        
+        <div class="kyc-benefits">
+            {% set benefits = [
+                {
+                    'icon': '🚫',
+                    'title': 'Fraud Prevention & Risk Mitigation',
+                    'desc': 'Multi-layer verification reduces identity fraud and account takeover'
+                },
+                {
+                    'icon': '📋',
+                    'title': 'Regulatory Compliance & Audit Readiness',
+                    'desc': 'Built-in compliance with Nigerian KYC requirements and NDPR'
+                },
+                {
+                    'icon': '🤝',
+                    'title': 'Increased Customer Trust',
+                    'desc': 'Transparent, secure verification builds confidence and reduces abandonment'
+                },
+                {
+                    'icon': '🎯',
+                    'title': 'Personalized, Risk-Aware Services',
+                    'desc': 'Verified identity enables tailored products and adaptive security'
+                },
+                {
+                    'icon': '⚙️',
+                    'title': 'Operational Efficiency',
+                    'desc': 'Automated verification reduces manual review and processing costs'
+                },
+                {
+                    'icon': '🚀',
+                    'title': 'Competitive Differentiation',
+                    'desc': 'Advanced KYC capabilities enable new products and market expansion'
+                }
+            ] %}
+            
+            {% for benefit in benefits %}
+            <div class="kyc-benefit">
+                <div class="kyc-benefit-icon">{{ benefit.icon }}</div>
+                <div class="kyc-benefit-content">
+                    <strong>{{ benefit.title }}</strong>
+                    <p>{{ benefit.desc }}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- ===== USE CASES ===== -->
+<section class="kyc-section kyc-section--border">
+    <div class="kyc-container">
+        <div class="kyc-section-header">
+            <span class="kyc-section-label">Applications</span>
+            <h2>Industry Deployment Scenarios</h2>
+        </div>
+        
+        <div class="kyc-usecases">
+            {% set usecases = [
+                {
+                    'title': 'Banking & Fintech',
+                    'applications': [
+                        'Account opening and onboarding',
+                        'Transaction authorization',
+                        'Loan origination and credit assessment',
+                        'Anti-money laundering (AML) screening'
+                    ]
+                },
+                {
+                    'title': 'Telecommunications',
+                    'applications': [
+                        'SIM card registration',
+                        'Subscriber identity verification',
+                        'Port-in/port-out authentication',
+                        'Value-added service activation'
+                    ]
+                },
+                {
+                    'title': 'Healthcare',
+                    'applications': [
+                        'Patient identity management',
+                        'Health insurance verification',
+                        'Prescription authentication',
+                        'Telemedicine access control'
+                    ]
+                },
+                {
+                    'title': 'E-Commerce & Marketplaces',
+                    'applications': [
+                        'Seller verification and onboarding',
+                        'High-value transaction authentication',
+                        'Age verification for restricted products',
+                        'Fraud prevention and chargeback reduction'
+                    ]
+                }
+            ] %}
+            
+            {% for usecase in usecases %}
+            <article class="kyc-usecase">
+                <h3>{{ usecase.title }}</h3>
+                <ul>
+                    {% for app in usecase.applications %}
+                    <li>{{ app }}</li>
+                    {% endfor %}
+                </ul>
+            </article>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- ===== IMPLEMENTATION ===== -->
+<section class="kyc-section kyc-section--alt kyc-section--border">
+    <div class="kyc-container">
+        <div class="kyc-section-header">
+            <span class="kyc-section-label">Methodology</span>
+            <h2>Implementation Approach</h2>
+        </div>
+        
+        <div class="kyc-implementation">
+            {% set steps = [
+                {'num': '1', 'title': 'Discovery & Requirements Analysis', 'desc': 'Stakeholder interviews, regulatory review, and use case mapping'},
+                {'num': '2', 'title': 'Architecture & API Design', 'desc': 'Modular system design with scalability and security controls'},
+                {'num': '3', 'title': 'Development & Integration', 'desc': 'Agile development with continuous testing and client feedback'},
+                {'num': '4', 'title': 'Security & Compliance Testing', 'desc': 'Penetration testing, vulnerability assessment, and regulatory validation'},
+                {'num': '5', 'title': 'Deployment & Monitoring', 'desc': 'Cloud-based deployment with continuous monitoring and optimization'},
+                {'num': '6', 'title': 'Training & Support', 'desc': 'Developer documentation, integration support, and ongoing maintenance'}
+            ] %}
+            
+            {% for step in steps %}
+            <div class="kyc-impl-step">
+                <div class="kyc-impl-number">{{ step.num }}</div>
+                <div class="kyc-impl-content">
+                    <h3>{{ step.title }}</h3>
+                    <p>{{ step.desc }}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- ===== VALUE PROPOSITION ===== -->
+<section class="kyc-section kyc-value-section">
+    <div class="kyc-container">
+        <div class="kyc-section-header">
+            <span class="kyc-section-label">Strategic Value</span>
+            <h2>Why Our KYC Platform</h2>
+            <p class="kyc-section-intro">
+                Identity verification is not just compliance-it's a competitive differentiator 
+                that enables innovation, reduces risk, and builds trust at scale.
+            </p>
+        </div>
+        
+        <div class="kyc-value-grid">
+            {% set values = [
+                {'icon': '🔮', 'title': 'Future-Proof Architecture', 'desc': 'Modern, scalable infrastructure ready for evolving regulatory requirements'},
+                {'icon': '💰', 'title': 'Reduced Fraud Losses', 'desc': 'Minimize financial losses and regulatory penalties through robust verification'},
+                {'icon': '🆕', 'title': 'Enable Innovation', 'desc': 'Verified identity foundation unlocks new products and services'},
+                {'icon': '🤝', 'title': 'Build Trust', 'desc': 'Transparent, secure verification increases customer confidence'},
+                {'icon': '🇳🇬', 'title': 'Data Sovereignty', 'desc': 'Maintain Nigerian data residency and regulatory compliance'}
+            ] %}
+            
+            {% for value in values %}
+            <article class="kyc-value-item">
+                <div class="kyc-value-icon">{{ value.icon }}</div>
+                <strong>{{ value.title }}</strong>
+                <p>{{ value.desc }}</p>
+            </article>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- ===== CTA SECTION ===== -->
+<section class="kyc-cta-section">
+    <div class="kyc-cta-content">
+        <h2>Ready to Modernize Your KYC Infrastructure?</h2>
+        <p>
+            Let's discuss how our platform can transform your identity verification capabilities.
+        </p>
+        <div class="kyc-cta-buttons">
+            <a href="{#{ url_for('contact.contact') }#}" class="kyc-btn kyc-btn-primary">
+                <span>Request a Demo</span>
+                <i class="bi bi-arrow-right"></i>
+            </a>
+            <a href="{{ url_for('developer.sandbox') }}" class="kyc-btn kyc-btn-secondary">
+                <span>Explore API Documentation</span>
+            </a>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

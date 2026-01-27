@@ -1,21 +1,695 @@
 <!-- templates/solutions/software.html -->
- {% extends "base.html" %}
-{% block title %}Enterprise Software Solutions{% endblock %}
+{% extends "base.html" %}
+
+{% block title %}Enterprise Software Solutions – Daybreak Afrika Technologies{% endblock %}
+
+{% block extra_css %}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+    /* ========================================
+    SOFTWARE SOLUTIONS - PREMIUM DESIGN
+    ======================================== */
+
+    :root {
+        /* Brand Colors - Harmonized */
+        --sw-primary: #00B4D8;
+        --sw-primary-light: #00F5FF;
+        --sw-primary-dark: #0066CC;
+        --sw-secondary: #7CDBFF;
+        --sw-accent: #10b981;
+        
+        /* Neutrals */
+        --sw-bg-dark: #0A1128;
+        --sw-surface: rgba(255, 255, 255, 0.02);
+        --sw-surface-light: rgba(255, 255, 255, 0.05);
+        --sw-border: rgba(0, 180, 216, 0.1);
+        --sw-text-primary: #F8F9FA;
+        --sw-text-secondary: rgba(248, 249, 250, 0.7);
+        --sw-text-muted: rgba(248, 249, 250, 0.5);
+        
+        /* Effects */
+        --sw-glow-primary: rgba(0, 180, 216, 0.3);
+        --sw-shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.5);
+        
+        /* Spacing */
+        --sw-space-xs: 0.5rem;
+        --sw-space-sm: 1rem;
+        --sw-space-md: 1.5rem;
+        --sw-space-lg: 2.5rem;
+        --sw-space-xl: 4rem;
+        --sw-space-2xl: 6rem;
+        
+        /* Border Radius */
+        --sw-radius-sm: 8px;
+        --sw-radius-md: 12px;
+        --sw-radius-lg: 16px;
+        
+        /* Transitions */
+        --sw-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* ========================================
+    HERO SECTION
+    ======================================== */
+
+    .sw-hero {
+        position: relative;
+        min-height: 70vh;
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+        padding: 6rem 2rem 4rem;
+    }
+
+    .sw-hero::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: 
+            radial-gradient(circle at 30% 40%, var(--sw-glow-primary) 0%, transparent 50%),
+            radial-gradient(circle at 70% 60%, rgba(16, 185, 129, 0.2) 0%, transparent 50%);
+        animation: ambientPulse 12s ease-in-out infinite alternate;
+        opacity: 0.4;
+    }
+
+    @keyframes ambientPulse {
+        0% { transform: scale(1); opacity: 0.3; }
+        100% { transform: scale(1.1); opacity: 0.5; }
+    }
+
+    .sw-hero-content {
+        position: relative;
+        z-index: 10;
+        max-width: 1200px;
+        margin: 0 auto;
+        text-align: center;
+        animation: fadeInUp 0.8s ease-out;
+    }
+
+    @keyframes fadeInUp {
+        from { opacity: 0; transform: translateY(30px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    .sw-hero h1 {
+        font-size: clamp(2.5rem, 5vw, 4.5rem);
+        font-weight: 800;
+        line-height: 1.2;
+        margin: 0 0 var(--sw-space-md);
+        letter-spacing: -0.02em;
+    }
+
+    .sw-hero h1 span {
+        background: linear-gradient(135deg, #0066CC 0%, #00B4D8 50%, #00F5FF 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    .sw-hero-lead {
+        font-size: clamp(1.1rem, 1.5vw, 1.35rem);
+        color: var(--sw-text-secondary);
+        max-width: 700px;
+        margin: 0 auto;
+        line-height: 1.7;
+    }
+
+    /* ========================================
+    SECTIONS
+    ======================================== */
+
+    .sw-section {
+        padding: var(--sw-space-2xl) var(--sw-space-lg);
+        position: relative;
+    }
+
+    .sw-section--alt {
+        background: var(--sw-bg-dark);
+    }
+
+    .sw-section--border {
+        border-top: 1px solid var(--sw-border);
+    }
+
+    .sw-container {
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+
+    .sw-section-header {
+        max-width: 900px;
+        margin: 0 auto var(--sw-space-xl);
+        text-align: center;
+    }
+
+    .sw-section-label {
+        display: inline-flex;
+        align-items: center;
+        gap: var(--sw-space-xs);
+        font-size: 0.75rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        color: #00B4D8;
+        margin-bottom: var(--sw-space-sm);
+        padding: 0.4rem 1rem;
+        background: rgba(0, 180, 216, 0.1);
+        border: 1px solid rgba(0, 180, 216, 0.3);
+        border-radius: 100px;
+    }
+
+    .sw-section-label::before {
+        content: '';
+        width: 6px;
+        height: 6px;
+        background: #00B4D8;
+        border-radius: 50%;
+        animation: labelPulse 2s ease-in-out infinite;
+    }
+
+    @keyframes labelPulse {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.4; }
+    }
+
+    .sw-section h2 {
+        font-size: clamp(2rem, 4vw, 3rem);
+        font-weight: 800;
+        line-height: 1.2;
+        margin: 0 0 var(--sw-space-md);
+        letter-spacing: -0.02em;
+    }
+
+    .sw-section-intro {
+        font-size: 1.15rem;
+        color: var(--sw-text-secondary);
+        line-height: 1.7;
+    }
+
+    /* ========================================
+    FEATURED SOLUTIONS
+    ======================================== */
+
+    .sw-featured-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: var(--sw-space-xl);
+        margin-top: var(--sw-space-xl);
+    }
+
+    .sw-featured-card {
+        background: var(--sw-surface);
+        border: 1px solid var(--sw-border);
+        border-radius: var(--sw-radius-lg);
+        padding: var(--sw-space-xl);
+        transition: var(--sw-transition);
+        position: relative;
+        overflow: hidden;
+        text-decoration: none;
+        display: block;
+    }
+
+    .sw-featured-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: linear-gradient(90deg, #0066CC, #00B4D8, #10b981);
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.4s ease;
+    }
+
+    .sw-featured-card:hover::before {
+        transform: scaleX(1);
+    }
+
+    .sw-featured-card:hover {
+        border-color: #00B4D8;
+        box-shadow: var(--sw-shadow-lg), 0 0 40px rgba(0, 180, 216, 0.3);
+        transform: translateY(-8px);
+    }
+
+    .sw-featured-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: var(--sw-space-xs);
+        padding: 0.4rem 0.8rem;
+        background: rgba(16, 185, 129, 0.12);
+        border: 1px solid rgba(16, 185, 129, 0.35);
+        border-radius: 100px;
+        font-size: 0.7rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: #10b981;
+        margin-bottom: var(--sw-space-md);
+    }
+
+    .sw-featured-icon {
+        width: 64px;
+        height: 64px;
+        background: linear-gradient(135deg, rgba(0, 180, 216, 0.2), rgba(16, 185, 129, 0.2));
+        border-radius: var(--sw-radius-md);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2rem;
+        margin-bottom: var(--sw-space-md);
+    }
+
+    .sw-featured-card h3 {
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin: 0 0 var(--sw-space-sm);
+        color: var(--sw-text-primary);
+    }
+
+    .sw-featured-card p {
+        color: var(--sw-text-secondary);
+        line-height: 1.6;
+        margin-bottom: var(--sw-space-md);
+    }
+
+    .sw-featured-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--sw-space-xs);
+        margin-bottom: var(--sw-space-md);
+    }
+
+    .sw-featured-tag {
+        padding: 0.3rem 0.7rem;
+        background: rgba(0, 180, 216, 0.1);
+        border: 1px solid rgba(0, 180, 216, 0.3);
+        border-radius: 100px;
+        font-size: 0.75rem;
+        color: #00F5FF;
+    }
+
+    .sw-featured-link {
+        display: inline-flex;
+        align-items: center;
+        gap: var(--sw-space-xs);
+        color: #00B4D8;
+        font-weight: 600;
+        transition: var(--sw-transition);
+    }
+
+    .sw-featured-card:hover .sw-featured-link {
+        color: #00F5FF;
+        gap: var(--sw-space-sm);
+    }
+
+    /* ========================================
+    CAPABILITIES GRID
+    ======================================== */
+
+    .sw-capabilities {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: var(--sw-space-lg);
+        margin-top: var(--sw-space-xl);
+    }
+
+    .sw-capability-card {
+        background: var(--sw-surface);
+        border: 1px solid var(--sw-border);
+        border-radius: var(--sw-radius-lg);
+        padding: var(--sw-space-lg);
+        transition: var(--sw-transition);
+    }
+
+    .sw-capability-card:hover {
+        border-color: #7CDBFF;
+        box-shadow: 0 8px 24px rgba(124, 219, 255, 0.15);
+        transform: translateY(-4px);
+    }
+
+    .sw-capability-icon {
+        width: 48px;
+        height: 48px;
+        background: linear-gradient(135deg, rgba(0, 180, 216, 0.2), rgba(16, 185, 129, 0.2));
+        border-radius: var(--sw-radius-md);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        margin-bottom: var(--sw-space-md);
+    }
+
+    .sw-capability-card h3 {
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: var(--sw-text-primary);
+        margin: 0 0 var(--sw-space-xs);
+    }
+
+    .sw-capability-card p {
+        color: var(--sw-text-secondary);
+        margin: 0;
+        line-height: 1.6;
+        font-size: 0.95rem;
+    }
+
+    /* ========================================
+    CTA SECTION
+    ======================================== */
+
+    .sw-cta-section {
+        padding: calc(var(--sw-space-2xl) * 1.5) var(--sw-space-lg);
+        text-align: center;
+        background: linear-gradient(165deg, var(--sw-bg-dark) 0%, #050810 100%);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .sw-cta-section::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 800px;
+        height: 800px;
+        background: radial-gradient(circle, rgba(0, 180, 216, 0.3) 0%, transparent 70%);
+        transform: translate(-50%, -50%);
+        animation: ctaPulse 8s ease-in-out infinite;
+    }
+
+    @keyframes ctaPulse {
+        0%, 100% { opacity: 0.2; transform: translate(-50%, -50%) scale(1); }
+        50% { opacity: 0.4; transform: translate(-50%, -50%) scale(1.1); }
+    }
+
+    .sw-cta-content {
+        position: relative;
+        z-index: 1;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .sw-cta-section h2 {
+        font-size: clamp(2rem, 4vw, 3rem);
+        margin-bottom: var(--sw-space-md);
+    }
+
+    .sw-cta-section p {
+        font-size: 1.2rem;
+        color: var(--sw-text-secondary);
+        margin-bottom: var(--sw-space-xl);
+        line-height: 1.7;
+    }
+
+    .sw-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: var(--sw-space-xs);
+        padding: 1rem 2rem;
+        font-size: 1rem;
+        font-weight: 600;
+        text-decoration: none;
+        border-radius: var(--sw-radius-md);
+        transition: var(--sw-transition);
+        cursor: pointer;
+        border: none;
+        white-space: nowrap;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .sw-btn::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+        transform: translateX(-100%);
+        transition: transform 0.6s;
+    }
+
+    .sw-btn:hover::before {
+        transform: translateX(100%);
+    }
+
+    .sw-btn-primary {
+        background: linear-gradient(135deg, #0066CC 0%, #00B4D8 100%);
+        color: #FFFFFF;
+        box-shadow: 0 4px 16px rgba(0, 180, 216, 0.3);
+    }
+
+    .sw-btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 30px rgba(0, 180, 216, 0.4);
+        color: #FFFFFF;
+    }
+
+    /* ========================================
+    RESPONSIVE
+    ======================================== */
+
+    @media (max-width: 768px) {
+        :root {
+            --sw-space-xl: 3rem;
+            --sw-space-2xl: 4rem;
+        }
+        
+        .sw-hero {
+            min-height: 60vh;
+            padding: 5rem 1.5rem 3rem;
+        }
+        
+        .sw-section {
+            padding: var(--sw-space-xl) var(--sw-space-md);
+        }
+        
+        .sw-featured-grid,
+        .sw-capabilities {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    /* ========================================
+    ACCESSIBILITY
+    ======================================== */
+
+    @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.01ms !important;
+        }
+    }
+
+    .sw-featured-card:focus-visible,
+    .sw-capability-card:focus-visible,
+    .sw-btn:focus-visible {
+        outline: 3px solid #00F5FF;
+        outline-offset: 4px;
+    }
+</style>
+{% endblock %}
 
 {% block content %}
-<section class="hero" style="min-height: 60vh;">
-    <div class="hero-content">
-        <h1>Enterprise Software</h1>
-        <p>Custom software built for scale, security, and performance.</p>
+
+<!-- ================= HERO ================= -->
+<section class="sw-hero" aria-labelledby="software-heading">
+    <div class="sw-hero-content">
+        <h1 id="software-heading">
+            <span>Enterprise Software</span> Solutions
+        </h1>
+        <p class="sw-hero-lead">
+            Custom software built for scale, security, and performance. Transforming 
+            business challenges into elegant, production-ready solutions.
+        </p>
     </div>
 </section>
 
-<section class="solution-content">
-    <ul>
-        <li>Bespoke web and mobile applications</li>
-        <li>API and systems integration</li>
-        <li>Automation and workflow optimisation</li>
-        <li>Maintenance and lifecycle support</li>
-    </ul>
+<!-- ================= FEATURED SOLUTIONS ================= -->
+<section class="sw-section" aria-labelledby="featured-heading">
+    <div class="sw-container">
+        <div class="sw-section-header">
+            <span class="sw-section-label">Featured Solutions</span>
+            <h2 id="featured-heading">Production-Ready Platforms</h2>
+            <p class="sw-section-intro">
+                Explore our flagship software solutions designed to solve critical 
+                enterprise challenges with intelligence and precision.
+            </p>
+        </div>
+        
+        <div class="sw-featured-grid">
+            <!-- Deepfake Defence Hub -->
+            <a href="{{ url_for('solutions.deepfakedefence') }}" class="sw-featured-card">
+                <div class="sw-featured-badge">
+                    ⚡ Broadcast Security
+                </div>
+                <div class="sw-featured-icon">🛡️</div>
+                <h3>Deepfake Defence Hub</h3>
+                <p>
+                    AI-powered media authentication and broadcast integrity platform. 
+                    Real-time detection of synthetic content to protect editorial credibility.
+                </p>
+                <div class="sw-featured-tags">
+                    <span class="sw-featured-tag">AI Detection</span>
+                    <span class="sw-featured-tag">Real-Time</span>
+                    <span class="sw-featured-tag">Broadcast</span>
+                </div>
+                <span class="sw-featured-link">
+                    Explore Platform
+                    <i class="bi bi-arrow-right"></i>
+                </span>
+            </a>
+
+            <!-- SentinelPi -->
+            <a href="{{ url_for('solutions.sentinelpi') }}" class="sw-featured-card">
+                <div class="sw-featured-badge">
+                    🔐 Edge Security
+                </div>
+                <div class="sw-featured-icon">📡</div>
+                <h3>SentinelPi</h3>
+                <p>
+                    Secure edge surveillance architecture with zero-trust networking. 
+                    Production-ready reference design for distributed IoT systems.
+                </p>
+                <div class="sw-featured-tags">
+                    <span class="sw-featured-tag">Edge Computing</span>
+                    <span class="sw-featured-tag">IoT</span>
+                    <span class="sw-featured-tag">Zero-Trust</span>
+                </div>
+                <span class="sw-featured-link">
+                    View Architecture
+                    <i class="bi bi-arrow-right"></i>
+                </span>
+            </a>
+
+            <!-- KYC Identity Platform -->
+            <a href="{{ url_for('solutions.kycidenetity') }}" class="sw-featured-card">
+                <div class="sw-featured-badge">
+                    ✓ Compliance
+                </div>
+                <div class="sw-featured-icon">🔑</div>
+                <h3>KYC Identity Verification</h3>
+                <p>
+                    API-driven identity verification platform for Nigerian regulatory 
+                    compliance. Multi-point authentication with NIN integration.
+                </p>
+                <div class="sw-featured-tags">
+                    <span class="sw-featured-tag">GraphQL API</span>
+                    <span class="sw-featured-tag">NDPR</span>
+                    <span class="sw-featured-tag">NIN</span>
+                </div>
+                <span class="sw-featured-link">
+                    Explore API
+                    <i class="bi bi-arrow-right"></i>
+                </span>
+            </a>
+        </div>
+    </div>
 </section>
+
+<!-- ================= CORE CAPABILITIES ================= -->
+<section class="sw-section sw-section--alt sw-section--border" aria-labelledby="capabilities-heading">
+    <div class="sw-container">
+        <div class="sw-section-header">
+            <span class="sw-section-label">Core Capabilities</span>
+            <h2 id="capabilities-heading">Comprehensive Software Services</h2>
+        </div>
+        
+        <div class="sw-capabilities">
+            <article class="sw-capability-card">
+                <div class="sw-capability-icon">💻</div>
+                <h3>Bespoke Applications</h3>
+                <p>
+                    Custom web and mobile applications engineered for your unique 
+                    business requirements and operational workflows.
+                </p>
+            </article>
+
+            <article class="sw-capability-card">
+                <div class="sw-capability-icon">🔌</div>
+                <h3>API & Integration</h3>
+                <p>
+                    Seamless systems integration with modern APIs, microservices 
+                    architecture, and enterprise middleware.
+                </p>
+            </article>
+
+            <article class="sw-capability-card">
+                <div class="sw-capability-icon">⚙️</div>
+                <h3>Workflow Automation</h3>
+                <p>
+                    Intelligent process automation that eliminates repetitive tasks 
+                    and accelerates business operations.
+                </p>
+            </article>
+
+            <article class="sw-capability-card">
+                <div class="sw-capability-icon">🔄</div>
+                <h3>Lifecycle Support</h3>
+                <p>
+                    Comprehensive maintenance, monitoring, and continuous improvement 
+                    throughout your software's lifecycle.
+                </p>
+            </article>
+
+            <article class="sw-capability-card">
+                <div class="sw-capability-icon">🔒</div>
+                <h3>Security-First Design</h3>
+                <p>
+                    Enterprise-grade security architecture with encryption, access 
+                    control, and compliance built-in from day one.
+                </p>
+            </article>
+
+            <article class="sw-capability-card">
+                <div class="sw-capability-icon">📊</div>
+                <h3>Analytics & Insights</h3>
+                <p>
+                    Data-driven intelligence with real-time dashboards, reporting, 
+                    and predictive analytics capabilities.
+                </p>
+            </article>
+
+            <article class="sw-capability-card">
+                <div class="sw-capability-icon">☁️</div>
+                <h3>Cloud-Native Architecture</h3>
+                <p>
+                    Scalable, resilient cloud deployments with containerization, 
+                    orchestration, and auto-scaling.
+                </p>
+            </article>
+
+            <article class="sw-capability-card">
+                <div class="sw-capability-icon">🎯</div>
+                <h3>Performance Optimization</h3>
+                <p>
+                    High-performance systems optimized for speed, efficiency, and 
+                    exceptional user experiences.
+                </p>
+            </article>
+        </div>
+    </div>
+</section>
+
+<!-- ================= CTA SECTION ================= -->
+<section class="sw-cta-section">
+    <div class="sw-cta-content">
+        <h2>Ready to Build Your Custom Solution?</h2>
+        <p>
+            Let's discuss how our software engineering expertise can transform 
+            your business operations and drive measurable results.
+        </p>
+        <a href="{#{ url_for('contact.contact') }#}" class="sw-btn sw-btn-primary">
+            <span>Start Your Project</span>
+            <i class="bi bi-arrow-right"></i>
+        </a>
+    </div>
+</section>
+
 {% endblock %}
