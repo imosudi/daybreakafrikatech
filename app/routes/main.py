@@ -11,3 +11,8 @@ def home():
 @main_bp.route("/about")
 def about():
     return render_template("about_us.html")
+
+
+@main_bp.route("/contact")
+def contact():
+    return render_template("contact_us.html")
