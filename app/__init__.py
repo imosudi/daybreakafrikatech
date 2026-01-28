@@ -4,9 +4,10 @@ from flask import Flask, render_template
 from flask_moment import Moment
 from config import Config
 from app.extensions import close_db
+from flask_mail import Mail, Message
 
 # Blueprints
-from app.routes.main import main_bp
+
 from app.routes.solutions import solutions_bp
 from app.routes.developer import developer_bp
 from app.routes.ai import ai_bp
@@ -23,18 +24,20 @@ app = Flask(__name__,
 app.config.from_object(Config)
 
 moment = Moment(app)
+mail = Mail(app)
 
 # Register teardown
 app.teardown_appcontext(close_db)
 
 # Register blueprints
-app.register_blueprint(main_bp)
 app.register_blueprint(solutions_bp, url_prefix="/solutions")
 app.register_blueprint(developer_bp, url_prefix="/developer")
 app.register_blueprint(ai_bp, url_prefix="/ai")
 app.register_blueprint(solution_finder_bp, url_prefix="/solution-finder")
 app.register_blueprint(errors_bp)
 
+from app.routes.main import main_bp
+app.register_blueprint(main_bp)
 
 #app.route("/contact")(lambda: "Contact Page")
 '''app.route("/services")(lambda: "Services Page")

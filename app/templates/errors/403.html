@@ -539,9 +539,9 @@
             <div class="error-help">
                 <p>Need access to this resource?</p>
                 <p>
-                    <a href="{{ url_for('contact.contact') if 'contact.contact' in url_for.__globals__ else '#' }}">Request Access</a> 
+                    <a href="{{ url_for('main.contact') if 'main.contact' in url_for.__globals__ else '#' }}">Request Access</a> 
                     or contact your 
-                    <a href="{{ url_for('contact.contact') if 'contact.contact' in url_for.__globals__ else '#' }}">System Administrator</a>
+                    <a href="{{ url_for('main.contact') if 'main.contact' in url_for.__globals__ else '#' }}">System Administrator</a>
                 </p>
             </div>
         </div>
