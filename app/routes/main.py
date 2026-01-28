@@ -15,6 +15,11 @@ def about():
 
 @main_bp.route("/contact", methods=['GET', 'POST'])
 def contact():
+    try:
+        print(0)
+    except print(0):
+        pass
+    
     if request.method == 'POST':
         print(request.form)
         
