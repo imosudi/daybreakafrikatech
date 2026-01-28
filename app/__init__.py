@@ -36,7 +36,7 @@ app.register_blueprint(solution_finder_bp, url_prefix="/solution-finder")
 app.register_blueprint(errors_bp)
 
 
-app.route("/contact")(lambda: "Contact Page")
+#app.route("/contact")(lambda: "Contact Page")
 '''app.route("/services")(lambda: "Services Page")
 app.route("/careers")(lambda: "Careers Page")
 app.route("/blog")(lambda: "Blog Page")
