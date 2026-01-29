@@ -1,0 +1,940 @@
+<!-- Hybrid & Multi-Cloud Strategies -->
+<!--app/templates/solutions/cloud/cloud_hybrid.html-->
+{% extends "base.html" %}
+
+{% block title %}Hybrid & Multi-Cloud Strategies – Daybreak Afrika Technologies{% endblock %}
+
+{% block extra_css %}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+    /* ========================================
+    HYBRID CLOUD - PREMIUM DESIGN
+    Brand-Aligned Theme
+    ======================================== */
+
+    :root {
+        /* Brand Colors - Harmonized */
+        --cloud-primary: #00B4D8;
+        --cloud-primary-light: #00F5FF;
+        --cloud-primary-dark: #0066CC;
+        --cloud-secondary: #7CDBFF;
+        --cloud-accent: #10b981;
+        --cloud-warning: #f59e0b;
+        
+        /* Neutrals */
+        --cloud-bg-dark: #0A1128;
+        --cloud-bg-darker: #050810;
+        --cloud-surface: rgba(255, 255, 255, 0.02);
+        --cloud-surface-light: rgba(255, 255, 255, 0.05);
+        --cloud-border: rgba(0, 180, 216, 0.1);
+        --cloud-text-primary: #F8F9FA;
+        --cloud-text-secondary: rgba(248, 249, 250, 0.7);
+        --cloud-text-muted: rgba(248, 249, 250, 0.5);
+        
+        /* Effects */
+        --cloud-glow-primary: rgba(0, 180, 216, 0.3);
+        --cloud-glow-accent: rgba(16, 185, 129, 0.2);
+        --cloud-shadow-md: 0 8px 24px rgba(0, 0, 0, 0.4);
+        --cloud-shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.5);
+        
+        /* Spacing */
+        --cloud-space-xs: 0.5rem;
+        --cloud-space-sm: 1rem;
+        --cloud-space-md: 1.5rem;
+        --cloud-space-lg: 2.5rem;
+        --cloud-space-xl: 4rem;
+        --cloud-space-2xl: 6rem;
+        
+        /* Border Radius */
+        --cloud-radius-sm: 8px;
+        --cloud-radius-md: 12px;
+        --cloud-radius-lg: 16px;
+        
+        /* Typography */
+        --cloud-font-sans: 'Space Grotesk', system-ui, sans-serif;
+        --cloud-font-mono: 'IBM Plex Mono', monospace;
+        --cloud-font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        
+        /* Transitions */
+        --cloud-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* ========================================
+    HERO SECTION
+    ======================================== */
+
+    .cloud-hero {
+        position: relative;
+        min-height: 85vh;
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+    }
+
+    .cloud-hero::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: 
+            radial-gradient(circle at 20% 30%, var(--cloud-glow-primary) 0%, transparent 50%),
+            radial-gradient(circle at 80% 70%, var(--cloud-glow-accent) 0%, transparent 50%),
+            radial-gradient(circle at 50% 50%, rgba(124, 219, 255, 0.1) 0%, transparent 60%);
+        animation: ambientPulse 12s ease-in-out infinite alternate;
+        opacity: 0.4;
+    }
+
+    @keyframes ambientPulse {
+        0% { transform: scale(1); opacity: 0.3; }
+        100% { transform: scale(1.1); opacity: 0.5; }
+    }
+
+    .cloud-hero-content {
+        position: relative;
+        z-index: 10;
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: var(--cloud-space-2xl) var(--cloud-space-lg);
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: var(--cloud-space-2xl);
+        align-items: center;
+    }
+
+    .cloud-hero-text {
+        animation: slideInLeft 0.8s ease-out;
+    }
+
+    @keyframes slideInLeft {
+        from { opacity: 0; transform: translateX(-30px); }
+        to { opacity: 1; transform: translateX(0); }
+    }
+
+    .cloud-paper-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: var(--cloud-space-xs);
+        padding: var(--cloud-space-xs) var(--cloud-space-md);
+        background: rgba(0, 180, 216, 0.12);
+        border: 1px solid rgba(0, 180, 216, 0.35);
+        border-radius: 100px;
+        font-size: 0.75rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: #00B4D8;
+        margin-bottom: var(--cloud-space-md);
+        animation: fadeInDown 0.6s ease-out;
+    }
+
+    .cloud-badge-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 18px;
+        height: 18px;
+        background: #00B4D8;
+        border-radius: 50%;
+        color: white;
+        font-size: 0.65rem;
+        animation: paperPulse 2s ease-in-out infinite;
+    }
+
+    @keyframes paperPulse {
+        0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(0, 180, 216, 0.7); }
+        50% { transform: scale(1.1); box-shadow: 0 0 0 8px rgba(0, 180, 216, 0); }
+    }
+
+    @keyframes fadeInDown {
+        from { opacity: 0; transform: translateY(-15px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    .cloud-hero h1 {
+        font-size: clamp(2.5rem, 6vw, 4.5rem);
+        font-weight: 800;
+        line-height: 1.1;
+        margin: 0 0 var(--cloud-space-md);
+        letter-spacing: -0.03em;
+        animation: fadeInUp 0.8s ease-out 0.2s backwards;
+    }
+
+    .cloud-hero h1 span {
+        background: linear-gradient(135deg, #0066CC 0%, #00B4D8 50%, #00F5FF 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    @keyframes fadeInUp {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    .cloud-hero-lead {
+        font-size: clamp(1.1rem, 1.8vw, 1.4rem);
+        color: var(--cloud-text-secondary);
+        max-width: 600px;
+        margin-bottom: var(--cloud-space-xl);
+        line-height: 1.7;
+        animation: fadeInUp 0.8s ease-out 0.4s backwards;
+    }
+
+    .cloud-hero-cta {
+        display: flex;
+        gap: var(--cloud-space-md);
+        flex-wrap: wrap;
+        animation: fadeInUp 0.8s ease-out 0.6s backwards;
+    }
+
+    /* Hero Visual - Environment Diagram */
+    .cloud-hero-visual {
+        animation: slideInRight 0.8s ease-out 0.4s backwards;
+    }
+
+    @keyframes slideInRight {
+        from { opacity: 0; transform: translateX(30px); }
+        to { opacity: 1; transform: translateX(0); }
+    }
+
+    .cloud-environment-diagram {
+        background: var(--cloud-surface);
+        border: 1px solid var(--cloud-border);
+        border-radius: var(--cloud-radius-lg);
+        padding: var(--cloud-space-lg);
+        box-shadow: var(--cloud-shadow-lg);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .cloud-environment-diagram::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: linear-gradient(90deg, #0066CC, #00B4D8, #10b981);
+        background-size: 200% 100%;
+        animation: scanLine 3s linear infinite;
+    }
+
+    @keyframes scanLine {
+        0% { background-position: 200% 0; }
+        100% { background-position: -200% 0; }
+    }
+
+    .cloud-env-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: var(--cloud-space-md);
+        padding-bottom: var(--cloud-space-sm);
+        border-bottom: 1px solid var(--cloud-border);
+    }
+
+    .cloud-env-title {
+        font-family: var(--cloud-font-body);
+        font-size: 0.85rem;
+        color: #00B4D8;
+        font-weight: 600;
+    }
+
+    .cloud-env-status {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 0.75rem;
+        color: #10b981;
+    }
+
+    .cloud-status-dot {
+        width: 8px;
+        height: 8px;
+        background: #10b981;
+        border-radius: 50%;
+        animation: statusBlink 2s ease-in-out infinite;
+    }
+
+    @keyframes statusBlink {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.3; }
+    }
+
+    .cloud-env-grid {
+        display: grid;
+        gap: var(--cloud-space-sm);
+    }
+
+    .cloud-env-layer {
+        padding: var(--cloud-space-md);
+        background: rgba(0, 180, 216, 0.05);
+        border: 1px solid var(--cloud-border);
+        border-radius: var(--cloud-radius-sm);
+        transition: var(--cloud-transition);
+        animation: slideInRight 0.5s ease-out backwards;
+    }
+
+    .cloud-env-layer:nth-child(1) { animation-delay: 0.1s; }
+    .cloud-env-layer:nth-child(2) { animation-delay: 0.2s; }
+    .cloud-env-layer:nth-child(3) { animation-delay: 0.3s; }
+    .cloud-env-layer:nth-child(4) { animation-delay: 0.4s; }
+
+    .cloud-env-layer:hover {
+        background: rgba(0, 180, 216, 0.1);
+        border-color: #00B4D8;
+        transform: translateX(5px);
+    }
+
+    .cloud-layer-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: var(--cloud-space-xs);
+    }
+
+    .cloud-layer-name {
+        font-size: 0.9rem;
+        font-weight: 700;
+        color: var(--cloud-text-primary);
+    }
+
+    .cloud-layer-badge {
+        font-size: 0.7rem;
+        font-weight: 600;
+        padding: 0.2rem 0.5rem;
+        border-radius: 4px;
+        font-family: var(--cloud-font-mono);
+        background: rgba(16, 185, 129, 0.2);
+        color: #10b981;
+    }
+
+    .cloud-layer-desc {
+        font-size: 0.75rem;
+        color: var(--cloud-text-muted);
+        font-family: var(--cloud-font-body);
+    }
+
+    /* ========================================
+    BUTTONS
+    ======================================== */
+
+    .cloud-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: var(--cloud-space-xs);
+        padding: 1rem 2rem;
+        font-family: var(--cloud-font-body);
+        font-size: 1rem;
+        font-weight: 600;
+        text-decoration: none;
+        border-radius: var(--cloud-radius-md);
+        transition: var(--cloud-transition);
+        cursor: pointer;
+        border: none;
+        white-space: nowrap;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .cloud-btn::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+        transform: translateX(-100%);
+        transition: transform 0.6s;
+    }
+
+    .cloud-btn:hover::before {
+        transform: translateX(100%);
+    }
+
+    .cloud-btn-primary {
+        background: linear-gradient(135deg, #0066CC 0%, #00B4D8 100%);
+        color: #FFFFFF;
+        box-shadow: 0 4px 16px rgba(0, 180, 216, 0.3);
+    }
+
+    .cloud-btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 30px rgba(0, 180, 216, 0.4);
+        color: #FFFFFF;
+    }
+
+    .cloud-btn-secondary {
+        background: transparent;
+        color: #00B4D8;
+        border: 2px solid #00B4D8;
+    }
+
+    .cloud-btn-secondary:hover {
+        background: rgba(0, 180, 216, 0.1);
+        color: #00F5FF;
+        border-color: #00F5FF;
+        transform: translateY(-2px);
+    }
+
+    /* ========================================
+    SECTIONS
+    ======================================== */
+
+    .cloud-section {
+        padding: var(--cloud-space-2xl) var(--cloud-space-lg);
+        position: relative;
+    }
+
+    .cloud-section--alt {
+        background: var(--cloud-bg-dark);
+    }
+
+    .cloud-section--border {
+        border-top: 1px solid rgba(0, 180, 216, 0.1);
+    }
+
+    .cloud-container {
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+
+    .cloud-section-header {
+        max-width: 900px;
+        margin: 0 auto var(--cloud-space-xl);
+        text-align: center;
+    }
+
+    .cloud-section-label {
+        display: inline-flex;
+        align-items: center;
+        gap: var(--cloud-space-xs);
+        font-size: 0.75rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        color: #00B4D8;
+        margin-bottom: var(--cloud-space-sm);
+        padding: 0.4rem 1rem;
+        background: rgba(0, 180, 216, 0.1);
+        border: 1px solid rgba(0, 180, 216, 0.3);
+        border-radius: 100px;
+    }
+
+    .cloud-section-label::before {
+        content: '';
+        width: 6px;
+        height: 6px;
+        background: #00B4D8;
+        border-radius: 50%;
+        animation: labelPulse 2s ease-in-out infinite;
+    }
+
+    @keyframes labelPulse {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.4; }
+    }
+
+    .cloud-section h2 {
+        font-size: clamp(2rem, 5vw, 3.5rem);
+        font-weight: 800;
+        line-height: 1.2;
+        margin: 0 0 var(--cloud-space-md);
+        letter-spacing: -0.02em;
+    }
+
+    .cloud-section-intro {
+        font-size: 1.2rem;
+        color: var(--cloud-text-secondary);
+        line-height: 1.7;
+    }
+
+    /* ========================================
+    ARCHITECTURE CARDS
+    ======================================== */
+
+    .cloud-arch-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: var(--cloud-space-xl);
+        margin-top: var(--cloud-space-xl);
+    }
+
+    .cloud-arch-card {
+        background: var(--cloud-surface);
+        border: 1px solid var(--cloud-border);
+        border-radius: var(--cloud-radius-lg);
+        padding: var(--cloud-space-xl);
+        transition: var(--cloud-transition);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .cloud-arch-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background: linear-gradient(90deg, #0066CC, #00B4D8);
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.4s ease;
+    }
+
+    .cloud-arch-card:hover::before {
+        transform: scaleX(1);
+    }
+
+    .cloud-arch-card:hover {
+        border-color: #00B4D8;
+        box-shadow: var(--cloud-shadow-lg), 0 0 40px rgba(0, 180, 216, 0.3);
+        transform: translateY(-8px);
+    }
+
+    .cloud-arch-icon {
+        width: 64px;
+        height: 64px;
+        background: linear-gradient(135deg, rgba(0, 180, 216, 0.2), rgba(16, 185, 129, 0.2));
+        border-radius: var(--cloud-radius-md);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2rem;
+        margin-bottom: var(--cloud-space-md);
+    }
+
+    .cloud-arch-card h3 {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--cloud-text-primary);
+        margin: 0 0 var(--cloud-space-md);
+        padding-bottom: var(--cloud-space-sm);
+        border-bottom: 2px solid rgba(0, 180, 216, 0.2);
+    }
+
+    .cloud-arch-card p {
+        color: var(--cloud-text-secondary);
+        margin-bottom: var(--cloud-space-md);
+        line-height: 1.6;
+    }
+
+    .cloud-arch-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .cloud-arch-list li {
+        padding: var(--cloud-space-sm) 0;
+        color: var(--cloud-text-secondary);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        display: flex;
+        gap: var(--cloud-space-sm);
+        line-height: 1.6;
+    }
+
+    .cloud-arch-list li:last-child {
+        border-bottom: none;
+    }
+
+    .cloud-arch-list li::before {
+        content: '→';
+        color: #00B4D8;
+        flex-shrink: 0;
+        font-weight: 700;
+    }
+
+    /* ========================================
+    BENEFITS GRID
+    ======================================== */
+
+    .cloud-benefits {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: var(--cloud-space-lg);
+        margin-top: var(--cloud-space-xl);
+    }
+
+    .cloud-benefit-card {
+        background: var(--cloud-surface);
+        border: 1px solid var(--cloud-border);
+        border-radius: var(--cloud-radius-lg);
+        padding: var(--cloud-space-lg);
+        transition: var(--cloud-transition);
+    }
+
+    .cloud-benefit-card:hover {
+        border-color: #10b981;
+        box-shadow: 0 8px 24px rgba(16, 185, 129, 0.15);
+        transform: translateY(-4px);
+    }
+
+    .cloud-benefit-icon {
+        width: 56px;
+        height: 56px;
+        background: linear-gradient(135deg, rgba(0, 180, 216, 0.2), rgba(16, 185, 129, 0.2));
+        border-radius: var(--cloud-radius-md);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.75rem;
+        margin-bottom: var(--cloud-space-md);
+    }
+
+    .cloud-benefit-card h3 {
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: var(--cloud-text-primary);
+        margin: 0 0 var(--cloud-space-sm);
+    }
+
+    .cloud-benefit-card p {
+        color: var(--cloud-text-secondary);
+        margin: 0;
+        line-height: 1.6;
+    }
+
+    /* ========================================
+    CTA SECTION
+    ======================================== */
+
+    .cloud-cta-section {
+        padding: calc(var(--cloud-space-2xl) * 1.5) var(--cloud-space-lg);
+        text-align: center;
+        background: linear-gradient(165deg, var(--cloud-bg-dark) 0%, var(--cloud-bg-darker) 100%);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .cloud-cta-section::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 800px;
+        height: 800px;
+        background: radial-gradient(circle, rgba(0, 180, 216, 0.3) 0%, transparent 70%);
+        transform: translate(-50%, -50%);
+        animation: ctaPulse 8s ease-in-out infinite;
+    }
+
+    @keyframes ctaPulse {
+        0%, 100% { opacity: 0.2; transform: translate(-50%, -50%) scale(1); }
+        50% { opacity: 0.4; transform: translate(-50%, -50%) scale(1.1); }
+    }
+
+    .cloud-cta-content {
+        position: relative;
+        z-index: 1;
+        max-width: 900px;
+        margin: 0 auto;
+    }
+
+    .cloud-cta-section h2 {
+        font-size: clamp(2rem, 5vw, 3.5rem);
+        margin-bottom: var(--cloud-space-md);
+    }
+
+    .cloud-cta-section p {
+        font-size: 1.3rem;
+        color: var(--cloud-text-secondary);
+        margin-bottom: var(--cloud-space-xl);
+        line-height: 1.7;
+    }
+
+    .cloud-cta-buttons {
+        display: flex;
+        gap: var(--cloud-space-md);
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    /* ========================================
+    RESPONSIVE
+    ======================================== */
+
+    @media (max-width: 1024px) {
+        .cloud-hero-content {
+            grid-template-columns: 1fr;
+            gap: var(--cloud-space-xl);
+        }
+        
+        .cloud-hero-visual {
+            order: -1;
+        }
+    }
+
+    @media (max-width: 768px) {
+        :root {
+            --cloud-space-xl: 3rem;
+            --cloud-space-2xl: 4rem;
+        }
+        
+        .cloud-hero {
+            min-height: 75vh;
+        }
+        
+        .cloud-section {
+            padding: var(--cloud-space-xl) var(--cloud-space-md);
+        }
+        
+        .cloud-hero-cta,
+        .cloud-cta-buttons {
+            flex-direction: column;
+            width: 100%;
+        }
+        
+        .cloud-btn {
+            width: 100%;
+        }
+        
+        .cloud-arch-grid,
+        .cloud-benefits {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    /* ========================================
+    ACCESSIBILITY
+    ======================================== */
+
+    @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.01ms !important;
+        }
+    }
+
+    .cloud-btn:focus-visible,
+    .cloud-arch-card:focus-visible,
+    .cloud-benefit-card:focus-visible {
+        outline: 3px solid #00F5FF;
+        outline-offset: 4px;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+
+<section class="cloud-hero" aria-labelledby="cloud-hero-title">
+    <div class="cloud-hero-content">
+        <div class="cloud-hero-text">
+            <div class="cloud-paper-badge">
+                <div class="cloud-badge-icon">☁</div>
+                <span>• Strategic</span>
+            </div>
+            
+            <h1 id="cloud-hero-title">
+                <span>Hybrid & Multi-Cloud</span><br>
+                Strategies
+            </h1>
+            
+            <p class="cloud-hero-lead">
+                The right workload in the right environment. Intentional architectures that 
+                balance performance, compliance, and cost across on-premise, cloud, and edge.
+            </p>
+            
+            <div class="cloud-hero-cta">
+                <a href="#" class="cloud-btn cloud-btn-primary" download>
+                    <i class="bi bi-download"></i>
+                    <span>Download PDF</span>
+                </a>
+                <a href="{#{ url_for('contact.contact') }#}" class="cloud-btn cloud-btn-secondary">
+                    <span>Request Consultation</span>
+                </a>
+            </div>
+        </div>
+        
+        <div class="cloud-hero-visual">
+            <div class="cloud-environment-diagram">
+                <div class="cloud-env-header">
+                    <div class="cloud-env-title">HYBRID ENVIRONMENT</div>
+                    <div class="cloud-env-status">
+                        <span class="cloud-status-dot"></span>
+                        <span>UNIFIED</span>
+                    </div>
+                </div>
+                
+                <div class="cloud-env-grid" role="list">
+                    <div class="cloud-env-layer" role="listitem">
+                        <div class="cloud-layer-header">
+                            <div class="cloud-layer-name">On-Premise</div>
+                            <div class="cloud-layer-badge">LEGACY</div>
+                        </div>
+                        <div class="cloud-layer-desc">Regulated workloads • Data residency</div>
+                    </div>
+                    
+                    <div class="cloud-env-layer" role="listitem">
+                        <div class="cloud-layer-header">
+                            <div class="cloud-layer-name">Public Cloud</div>
+                            <div class="cloud-layer-badge">ELASTIC</div>
+                        </div>
+                        <div class="cloud-layer-desc">AWS • Azure • GCP</div>
+                    </div>
+                    
+                    <div class="cloud-env-layer" role="listitem">
+                        <div class="cloud-layer-header">
+                            <div class="cloud-layer-name">Private Cloud</div>
+                            <div class="cloud-layer-badge">CONTROLLED</div>
+                        </div>
+                        <div class="cloud-layer-desc">Dedicated infrastructure • Compliance</div>
+                    </div>
+                    
+                    <div class="cloud-env-layer" role="listitem">
+                        <div class="cloud-layer-header">
+                            <div class="cloud-layer-name">Edge Computing</div>
+                            <div class="cloud-layer-badge">LOW-LATENCY</div>
+                        </div>
+                        <div class="cloud-layer-desc">MEC • Real-time processing</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="solution-content">
+    <!-- ===== EXECUTIVE SUMMARY ===== -->
+    <section class="cloud-section">
+        <div class="cloud-container">
+            <div class="cloud-section-header">
+                <span class="cloud-section-label">Executive Summary</span>
+                <h2>Intentional Architecture</h2>
+                <p class="cloud-section-intro">
+                    Enterprises increasingly operate across multiple compute environments—often 
+                    unintentionally. We design hybrid and multi-cloud architectures where workloads 
+                    are placed where they perform best, without compromising security or agility.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== ARCHITECTURE APPROACHES ===== -->
+    <section class="cloud-section cloud-section--alt cloud-section--border">
+        <div class="cloud-container">
+            <div class="cloud-section-header">
+                <span class="cloud-section-label">Approaches</span>
+                <h2>Architectural Strategies</h2>
+            </div>
+            
+            <div class="cloud-arch-grid">
+                <article class="cloud-arch-card">
+                    <div class="cloud-arch-icon">🏢</div>
+                    <h3>Hybrid Cloud</h3>
+                    <p>Single logical fabric across disconnected platforms:</p>
+                    <ul class="cloud-arch-list">
+                        <li>On-premise and cloud integration</li>
+                        <li>Private cloud modernisation</li>
+                        <li>Secure interconnects</li>
+                        <li>Unified identity and security controls</li>
+                    </ul>
+                </article>
+
+                <article class="cloud-arch-card">
+                    <div class="cloud-arch-icon">☁️</div>
+                    <h3>Multi-Cloud</h3>
+                    <p>Strategic platform selection, not accidental sprawl:</p>
+                    <ul class="cloud-arch-list">
+                        <li>AWS, Azure, GCP governance</li>
+                        <li>Vendor-neutral workload placement</li>
+                        <li>Policy-driven portability</li>
+                        <li>Avoidance of platform lock-in</li>
+                    </ul>
+                </article>
+
+                <article class="cloud-arch-card">
+                    <div class="cloud-arch-icon">📡</div>
+                    <h3>Cloud-Edge Integration</h3>
+                    <p>Processing closer to the data source:</p>
+                    <ul class="cloud-arch-list">
+                        <li>Multi-Access Edge Computing (MEC)</li>
+                        <li>Low-latency workload placement</li>
+                        <li>Real-time AI inference</li>
+                        <li>Secure core platform integration</li>
+                    </ul>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== STRATEGIC VALUE ===== -->
+    <section class="cloud-section cloud-section--border">
+        <div class="cloud-container">
+            <div class="cloud-section-header">
+                <span class="cloud-section-label">Value</span>
+                <h2>Strategic Benefits</h2>
+            </div>
+            
+            <div class="cloud-benefits">
+                {% set benefits = [
+                    {
+                        'icon': '⚡',
+                        'title': 'Performance optimisation',
+                        'desc': 'Reduced latency and bandwidth dependency through intelligent workload placement'
+                    },
+                    {
+                        'icon': '✓',
+                        'title': 'Regulatory Alignment',
+                        'desc': 'Data residency and compliance requirements met through strategic environment selection'
+                    },
+                    {
+                        'icon': '🛡️',
+                        'title': 'Resilience & Isolation',
+                        'desc': 'Increased fault tolerance and disaster recovery through distributed architecture'
+                    },
+                    {
+                        'icon': '💰',
+                        'title': 'Cost Control',
+                        'desc': 'Stronger governance over expenditure and vendor exposure through multi-cloud strategy'
+                    },
+                    {
+                        'icon': '🤖',
+                        'title': 'Future-Ready Infrastructure',
+                        'desc': 'Prepared for AI, edge computing, and emerging workload requirements'
+                    },
+                    {
+                        'icon': '🎯',
+                        'title': 'Competitive Advantage',
+                        'desc': 'Hybrid becomes strategic enabler, not operational burden'
+                    }
+                ] %}
+                
+                {% for benefit in benefits %}
+                <article class="cloud-benefit-card">
+                    <div class="cloud-benefit-icon">{{ benefit.icon }}</div>
+                    <h3>{{ benefit.title }}</h3>
+                    <p>{{ benefit.desc }}</p>
+                </article>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CTA SECTION ===== -->
+    <section class="cloud-cta-section">
+        <div class="cloud-cta-content">
+            <h2>Design Your Hybrid Cloud Strategy</h2>
+            <p>
+                Let's discuss how intentional hybrid and multi-cloud architecture can deliver 
+                the right balance of performance, compliance, and cost for your enterprise.
+            </p>
+            <div class="cloud-cta-buttons">
+                <a href="#" class="cloud-btn cloud-btn-primary" download>
+                    <i class="bi bi-download"></i>
+                    <span>Download Full White Paper</span>
+                </a>
+                <a href="{#{ url_for('contact.contact') }#}" class="cloud-btn cloud-btn-secondary">
+                    <span>Schedule Consultation</span>
+                </a>
+            </div>
+        </div>
+    </section>
+</section>
+
+{% endblock %}

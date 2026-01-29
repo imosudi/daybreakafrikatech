@@ -47,6 +47,21 @@ def fiveg():
 def cloud():
     return render_template("solutions/cloud.html")
 
+@solutions_bp.route("/cloud/migration/", endpoint="Cloud_Migration")
+def cloud_migration():
+    return render_template("solutions/cloud/cloud_migration.html")
+
+@solutions_bp.route("/cloud/hybrid/", endpoint="Cloud_Hybrid")
+def cloud_hybrid():
+    return render_template("solutions/cloud/cloud_hybrid.html")
+
+@solutions_bp.route("/cloud/security/", endpoint="Cloud_Security")
+def cloud_security():
+    return render_template("solutions/cloud/cloud_security.html")
+
+@solutions_bp.route("/cloud/finops/", endpoint="Cost_Performance_Optimisation")
+def cost_perform_optimisation():
+    return render_template("solutions/cloud/cost_perform_optimisation.html")
 
 @solutions_bp.route("/software/", endpoint="software")
 def software():

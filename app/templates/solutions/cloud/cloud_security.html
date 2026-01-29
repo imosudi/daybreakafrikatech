@@ -1,0 +1,959 @@
+<!-- Cloud Security & Compliance -->
+<!--app/templates/solutions/cloud/cloud_security.html-->
+{% extends "base.html" %}
+
+{% block title %}Cloud Security & Compliance – Daybreak Afrika Technologies{% endblock %}
+
+{% block extra_css %}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+    /* ========================================
+    CLOUD SECURITY - PREMIUM DESIGN
+    Brand-Aligned Theme
+    ======================================== */
+
+    :root {
+        /* Brand Colors - Harmonized */
+        --sec-primary: #00B4D8;
+        --sec-primary-light: #00F5FF;
+        --sec-primary-dark: #0066CC;
+        --sec-secondary: #7CDBFF;
+        --sec-accent: #10b981;
+        --sec-danger: #ef4444;
+        
+        /* Neutrals */
+        --sec-bg-dark: #0A1128;
+        --sec-bg-darker: #050810;
+        --sec-surface: rgba(255, 255, 255, 0.02);
+        --sec-surface-light: rgba(255, 255, 255, 0.05);
+        --sec-border: rgba(0, 180, 216, 0.1);
+        --sec-text-primary: #F8F9FA;
+        --sec-text-secondary: rgba(248, 249, 250, 0.7);
+        --sec-text-muted: rgba(248, 249, 250, 0.5);
+        
+        /* Effects */
+        --sec-glow-primary: rgba(0, 180, 216, 0.3);
+        --sec-glow-accent: rgba(16, 185, 129, 0.2);
+        --sec-shadow-md: 0 8px 24px rgba(0, 0, 0, 0.4);
+        --sec-shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.5);
+        
+        /* Spacing */
+        --sec-space-xs: 0.5rem;
+        --sec-space-sm: 1rem;
+        --sec-space-md: 1.5rem;
+        --sec-space-lg: 2.5rem;
+        --sec-space-xl: 4rem;
+        --sec-space-2xl: 6rem;
+        
+        /* Border Radius */
+        --sec-radius-sm: 8px;
+        --sec-radius-md: 12px;
+        --sec-radius-lg: 16px;
+        
+        /* Typography */
+        --sec-font-sans: 'Space Grotesk', system-ui, sans-serif;
+        --sec-font-mono: 'IBM Plex Mono', monospace;
+        --sec-font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        
+        /* Transitions */
+        --sec-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* ========================================
+    HERO SECTION
+    ======================================== */
+
+    .sec-hero {
+        position: relative;
+        min-height: 85vh;
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+    }
+
+    .sec-hero::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: 
+            radial-gradient(circle at 20% 30%, var(--sec-glow-primary) 0%, transparent 50%),
+            radial-gradient(circle at 80% 70%, rgba(239, 68, 68, 0.2) 0%, transparent 50%),
+            radial-gradient(circle at 50% 50%, var(--sec-glow-accent) 0%, transparent 60%);
+        animation: ambientPulse 12s ease-in-out infinite alternate;
+        opacity: 0.4;
+    }
+
+    @keyframes ambientPulse {
+        0% { transform: scale(1); opacity: 0.3; }
+        100% { transform: scale(1.1); opacity: 0.5; }
+    }
+
+    .sec-hero-content {
+        position: relative;
+        z-index: 10;
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: var(--sec-space-2xl) var(--sec-space-lg);
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: var(--sec-space-2xl);
+        align-items: center;
+    }
+
+    .sec-hero-text {
+        animation: slideInLeft 0.8s ease-out;
+    }
+
+    @keyframes slideInLeft {
+        from { opacity: 0; transform: translateX(-30px); }
+        to { opacity: 1; transform: translateX(0); }
+    }
+
+    .sec-paper-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: var(--sec-space-xs);
+        padding: var(--sec-space-xs) var(--sec-space-md);
+        background: rgba(239, 68, 68, 0.12);
+        border: 1px solid rgba(239, 68, 68, 0.35);
+        border-radius: 100px;
+        font-size: 0.75rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: #ef4444;
+        margin-bottom: var(--sec-space-md);
+        animation: fadeInDown 0.6s ease-out;
+    }
+
+    .sec-badge-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 18px;
+        height: 18px;
+        background: #ef4444;
+        border-radius: 50%;
+        color: white;
+        font-size: 0.65rem;
+        animation: paperPulse 2s ease-in-out infinite;
+    }
+
+    @keyframes paperPulse {
+        0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7); }
+        50% { transform: scale(1.1); box-shadow: 0 0 0 8px rgba(239, 68, 68, 0); }
+    }
+
+    @keyframes fadeInDown {
+        from { opacity: 0; transform: translateY(-15px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    .sec-hero h1 {
+        font-size: clamp(2.5rem, 6vw, 4.5rem);
+        font-weight: 800;
+        line-height: 1.1;
+        margin: 0 0 var(--sec-space-md);
+        letter-spacing: -0.03em;
+        animation: fadeInUp 0.8s ease-out 0.2s backwards;
+    }
+
+    .sec-hero h1 span {
+        background: linear-gradient(135deg, #0066CC 0%, #00B4D8 50%, #00F5FF 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    @keyframes fadeInUp {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    .sec-hero-lead {
+        font-size: clamp(1.1rem, 1.8vw, 1.4rem);
+        color: var(--sec-text-secondary);
+        max-width: 600px;
+        margin-bottom: var(--sec-space-xl);
+        line-height: 1.7;
+        animation: fadeInUp 0.8s ease-out 0.4s backwards;
+    }
+
+    .sec-hero-cta {
+        display: flex;
+        gap: var(--sec-space-md);
+        flex-wrap: wrap;
+        animation: fadeInUp 0.8s ease-out 0.6s backwards;
+    }
+
+    /* Hero Visual - Security Dashboard */
+    .sec-hero-visual {
+        animation: slideInRight 0.8s ease-out 0.4s backwards;
+    }
+
+    @keyframes slideInRight {
+        from { opacity: 0; transform: translateX(30px); }
+        to { opacity: 1; transform: translateX(0); }
+    }
+
+    .sec-security-dashboard {
+        background: var(--sec-surface);
+        border: 1px solid var(--sec-border);
+        border-radius: var(--sec-radius-lg);
+        padding: var(--sec-space-lg);
+        box-shadow: var(--sec-shadow-lg);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .sec-security-dashboard::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: linear-gradient(90deg, #ef4444, #00B4D8, #10b981);
+        background-size: 200% 100%;
+        animation: scanLine 3s linear infinite;
+    }
+
+    @keyframes scanLine {
+        0% { background-position: 200% 0; }
+        100% { background-position: -200% 0; }
+    }
+
+    .sec-dashboard-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: var(--sec-space-md);
+        padding-bottom: var(--sec-space-sm);
+        border-bottom: 1px solid var(--sec-border);
+    }
+
+    .sec-dashboard-title {
+        font-family: var(--sec-font-body);
+        font-size: 0.85rem;
+        color: #00B4D8;
+        font-weight: 600;
+    }
+
+    .sec-dashboard-status {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 0.75rem;
+        color: #10b981;
+    }
+
+    .sec-status-dot {
+        width: 8px;
+        height: 8px;
+        background: #10b981;
+        border-radius: 50%;
+        animation: statusBlink 2s ease-in-out infinite;
+    }
+
+    @keyframes statusBlink {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.3; }
+    }
+
+    .sec-security-grid {
+        display: grid;
+        gap: var(--sec-space-sm);
+    }
+
+    .sec-security-layer {
+        display: flex;
+        align-items: center;
+        gap: var(--sec-space-md);
+        padding: var(--sec-space-sm);
+        background: rgba(0, 180, 216, 0.05);
+        border-left: 3px solid #00B4D8;
+        border-radius: var(--sec-radius-sm);
+        transition: var(--sec-transition);
+        animation: slideInRight 0.5s ease-out backwards;
+    }
+
+    .sec-security-layer:nth-child(1) { animation-delay: 0.1s; border-left-color: #10b981; }
+    .sec-security-layer:nth-child(2) { animation-delay: 0.2s; border-left-color: #00B4D8; }
+    .sec-security-layer:nth-child(3) { animation-delay: 0.3s; border-left-color: #7CDBFF; }
+    .sec-security-layer:nth-child(4) { animation-delay: 0.4s; border-left-color: #ef4444; }
+
+    .sec-security-layer:hover {
+        background: rgba(0, 180, 216, 0.1);
+        transform: translateX(5px);
+    }
+
+    .sec-layer-icon {
+        font-size: 1.5rem;
+    }
+
+    .sec-layer-info {
+        flex: 1;
+    }
+
+    .sec-layer-name {
+        font-size: 0.8rem;
+        font-weight: 600;
+        color: var(--sec-text-primary);
+        margin-bottom: 0.2rem;
+    }
+
+    .sec-layer-desc {
+        font-size: 0.7rem;
+        color: var(--sec-text-muted);
+        font-family: var(--sec-font-body);
+    }
+
+    .sec-layer-status {
+        font-size: 0.7rem;
+        font-weight: 600;
+        padding: 0.3rem 0.6rem;
+        border-radius: 4px;
+        font-family: var(--sec-font-body);
+    }
+
+    .sec-layer-status.secure {
+        background: rgba(16, 185, 129, 0.2);
+        color: #10b981;
+    }
+
+    .sec-layer-status.monitoring {
+        background: rgba(0, 180, 216, 0.2);
+        color: #00F5FF;
+    }
+
+    /* ========================================
+    BUTTONS
+    ======================================== */
+
+    .sec-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: var(--sec-space-xs);
+        padding: 1rem 2rem;
+        font-family: var(--sec-font-body);
+        font-size: 1rem;
+        font-weight: 600;
+        text-decoration: none;
+        border-radius: var(--sec-radius-md);
+        transition: var(--sec-transition);
+        cursor: pointer;
+        border: none;
+        white-space: nowrap;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .sec-btn::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+        transform: translateX(-100%);
+        transition: transform 0.6s;
+    }
+
+    .sec-btn:hover::before {
+        transform: translateX(100%);
+    }
+
+    .sec-btn-primary {
+        background: linear-gradient(135deg, #0066CC 0%, #00B4D8 100%);
+        color: #FFFFFF;
+        box-shadow: 0 4px 16px rgba(0, 180, 216, 0.3);
+    }
+
+    .sec-btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 30px rgba(0, 180, 216, 0.4);
+        color: #FFFFFF;
+    }
+
+    .sec-btn-secondary {
+        background: transparent;
+        color: #00B4D8;
+        border: 2px solid #00B4D8;
+    }
+
+    .sec-btn-secondary:hover {
+        background: rgba(0, 180, 216, 0.1);
+        color: #00F5FF;
+        border-color: #00F5FF;
+        transform: translateY(-2px);
+    }
+
+    /* ========================================
+    SECTIONS
+    ======================================== */
+
+    .sec-section {
+        padding: var(--sec-space-2xl) var(--sec-space-lg);
+        position: relative;
+    }
+
+    .sec-section--alt {
+        background: var(--sec-bg-dark);
+    }
+
+    .sec-section--border {
+        border-top: 1px solid rgba(0, 180, 216, 0.1);
+    }
+
+    .sec-container {
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+
+    .sec-section-header {
+        max-width: 900px;
+        margin: 0 auto var(--sec-space-xl);
+        text-align: center;
+    }
+
+    .sec-section-label {
+        display: inline-flex;
+        align-items: center;
+        gap: var(--sec-space-xs);
+        font-size: 0.75rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        color: #00B4D8;
+        margin-bottom: var(--sec-space-sm);
+        padding: 0.4rem 1rem;
+        background: rgba(0, 180, 216, 0.1);
+        border: 1px solid rgba(0, 180, 216, 0.3);
+        border-radius: 100px;
+    }
+
+    .sec-section-label::before {
+        content: '';
+        width: 6px;
+        height: 6px;
+        background: #00B4D8;
+        border-radius: 50%;
+        animation: labelPulse 2s ease-in-out infinite;
+    }
+
+    @keyframes labelPulse {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.4; }
+    }
+
+    .sec-section h2 {
+        font-size: clamp(2rem, 5vw, 3.5rem);
+        font-weight: 800;
+        line-height: 1.2;
+        margin: 0 0 var(--sec-space-md);
+        letter-spacing: -0.02em;
+    }
+
+    .sec-section-intro {
+        font-size: 1.2rem;
+        color: var(--sec-text-secondary);
+        line-height: 1.7;
+    }
+
+    /* ========================================
+    ARCHITECTURE CARDS
+    ======================================== */
+
+    .sec-arch-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: var(--sec-space-xl);
+        margin-top: var(--sec-space-xl);
+    }
+
+    .sec-arch-card {
+        background: var(--sec-surface);
+        border: 1px solid var(--sec-border);
+        border-radius: var(--sec-radius-lg);
+        padding: var(--sec-space-xl);
+        transition: var(--sec-transition);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .sec-arch-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background: linear-gradient(90deg, #0066CC, #00B4D8);
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.4s ease;
+    }
+
+    .sec-arch-card:hover::before {
+        transform: scaleX(1);
+    }
+
+    .sec-arch-card:hover {
+        border-color: #00B4D8;
+        box-shadow: var(--sec-shadow-lg), 0 0 40px rgba(0, 180, 216, 0.3);
+        transform: translateY(-8px);
+    }
+
+    .sec-arch-icon {
+        width: 64px;
+        height: 64px;
+        background: linear-gradient(135deg, rgba(0, 180, 216, 0.2), rgba(16, 185, 129, 0.2));
+        border-radius: var(--sec-radius-md);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2rem;
+        margin-bottom: var(--sec-space-md);
+    }
+
+    .sec-arch-card h3 {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--sec-text-primary);
+        margin: 0 0 var(--sec-space-md);
+        padding-bottom: var(--sec-space-sm);
+        border-bottom: 2px solid rgba(0, 180, 216, 0.2);
+    }
+
+    .sec-arch-card > p {
+        color: var(--sec-text-secondary);
+        margin-bottom: var(--sec-space-md);
+        line-height: 1.6;
+    }
+
+    .sec-arch-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .sec-arch-list li {
+        padding: var(--sec-space-sm) 0;
+        color: var(--sec-text-secondary);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        display: flex;
+        gap: var(--sec-space-sm);
+        line-height: 1.6;
+    }
+
+    .sec-arch-list li:last-child {
+        border-bottom: none;
+    }
+
+    .sec-arch-list li::before {
+        content: '▸';
+        color: #10b981;
+        flex-shrink: 0;
+    }
+
+    /* ========================================
+    VALUE CARDS
+    ======================================== */
+
+    .sec-value-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: var(--sec-space-lg);
+        margin-top: var(--sec-space-xl);
+    }
+
+    .sec-value-card {
+        background: var(--sec-surface);
+        border: 1px solid var(--sec-border);
+        border-radius: var(--sec-radius-lg);
+        padding: var(--sec-space-lg);
+        transition: var(--sec-transition);
+    }
+
+    .sec-value-card:hover {
+        border-color: #10b981;
+        box-shadow: 0 8px 24px rgba(16, 185, 129, 0.15);
+        transform: translateY(-4px);
+    }
+
+    .sec-value-icon {
+        width: 56px;
+        height: 56px;
+        background: linear-gradient(135deg, rgba(0, 180, 216, 0.2), rgba(16, 185, 129, 0.2));
+        border-radius: var(--sec-radius-md);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.75rem;
+        margin-bottom: var(--sec-space-md);
+    }
+
+    .sec-value-card h3 {
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: var(--sec-text-primary);
+        margin: 0 0 var(--sec-space-sm);
+    }
+
+    .sec-value-card p {
+        color: var(--sec-text-secondary);
+        margin: 0;
+        line-height: 1.6;
+    }
+
+    /* ========================================
+    CTA SECTION
+    ======================================== */
+
+    .sec-cta-section {
+        padding: calc(var(--sec-space-2xl) * 1.5) var(--sec-space-lg);
+        text-align: center;
+        background: linear-gradient(165deg, var(--sec-bg-dark) 0%, var(--sec-bg-darker) 100%);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .sec-cta-section::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 800px;
+        height: 800px;
+        background: radial-gradient(circle, rgba(0, 180, 216, 0.3) 0%, transparent 70%);
+        transform: translate(-50%, -50%);
+        animation: ctaPulse 8s ease-in-out infinite;
+    }
+
+    @keyframes ctaPulse {
+        0%, 100% { opacity: 0.2; transform: translate(-50%, -50%) scale(1); }
+        50% { opacity: 0.4; transform: translate(-50%, -50%) scale(1.1); }
+    }
+
+    .sec-cta-content {
+        position: relative;
+        z-index: 1;
+        max-width: 900px;
+        margin: 0 auto;
+    }
+
+    .sec-cta-section h2 {
+        font-size: clamp(2rem, 5vw, 3.5rem);
+        margin-bottom: var(--sec-space-md);
+    }
+
+    .sec-cta-section p {
+        font-size: 1.3rem;
+        color: var(--sec-text-secondary);
+        margin-bottom: var(--sec-space-xl);
+        line-height: 1.7;
+    }
+
+    .sec-cta-buttons {
+        display: flex;
+        gap: var(--sec-space-md);
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    /* ========================================
+    RESPONSIVE
+    ======================================== */
+
+    @media (max-width: 1024px) {
+        .sec-hero-content {
+            grid-template-columns: 1fr;
+            gap: var(--sec-space-xl);
+        }
+        
+        .sec-hero-visual {
+            order: -1;
+        }
+    }
+
+    @media (max-width: 768px) {
+        :root {
+            --sec-space-xl: 3rem;
+            --sec-space-2xl: 4rem;
+        }
+        
+        .sec-hero {
+            min-height: 75vh;
+        }
+        
+        .sec-section {
+            padding: var(--sec-space-xl) var(--sec-space-md);
+        }
+        
+        .sec-hero-cta,
+        .sec-cta-buttons {
+            flex-direction: column;
+            width: 100%;
+        }
+        
+        .sec-btn {
+            width: 100%;
+        }
+        
+        .sec-arch-grid,
+        .sec-value-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    /* ========================================
+    ACCESSIBILITY
+    ======================================== */
+
+    @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.01ms !important;
+        }
+    }
+
+    .sec-btn:focus-visible,
+    .sec-arch-card:focus-visible,
+    .sec-value-card:focus-visible {
+        outline: 3px solid #00F5FF;
+        outline-offset: 4px;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+
+<section class="sec-hero" aria-labelledby="sec-hero-title">
+    <div class="sec-hero-content">
+        <div class="sec-hero-text">
+            <div class="sec-paper-badge">
+                <div class="sec-badge-icon">🔒</div>
+                <span>• Critical</span>
+            </div>
+            
+            <h1 id="sec-hero-title">
+                <span>Cloud Security</span><br>
+                & Compliance
+            </h1>
+            
+            <p class="sec-hero-lead">
+                Security and governance built into the architecture. A security-first approach 
+                that embeds protection, compliance, and governance into cloud environments by design.
+            </p>
+            
+            <div class="sec-hero-cta">
+                <a href="#" class="sec-btn sec-btn-primary" download>
+                    <i class="bi bi-download"></i>
+                    <span>Download PDF</span>
+                </a>
+                <a href="{#{ url_for('contact.contact') }#}" class="sec-btn sec-btn-secondary">
+                    <span>Request Consultation</span>
+                </a>
+            </div>
+        </div>
+        
+        <div class="sec-hero-visual">
+            <div class="sec-security-dashboard">
+                <div class="sec-dashboard-header">
+                    <div class="sec-dashboard-title">SECURITY POSTURE</div>
+                    <div class="sec-dashboard-status">
+                        <span class="sec-status-dot"></span>
+                        <span>PROTECTED</span>
+                    </div>
+                </div>
+                
+                <div class="sec-security-grid" role="list">
+                    <div class="sec-security-layer" role="listitem">
+                        <div class="sec-layer-icon">🔑</div>
+                        <div class="sec-layer-info">
+                            <div class="sec-layer-name">Identity & Access</div>
+                            <div class="sec-layer-desc">Least-privilege • Zero-trust</div>
+                        </div>
+                        <div class="sec-layer-status secure">SECURE</div>
+                    </div>
+                    
+                    <div class="sec-security-layer" role="listitem">
+                        <div class="sec-layer-icon">🌐</div>
+                        <div class="sec-layer-info">
+                            <div class="sec-layer-name">Network Security</div>
+                            <div class="sec-layer-desc">Micro-segmentation • Encrypted</div>
+                        </div>
+                        <div class="sec-layer-status secure">SECURE</div>
+                    </div>
+                    
+                    <div class="sec-security-layer" role="listitem">
+                        <div class="sec-layer-icon">🔐</div>
+                        <div class="sec-layer-info">
+                            <div class="sec-layer-name">Data Protection</div>
+                            <div class="sec-layer-desc">Encrypted at rest & in transit</div>
+                        </div>
+                        <div class="sec-layer-status secure">SECURE</div>
+                    </div>
+                    
+                    <div class="sec-security-layer" role="listitem">
+                        <div class="sec-layer-icon">👁️</div>
+                        <div class="sec-layer-info">
+                            <div class="sec-layer-name">Threat Detection</div>
+                            <div class="sec-layer-desc">24/7 monitoring • SIEM integrated</div>
+                        </div>
+                        <div class="sec-layer-status monitoring">ACTIVE</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="solution-content">
+    <!-- ===== EXECUTIVE SUMMARY ===== -->
+    <section class="sec-section">
+        <div class="sec-container">
+            <div class="sec-section-header">
+                <span class="sec-section-label">Executive Summary</span>
+                <h2>Security-First Architecture</h2>
+                <p class="sec-section-intro">
+                    As enterprises accelerate cloud adoption, security and compliance risks scale 
+                    in parallel. We ensure that security and governance are foundational architectural 
+                    principles, not reactive add-ons.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SECURITY ARCHITECTURE ===== -->
+    <section class="sec-section sec-section--alt sec-section--border">
+        <div class="sec-container">
+            <div class="sec-section-header">
+                <span class="sec-section-label">Architecture</span>
+                <h2>Integrated Security System</h2>
+            </div>
+            
+            <div class="sec-arch-grid">
+                <article class="sec-arch-card">
+                    <div class="sec-arch-icon">🔒</div>
+                    <h3>Cloud Security</h3>
+                    <p>Comprehensive protection spanning all layers:</p>
+                    <ul class="sec-arch-list">
+                        <li>Identity and Access Management (IAM)</li>
+                        <li>Least-privilege access models</li>
+                        <li>Secure networking and micro-segmentation</li>
+                        <li>Zero-trust principles</li>
+                        <li>Encryption at rest and in transit</li>
+                        <li>Key and secrets management</li>
+                    </ul>
+                </article>
+
+                <article class="sec-arch-card">
+                    <div class="sec-arch-icon">✓</div>
+                    <h3>Compliance & Risk</h3>
+                    <p>Architecture-driven regulatory alignment:</p>
+                    <ul class="sec-arch-list">
+                        <li>Data sovereignty and residency</li>
+                        <li>Finance, telecoms, government sectors</li>
+                        <li>Secure audit trails and logging</li>
+                        <li>Policy-as-code enforcement</li>
+                        <li>Compliance by default design</li>
+                    </ul>
+                </article>
+
+                <article class="sec-arch-card">
+                    <div class="sec-arch-icon">👁️</div>
+                    <h3>Threat Detection</h3>
+                    <p>Continuous monitoring and response:</p>
+                    <ul class="sec-arch-list">
+                        <li>Security monitoring across environments</li>
+                        <li>Centralized logging and telemetry</li>
+                        <li>SOC and SIEM integration</li>
+                        <li>Automated alerting workflows</li>
+                        <li>Incident containment readiness</li>
+                    </ul>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== STRATEGIC VALUE ===== -->
+    <section class="sec-section sec-section--border">
+        <div class="sec-container">
+            <div class="sec-section-header">
+                <span class="sec-section-label">Strategic Value</span>
+                <h2>Security as Enabler</h2>
+            </div>
+            
+            <div class="sec-value-grid">
+                {% set values = [
+                    {
+                        'icon': '🛡️',
+                        'title': 'Reduced Risk',
+                        'desc': 'Minimized breach and misconfiguration exposure through architectural discipline'
+                    },
+                    {
+                        'icon': '✓',
+                        'title': 'Audit Readiness',
+                        'desc': 'Strong regulatory compliance and simplified audit processes'
+                    },
+                    {
+                        'icon': '👁️',
+                        'title': 'Enhanced Visibility',
+                        'desc': 'Improved incident detection and response capabilities across environments'
+                    },
+                    {
+                        'icon': '💰',
+                        'title': 'Cost Efficiency',
+                        'desc': 'Lower long-term security operating costs through automation'
+                    },
+                    {
+                        'icon': '🚀',
+                        'title': 'Secure Innovation',
+                        'desc': 'Confidence to scale cloud and AI initiatives without compromise'
+                    },
+                    {
+                        'icon': '🎯',
+                        'title': 'Strategic Advantage',
+                        'desc': 'Security becomes transformation enabler, not constraint'
+                    }
+                ] %}
+                
+                {% for value in values %}
+                <article class="sec-value-card">
+                    <div class="sec-value-icon">{{ value.icon }}</div>
+                    <h3>{{ value.title }}</h3>
+                    <p>{{ value.desc }}</p>
+                </article>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CTA SECTION ===== -->
+    <section class="sec-cta-section">
+        <div class="sec-cta-content">
+            <h2>Build Security into Your Cloud Architecture</h2>
+            <p>
+                Let's discuss how security-by-design can enable your cloud transformation 
+                while meeting the most stringent compliance requirements.
+            </p>
+            <div class="sec-cta-buttons">
+                <a href="#" class="sec-btn sec-btn-primary" download>
+                    <i class="bi bi-download"></i>
+                    <span>Download Full White Paper</span>
+                </a>
+                <a href="{#{ url_for('contact.contact') }#}" class="sec-btn sec-btn-secondary">
+                    <span>Schedule Consultation</span>
+                </a>
+            </div>
+        </div>
+    </section>
+</section>
+
+{% endblock %}

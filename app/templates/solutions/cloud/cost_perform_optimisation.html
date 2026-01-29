@@ -1,0 +1,974 @@
+<!-- Cost & Performance Optimisation (FinOps) -->
+<!--app/templates/solutions/cloud/cost_perform_optimisation.html-->
+{% extends "base.html" %}
+
+{% block title %}Cost & Performance Optimisation (FinOps) – Daybreak Afrika Technologies{% endblock %}
+
+{% block extra_css %}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+    /* ========================================
+    FINOPS - PREMIUM DESIGN
+    Brand-Aligned Theme
+    ======================================== */
+
+    :root {
+        /* Brand Colors - Harmonized */
+        --fin-primary: #00B4D8;
+        --fin-primary-light: #00F5FF;
+        --fin-primary-dark: #0066CC;
+        --fin-secondary: #7CDBFF;
+        --fin-accent: #10b981;
+        --fin-warning: #f59e0b;
+        
+        /* Neutrals */
+        --fin-bg-dark: #0A1128;
+        --fin-bg-darker: #050810;
+        --fin-surface: rgba(255, 255, 255, 0.02);
+        --fin-surface-light: rgba(255, 255, 255, 0.05);
+        --fin-border: rgba(0, 180, 216, 0.1);
+        --fin-text-primary: #F8F9FA;
+        --fin-text-secondary: rgba(248, 249, 250, 0.7);
+        --fin-text-muted: rgba(248, 249, 250, 0.5);
+        
+        /* Effects */
+        --fin-glow-primary: rgba(0, 180, 216, 0.3);
+        --fin-glow-accent: rgba(16, 185, 129, 0.2);
+        --fin-shadow-md: 0 8px 24px rgba(0, 0, 0, 0.4);
+        --fin-shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.5);
+        
+        /* Spacing */
+        --fin-space-xs: 0.5rem;
+        --fin-space-sm: 1rem;
+        --fin-space-md: 1.5rem;
+        --fin-space-lg: 2.5rem;
+        --fin-space-xl: 4rem;
+        --fin-space-2xl: 6rem;
+        
+        /* Border Radius */
+        --fin-radius-sm: 8px;
+        --fin-radius-md: 12px;
+        --fin-radius-lg: 16px;
+        
+        /* Typography */
+        --fin-font-sans: 'Space Grotesk', system-ui, sans-serif;
+        --fin-font-mono: 'IBM Plex Mono', monospace;
+        --fin-font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        
+        /* Transitions */
+        --fin-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* ========================================
+    HERO SECTION
+    ======================================== */
+
+    .fin-hero {
+        position: relative;
+        min-height: 85vh;
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+    }
+
+    .fin-hero::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: 
+            radial-gradient(circle at 20% 30%, var(--fin-glow-primary) 0%, transparent 50%),
+            radial-gradient(circle at 80% 70%, rgba(245, 158, 11, 0.2) 0%, transparent 50%),
+            radial-gradient(circle at 50% 50%, var(--fin-glow-accent) 0%, transparent 60%);
+        animation: ambientPulse 12s ease-in-out infinite alternate;
+        opacity: 0.4;
+    }
+
+    @keyframes ambientPulse {
+        0% { transform: scale(1); opacity: 0.3; }
+        100% { transform: scale(1.1); opacity: 0.5; }
+    }
+
+    .fin-hero-content {
+        position: relative;
+        z-index: 10;
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: var(--fin-space-2xl) var(--fin-space-lg);
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: var(--fin-space-2xl);
+        align-items: center;
+    }
+
+    .fin-hero-text {
+        animation: slideInLeft 0.8s ease-out;
+    }
+
+    @keyframes slideInLeft {
+        from { opacity: 0; transform: translateX(-30px); }
+        to { opacity: 1; transform: translateX(0); }
+    }
+
+    .fin-paper-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: var(--fin-space-xs);
+        padding: var(--fin-space-xs) var(--fin-space-md);
+        background: rgba(245, 158, 11, 0.12);
+        border: 1px solid rgba(245, 158, 11, 0.35);
+        border-radius: 100px;
+        font-size: 0.75rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: #f59e0b;
+        margin-bottom: var(--fin-space-md);
+        animation: fadeInDown 0.6s ease-out;
+    }
+
+    .fin-badge-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 18px;
+        height: 18px;
+        background: #f59e0b;
+        border-radius: 50%;
+        color: white;
+        font-size: 0.65rem;
+        animation: paperPulse 2s ease-in-out infinite;
+    }
+
+    @keyframes paperPulse {
+        0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.7); }
+        50% { transform: scale(1.1); box-shadow: 0 0 0 8px rgba(245, 158, 11, 0); }
+    }
+
+    @keyframes fadeInDown {
+        from { opacity: 0; transform: translateY(-15px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    .fin-hero h1 {
+        font-size: clamp(2.5rem, 6vw, 4.5rem);
+        font-weight: 800;
+        line-height: 1.1;
+        margin: 0 0 var(--fin-space-md);
+        letter-spacing: -0.03em;
+        animation: fadeInUp 0.8s ease-out 0.2s backwards;
+    }
+
+    .fin-hero h1 span {
+        background: linear-gradient(135deg, #0066CC 0%, #00B4D8 50%, #00F5FF 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    @keyframes fadeInUp {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    .fin-hero-lead {
+        font-size: clamp(1.1rem, 1.8vw, 1.4rem);
+        color: var(--fin-text-secondary);
+        max-width: 600px;
+        margin-bottom: var(--fin-space-xl);
+        line-height: 1.7;
+        animation: fadeInUp 0.8s ease-out 0.4s backwards;
+    }
+
+    .fin-hero-cta {
+        display: flex;
+        gap: var(--fin-space-md);
+        flex-wrap: wrap;
+        animation: fadeInUp 0.8s ease-out 0.6s backwards;
+    }
+
+    /* Hero Visual - Cost Dashboard */
+    .fin-hero-visual {
+        animation: slideInRight 0.8s ease-out 0.4s backwards;
+    }
+
+    @keyframes slideInRight {
+        from { opacity: 0; transform: translateX(30px); }
+        to { opacity: 1; transform: translateX(0); }
+    }
+
+    .fin-cost-dashboard {
+        background: var(--fin-surface);
+        border: 1px solid var(--fin-border);
+        border-radius: var(--fin-radius-lg);
+        padding: var(--fin-space-lg);
+        box-shadow: var(--fin-shadow-lg);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .fin-cost-dashboard::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: linear-gradient(90deg, #f59e0b, #00B4D8, #10b981);
+        background-size: 200% 100%;
+        animation: scanLine 3s linear infinite;
+    }
+
+    @keyframes scanLine {
+        0% { background-position: 200% 0; }
+        100% { background-position: -200% 0; }
+    }
+
+    .fin-dashboard-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: var(--fin-space-md);
+        padding-bottom: var(--fin-space-sm);
+        border-bottom: 1px solid var(--fin-border);
+    }
+
+    .fin-dashboard-title {
+        font-family: var(--fin-font-body);
+        font-size: 0.85rem;
+        color: #00B4D8;
+        font-weight: 600;
+    }
+
+    .fin-dashboard-status {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 0.75rem;
+        color: #10b981;
+    }
+
+    .fin-status-dot {
+        width: 8px;
+        height: 8px;
+        background: #10b981;
+        border-radius: 50%;
+        animation: statusBlink 2s ease-in-out infinite;
+    }
+
+    @keyframes statusBlink {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.3; }
+    }
+
+    .fin-metrics-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: var(--fin-space-sm);
+        margin-bottom: var(--fin-space-md);
+    }
+
+    .fin-metric-card {
+        padding: var(--fin-space-sm);
+        background: rgba(0, 180, 216, 0.05);
+        border: 1px solid var(--fin-border);
+        border-radius: var(--fin-radius-sm);
+        animation: slideInRight 0.5s ease-out backwards;
+    }
+
+    .fin-metric-card:nth-child(1) { animation-delay: 0.1s; }
+    .fin-metric-card:nth-child(2) { animation-delay: 0.2s; }
+    .fin-metric-card:nth-child(3) { animation-delay: 0.3s; }
+    .fin-metric-card:nth-child(4) { animation-delay: 0.4s; }
+
+    .fin-metric-label {
+        font-size: 0.7rem;
+        color: var(--fin-text-muted);
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        margin-bottom: 0.25rem;
+    }
+
+    .fin-metric-value {
+        font-size: 1.5rem;
+        font-weight: 700;
+        font-family: var(--fin-font-mono);
+        color: var(--fin-text-primary);
+    }
+
+    .fin-metric-trend {
+        font-size: 0.7rem;
+        margin-top: 0.25rem;
+    }
+
+    .fin-metric-trend.positive {
+        color: #10b981;
+    }
+
+    .fin-metric-trend.negative {
+        color: #f59e0b;
+    }
+
+    .fin-optimisation-list {
+        display: grid;
+        gap: var(--fin-space-xs);
+    }
+
+    .fin-optimisation-item {
+        display: flex;
+        align-items: center;
+        gap: var(--fin-space-sm);
+        padding: var(--fin-space-xs);
+        background: rgba(16, 185, 129, 0.05);
+        border-left: 3px solid #10b981;
+        border-radius: var(--fin-radius-sm);
+        animation: slideInRight 0.5s ease-out backwards;
+    }
+
+    .fin-optimisation-item:nth-child(1) { animation-delay: 0.5s; }
+    .fin-optimisation-item:nth-child(2) { animation-delay: 0.6s; }
+
+    .fin-opt-icon {
+        font-size: 1rem;
+    }
+
+    .fin-opt-text {
+        flex: 1;
+        font-size: 0.75rem;
+        color: var(--fin-text-secondary);
+    }
+
+    .fin-opt-badge {
+        font-size: 0.65rem;
+        font-weight: 600;
+        padding: 0.2rem 0.5rem;
+        border-radius: 4px;
+        background: rgba(16, 185, 129, 0.2);
+        color: #10b981;
+    }
+
+    /* ========================================
+    BUTTONS
+    ======================================== */
+
+    .fin-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: var(--fin-space-xs);
+        padding: 1rem 2rem;
+        font-family: var(--fin-font-body);
+        font-size: 1rem;
+        font-weight: 600;
+        text-decoration: none;
+        border-radius: var(--fin-radius-md);
+        transition: var(--fin-transition);
+        cursor: pointer;
+        border: none;
+        white-space: nowrap;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .fin-btn::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+        transform: translateX(-100%);
+        transition: transform 0.6s;
+    }
+
+    .fin-btn:hover::before {
+        transform: translateX(100%);
+    }
+
+    .fin-btn-primary {
+        background: linear-gradient(135deg, #0066CC 0%, #00B4D8 100%);
+        color: #FFFFFF;
+        box-shadow: 0 4px 16px rgba(0, 180, 216, 0.3);
+    }
+
+    .fin-btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 30px rgba(0, 180, 216, 0.4);
+        color: #FFFFFF;
+    }
+
+    .fin-btn-secondary {
+        background: transparent;
+        color: #00B4D8;
+        border: 2px solid #00B4D8;
+    }
+
+    .fin-btn-secondary:hover {
+        background: rgba(0, 180, 216, 0.1);
+        color: #00F5FF;
+        border-color: #00F5FF;
+        transform: translateY(-2px);
+    }
+
+    /* ========================================
+    SECTIONS
+    ======================================== */
+
+    .fin-section {
+        padding: var(--fin-space-2xl) var(--fin-space-lg);
+        position: relative;
+    }
+
+    .fin-section--alt {
+        background: var(--fin-bg-dark);
+    }
+
+    .fin-section--border {
+        border-top: 1px solid rgba(0, 180, 216, 0.1);
+    }
+
+    .fin-container {
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+
+    .fin-section-header {
+        max-width: 900px;
+        margin: 0 auto var(--fin-space-xl);
+        text-align: center;
+    }
+
+    .fin-section-label {
+        display: inline-flex;
+        align-items: center;
+        gap: var(--fin-space-xs);
+        font-size: 0.75rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        color: #00B4D8;
+        margin-bottom: var(--fin-space-sm);
+        padding: 0.4rem 1rem;
+        background: rgba(0, 180, 216, 0.1);
+        border: 1px solid rgba(0, 180, 216, 0.3);
+        border-radius: 100px;
+    }
+
+    .fin-section-label::before {
+        content: '';
+        width: 6px;
+        height: 6px;
+        background: #00B4D8;
+        border-radius: 50%;
+        animation: labelPulse 2s ease-in-out infinite;
+    }
+
+    @keyframes labelPulse {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.4; }
+    }
+
+    .fin-section h2 {
+        font-size: clamp(2rem, 5vw, 3.5rem);
+        font-weight: 800;
+        line-height: 1.2;
+        margin: 0 0 var(--fin-space-md);
+        letter-spacing: -0.02em;
+    }
+
+    .fin-section-intro {
+        font-size: 1.2rem;
+        color: var(--fin-text-secondary);
+        line-height: 1.7;
+    }
+
+    /* ========================================
+    CAPABILITY CARDS
+    ======================================== */
+
+    .fin-capabilities {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: var(--fin-space-xl);
+        margin-top: var(--fin-space-xl);
+    }
+
+    .fin-capability-card {
+        background: var(--fin-surface);
+        border: 1px solid var(--fin-border);
+        border-radius: var(--fin-radius-lg);
+        padding: var(--fin-space-xl);
+        transition: var(--fin-transition);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .fin-capability-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background: linear-gradient(90deg, #0066CC, #00B4D8);
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.4s ease;
+    }
+
+    .fin-capability-card:hover::before {
+        transform: scaleX(1);
+    }
+
+    .fin-capability-card:hover {
+        border-color: #00B4D8;
+        box-shadow: var(--fin-shadow-lg), 0 0 40px rgba(0, 180, 216, 0.3);
+        transform: translateY(-8px);
+    }
+
+    .fin-capability-icon {
+        width: 64px;
+        height: 64px;
+        background: linear-gradient(135deg, rgba(0, 180, 216, 0.2), rgba(16, 185, 129, 0.2));
+        border-radius: var(--fin-radius-md);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2rem;
+        margin-bottom: var(--fin-space-md);
+    }
+
+    .fin-capability-card h3 {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--fin-text-primary);
+        margin: 0 0 var(--fin-space-md);
+        padding-bottom: var(--fin-space-sm);
+        border-bottom: 2px solid rgba(0, 180, 216, 0.2);
+    }
+
+    .fin-capability-card > p {
+        color: var(--fin-text-secondary);
+        margin-bottom: var(--fin-space-md);
+        line-height: 1.6;
+    }
+
+    .fin-capability-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .fin-capability-list li {
+        padding: var(--fin-space-sm) 0;
+        color: var(--fin-text-secondary);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        display: flex;
+        gap: var(--fin-space-sm);
+        line-height: 1.6;
+    }
+
+    .fin-capability-list li:last-child {
+        border-bottom: none;
+    }
+
+    .fin-capability-list li::before {
+        content: '→';
+        color: #10b981;
+        flex-shrink: 0;
+        font-weight: 700;
+    }
+
+    /* ========================================
+    VALUE CARDS
+    ======================================== */
+
+    .fin-value-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: var(--fin-space-lg);
+        margin-top: var(--fin-space-xl);
+    }
+
+    .fin-value-card {
+        background: var(--fin-surface);
+        border: 1px solid var(--fin-border);
+        border-radius: var(--fin-radius-lg);
+        padding: var(--fin-space-lg);
+        transition: var(--fin-transition);
+    }
+
+    .fin-value-card:hover {
+        border-color: #10b981;
+        box-shadow: 0 8px 24px rgba(16, 185, 129, 0.15);
+        transform: translateY(-4px);
+    }
+
+    .fin-value-icon {
+        width: 56px;
+        height: 56px;
+        background: linear-gradient(135deg, rgba(0, 180, 216, 0.2), rgba(16, 185, 129, 0.2));
+        border-radius: var(--fin-radius-md);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.75rem;
+        margin-bottom: var(--fin-space-md);
+    }
+
+    .fin-value-card h3 {
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: var(--fin-text-primary);
+        margin: 0 0 var(--fin-space-sm);
+    }
+
+    .fin-value-card p {
+        color: var(--fin-text-secondary);
+        margin: 0;
+        line-height: 1.6;
+    }
+
+    /* ========================================
+    CTA SECTION
+    ======================================== */
+
+    .fin-cta-section {
+        padding: calc(var(--fin-space-2xl) * 1.5) var(--fin-space-lg);
+        text-align: center;
+        background: linear-gradient(165deg, var(--fin-bg-dark) 0%, var(--fin-bg-darker) 100%);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .fin-cta-section::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 800px;
+        height: 800px;
+        background: radial-gradient(circle, rgba(0, 180, 216, 0.3) 0%, transparent 70%);
+        transform: translate(-50%, -50%);
+        animation: ctaPulse 8s ease-in-out infinite;
+    }
+
+    @keyframes ctaPulse {
+        0%, 100% { opacity: 0.2; transform: translate(-50%, -50%) scale(1); }
+        50% { opacity: 0.4; transform: translate(-50%, -50%) scale(1.1); }
+    }
+
+    .fin-cta-content {
+        position: relative;
+        z-index: 1;
+        max-width: 900px;
+        margin: 0 auto;
+    }
+
+    .fin-cta-section h2 {
+        font-size: clamp(2rem, 5vw, 3.5rem);
+        margin-bottom: var(--fin-space-md);
+    }
+
+    .fin-cta-section p {
+        font-size: 1.3rem;
+        color: var(--fin-text-secondary);
+        margin-bottom: var(--fin-space-xl);
+        line-height: 1.7;
+    }
+
+    .fin-cta-buttons {
+        display: flex;
+        gap: var(--fin-space-md);
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    /* ========================================
+    RESPONSIVE
+    ======================================== */
+
+    @media (max-width: 1024px) {
+        .fin-hero-content {
+            grid-template-columns: 1fr;
+            gap: var(--fin-space-xl);
+        }
+        
+        .fin-hero-visual {
+            order: -1;
+        }
+    }
+
+    @media (max-width: 768px) {
+        :root {
+            --fin-space-xl: 3rem;
+            --fin-space-2xl: 4rem;
+        }
+        
+        .fin-hero {
+            min-height: 75vh;
+        }
+        
+        .fin-section {
+            padding: var(--fin-space-xl) var(--fin-space-md);
+        }
+        
+        .fin-hero-cta,
+        .fin-cta-buttons {
+            flex-direction: column;
+            width: 100%;
+        }
+        
+        .fin-btn {
+            width: 100%;
+        }
+        
+        .fin-capabilities,
+        .fin-value-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .fin-metrics-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    /* ========================================
+    ACCESSIBILITY
+    ======================================== */
+
+    @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.01ms !important;
+        }
+    }
+
+    .fin-btn:focus-visible,
+    .fin-capability-card:focus-visible,
+    .fin-value-card:focus-visible {
+        outline: 3px solid #00F5FF;
+        outline-offset: 4px;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+
+<section class="fin-hero" aria-labelledby="fin-hero-title">
+    <div class="fin-hero-content">
+        <div class="fin-hero-text">
+            <div class="fin-paper-badge">
+                <div class="fin-badge-icon">💰</div>
+                <span>• FinOps</span>
+            </div>
+            
+            <h1 id="fin-hero-title">
+                <span>Cost & Performance</span><br>
+                Optimisation
+            </h1>
+            
+            <p class="fin-hero-lead">
+                Maximum performance without runaway cloud spend. Align financial accountability 
+                with engineering discipline for measurable, sustained returns.
+            </p>
+            
+            <div class="fin-hero-cta">
+                <a href="#" class="fin-btn fin-btn-primary" download>
+                    <i class="bi bi-download"></i>
+                    <span>Download PDF</span>
+                </a>
+                <a href="{#{ url_for('contact.contact') }#}" class="fin-btn fin-btn-secondary">
+                    <span>Request Consultation</span>
+                </a>
+            </div>
+        </div>
+        
+        <div class="fin-hero-visual">
+            <div class="fin-cost-dashboard">
+                <div class="fin-dashboard-header">
+                    <div class="fin-dashboard-title">COST OPTIMISATION</div>
+                    <div class="fin-dashboard-status">
+                        <span class="fin-status-dot"></span>
+                        <span>OPTIMIZED</span>
+                    </div>
+                </div>
+                
+                <div class="fin-metrics-grid">
+                    <div class="fin-metric-card">
+                        <div class="fin-metric-label">Monthly Spend</div>
+                        <div class="fin-metric-value">$24.5K</div>
+                        <div class="fin-metric-trend positive">↓ 18% vs last month</div>
+                    </div>
+                    
+                    <div class="fin-metric-card">
+                        <div class="fin-metric-label">utilisation</div>
+                        <div class="fin-metric-value">82%</div>
+                        <div class="fin-metric-trend positive">↑ 12% improvement</div>
+                    </div>
+                    
+                    <div class="fin-metric-card">
+                        <div class="fin-metric-label">Avg Latency</div>
+                        <div class="fin-metric-value">45ms</div>
+                        <div class="fin-metric-trend positive">↓ 8ms faster</div>
+                    </div>
+                    
+                    <div class="fin-metric-card">
+                        <div class="fin-metric-label">Cost/Request</div>
+                        <div class="fin-metric-value">$0.03</div>
+                        <div class="fin-metric-trend positive">↓ 22% reduction</div>
+                    </div>
+                </div>
+                
+                <div class="fin-optimisation-list">
+                    <div class="fin-optimisation-item">
+                        <div class="fin-opt-icon">💡</div>
+                        <div class="fin-opt-text">Idle resources identified</div>
+                        <div class="fin-opt-badge">$3.2K/mo</div>
+                    </div>
+                    <div class="fin-optimisation-item">
+                        <div class="fin-opt-icon">⚡</div>
+                        <div class="fin-opt-text">Reserved instance opportunity</div>
+                        <div class="fin-opt-badge">$5.8K/mo</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="solution-content">
+    <!-- ===== EXECUTIVE SUMMARY ===== -->
+    <section class="fin-section">
+        <div class="fin-container">
+            <div class="fin-section-header">
+                <span class="fin-section-label">Executive Summary</span>
+                <h2>Financial Discipline Meets Engineering Excellence</h2>
+                <p class="fin-section-intro">
+                    Cloud cost overruns are governance failures. We embed FinOps principles directly 
+                    into cloud architectures, ensuring every unit of spend is intentional, justified, 
+                    and optimized for performance.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CAPABILITIES ===== -->
+    <section class="fin-section fin-section--alt fin-section--border">
+        <div class="fin-container">
+            <div class="fin-section-header">
+                <span class="fin-section-label">Approach</span>
+                <h2>Integrated FinOps Framework</h2>
+            </div>
+            
+            <div class="fin-capabilities">
+                <article class="fin-capability-card">
+                    <div class="fin-capability-icon">💰</div>
+                    <h3>Cost Management</h3>
+                    <p>Visibility precedes control:</p>
+                    <ul class="fin-capability-list">
+                        <li>Detailed usage and cost transparency</li>
+                        <li>Cost allocation by application and unit</li>
+                        <li>Budget controls and proactive alerting</li>
+                        <li>Reserved instance strategy design</li>
+                        <li>Reduced waste from idle resources</li>
+                    </ul>
+                </article>
+
+                <article class="fin-capability-card">
+                    <div class="fin-capability-icon">⚡</div>
+                    <h3>Performance Engineering</h3>
+                    <p>Efficiency without compromise:</p>
+                    <ul class="fin-capability-list">
+                        <li>Application performance monitoring</li>
+                        <li>Latency and throughput optimisation</li>
+                        <li>Demand-aligned autoscaling policies</li>
+                        <li>Intelligent resource allocation</li>
+                        <li>Consistent user experience delivery</li>
+                    </ul>
+                </article>
+
+                <article class="fin-capability-card">
+                    <div class="fin-capability-icon">🔄</div>
+                    <h3>Continuous Optimisation</h3>
+                    <p>Ongoing operational discipline:</p>
+                    <ul class="fin-capability-list">
+                        <li>Regular cost–performance reviews</li>
+                        <li>SLA-backed performance management</li>
+                        <li>Capacity forecasting and planning</li>
+                        <li>Continuous scaling refinement</li>
+                        <li>Dynamic pricing strategy adjustment</li>
+                    </ul>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== STRATEGIC VALUE ===== -->
+    <section class="fin-section fin-section--border">
+        <div class="fin-container">
+            <div class="fin-section-header">
+                <span class="fin-section-label">Executive Value</span>
+                <h2>Business Outcomes</h2>
+            </div>
+            
+            <div class="fin-value-grid">
+                {% set values = [
+                    {
+                        'icon': '📊',
+                        'title': 'Predictable Spend',
+                        'desc': 'Controlled cloud expenditure with clear financial forecasting and budget management'
+                    },
+                    {
+                        'icon': '🚀',
+                        'title': 'Enhanced Performance',
+                        'desc': 'Improved application reliability and consistent user experience under load'
+                    },
+                    {
+                        'icon': '🎯',
+                        'title': 'Business Alignment',
+                        'desc': 'Clear connection between IT expenditure and measurable business outcomes'
+                    },
+                    {
+                        'icon': '💪',
+                        'title': 'Scaling Confidence',
+                        'desc': 'Greater confidence in expanding digital initiatives without cost concerns'
+                    }
+                ] %}
+                
+                {% for value in values %}
+                <article class="fin-value-card">
+                    <div class="fin-value-icon">{{ value.icon }}</div>
+                    <h3>{{ value.title }}</h3>
+                    <p>{{ value.desc }}</p>
+                </article>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CTA SECTION ===== -->
+    <section class="fin-cta-section">
+        <div class="fin-cta-content">
+            <h2>Optimize Cloud Value</h2>
+            <p>
+                Let's discuss how FinOps practices can align your cloud investments with 
+                business outcomes—delivering maximum performance without runaway spend.
+            </p>
+            <div class="fin-cta-buttons">
+                <a href="#" class="fin-btn fin-btn-primary" download>
+                    <i class="bi bi-download"></i>
+                    <span>Download Full White Paper</span>
+                </a>
+                <a href="{#{ url_for('contact.contact') }#}" class="fin-btn fin-btn-secondary">
+                    <span>Schedule Consultation</span>
+                </a>
+            </div>
+        </div>
+    </section>
+</section>
+
+{% endblock %}
