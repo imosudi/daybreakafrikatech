@@ -1,0 +1,1146 @@
+<!-- Server Virtualisation & Storage White Paper -->
+<!--templates/resources/whitepapers/virtualisation.html-->
+{% extends "base.html" %}
+
+{% block title %}Server Virtualisation & Storage – Daybreak Afrika Technologies{% endblock %}
+
+{% block extra_css %}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+    /* ========================================
+    VIRTUALISATION WHITE PAPER - PREMIUM DESIGN
+    Brand-Aligned Theme
+    ======================================== */
+
+    :root {
+        /* Brand Colors - Harmonized */
+        --virt-primary: #00B4D8;
+        --virt-primary-light: #00F5FF;
+        --virt-primary-dark: #0066CC;
+        --virt-secondary: #7CDBFF;
+        --virt-accent: #10b981;
+        --virt-warning: #f59e0b;
+        
+        /* Neutrals */
+        --virt-bg-dark: #0A1128;
+        --virt-bg-darker: #050810;
+        --virt-surface: rgba(255, 255, 255, 0.02);
+        --virt-surface-light: rgba(255, 255, 255, 0.05);
+        --virt-border: rgba(0, 180, 216, 0.1);
+        --virt-text-primary: #F8F9FA;
+        --virt-text-secondary: rgba(248, 249, 250, 0.7);
+        --virt-text-muted: rgba(248, 249, 250, 0.5);
+        
+        /* Effects */
+        --virt-glow-primary: rgba(0, 180, 216, 0.3);
+        --virt-glow-accent: rgba(16, 185, 129, 0.2);
+        --virt-shadow-md: 0 8px 24px rgba(0, 0, 0, 0.4);
+        --virt-shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.5);
+        
+        /* Spacing */
+        --virt-space-xs: 0.5rem;
+        --virt-space-sm: 1rem;
+        --virt-space-md: 1.5rem;
+        --virt-space-lg: 2.5rem;
+        --virt-space-xl: 4rem;
+        --virt-space-2xl: 6rem;
+        
+        /* Border Radius */
+        --virt-radius-sm: 8px;
+        --virt-radius-md: 12px;
+        --virt-radius-lg: 16px;
+        
+        /* Typography */
+        --virt-font-sans: 'Space Grotesk', system-ui, sans-serif;
+        --virt-font-mono: 'IBM Plex Mono', monospace;
+        --virt-font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        
+        /* Transitions */
+        --virt-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* ========================================
+    HERO SECTION
+    ======================================== */
+
+    .virt-hero {
+        position: relative;
+        min-height: 85vh;
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+    }
+
+    .virt-hero::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: 
+            radial-gradient(circle at 20% 30%, var(--virt-glow-primary) 0%, transparent 50%),
+            radial-gradient(circle at 80% 70%, var(--virt-glow-accent) 0%, transparent 50%),
+            radial-gradient(circle at 50% 50%, rgba(124, 219, 255, 0.1) 0%, transparent 60%);
+        animation: ambientPulse 12s ease-in-out infinite alternate;
+        opacity: 0.4;
+    }
+
+    @keyframes ambientPulse {
+        0% { transform: scale(1); opacity: 0.3; }
+        100% { transform: scale(1.1); opacity: 0.5; }
+    }
+
+    .virt-hero-content {
+        position: relative;
+        z-index: 10;
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: var(--virt-space-2xl) var(--virt-space-lg);
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: var(--virt-space-2xl);
+        align-items: center;
+    }
+
+    .virt-hero-text {
+        animation: slideInLeft 0.8s ease-out;
+    }
+
+    @keyframes slideInLeft {
+        from { opacity: 0; transform: translateX(-30px); }
+        to { opacity: 1; transform: translateX(0); }
+    }
+
+    .virt-paper-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: var(--virt-space-xs);
+        padding: var(--virt-space-xs) var(--virt-space-md);
+        background: rgba(16, 185, 129, 0.12);
+        border: 1px solid rgba(16, 185, 129, 0.35);
+        border-radius: 100px;
+        font-size: 0.75rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: #10b981;
+        margin-bottom: var(--virt-space-md);
+        animation: fadeInDown 0.6s ease-out;
+    }
+
+    .virt-badge-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 18px;
+        height: 18px;
+        background: #10b981;
+        border-radius: 50%;
+        color: white;
+        font-size: 0.65rem;
+        animation: paperPulse 2s ease-in-out infinite;
+    }
+
+    @keyframes paperPulse {
+        0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+        50% { transform: scale(1.1); box-shadow: 0 0 0 8px rgba(16, 185, 129, 0); }
+    }
+
+    @keyframes fadeInDown {
+        from { opacity: 0; transform: translateY(-15px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    .virt-hero h1 {
+        font-size: clamp(2.5rem, 6vw, 4.5rem);
+        font-weight: 800;
+        line-height: 1.1;
+        margin: 0 0 var(--virt-space-md);
+        letter-spacing: -0.03em;
+        animation: fadeInUp 0.8s ease-out 0.2s backwards;
+    }
+
+    .virt-hero h1 span {
+        background: linear-gradient(135deg, #0066CC 0%, #00B4D8 50%, #00F5FF 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    @keyframes fadeInUp {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    .virt-hero-lead {
+        font-size: clamp(1.1rem, 1.8vw, 1.4rem);
+        color: var(--virt-text-secondary);
+        max-width: 600px;
+        margin-bottom: var(--virt-space-xl);
+        line-height: 1.7;
+        animation: fadeInUp 0.8s ease-out 0.4s backwards;
+    }
+
+    .virt-hero-cta {
+        display: flex;
+        gap: var(--virt-space-md);
+        flex-wrap: wrap;
+        animation: fadeInUp 0.8s ease-out 0.6s backwards;
+    }
+
+    /* Hero Visual - Stack Diagram */
+    .virt-hero-visual {
+        animation: slideInRight 0.8s ease-out 0.4s backwards;
+    }
+
+    @keyframes slideInRight {
+        from { opacity: 0; transform: translateX(30px); }
+        to { opacity: 1; transform: translateX(0); }
+    }
+
+    .virt-stack-diagram {
+        background: var(--virt-surface);
+        border: 1px solid var(--virt-border);
+        border-radius: var(--virt-radius-lg);
+        padding: var(--virt-space-lg);
+        box-shadow: var(--virt-shadow-lg);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .virt-stack-diagram::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: linear-gradient(90deg, #0066CC, #00B4D8, #10b981);
+        background-size: 200% 100%;
+        animation: scanLine 3s linear infinite;
+    }
+
+    @keyframes scanLine {
+        0% { background-position: 200% 0; }
+        100% { background-position: -200% 0; }
+    }
+
+    .virt-stack-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: var(--virt-space-md);
+        padding-bottom: var(--virt-space-sm);
+        border-bottom: 1px solid var(--virt-border);
+    }
+
+    .virt-stack-title {
+        font-family: var(--virt-font-body);
+        font-size: 0.85rem;
+        color: #00B4D8;
+        font-weight: 600;
+    }
+
+    .virt-stack-status {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 0.75rem;
+        color: #10b981;
+    }
+
+    .virt-status-dot {
+        width: 8px;
+        height: 8px;
+        background: #10b981;
+        border-radius: 50%;
+        animation: statusBlink 2s ease-in-out infinite;
+    }
+
+    @keyframes statusBlink {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.3; }
+    }
+
+    .virt-stack-layers {
+        display: grid;
+        gap: var(--virt-space-sm);
+    }
+
+    .virt-stack-layer {
+        padding: var(--virt-space-md);
+        background: rgba(0, 180, 216, 0.05);
+        border: 1px solid var(--virt-border);
+        border-radius: var(--virt-radius-sm);
+        transition: var(--virt-transition);
+        animation: slideInRight 0.5s ease-out backwards;
+    }
+
+    .virt-stack-layer:nth-child(1) { animation-delay: 0.1s; }
+    .virt-stack-layer:nth-child(2) { animation-delay: 0.2s; }
+    .virt-stack-layer:nth-child(3) { animation-delay: 0.3s; }
+    .virt-stack-layer:nth-child(4) { animation-delay: 0.4s; }
+
+    .virt-stack-layer:hover {
+        background: rgba(0, 180, 216, 0.1);
+        border-color: #00B4D8;
+        transform: translateX(5px);
+    }
+
+    .virt-layer-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: var(--virt-space-xs);
+    }
+
+    .virt-layer-name {
+        font-size: 0.9rem;
+        font-weight: 700;
+        color: var(--virt-text-primary);
+    }
+
+    .virt-layer-badge {
+        font-size: 0.7rem;
+        font-weight: 600;
+        padding: 0.2rem 0.5rem;
+        border-radius: 4px;
+        font-family: var(--virt-font-mono);
+        background: rgba(16, 185, 129, 0.2);
+        color: #10b981;
+    }
+
+    .virt-layer-desc {
+        font-size: 0.75rem;
+        color: var(--virt-text-muted);
+        font-family: var(--virt-font-body);
+    }
+
+    /* ========================================
+    BUTTONS
+    ======================================== */
+
+    .virt-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: var(--virt-space-xs);
+        padding: 1rem 2rem;
+        font-family: var(--virt-font-body);
+        font-size: 1rem;
+        font-weight: 600;
+        text-decoration: none;
+        border-radius: var(--virt-radius-md);
+        transition: var(--virt-transition);
+        cursor: pointer;
+        border: none;
+        white-space: nowrap;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .virt-btn::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+        transform: translateX(-100%);
+        transition: transform 0.6s;
+    }
+
+    .virt-btn:hover::before {
+        transform: translateX(100%);
+    }
+
+    .virt-btn-primary {
+        background: linear-gradient(135deg, #0066CC 0%, #00B4D8 100%);
+        color: #FFFFFF;
+        box-shadow: 0 4px 16px rgba(0, 180, 216, 0.3);
+    }
+
+    .virt-btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 30px rgba(0, 180, 216, 0.4);
+        color: #FFFFFF;
+    }
+
+    .virt-btn-secondary {
+        background: transparent;
+        color: #00B4D8;
+        border: 2px solid #00B4D8;
+    }
+
+    .virt-btn-secondary:hover {
+        background: rgba(0, 180, 216, 0.1);
+        color: #00F5FF;
+        border-color: #00F5FF;
+        transform: translateY(-2px);
+    }
+
+    /* ========================================
+    SECTIONS
+    ======================================== */
+
+    .virt-section {
+        padding: var(--virt-space-2xl) var(--virt-space-lg);
+        position: relative;
+    }
+
+    .virt-section--alt {
+        background: var(--virt-bg-dark);
+    }
+
+    .virt-section--border {
+        border-top: 1px solid rgba(0, 180, 216, 0.1);
+    }
+
+    .virt-container {
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+
+    .virt-section-header {
+        max-width: 900px;
+        margin: 0 auto var(--virt-space-xl);
+        text-align: center;
+    }
+
+    .virt-section-label {
+        display: inline-flex;
+        align-items: center;
+        gap: var(--virt-space-xs);
+        font-size: 0.75rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        color: #00B4D8;
+        margin-bottom: var(--virt-space-sm);
+        padding: 0.4rem 1rem;
+        background: rgba(0, 180, 216, 0.1);
+        border: 1px solid rgba(0, 180, 216, 0.3);
+        border-radius: 100px;
+    }
+
+    .virt-section-label::before {
+        content: '';
+        width: 6px;
+        height: 6px;
+        background: #00B4D8;
+        border-radius: 50%;
+        animation: labelPulse 2s ease-in-out infinite;
+    }
+
+    @keyframes labelPulse {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.4; }
+    }
+
+    .virt-section h2 {
+        font-size: clamp(2rem, 5vw, 3.5rem);
+        font-weight: 800;
+        line-height: 1.2;
+        margin: 0 0 var(--virt-space-md);
+        letter-spacing: -0.02em;
+    }
+
+    .virt-section-intro {
+        font-size: 1.2rem;
+        color: var(--virt-text-secondary);
+        line-height: 1.7;
+    }
+
+    /* ========================================
+    PLATFORM CARDS
+    ======================================== */
+
+    .virt-platforms {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: var(--virt-space-lg);
+        margin-top: var(--virt-space-xl);
+    }
+
+    .virt-platform-card {
+        background: var(--virt-surface);
+        border: 1px solid var(--virt-border);
+        border-radius: var(--virt-radius-lg);
+        padding: var(--virt-space-xl);
+        transition: var(--virt-transition);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .virt-platform-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background: linear-gradient(90deg, #0066CC, #00B4D8);
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.4s ease;
+    }
+
+    .virt-platform-card:hover::before {
+        transform: scaleX(1);
+    }
+
+    .virt-platform-card:hover {
+        border-color: #00B4D8;
+        box-shadow: var(--virt-shadow-lg), 0 0 40px rgba(0, 180, 216, 0.3);
+        transform: translateY(-8px);
+    }
+
+    .virt-platform-icon {
+        width: 64px;
+        height: 64px;
+        background: linear-gradient(135deg, rgba(0, 180, 216, 0.2), rgba(16, 185, 129, 0.2));
+        border-radius: var(--virt-radius-md);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2rem;
+        margin-bottom: var(--virt-space-md);
+    }
+
+    .virt-platform-card h3 {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--virt-text-primary);
+        margin: 0 0 var(--virt-space-md);
+    }
+
+    .virt-criteria-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .virt-criteria-list li {
+        padding: var(--virt-space-xs) 0;
+        color: var(--virt-text-secondary);
+        display: flex;
+        align-items: center;
+        gap: var(--virt-space-sm);
+    }
+
+    .virt-criteria-list li::before {
+        content: '✓';
+        color: #10b981;
+        font-weight: 700;
+        flex-shrink: 0;
+    }
+
+    /* ========================================
+    CLUSTERING ARCHITECTURE
+    ======================================== */
+
+    .virt-cluster-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: var(--virt-space-xl);
+        margin-top: var(--virt-space-xl);
+    }
+
+    .virt-cluster-card {
+        background: var(--virt-surface);
+        border: 1px solid var(--virt-border);
+        border-radius: var(--virt-radius-lg);
+        padding: var(--virt-space-xl);
+        transition: var(--virt-transition);
+    }
+
+    .virt-cluster-card:hover {
+        border-color: #7CDBFF;
+        box-shadow: 0 8px 24px rgba(124, 219, 255, 0.15);
+        transform: translateY(-4px);
+    }
+
+    .virt-cluster-card h3 {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: #00B4D8;
+        margin: 0 0 var(--virt-space-md);
+        padding-bottom: var(--virt-space-sm);
+        border-bottom: 2px solid rgba(0, 180, 216, 0.2);
+    }
+
+    .virt-cluster-card p {
+        color: var(--virt-text-secondary);
+        margin-bottom: var(--virt-space-md);
+        line-height: 1.6;
+    }
+
+    .virt-cluster-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .virt-cluster-list li {
+        padding: var(--virt-space-sm) 0;
+        color: var(--virt-text-secondary);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        display: flex;
+        gap: var(--virt-space-sm);
+        line-height: 1.6;
+    }
+
+    .virt-cluster-list li:last-child {
+        border-bottom: none;
+    }
+
+    .virt-cluster-list li::before {
+        content: '→';
+        color: #00B4D8;
+        flex-shrink: 0;
+        font-weight: 700;
+    }
+
+    /* ========================================
+    STORAGE MODELS
+    ======================================== */
+
+    .virt-storage-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: var(--virt-space-lg);
+        margin-top: var(--virt-space-xl);
+    }
+
+    .virt-storage-card {
+        background: var(--virt-surface);
+        border: 1px solid var(--virt-border);
+        border-radius: var(--virt-radius-lg);
+        padding: var(--virt-space-lg);
+        transition: var(--virt-transition);
+    }
+
+    .virt-storage-card:hover {
+        border-color: #10b981;
+        box-shadow: 0 8px 24px rgba(16, 185, 129, 0.15);
+        transform: translateY(-4px);
+    }
+
+    .virt-storage-icon {
+        width: 56px;
+        height: 56px;
+        background: linear-gradient(135deg, rgba(0, 180, 216, 0.2), rgba(16, 185, 129, 0.2));
+        border-radius: var(--virt-radius-md);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.75rem;
+        margin-bottom: var(--virt-space-md);
+    }
+
+    .virt-storage-card h3 {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: var(--virt-text-primary);
+        margin: 0 0 var(--virt-space-sm);
+    }
+
+    .virt-storage-card p {
+        color: var(--virt-text-secondary);
+        margin: 0;
+        line-height: 1.6;
+    }
+
+    /* ========================================
+    DR REQUIREMENTS
+    ======================================== */
+
+    .virt-dr-list {
+        display: grid;
+        gap: var(--virt-space-md);
+        margin-top: var(--virt-space-xl);
+        max-width: 1000px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .virt-dr-item {
+        display: flex;
+        align-items: flex-start;
+        gap: var(--virt-space-md);
+        padding: var(--virt-space-lg);
+        background: rgba(0, 180, 216, 0.05);
+        border-left: 3px solid #00B4D8;
+        border-radius: var(--virt-radius-sm);
+        transition: var(--virt-transition);
+    }
+
+    .virt-dr-item:hover {
+        background: rgba(0, 180, 216, 0.1);
+        transform: translateX(8px);
+        border-left-color: #00F5FF;
+    }
+
+    .virt-dr-icon {
+        flex-shrink: 0;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, #00B4D8, #7CDBFF);
+        border-radius: var(--virt-radius-sm);
+        font-size: 1.25rem;
+        color: #0A1128;
+    }
+
+    .virt-dr-content {
+        flex: 1;
+    }
+
+    .virt-dr-content strong {
+        display: block;
+        color: var(--virt-text-primary);
+        font-weight: 600;
+        margin-bottom: 0.25rem;
+        font-size: 1.05rem;
+    }
+
+    .virt-dr-content p {
+        color: var(--virt-text-secondary);
+        margin: 0;
+        line-height: 1.6;
+    }
+
+    /* ========================================
+    CTA SECTION
+    ======================================== */
+
+    .virt-cta-section {
+        padding: calc(var(--virt-space-2xl) * 1.5) var(--virt-space-lg);
+        text-align: center;
+        background: linear-gradient(165deg, var(--virt-bg-dark) 0%, var(--virt-bg-darker) 100%);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .virt-cta-section::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 800px;
+        height: 800px;
+        background: radial-gradient(circle, rgba(0, 180, 216, 0.3) 0%, transparent 70%);
+        transform: translate(-50%, -50%);
+        animation: ctaPulse 8s ease-in-out infinite;
+    }
+
+    @keyframes ctaPulse {
+        0%, 100% { opacity: 0.2; transform: translate(-50%, -50%) scale(1); }
+        50% { opacity: 0.4; transform: translate(-50%, -50%) scale(1.1); }
+    }
+
+    .virt-cta-content {
+        position: relative;
+        z-index: 1;
+        max-width: 900px;
+        margin: 0 auto;
+    }
+
+    .virt-cta-section h2 {
+        font-size: clamp(2rem, 5vw, 3.5rem);
+        margin-bottom: var(--virt-space-md);
+    }
+
+    .virt-cta-section p {
+        font-size: 1.3rem;
+        color: var(--virt-text-secondary);
+        margin-bottom: var(--virt-space-xl);
+        line-height: 1.7;
+    }
+
+    .virt-cta-buttons {
+        display: flex;
+        gap: var(--virt-space-md);
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    /* ========================================
+    RESPONSIVE
+    ======================================== */
+
+    @media (max-width: 1024px) {
+        .virt-hero-content {
+            grid-template-columns: 1fr;
+            gap: var(--virt-space-xl);
+        }
+        
+        .virt-hero-visual {
+            order: -1;
+        }
+    }
+
+    @media (max-width: 768px) {
+        :root {
+            --virt-space-xl: 3rem;
+            --virt-space-2xl: 4rem;
+        }
+        
+        .virt-hero {
+            min-height: 75vh;
+        }
+        
+        .virt-section {
+            padding: var(--virt-space-xl) var(--virt-space-md);
+        }
+        
+        .virt-hero-cta,
+        .virt-cta-buttons {
+            flex-direction: column;
+            width: 100%;
+        }
+        
+        .virt-btn {
+            width: 100%;
+        }
+        
+        .virt-platforms,
+        .virt-cluster-grid,
+        .virt-storage-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    /* ========================================
+    ACCESSIBILITY
+    ======================================== */
+
+    @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.01ms !important;
+        }
+    }
+
+    .virt-btn:focus-visible,
+    .virt-platform-card:focus-visible,
+    .virt-cluster-card:focus-visible {
+        outline: 3px solid #00F5FF;
+        outline-offset: 4px;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+
+<section class="virt-hero" aria-labelledby="virt-hero-title">
+    <div class="virt-hero-content">
+        <div class="virt-hero-text">
+            <div class="virt-paper-badge">
+                <div class="virt-badge-icon">✓</div>
+                <span>• Vendor-Neutral</span>
+            </div>
+            
+            <h1 id="virt-hero-title">
+                <span>Server Virtualisation</span><br>
+                & Storage
+            </h1>
+            
+            <p class="virt-hero-lead">
+                Efficient, resilient compute foundations. A definitive framework for organisations 
+                managing complex workloads—from web services to AI analytics and mission-critical 
+                control platforms.
+            </p>
+            
+            <div class="virt-hero-cta">
+                <a href="#" class="virt-btn virt-btn-primary" download>
+                    <i class="bi bi-download"></i>
+                    <span>Download PDF</span>
+                </a>
+                <a href="{{ url_for('main.contact') }}" class="virt-btn virt-btn-secondary">
+                    <span>Request Consultation</span>
+                </a>
+            </div>
+        </div>
+        
+        <div class="virt-hero-visual">
+            <div class="virt-stack-diagram">
+                <div class="virt-stack-header">
+                    <div class="virt-stack-title">VIRTUALISATION STACK</div>
+                    <div class="virt-stack-status">
+                        <span class="virt-status-dot"></span>
+                        <span>RESILIENT</span>
+                    </div>
+                </div>
+                
+                <div class="virt-stack-layers">
+                    <div class="virt-stack-layer">
+                        <div class="virt-layer-header">
+                            <div class="virt-layer-name">Application Layer</div>
+                            <div class="virt-layer-badge">ELASTIC</div>
+                        </div>
+                        <div class="virt-layer-desc">Web services, AI, surveillance, control systems</div>
+                    </div>
+                    
+                    <div class="virt-stack-layer">
+                        <div class="virt-layer-header">
+                            <div class="virt-layer-name">Virtual Machines</div>
+                            <div class="virt-layer-badge">HA</div>
+                        </div>
+                        <div class="virt-layer-desc">Live migration • Failover • Resource pools</div>
+                    </div>
+                    
+                    <div class="virt-stack-layer">
+                        <div class="virt-layer-header">
+                            <div class="virt-layer-name">Hypervisor Cluster</div>
+                            <div class="virt-layer-badge">3+ NODES</div>
+                        </div>
+                        <div class="virt-layer-desc">vSphere / KVM / Proxmox • Quorum maintained</div>
+                    </div>
+                    
+                    <div class="virt-stack-layer">
+                        <div class="virt-layer-header">
+                            <div class="virt-layer-name">Software-Defined Storage</div>
+                            <div class="virt-layer-badge">REDUNDANT</div>
+                        </div>
+                        <div class="virt-layer-desc">Ceph / ZFS • Data locality • Predictable rebuild</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="solution-content">
+    <!-- ===== ABSTRACT ===== -->
+    <section class="virt-section">
+        <div class="virt-container">
+            <div class="virt-section-header">
+                <span class="virt-section-label">Abstract</span>
+                <h2>Resilient Compute Foundations</h2>
+                <p class="virt-section-intro">
+                    The synergy of server virtualisation and software-defined storage constitutes 
+                    the bedrock of contemporary digital infrastructure. When architected with precision, 
+                    these technologies enable elasticity, high availability, and operational efficiency.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== VIRTUALISATION PLATFORMS ===== -->
+    <section class="virt-section virt-section--alt virt-section--border">
+        <div class="virt-container">
+            <div class="virt-section-header">
+                <span class="virt-section-label">Platforms</span>
+                <h2>Virtualisation Platforms</h2>
+            </div>
+            
+            <div class="virt-platforms">
+                {% set platforms = [
+                    {
+                        'icon': '🏢',
+                        'name': 'VMware vSphere',
+                        'criteria': [
+                            'Enterprise maturity and support',
+                            'Advanced vMotion and DRS',
+                            'Comprehensive API ecosystem',
+                            'Hardware compatibility'
+                        ]
+                    },
+                    {
+                        'icon': '🐧',
+                        'name': 'KVM-Based Stacks',
+                        'criteria': [
+                            'Open-source flexibility',
+                            'Deep Linux integration',
+                            'Cost-effective at scale',
+                            'Strong automation support'
+                        ]
+                    },
+                    {
+                        'icon': '🔧',
+                        'name': 'Proxmox VE',
+                        'criteria': [
+                            'Integrated storage (ZFS/Ceph)',
+                            'Built-in HA clustering',
+                            'Web-based management',
+                            'Container support (LXC)'
+                        ]
+                    }
+                ] %}
+                
+                {% for platform in platforms %}
+                <article class="virt-platform-card">
+                    <div class="virt-platform-icon">{{ platform.icon }}</div>
+                    <h3>{{ platform.name }}</h3>
+                    <ul class="virt-criteria-list">
+                        {% for criterion in platform.criteria %}
+                        <li>{{ criterion }}</li>
+                        {% endfor %}
+                    </ul>
+                </article>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== HIGH-AVAILABILITY CLUSTERING ===== -->
+    <section class="virt-section virt-section--border">
+        <div class="virt-container">
+            <div class="virt-section-header">
+                <span class="virt-section-label">Clustering</span>
+                <h2>High-Availability Architecture</h2>
+            </div>
+            
+            <div class="virt-cluster-grid">
+                <article class="virt-cluster-card">
+                    <h3>Cluster Design</h3>
+                    <p>Robust quorum and predictable failover:</p>
+                    <ul class="virt-cluster-list">
+                        <li>Minimum three-node clusters for split-brain prevention</li>
+                        <li>Dedicated management and storage networks for bandwidth isolation</li>
+                        <li>Predictable failover behaviour ensuring SLO compliance</li>
+                    </ul>
+                </article>
+
+                <article class="virt-cluster-card">
+                    <h3>Failure Domains</h3>
+                    <p>Comprehensive fault isolation:</p>
+                    <ul class="virt-cluster-list">
+                        <li>Host-level isolation contains hardware/hypervisor failures</li>
+                        <li>Storage fault containment decouples compute from storage failures</li>
+                        <li>Network path redundancy eliminates single points of failure</li>
+                    </ul>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SOFTWARE-DEFINED STORAGE ===== -->
+    <section class="virt-section virt-section--alt virt-section--border">
+        <div class="virt-container">
+            <div class="virt-section-header">
+                <span class="virt-section-label">Storage</span>
+                <h2>Software-Defined Storage</h2>
+                <p class="virt-section-intro">
+                    Strategic storage architecture balancing performance, resilience, and cost.
+                </p>
+            </div>
+            
+            <div class="virt-storage-grid">
+                {% set storage = [
+                    {
+                        'icon': '🔄',
+                        'title': 'Hyperconverged',
+                        'desc': 'Ceph and ZFS providing distributed, fault-tolerant storage with compute co-location.'
+                    },
+                    {
+                        'icon': '🗄️',
+                        'title': 'Shared SAN/NAS',
+                        'desc': 'Centralized storage arrays with iSCSI/NFS protocols for legacy integration.'
+                    },
+                    {
+                        'icon': '⚡',
+                        'title': 'Hybrid Models',
+                        'desc': 'Performance tiering combining SSD for hot data and HDD for capacity.'
+                    },
+                    {
+                        'icon': '📍',
+                        'title': 'Data Locality',
+                        'desc': 'Awareness of data placement to optimize latency and bandwidth utilization.'
+                    }
+                ] %}
+                
+                {% for item in storage %}
+                <article class="virt-storage-card">
+                    <div class="virt-storage-icon">{{ item.icon }}</div>
+                    <h3>{{ item.title }}</h3>
+                    <p>{{ item.desc }}</p>
+                </article>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== DISASTER RECOVERY ===== -->
+    <section class="virt-section virt-section--border">
+        <div class="virt-container">
+            <div class="virt-section-header">
+                <span class="virt-section-label">Resilience</span>
+                <h2>Backup & Disaster Recovery</h2>
+            </div>
+            
+            <div class="virt-dr-list">
+                {% set dr_items = [
+                    {
+                        'icon': '💾',
+                        'title': 'Backup Strategy',
+                        'desc': 'Image-level and application-aware backups ensuring recovery consistency for stateful workloads.'
+                    },
+                    {
+                        'icon': '🌐',
+                        'title': 'Off-Cluster Replication',
+                        'desc': 'Geographically separate replication for comprehensive disaster tolerance.'
+                    },
+                    {
+                        'icon': '🎯',
+                        'title': 'RPO/RTO Alignment',
+                        'desc': 'Defined recovery objectives meticulously aligned with business continuity requirements.'
+                    },
+                    {
+                        'icon': '✅',
+                        'title': 'Regular Testing',
+                        'desc': 'Full-lifecycle restoration exercises validating the entire recovery chain.'
+                    },
+                    {
+                        'icon': '📊',
+                        'title': 'Continuous Monitoring',
+                        'desc': 'Proactive failure detection ensuring backup integrity and performance.'
+                    },
+                    {
+                        'icon': '🔒',
+                        'title': 'Isolation & Immutability',
+                        'desc': 'Air-gapped or immutable storage protecting recovery capability from production faults.'
+                    }
+                ] %}
+                
+                {% for item in dr_items %}
+                <div class="virt-dr-item">
+                    <div class="virt-dr-icon">{{ item.icon }}</div>
+                    <div class="virt-dr-content">
+                        <strong>{{ item.title }}</strong>
+                        <p>{{ item.desc }}</p>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CTA SECTION ===== -->
+    <section class="virt-cta-section">
+        <div class="virt-cta-content">
+            <h2>Build Resilient Virtualisation Infrastructure</h2>
+            <p>
+                Let's discuss how disciplined virtualisation and storage design can provide 
+                your organisation with flexibility, stability, and confidence.
+            </p>
+            <div class="virt-cta-buttons">
+                <a href="#" class="virt-btn virt-btn-primary" download>
+                    <i class="bi bi-download"></i>
+                    <span>Download Full White Paper</span>
+                </a>
+                <a href="{{ url_for('main.contact') }}" class="virt-btn virt-btn-secondary">
+                    <span>Schedule Consultation</span>
+                </a>
+            </div>
+        </div>
+    </virt-cta-content>
+    </section>
+</section>
+
+{% endblock %}

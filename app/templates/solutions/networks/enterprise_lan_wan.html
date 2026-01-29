@@ -1,0 +1,1104 @@
+<!-- Enterprise LAN & WAN  -->
+<!--templates/solutions/networks/enterprise_lan_wan.html-->
+{% extends "base.html" %}
+
+{% block title %}Enterprise LAN & WAN - Daybreak Afrika Technologies{% endblock %}
+
+{% block extra_css %}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+    /* ========================================
+    NETWORK  - PREMIUM DESIGN
+    Brand-Aligned Theme
+    ======================================== */
+
+    :root {
+        /* Brand Colors - Harmonized */
+        --net-primary: #00B4D8;
+        --net-primary-light: #00F5FF;
+        --net-primary-dark: #0066CC;
+        --net-secondary: #7CDBFF;
+        --net-accent: #10b981;
+        --net-warning: #f59e0b;
+        --net-danger: #ef4444;
+        
+        /* Neutrals */
+        --net-bg-dark: #0A1128;
+        --net-bg-darker: #050810;
+        --net-surface: rgba(255, 255, 255, 0.02);
+        --net-surface-light: rgba(255, 255, 255, 0.05);
+        --net-border: rgba(0, 180, 216, 0.1);
+        --net-text-primary: #F8F9FA;
+        --net-text-secondary: rgba(248, 249, 250, 0.7);
+        --net-text-muted: rgba(248, 249, 250, 0.5);
+        
+        /* Effects */
+        --net-glow-primary: rgba(0, 180, 216, 0.3);
+        --net-glow-accent: rgba(16, 185, 129, 0.2);
+        --net-shadow-md: 0 8px 24px rgba(0, 0, 0, 0.4);
+        --net-shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.5);
+        
+        /* Spacing */
+        --net-space-xs: 0.5rem;
+        --net-space-sm: 1rem;
+        --net-space-md: 1.5rem;
+        --net-space-lg: 2.5rem;
+        --net-space-xl: 4rem;
+        --net-space-2xl: 6rem;
+        
+        /* Border Radius */
+        --net-radius-sm: 8px;
+        --net-radius-md: 12px;
+        --net-radius-lg: 16px;
+        
+        /* Typography */
+        --net-font-sans: 'Space Grotesk', system-ui, sans-serif;
+        --net-font-mono: 'IBM Plex Mono', monospace;
+        --net-font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        
+        /* Transitions */
+        --net-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* ========================================
+    HERO SECTION
+    ======================================== */
+
+    .net-hero {
+        position: relative;
+        min-height: 85vh;
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+    }
+
+    .net-hero::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: 
+            radial-gradient(circle at 20% 30%, var(--net-glow-primary) 0%, transparent 50%),
+            radial-gradient(circle at 80% 70%, var(--net-glow-accent) 0%, transparent 50%),
+            radial-gradient(circle at 50% 50%, rgba(0, 102, 204, 0.1) 0%, transparent 60%);
+        animation: ambientPulse 12s ease-in-out infinite alternate;
+        opacity: 0.4;
+    }
+
+    @keyframes ambientPulse {
+        0% { transform: scale(1); opacity: 0.3; }
+        100% { transform: scale(1.1); opacity: 0.5; }
+    }
+
+    .net-hero-content {
+        position: relative;
+        z-index: 10;
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: var(--net-space-2xl) var(--net-space-lg);
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: var(--net-space-2xl);
+        align-items: center;
+    }
+
+    .net-hero-text {
+        animation: slideInLeft 0.8s ease-out;
+    }
+
+    @keyframes slideInLeft {
+        from { opacity: 0; transform: translateX(-30px); }
+        to { opacity: 1; transform: translateX(0); }
+    }
+
+    .net-paper-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: var(--net-space-xs);
+        padding: var(--net-space-xs) var(--net-space-md);
+        background: rgba(0, 102, 204, 0.12);
+        border: 1px solid rgba(0, 102, 204, 0.35);
+        border-radius: 100px;
+        font-size: 0.75rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: #0066CC;
+        margin-bottom: var(--net-space-md);
+        animation: fadeInDown 0.6s ease-out;
+    }
+
+    .net-badge-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 18px;
+        height: 18px;
+        background: #0066CC;
+        border-radius: 50%;
+        color: white;
+        font-size: 0.65rem;
+        animation: paperPulse 2s ease-in-out infinite;
+    }
+
+    @keyframes paperPulse {
+        0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(0, 102, 204, 0.7); }
+        50% { transform: scale(1.1); box-shadow: 0 0 0 8px rgba(0, 102, 204, 0); }
+    }
+
+    @keyframes fadeInDown {
+        from { opacity: 0; transform: translateY(-15px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    .net-hero h1 {
+        font-size: clamp(2.5rem, 6vw, 4.5rem);
+        font-weight: 800;
+        line-height: 1.1;
+        margin: 0 0 var(--net-space-md);
+        letter-spacing: -0.03em;
+        animation: fadeInUp 0.8s ease-out 0.2s backwards;
+    }
+
+    .net-hero h1 span {
+        background: linear-gradient(135deg, #0066CC 0%, #00B4D8 50%, #00F5FF 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    @keyframes fadeInUp {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    .net-hero-lead {
+        font-size: clamp(1.1rem, 1.8vw, 1.4rem);
+        color: var(--net-text-secondary);
+        max-width: 600px;
+        margin-bottom: var(--net-space-xl);
+        line-height: 1.7;
+        animation: fadeInUp 0.8s ease-out 0.4s backwards;
+    }
+
+    .net-hero-cta {
+        display: flex;
+        gap: var(--net-space-md);
+        flex-wrap: wrap;
+        animation: fadeInUp 0.8s ease-out 0.6s backwards;
+    }
+
+    /* Hero Visual - Network Topology */
+    .net-hero-visual {
+        animation: slideInRight 0.8s ease-out 0.4s backwards;
+    }
+
+    @keyframes slideInRight {
+        from { opacity: 0; transform: translateX(30px); }
+        to { opacity: 1; transform: translateX(0); }
+    }
+
+    .net-topology {
+        background: var(--net-surface);
+        border: 1px solid var(--net-border);
+        border-radius: var(--net-radius-lg);
+        padding: var(--net-space-xl);
+        box-shadow: var(--net-shadow-lg);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .net-topology::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: linear-gradient(90deg, #0066CC, #00B4D8, #10b981);
+        background-size: 200% 100%;
+        animation: scanLine 3s linear infinite;
+    }
+
+    @keyframes scanLine {
+        0% { background-position: 200% 0; }
+        100% { background-position: -200% 0; }
+    }
+
+    .net-topology-title {
+        font-family: var(--net-font-body);
+        font-size: 0.85rem;
+        color: #00B4D8;
+        font-weight: 600;
+        margin-bottom: var(--net-space-md);
+        text-align: center;
+    }
+
+    .net-layer {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--net-space-sm);
+        margin-bottom: var(--net-space-md);
+        padding: var(--net-space-md);
+        background: rgba(0, 180, 216, 0.03);
+        border: 1px solid var(--net-border);
+        border-radius: var(--net-radius-sm);
+    }
+
+    .net-layer:last-child {
+        margin-bottom: 0;
+    }
+
+    .net-layer-label {
+        grid-column: 1 / -1;
+        font-size: 0.7rem;
+        color: var(--net-text-muted);
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        margin-bottom: var(--net-space-xs);
+        text-align: center;
+    }
+
+    .net-node {
+        aspect-ratio: 1;
+        background: linear-gradient(135deg, rgba(0, 180, 216, 0.2), rgba(16, 185, 129, 0.2));
+        border: 1px solid var(--net-border);
+        border-radius: var(--net-radius-sm);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        position: relative;
+        animation: nodeGlow 3s ease-in-out infinite;
+    }
+
+    .net-node:nth-child(2) { animation-delay: 0.3s; }
+    .net-node:nth-child(3) { animation-delay: 0.6s; }
+    .net-node:nth-child(4) { animation-delay: 0.9s; }
+
+    @keyframes nodeGlow {
+        0%, 100% { box-shadow: 0 0 0 rgba(0, 180, 216, 0); }
+        50% { box-shadow: 0 0 20px rgba(0, 180, 216, 0.4); }
+    }
+
+    .net-status-indicator {
+        position: absolute;
+        top: 4px;
+        right: 4px;
+        width: 8px;
+        height: 8px;
+        background: #10b981;
+        border-radius: 50%;
+        animation: statusBlink 2s ease-in-out infinite;
+    }
+
+    @keyframes statusBlink {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.3; }
+    }
+
+    /* ========================================
+    BUTTONS
+    ======================================== */
+
+    .net-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: var(--net-space-xs);
+        padding: 1rem 2rem;
+        font-family: var(--net-font-body);
+        font-size: 1rem;
+        font-weight: 600;
+        text-decoration: none;
+        border-radius: var(--net-radius-md);
+        transition: var(--net-transition);
+        cursor: pointer;
+        border: none;
+        white-space: nowrap;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .net-btn::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+        transform: translateX(-100%);
+        transition: transform 0.6s;
+    }
+
+    .net-btn:hover::before {
+        transform: translateX(100%);
+    }
+
+    .net-btn-primary {
+        background: linear-gradient(135deg, #0066CC 0%, #00B4D8 100%);
+        color: #FFFFFF;
+        box-shadow: 0 4px 16px rgba(0, 180, 216, 0.3);
+    }
+
+    .net-btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 30px rgba(0, 180, 216, 0.4);
+        color: #FFFFFF;
+    }
+
+    .net-btn-secondary {
+        background: transparent;
+        color: #00B4D8;
+        border: 2px solid #00B4D8;
+    }
+
+    .net-btn-secondary:hover {
+        background: rgba(0, 180, 216, 0.1);
+        color: #00F5FF;
+        border-color: #00F5FF;
+        transform: translateY(-2px);
+    }
+
+    /* ========================================
+    SECTIONS
+    ======================================== */
+
+    .net-section {
+        padding: var(--net-space-2xl) var(--net-space-lg);
+        position: relative;
+    }
+
+    .net-section--alt {
+        background: var(--net-bg-dark);
+    }
+
+    .net-section--border {
+        border-top: 1px solid rgba(0, 180, 216, 0.1);
+    }
+
+    .net-container {
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+
+    .net-section-header {
+        max-width: 900px;
+        margin: 0 auto var(--net-space-xl);
+        text-align: center;
+    }
+
+    .net-section-label {
+        display: inline-flex;
+        align-items: center;
+        gap: var(--net-space-xs);
+        font-size: 0.75rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        color: #00B4D8;
+        margin-bottom: var(--net-space-sm);
+        padding: 0.4rem 1rem;
+        background: rgba(0, 180, 216, 0.1);
+        border: 1px solid rgba(0, 180, 216, 0.3);
+        border-radius: 100px;
+    }
+
+    .net-section-label::before {
+        content: '';
+        width: 6px;
+        height: 6px;
+        background: #00B4D8;
+        border-radius: 50%;
+        animation: labelPulse 2s ease-in-out infinite;
+    }
+
+    @keyframes labelPulse {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.4; }
+    }
+
+    .net-section h2 {
+        font-size: clamp(2rem, 5vw, 3.5rem);
+        font-weight: 800;
+        line-height: 1.2;
+        margin: 0 0 var(--net-space-md);
+        letter-spacing: -0.02em;
+    }
+
+    .net-section-intro {
+        font-size: 1.2rem;
+        color: var(--net-text-secondary);
+        line-height: 1.7;
+    }
+
+    /* ========================================
+    CHALLENGE GRID
+    ======================================== */
+
+    .net-challenge-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: var(--net-space-lg);
+        margin-top: var(--net-space-xl);
+    }
+
+    .net-challenge-card {
+        background: rgba(239, 68, 68, 0.05);
+        border: 1px solid rgba(239, 68, 68, 0.2);
+        border-radius: var(--net-radius-lg);
+        padding: var(--net-space-lg);
+        transition: var(--net-transition);
+    }
+
+    .net-challenge-card:hover {
+        border-color: rgba(239, 68, 68, 0.4);
+        transform: translateY(-4px);
+        box-shadow: 0 8px 24px rgba(239, 68, 68, 0.15);
+    }
+
+    .net-challenge-icon {
+        width: 56px;
+        height: 56px;
+        background: rgba(239, 68, 68, 0.1);
+        border-radius: var(--net-radius-md);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.75rem;
+        margin-bottom: var(--net-space-md);
+    }
+
+    .net-challenge-card h3 {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: #ef4444;
+        margin: 0 0 var(--net-space-sm);
+    }
+
+    .net-challenge-card p {
+        color: var(--net-text-secondary);
+        margin: 0;
+        line-height: 1.6;
+    }
+
+    /* ========================================
+    ARCHITECTURE PRINCIPLES
+    ======================================== */
+
+    .net-principles {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: var(--net-space-lg);
+        margin-top: var(--net-space-xl);
+    }
+
+    .net-principle-card {
+        background: var(--net-surface);
+        border: 1px solid var(--net-border);
+        border-radius: var(--net-radius-lg);
+        padding: var(--net-space-lg);
+        transition: var(--net-transition);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .net-principle-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background: linear-gradient(90deg, #0066CC, #00B4D8);
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.4s ease;
+    }
+
+    .net-principle-card:hover::before {
+        transform: scaleX(1);
+    }
+
+    .net-principle-card:hover {
+        border-color: #00B4D8;
+        box-shadow: 0 8px 24px rgba(0, 180, 216, 0.15);
+        transform: translateY(-4px);
+    }
+
+    .net-principle-icon {
+        width: 56px;
+        height: 56px;
+        background: linear-gradient(135deg, rgba(0, 180, 216, 0.2), rgba(16, 185, 129, 0.2));
+        border-radius: var(--net-radius-md);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.75rem;
+        margin-bottom: var(--net-space-md);
+    }
+
+    .net-principle-card h3 {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: var(--net-text-primary);
+        margin: 0 0 var(--net-space-sm);
+    }
+
+    .net-principle-card p {
+        color: var(--net-text-secondary);
+        margin: 0;
+        line-height: 1.6;
+    }
+
+    /* ========================================
+    TECHNOLOGY FEATURES
+    ======================================== */
+
+    .net-tech-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: var(--net-space-xl);
+        margin-top: var(--net-space-xl);
+    }
+
+    .net-tech-card {
+        background: var(--net-surface);
+        border: 1px solid var(--net-border);
+        border-radius: var(--net-radius-lg);
+        padding: var(--net-space-xl);
+        transition: var(--net-transition);
+    }
+
+    .net-tech-card:hover {
+        border-color: #10b981;
+        box-shadow: 0 8px 24px rgba(16, 185, 129, 0.15);
+        transform: translateY(-4px);
+    }
+
+    .net-tech-icon {
+        width: 64px;
+        height: 64px;
+        background: linear-gradient(135deg, rgba(0, 180, 216, 0.2), rgba(16, 185, 129, 0.2));
+        border-radius: var(--net-radius-md);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2rem;
+        margin-bottom: var(--net-space-md);
+    }
+
+    .net-tech-card h3 {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--net-text-primary);
+        margin: 0 0 var(--net-space-md);
+    }
+
+    .net-tech-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .net-tech-list li {
+        padding: var(--net-space-xs) 0;
+        color: var(--net-text-secondary);
+        display: flex;
+        align-items: center;
+        gap: var(--net-space-sm);
+    }
+
+    .net-tech-list li::before {
+        content: '▸';
+        color: #10b981;
+        flex-shrink: 0;
+    }
+
+    /* ========================================
+    BENEFITS SECTION
+    ======================================== */
+
+    .net-benefits {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: var(--net-space-lg);
+        margin-top: var(--net-space-xl);
+    }
+
+    .net-benefit-card {
+        background: rgba(16, 185, 129, 0.05);
+        border: 1px solid rgba(16, 185, 129, 0.2);
+        border-radius: var(--net-radius-lg);
+        padding: var(--net-space-lg);
+        text-align: center;
+        transition: var(--net-transition);
+    }
+
+    .net-benefit-card:hover {
+        border-color: rgba(16, 185, 129, 0.4);
+        box-shadow: 0 8px 24px rgba(16, 185, 129, 0.15);
+        transform: translateY(-4px);
+    }
+
+    .net-benefit-icon {
+        font-size: 2.5rem;
+        margin-bottom: var(--net-space-sm);
+    }
+
+    .net-benefit-card h3 {
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: #10b981;
+        margin: 0 0 var(--net-space-xs);
+    }
+
+    .net-benefit-card p {
+        color: var(--net-text-secondary);
+        margin: 0;
+        line-height: 1.6;
+        font-size: 0.95rem;
+    }
+
+    /* ========================================
+    CTA SECTION
+    ======================================== */
+
+    .net-cta-section {
+        padding: calc(var(--net-space-2xl) * 1.5) var(--net-space-lg);
+        text-align: center;
+        background: linear-gradient(165deg, var(--net-bg-dark) 0%, var(--net-bg-darker) 100%);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .net-cta-section::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 800px;
+        height: 800px;
+        background: radial-gradient(circle, rgba(0, 180, 216, 0.3) 0%, transparent 70%);
+        transform: translate(-50%, -50%);
+        animation: ctaPulse 8s ease-in-out infinite;
+    }
+
+    @keyframes ctaPulse {
+        0%, 100% { opacity: 0.2; transform: translate(-50%, -50%) scale(1); }
+        50% { opacity: 0.4; transform: translate(-50%, -50%) scale(1.1); }
+    }
+
+    .net-cta-content {
+        position: relative;
+        z-index: 1;
+        max-width: 900px;
+        margin: 0 auto;
+    }
+
+    .net-cta-section h2 {
+        font-size: clamp(2rem, 5vw, 3.5rem);
+        margin-bottom: var(--net-space-md);
+    }
+
+    .net-cta-section p {
+        font-size: 1.3rem;
+        color: var(--net-text-secondary);
+        margin-bottom: var(--net-space-xl);
+        line-height: 1.7;
+    }
+
+    .net-cta-buttons {
+        display: flex;
+        gap: var(--net-space-md);
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    /* ========================================
+    RESPONSIVE
+    ======================================== */
+
+    @media (max-width: 1024px) {
+        .net-hero-content {
+            grid-template-columns: 1fr;
+            gap: var(--net-space-xl);
+        }
+        
+        .net-hero-visual {
+            order: -1;
+        }
+    }
+
+    @media (max-width: 768px) {
+        :root {
+            --net-space-xl: 3rem;
+            --net-space-2xl: 4rem;
+        }
+        
+        .net-hero {
+            min-height: 75vh;
+        }
+        
+        .net-section {
+            padding: var(--net-space-xl) var(--net-space-md);
+        }
+        
+        .net-hero-cta,
+        .net-cta-buttons {
+            flex-direction: column;
+            width: 100%;
+        }
+        
+        .net-btn {
+            width: 100%;
+        }
+        
+        .net-layer {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    /* ========================================
+    ACCESSIBILITY
+    ======================================== */
+
+    @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.01ms !important;
+        }
+    }
+
+    .net-btn:focus-visible,
+    .net-challenge-card:focus-visible,
+    .net-principle-card:focus-visible,
+    .net-tech-card:focus-visible {
+        outline: 3px solid #00F5FF;
+        outline-offset: 4px;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+
+<section class="net-hero" aria-labelledby="net-hero-title">
+    <div class="net-hero-content">
+        <div class="net-hero-text">
+            <div class="net-paper-badge">
+                <div class="net-badge-icon">🌐</div>
+                <span> • Network Architecture</span>
+            </div>
+            
+            <h1 id="net-hero-title">
+                <span>Enterprise LAN & WAN</span>
+            </h1>
+            
+            <p class="net-hero-lead">
+                High-availability, secure networks for mission-critical operations. Fault-tolerant 
+                architecture with deterministic performance and zero-trust security principles.
+            </p>
+            
+            <div class="net-hero-cta">
+                <a href="#" class="net-btn net-btn-primary" download>
+                    <i class="bi bi-download"></i>
+                    <span>Download PDF</span>
+                </a>
+                <a href="{{ url_for('main.contact') }}" class="net-btn net-btn-secondary">
+                    <span>Request Consultation</span>
+                </a>
+            </div>
+        </div>
+        
+        <div class="net-hero-visual">
+            <div class="net-topology">
+                <div class="net-topology-title">ENTERPRISE NETWORK TOPOLOGY</div>
+                
+                <div class="net-layer">
+                    <div class="net-layer-label">Core Layer</div>
+                    <div class="net-node">
+                        🔷
+                        <span class="net-status-indicator"></span>
+                    </div>
+                    <div class="net-node">
+                        🔷
+                        <span class="net-status-indicator"></span>
+                    </div>
+                </div>
+                
+                <div class="net-layer">
+                    <div class="net-layer-label">Distribution Layer</div>
+                    <div class="net-node">
+                        ⬡
+                        <span class="net-status-indicator"></span>
+                    </div>
+                    <div class="net-node">
+                        ⬡
+                        <span class="net-status-indicator"></span>
+                    </div>
+                    <div class="net-node">
+                        ⬡
+                        <span class="net-status-indicator"></span>
+                    </div>
+                </div>
+                
+                <div class="net-layer">
+                    <div class="net-layer-label">Access Layer</div>
+                    <div class="net-node">
+                        ◇
+                        <span class="net-status-indicator"></span>
+                    </div>
+                    <div class="net-node">
+                        ◇
+                        <span class="net-status-indicator"></span>
+                    </div>
+                    <div class="net-node">
+                        ◇
+                        <span class="net-status-indicator"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="solution-content">
+    <!-- ===== ABSTRACT ===== -->
+    <section class="net-section">
+        <div class="net-container">
+            <div class="net-section-header">
+                <span class="net-section-label">Abstract</span>
+                <h2>Networks as Strategic Platforms</h2>
+                <p class="net-section-intro">
+                    Enterprise networks have evolved from passive transport layers into foundational 
+                    platforms enabling security, operational continuity, and digital transformation. 
+                    Traditional designs prove inadequate for distributed applications, real-time analytics, 
+                    and edge intelligence.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== THE CHALLENGE ===== -->
+    <section class="net-section net-section--alt net-section--border">
+        <div class="net-container">
+            <div class="net-section-header">
+                <span class="net-section-label">Reality</span>
+                <h2>The Challenge</h2>
+                <p class="net-section-intro">
+                    Without deliberate architectural design, networks transform from enablers into systemic risks.
+                </p>
+            </div>
+            
+            <div class="net-challenge-grid">
+                <article class="net-challenge-card">
+                    <div class="net-challenge-icon">⚠️</div>
+                    <h3>Single Points of Failure</h3>
+                    <p>
+                        Traditional architectures create cascading outages when critical 
+                        components fail, causing enterprise-wide disruption.
+                    </p>
+                </article>
+
+                <article class="net-challenge-card">
+                    <div class="net-challenge-icon">🐌</div>
+                    <h3>Application Degradation</h3>
+                    <p>
+                        Latency-sensitive workloads suffer from unpredictable performance 
+                        on networks not designed for real-time requirements.
+                    </p>
+                </article>
+
+                <article class="net-challenge-card">
+                    <div class="net-challenge-icon">🔓</div>
+                    <h3>Inconsistent Security</h3>
+                    <p>
+                        Expanding attack surfaces across branches and edge locations 
+                        without unified security enforcement.
+                    </p>
+                </article>
+
+                <article class="net-challenge-card">
+                    <div class="net-challenge-icon">👁️</div>
+                    <h3>Limited Visibility</h3>
+                    <p>
+                        Lack of operational insight prevents proactive management and 
+                        rapid troubleshooting of network issues.
+                    </p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== DESIGN PRINCIPLES ===== -->
+    <section class="net-section net-section--border">
+        <div class="net-container">
+            <div class="net-section-header">
+                <span class="net-section-label">Foundation</span>
+                <h2>Core Design Principles</h2>
+                <p class="net-section-intro">
+                    Networks designed as fault-tolerant systems, not static infrastructure.
+                </p>
+            </div>
+            
+            <div class="net-principles">
+                <article class="net-principle-card">
+                    <div class="net-principle-icon">🛡️</div>
+                    <h3>High Availability by Default</h3>
+                    <p>
+                        No single point of failure at core, distribution, or access layers. 
+                        Redundancy built into every critical path.
+                    </p>
+                </article>
+
+                <article class="net-principle-card">
+                    <div class="net-principle-icon">🔐</div>
+                    <h3>Segmentation by Function</h3>
+                    <p>
+                        Controlled lateral movement and reduced blast radius through 
+                        strategic network segmentation aligned with risk profiles.
+                    </p>
+                </article>
+
+                <article class="net-principle-card">
+                    <div class="net-principle-icon">⚡</div>
+                    <h3>Deterministic Performance</h3>
+                    <p>
+                        Predictable behaviour for latency-sensitive workloads with 
+                        quality-of-service enforcement and traffic engineering.
+                    </p>
+                </article>
+
+                <article class="net-principle-card">
+                    <div class="net-principle-icon">📈</div>
+                    <h3>Future-Ready Scalability</h3>
+                    <p>
+                        Designs accommodate growth, new services, and emerging 
+                        technologies without architectural rework.
+                    </p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== WAN TECHNOLOGIES ===== -->
+    <section class="net-section net-section--alt net-section--border">
+        <div class="net-container">
+            <div class="net-section-header">
+                <span class="net-section-label">Connectivity</span>
+                <h2>Wide Area Network Solutions</h2>
+                <p class="net-section-intro">
+                    Balancing performance, security, resilience, and cost efficiency across dispersed locations.
+                </p>
+            </div>
+            
+            <div class="net-tech-grid">
+                <article class="net-tech-card">
+                    <div class="net-tech-icon">🔗</div>
+                    <h3>MPLS Networks</h3>
+                    <ul class="net-tech-list">
+                        <li>Guaranteed performance SLAs</li>
+                        <li>Deterministic routing paths</li>
+                        <li>Traffic prioritisation</li>
+                        <li>Predictable latency</li>
+                    </ul>
+                </article>
+
+                <article class="net-tech-card">
+                    <div class="net-tech-icon">🌐</div>
+                    <h3>SD-WAN</h3>
+                    <ul class="net-tech-list">
+                        <li>Application-aware routing</li>
+                        <li>Cost optimisation</li>
+                        <li>Dynamic path selection</li>
+                        <li>Automated failover</li>
+                    </ul>
+                </article>
+
+                <article class="net-tech-card">
+                    <div class="net-tech-icon">🔒</div>
+                    <h3>Site-to-Site VPN</h3>
+                    <ul class="net-tech-list">
+                        <li>Encrypted connectivity</li>
+                        <li>Secure branch interconnects</li>
+                        <li>Public infrastructure leverage</li>
+                        <li>Policy-driven routing</li>
+                    </ul>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== STRATEGIC VALUE ===== -->
+    <section class="net-section net-section--border">
+        <div class="net-container">
+            <div class="net-section-header">
+                <span class="net-section-label">Benefits</span>
+                <h2>Strategic Value</h2>
+            </div>
+            
+            <div class="net-benefits">
+                <article class="net-benefit-card">
+                    <div class="net-benefit-icon">✅</div>
+                    <h3>Reduced Downtime</h3>
+                    <p>
+                        Minimise operational risk through fault-tolerant 
+                        architecture and automated failover.
+                    </p>
+                </article>
+
+                <article class="net-benefit-card">
+                    <div class="net-benefit-icon">⚡</div>
+                    <h3>Improved Performance</h3>
+                    <p>
+                        Enhanced application responsiveness and consistent 
+                        user experience across locations.
+                    </p>
+                </article>
+
+                <article class="net-benefit-card">
+                    <div class="net-benefit-icon">🔧</div>
+                    <h3>Simplified Operations</h3>
+                    <p>
+                        Streamlined network management and faster 
+                        troubleshooting through clear architecture.
+                    </p>
+                </article>
+
+                <article class="net-benefit-card">
+                    <div class="net-benefit-icon">🛡️</div>
+                    <h3>Zero-Trust Security</h3>
+                    <p>
+                        Security posture aligned with modern zero-trust 
+                        models through architectural design.
+                    </p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CTA SECTION ===== -->
+    <section class="net-cta-section">
+        <div class="net-cta-content">
+            <h2>Build Resilient Network Infrastructure</h2>
+            <p>
+                Let's discuss how enterprise-grade LAN and WAN architectures can deliver 
+                the reliability, security, and performance your mission-critical operations demand.
+            </p>
+            <div class="net-cta-buttons">
+                <a href="#" class="net-btn net-btn-primary" download>
+                    <i class="bi bi-download"></i>
+                    <span>Download Full White Paper</span>
+                </a>
+                <a href="{{ url_for('main.contact') }}" class="net-btn net-btn-secondary">
+                    <span>Schedule Consultation</span>
+                </a>
+            </div>
+        </div>
+    </section>
+</section>
+
+{% endblock %}

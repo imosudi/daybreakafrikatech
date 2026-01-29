@@ -1,0 +1,1175 @@
+<!-- 24/7 Monitoring & Managed Support  -->
+<!--templates/resources/whitepapers/monitoring.html-->
+{% extends "base.html" %}
+
+{% block title %}24/7 Monitoring & Managed Support – Daybreak Afrika Technologies{% endblock %}
+
+{% block extra_css %}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+    /* ========================================
+    MONITORING  - PREMIUM DESIGN
+    Brand-Aligned Theme
+    ======================================== */
+
+    :root {
+        /* Brand Colors - Harmonized */
+        --mon-primary: #00B4D8;
+        --mon-primary-light: #00F5FF;
+        --mon-primary-dark: #0066CC;
+        --mon-secondary: #7CDBFF;
+        --mon-accent: #10b981;
+        --mon-warning: #f59e0b;
+        --mon-danger: #ef4444;
+        
+        /* Neutrals */
+        --mon-bg-dark: #0A1128;
+        --mon-bg-darker: #050810;
+        --mon-surface: rgba(255, 255, 255, 0.02);
+        --mon-surface-light: rgba(255, 255, 255, 0.05);
+        --mon-border: rgba(0, 180, 216, 0.1);
+        --mon-text-primary: #F8F9FA;
+        --mon-text-secondary: rgba(248, 249, 250, 0.7);
+        --mon-text-muted: rgba(248, 249, 250, 0.5);
+        
+        /* Effects */
+        --mon-glow-primary: rgba(0, 180, 216, 0.3);
+        --mon-glow-accent: rgba(16, 185, 129, 0.2);
+        --mon-shadow-md: 0 8px 24px rgba(0, 0, 0, 0.4);
+        --mon-shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.5);
+        
+        /* Spacing */
+        --mon-space-xs: 0.5rem;
+        --mon-space-sm: 1rem;
+        --mon-space-md: 1.5rem;
+        --mon-space-lg: 2.5rem;
+        --mon-space-xl: 4rem;
+        --mon-space-2xl: 6rem;
+        
+        /* Border Radius */
+        --mon-radius-sm: 8px;
+        --mon-radius-md: 12px;
+        --mon-radius-lg: 16px;
+        
+        /* Typography */
+        --mon-font-sans: 'Space Grotesk', system-ui, sans-serif;
+        --mon-font-mono: 'IBM Plex Mono', monospace;
+        --mon-font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        
+        /* Transitions */
+        --mon-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* ========================================
+    HERO SECTION
+    ======================================== */
+
+    .mon-hero {
+        position: relative;
+        min-height: 85vh;
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+    }
+
+    .mon-hero::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: 
+            radial-gradient(circle at 20% 30%, var(--mon-glow-primary) 0%, transparent 50%),
+            radial-gradient(circle at 80% 70%, var(--mon-glow-accent) 0%, transparent 50%),
+            radial-gradient(circle at 50% 50%, rgba(245, 158, 11, 0.1) 0%, transparent 60%);
+        animation: ambientPulse 12s ease-in-out infinite alternate;
+        opacity: 0.4;
+    }
+
+    @keyframes ambientPulse {
+        0% { transform: scale(1); opacity: 0.3; }
+        100% { transform: scale(1.1); opacity: 0.5; }
+    }
+
+    .mon-hero-content {
+        position: relative;
+        z-index: 10;
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: var(--mon-space-2xl) var(--mon-space-lg);
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: var(--mon-space-2xl);
+        align-items: center;
+    }
+
+    .mon-hero-text {
+        animation: slideInLeft 0.8s ease-out;
+    }
+
+    @keyframes slideInLeft {
+        from { opacity: 0; transform: translateX(-30px); }
+        to { opacity: 1; transform: translateX(0); }
+    }
+
+    .mon-paper-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: var(--mon-space-xs);
+        padding: var(--mon-space-xs) var(--mon-space-md);
+        background: rgba(245, 158, 11, 0.12);
+        border: 1px solid rgba(245, 158, 11, 0.35);
+        border-radius: 100px;
+        font-size: 0.75rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: #f59e0b;
+        margin-bottom: var(--mon-space-md);
+        animation: fadeInDown 0.6s ease-out;
+    }
+
+    .mon-badge-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 18px;
+        height: 18px;
+        background: #f59e0b;
+        border-radius: 50%;
+        color: white;
+        font-size: 0.65rem;
+        animation: paperPulse 2s ease-in-out infinite;
+    }
+
+    @keyframes paperPulse {
+        0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.7); }
+        50% { transform: scale(1.1); box-shadow: 0 0 0 8px rgba(245, 158, 11, 0); }
+    }
+
+    @keyframes fadeInDown {
+        from { opacity: 0; transform: translateY(-15px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    .mon-hero h1 {
+        font-size: clamp(2.5rem, 6vw, 4.5rem);
+        font-weight: 800;
+        line-height: 1.1;
+        margin: 0 0 var(--mon-space-md);
+        letter-spacing: -0.03em;
+        animation: fadeInUp 0.8s ease-out 0.2s backwards;
+    }
+
+    .mon-hero h1 span {
+        background: linear-gradient(135deg, #0066CC 0%, #00B4D8 50%, #00F5FF 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    @keyframes fadeInUp {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    .mon-hero-lead {
+        font-size: clamp(1.1rem, 1.8vw, 1.4rem);
+        color: var(--mon-text-secondary);
+        max-width: 600px;
+        margin-bottom: var(--mon-space-xl);
+        line-height: 1.7;
+        animation: fadeInUp 0.8s ease-out 0.4s backwards;
+    }
+
+    .mon-hero-cta {
+        display: flex;
+        gap: var(--mon-space-md);
+        flex-wrap: wrap;
+        animation: fadeInUp 0.8s ease-out 0.6s backwards;
+    }
+
+    /* Hero Visual - Monitoring Dashboard */
+    .mon-hero-visual {
+        animation: slideInRight 0.8s ease-out 0.4s backwards;
+    }
+
+    @keyframes slideInRight {
+        from { opacity: 0; transform: translateX(30px); }
+        to { opacity: 1; transform: translateX(0); }
+    }
+
+    .mon-dashboard {
+        background: var(--mon-surface);
+        border: 1px solid var(--mon-border);
+        border-radius: var(--mon-radius-lg);
+        padding: var(--mon-space-lg);
+        box-shadow: var(--mon-shadow-lg);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .mon-dashboard::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: linear-gradient(90deg, #10b981, #00B4D8, #f59e0b);
+        background-size: 200% 100%;
+        animation: scanLine 3s linear infinite;
+    }
+
+    @keyframes scanLine {
+        0% { background-position: 200% 0; }
+        100% { background-position: -200% 0; }
+    }
+
+    .mon-dashboard-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: var(--mon-space-md);
+        padding-bottom: var(--mon-space-sm);
+        border-bottom: 1px solid var(--mon-border);
+    }
+
+    .mon-dashboard-title {
+        font-family: var(--mon-font-body);
+        font-size: 0.85rem;
+        color: #00B4D8;
+        font-weight: 600;
+    }
+
+    .mon-dashboard-status {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 0.75rem;
+        color: #10b981;
+    }
+
+    .mon-status-dot {
+        width: 8px;
+        height: 8px;
+        background: #10b981;
+        border-radius: 50%;
+        animation: statusBlink 2s ease-in-out infinite;
+    }
+
+    @keyframes statusBlink {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.3; }
+    }
+
+    .mon-metric-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: var(--mon-space-sm);
+        margin-bottom: var(--mon-space-md);
+    }
+
+    .mon-metric-card {
+        padding: var(--mon-space-sm);
+        background: rgba(0, 180, 216, 0.05);
+        border: 1px solid var(--mon-border);
+        border-radius: var(--mon-radius-sm);
+        animation: slideInRight 0.5s ease-out backwards;
+    }
+
+    .mon-metric-card:nth-child(1) { animation-delay: 0.1s; }
+    .mon-metric-card:nth-child(2) { animation-delay: 0.2s; }
+    .mon-metric-card:nth-child(3) { animation-delay: 0.3s; }
+    .mon-metric-card:nth-child(4) { animation-delay: 0.4s; }
+
+    .mon-metric-label {
+        font-size: 0.7rem;
+        color: var(--mon-text-muted);
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        margin-bottom: 0.25rem;
+    }
+
+    .mon-metric-value {
+        font-size: 1.5rem;
+        font-weight: 700;
+        font-family: var(--mon-font-mono);
+        color: var(--mon-text-primary);
+    }
+
+    .mon-metric-value.healthy { color: #10b981; }
+    .mon-metric-value.warning { color: #f59e0b; }
+
+    .mon-alert-list {
+        display: grid;
+        gap: var(--mon-space-xs);
+    }
+
+    .mon-alert-item {
+        display: flex;
+        align-items: center;
+        gap: var(--mon-space-sm);
+        padding: var(--mon-space-xs);
+        background: rgba(245, 158, 11, 0.05);
+        border-left: 3px solid #f59e0b;
+        border-radius: var(--mon-radius-sm);
+        animation: slideInRight 0.5s ease-out backwards;
+    }
+
+    .mon-alert-item:nth-child(1) { animation-delay: 0.5s; }
+    .mon-alert-item:nth-child(2) { animation-delay: 0.6s; }
+
+    .mon-alert-icon {
+        font-size: 1rem;
+    }
+
+    .mon-alert-text {
+        flex: 1;
+        font-size: 0.75rem;
+        color: var(--mon-text-secondary);
+    }
+
+    .mon-alert-badge {
+        font-size: 0.65rem;
+        font-weight: 600;
+        padding: 0.2rem 0.5rem;
+        border-radius: 4px;
+        background: rgba(245, 158, 11, 0.2);
+        color: #f59e0b;
+    }
+
+    /* ========================================
+    BUTTONS
+    ======================================== */
+
+    .mon-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: var(--mon-space-xs);
+        padding: 1rem 2rem;
+        font-family: var(--mon-font-body);
+        font-size: 1rem;
+        font-weight: 600;
+        text-decoration: none;
+        border-radius: var(--mon-radius-md);
+        transition: var(--mon-transition);
+        cursor: pointer;
+        border: none;
+        white-space: nowrap;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .mon-btn::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+        transform: translateX(-100%);
+        transition: transform 0.6s;
+    }
+
+    .mon-btn:hover::before {
+        transform: translateX(100%);
+    }
+
+    .mon-btn-primary {
+        background: linear-gradient(135deg, #0066CC 0%, #00B4D8 100%);
+        color: #FFFFFF;
+        box-shadow: 0 4px 16px rgba(0, 180, 216, 0.3);
+    }
+
+    .mon-btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 30px rgba(0, 180, 216, 0.4);
+        color: #FFFFFF;
+    }
+
+    .mon-btn-secondary {
+        background: transparent;
+        color: #00B4D8;
+        border: 2px solid #00B4D8;
+    }
+
+    .mon-btn-secondary:hover {
+        background: rgba(0, 180, 216, 0.1);
+        color: #00F5FF;
+        border-color: #00F5FF;
+        transform: translateY(-2px);
+    }
+
+    /* ========================================
+    SECTIONS
+    ======================================== */
+
+    .mon-section {
+        padding: var(--mon-space-2xl) var(--mon-space-lg);
+        position: relative;
+    }
+
+    .mon-section--alt {
+        background: var(--mon-bg-dark);
+    }
+
+    .mon-section--border {
+        border-top: 1px solid rgba(0, 180, 216, 0.1);
+    }
+
+    .mon-container {
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+
+    .mon-section-header {
+        max-width: 900px;
+        margin: 0 auto var(--mon-space-xl);
+        text-align: center;
+    }
+
+    .mon-section-label {
+        display: inline-flex;
+        align-items: center;
+        gap: var(--mon-space-xs);
+        font-size: 0.75rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        color: #00B4D8;
+        margin-bottom: var(--mon-space-sm);
+        padding: 0.4rem 1rem;
+        background: rgba(0, 180, 216, 0.1);
+        border: 1px solid rgba(0, 180, 216, 0.3);
+        border-radius: 100px;
+    }
+
+    .mon-section-label::before {
+        content: '';
+        width: 6px;
+        height: 6px;
+        background: #00B4D8;
+        border-radius: 50%;
+        animation: labelPulse 2s ease-in-out infinite;
+    }
+
+    @keyframes labelPulse {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.4; }
+    }
+
+    .mon-section h2 {
+        font-size: clamp(2rem, 5vw, 3.5rem);
+        font-weight: 800;
+        line-height: 1.2;
+        margin: 0 0 var(--mon-space-md);
+        letter-spacing: -0.02em;
+    }
+
+    .mon-section-intro {
+        font-size: 1.2rem;
+        color: var(--mon-text-secondary);
+        line-height: 1.7;
+    }
+
+    /* ========================================
+    MONITORING DOMAINS
+    ======================================== */
+
+    .mon-domains {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: var(--mon-space-xl);
+        margin-top: var(--mon-space-xl);
+    }
+
+    .mon-domain-card {
+        background: var(--mon-surface);
+        border: 1px solid var(--mon-border);
+        border-radius: var(--mon-radius-lg);
+        padding: var(--mon-space-xl);
+        transition: var(--mon-transition);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .mon-domain-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background: linear-gradient(90deg, #0066CC, #00B4D8);
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.4s ease;
+    }
+
+    .mon-domain-card:hover::before {
+        transform: scaleX(1);
+    }
+
+    .mon-domain-card:hover {
+        border-color: #00B4D8;
+        box-shadow: var(--mon-shadow-lg), 0 0 40px rgba(0, 180, 216, 0.3);
+        transform: translateY(-8px);
+    }
+
+    .mon-domain-icon {
+        width: 64px;
+        height: 64px;
+        background: linear-gradient(135deg, rgba(0, 180, 216, 0.2), rgba(16, 185, 129, 0.2));
+        border-radius: var(--mon-radius-md);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2rem;
+        margin-bottom: var(--mon-space-md);
+    }
+
+    .mon-domain-card h3 {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--mon-text-primary);
+        margin: 0 0 var(--mon-space-md);
+    }
+
+    .mon-domain-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .mon-domain-list li {
+        padding: var(--mon-space-xs) 0;
+        color: var(--mon-text-secondary);
+        display: flex;
+        align-items: center;
+        gap: var(--mon-space-sm);
+    }
+
+    .mon-domain-list li::before {
+        content: '▸';
+        color: #10b981;
+        flex-shrink: 0;
+    }
+
+    /* ========================================
+    ALERTING WORKFLOW
+    ======================================== */
+
+    .mon-workflow {
+        max-width: 900px;
+        margin: var(--mon-space-xl) auto 0;
+    }
+
+    .mon-workflow-step {
+        display: flex;
+        gap: var(--mon-space-lg);
+        margin-bottom: var(--mon-space-xl);
+        position: relative;
+        padding-left: var(--mon-space-lg);
+    }
+
+    .mon-workflow-step::before {
+        content: '';
+        position: absolute;
+        left: 23px;
+        top: 50px;
+        bottom: -40px;
+        width: 2px;
+        background: linear-gradient(180deg, #00B4D8, transparent);
+    }
+
+    .mon-workflow-step:last-child::before {
+        display: none;
+    }
+
+    .mon-workflow-number {
+        flex-shrink: 0;
+        width: 48px;
+        height: 48px;
+        background: linear-gradient(135deg, #00B4D8, #7CDBFF);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 800;
+        font-size: 1.2rem;
+        color: #0A1128;
+        box-shadow: 0 0 20px rgba(0, 180, 216, 0.3);
+        z-index: 1;
+    }
+
+    .mon-workflow-content {
+        flex: 1;
+        padding-top: 0.7rem;
+    }
+
+    .mon-workflow-content h3 {
+        font-size: 1.3rem;
+        font-weight: 700;
+        margin: 0 0 0.4rem;
+        color: var(--mon-text-primary);
+    }
+
+    .mon-workflow-content p {
+        color: var(--mon-text-secondary);
+        margin: 0;
+        line-height: 1.6;
+    }
+
+    /* ========================================
+    ADVANCED CAPABILITIES
+    ======================================== */
+
+    .mon-capabilities {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: var(--mon-space-lg);
+        margin-top: var(--mon-space-xl);
+    }
+
+    .mon-capability-card {
+        background: var(--mon-surface);
+        border: 1px solid var(--mon-border);
+        border-radius: var(--mon-radius-lg);
+        padding: var(--mon-space-lg);
+        transition: var(--mon-transition);
+    }
+
+    .mon-capability-card:hover {
+        border-color: #10b981;
+        box-shadow: 0 8px 24px rgba(16, 185, 129, 0.15);
+        transform: translateY(-4px);
+    }
+
+    .mon-capability-icon {
+        width: 56px;
+        height: 56px;
+        background: linear-gradient(135deg, rgba(0, 180, 216, 0.2), rgba(16, 185, 129, 0.2));
+        border-radius: var(--mon-radius-md);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.75rem;
+        margin-bottom: var(--mon-space-md);
+    }
+
+    .mon-capability-card h3 {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: var(--mon-text-primary);
+        margin: 0 0 var(--mon-space-sm);
+    }
+
+    .mon-capability-card p {
+        color: var(--mon-text-secondary);
+        margin: 0 0 var(--mon-space-sm);
+        line-height: 1.6;
+    }
+
+    .mon-capability-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .mon-capability-list li {
+        padding: var(--mon-space-xs) 0;
+        color: var(--mon-text-secondary);
+        display: flex;
+        align-items: center;
+        gap: var(--mon-space-sm);
+        font-size: 0.9rem;
+    }
+
+    .mon-capability-list li::before {
+        content: '✓';
+        color: #10b981;
+        font-weight: 700;
+        flex-shrink: 0;
+    }
+
+    /* ========================================
+    VALUE TRANSFORMATION
+    ======================================== */
+
+    .mon-value-section {
+        background: linear-gradient(135deg, rgba(0, 180, 216, 0.1) 0%, rgba(16, 185, 129, 0.1) 100%);
+        position: relative;
+    }
+
+    .mon-value-section::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: 
+            radial-gradient(circle at 20% 50%, rgba(0, 180, 216, 0.3) 0%, transparent 50%),
+            radial-gradient(circle at 80% 50%, rgba(16, 185, 129, 0.2) 0%, transparent 50%);
+        opacity: 0.3;
+    }
+
+    .mon-transformation {
+        position: relative;
+        z-index: 1;
+        max-width: 900px;
+        margin: var(--mon-space-xl) auto;
+        padding: var(--mon-space-xl);
+        background: rgba(26, 31, 46, 0.8);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(0, 180, 216, 0.2);
+        border-radius: var(--mon-radius-lg);
+        text-align: center;
+    }
+
+    .mon-transformation-arrow {
+        font-size: 3rem;
+        color: #00B4D8;
+        margin: var(--mon-space-md) 0;
+    }
+
+    .mon-transform-box {
+        padding: var(--mon-space-lg);
+        border-radius: var(--mon-radius-md);
+        margin: var(--mon-space-md) 0;
+    }
+
+    .mon-transform-from {
+        background: rgba(239, 68, 68, 0.1);
+        border: 1px solid rgba(239, 68, 68, 0.3);
+    }
+
+    .mon-transform-to {
+        background: rgba(16, 185, 129, 0.1);
+        border: 1px solid rgba(16, 185, 129, 0.3);
+    }
+
+    .mon-transform-box h3 {
+        font-size: 1.3rem;
+        font-weight: 700;
+        margin: 0;
+    }
+
+    .mon-transform-from h3 { color: #ef4444; }
+    .mon-transform-to h3 { color: #10b981; }
+
+    /* ========================================
+    CTA SECTION
+    ======================================== */
+
+    .mon-cta-section {
+        padding: calc(var(--mon-space-2xl) * 1.5) var(--mon-space-lg);
+        text-align: center;
+        background: linear-gradient(165deg, var(--mon-bg-dark) 0%, var(--mon-bg-darker) 100%);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .mon-cta-section::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 800px;
+        height: 800px;
+        background: radial-gradient(circle, rgba(0, 180, 216, 0.3) 0%, transparent 70%);
+        transform: translate(-50%, -50%);
+        animation: ctaPulse 8s ease-in-out infinite;
+    }
+
+    @keyframes ctaPulse {
+        0%, 100% { opacity: 0.2; transform: translate(-50%, -50%) scale(1); }
+        50% { opacity: 0.4; transform: translate(-50%, -50%) scale(1.1); }
+    }
+
+    .mon-cta-content {
+        position: relative;
+        z-index: 1;
+        max-width: 900px;
+        margin: 0 auto;
+    }
+
+    .mon-cta-section h2 {
+        font-size: clamp(2rem, 5vw, 3.5rem);
+        margin-bottom: var(--mon-space-md);
+    }
+
+    .mon-cta-section p {
+        font-size: 1.3rem;
+        color: var(--mon-text-secondary);
+        margin-bottom: var(--mon-space-xl);
+        line-height: 1.7;
+    }
+
+    .mon-cta-buttons {
+        display: flex;
+        gap: var(--mon-space-md);
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    /* ========================================
+    RESPONSIVE
+    ======================================== */
+
+    @media (max-width: 1024px) {
+        .mon-hero-content {
+            grid-template-columns: 1fr;
+            gap: var(--mon-space-xl);
+        }
+        
+        .mon-hero-visual {
+            order: -1;
+        }
+    }
+
+    @media (max-width: 768px) {
+        :root {
+            --mon-space-xl: 3rem;
+            --mon-space-2xl: 4rem;
+        }
+        
+        .mon-hero {
+            min-height: 75vh;
+        }
+        
+        .mon-section {
+            padding: var(--mon-space-xl) var(--mon-space-md);
+        }
+        
+        .mon-hero-cta,
+        .mon-cta-buttons {
+            flex-direction: column;
+            width: 100%;
+        }
+        
+        .mon-btn {
+            width: 100%;
+        }
+        
+        .mon-domains,
+        .mon-capabilities {
+            grid-template-columns: 1fr;
+        }
+
+        .mon-metric-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    /* ========================================
+    ACCESSIBILITY
+    ======================================== */
+
+    @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.01ms !important;
+        }
+    }
+
+    .mon-btn:focus-visible,
+    .mon-domain-card:focus-visible,
+    .mon-capability-card:focus-visible {
+        outline: 3px solid #00F5FF;
+        outline-offset: 4px;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+
+<section class="mon-hero" aria-labelledby="mon-hero-title">
+    <div class="mon-hero-content">
+        <div class="mon-hero-text">
+            <div class="mon-paper-badge">
+                <div class="mon-badge-icon">📊</div>
+                <span> • 24/7 Operations</span>
+            </div>
+            
+            <h1 id="mon-hero-title">
+                <span>24/7 Monitoring</span><br>
+                & Managed Support
+            </h1>
+            
+            <p class="mon-hero-lead">
+                Operational confidence, not just uptime. Transform raw data into decision-grade 
+                intelligence for proactive intervention and sustained system trustworthiness.
+            </p>
+            
+            <div class="mon-hero-cta">
+                <a href="#" class="mon-btn mon-btn-primary" download>
+                    <i class="bi bi-download"></i>
+                    <span>Download PDF</span>
+                </a>
+                <a href="{{ url_for('main.contact') }}" class="mon-btn mon-btn-secondary">
+                    <span>Request Consultation</span>
+                </a>
+            </div>
+        </div>
+        
+        <div class="mon-hero-visual">
+            <div class="mon-dashboard">
+                <div class="mon-dashboard-header">
+                    <div class="mon-dashboard-title">LIVE OPERATIONS</div>
+                    <div class="mon-dashboard-status">
+                        <span class="mon-status-dot"></span>
+                        <span>MONITORING</span>
+                    </div>
+                </div>
+                
+                <div class="mon-metric-grid">
+                    <div class="mon-metric-card">
+                        <div class="mon-metric-label">System Health</div>
+                        <div class="mon-metric-value healthy">99.8%</div>
+                    </div>
+                    <div class="mon-metric-card">
+                        <div class="mon-metric-label">Response Time</div>
+                        <div class="mon-metric-value healthy">42ms</div>
+                    </div>
+                    <div class="mon-metric-card">
+                        <div class="mon-metric-label">Active Services</div>
+                        <div class="mon-metric-value">127</div>
+                    </div>
+                    <div class="mon-metric-card">
+                        <div class="mon-metric-label">CPU Average</div>
+                        <div class="mon-metric-value warning">68%</div>
+                    </div>
+                </div>
+                
+                <div class="mon-alert-list">
+                    <div class="mon-alert-item">
+                        <div class="mon-alert-icon">⚠️</div>
+                        <div class="mon-alert-text">High memory usage detected</div>
+                        <div class="mon-alert-badge">WARNING</div>
+                    </div>
+                    <div class="mon-alert-item">
+                        <div class="mon-alert-icon">📊</div>
+                        <div class="mon-alert-text">Capacity trend: 3 days to threshold</div>
+                        <div class="mon-alert-badge">INFO</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="solution-content">
+    <!-- ===== ABSTRACT ===== -->
+    <section class="mon-section">
+        <div class="mon-container">
+            <div class="mon-section-header">
+                <span class="mon-section-label">Abstract</span>
+                <h2>Beyond Uptime</h2>
+                <p class="mon-section-intro">
+                    Availability is merely a foundation. True operational confidence requires 
+                    continuous deep visibility into performance, security posture, and failure 
+                    precursors—transforming raw data into decision-grade intelligence.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== MONITORING DOMAINS ===== -->
+    <section class="mon-section mon-section--alt mon-section--border">
+        <div class="mon-container">
+            <div class="mon-section-header">
+                <span class="mon-section-label">Coverage</span>
+                <h2>Monitoring Domains</h2>
+                <p class="mon-section-intro">
+                    Unified perspective across all critical areas of your digital landscape.
+                </p>
+            </div>
+            
+            <div class="mon-domains">
+                {% set domains = [
+                    {
+                        'icon': '🖥️',
+                        'title': 'Infrastructure Monitoring',
+                        'features': [
+                            'Servers, storage, and networking',
+                            'Power and environmental sensors',
+                            'Capacity utilization trends',
+                            'Hardware health indicators'
+                        ]
+                    },
+                    {
+                        'icon': '⚡',
+                        'title': 'Application Monitoring',
+                        'features': [
+                            'Latency and error rates',
+                            'Service dependencies mapping',
+                            'Capacity saturation detection',
+                            'Transaction tracing'
+                        ]
+                    },
+                    {
+                        'icon': '🔒',
+                        'title': 'Security Monitoring',
+                        'features': [
+                            'Authentication anomalies',
+                            'Network behaviour deviations',
+                            'Event correlation and analysis',
+                            'Threat intelligence integration'
+                        ]
+                    }
+                ] %}
+                
+                {% for domain in domains %}
+                <article class="mon-domain-card">
+                    <div class="mon-domain-icon">{{ domain.icon }}</div>
+                    <h3>{{ domain.title }}</h3>
+                    <ul class="mon-domain-list">
+                        {% for item in domain.features %}
+                        <li>{{ item }}</li>
+                        {% endfor %}
+                    </ul>
+                </article>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== INCIDENT RESPONSE ===== -->
+    <section class="mon-section mon-section--border">
+        <div class="mon-container">
+            <div class="mon-section-header">
+                <span class="mon-section-label">Response</span>
+                <h2>Incident Response Workflow</h2>
+            </div>
+            
+            <div class="mon-workflow">
+                {% set workflow = [
+                    {'num': '1', 'title': 'Detection', 'desc': 'Automated alert generation with context and business impact assessment'},
+                    {'num': '2', 'title': 'Triage', 'desc': 'Rapid severity classification and ownership assignment'},
+                    {'num': '3', 'title': 'Containment', 'desc': 'Immediate action to prevent spread and limit damage'},
+                    {'num': '4', 'title': 'Resolution', 'desc': 'Root cause identification and permanent fix implementation'},
+                    {'num': '5', 'title': 'Post-Incident Review', 'desc': 'Documentation and learning to prevent recurrence'}
+                ] %}
+                
+                {% for step in workflow %}
+                <div class="mon-workflow-step">
+                    <div class="mon-workflow-number">{{ step.num }}</div>
+                    <div class="mon-workflow-content">
+                        <h3>{{ step.title }}</h3>
+                        <p>{{ step.desc }}</p>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== ADVANCED CAPABILITIES ===== -->
+    <section class="mon-section mon-section--alt mon-section--border">
+        <div class="mon-container">
+            <div class="mon-section-header">
+                <span class="mon-section-label">Capabilities</span>
+                <h2>Advanced Features</h2>
+            </div>
+            
+            <div class="mon-capabilities">
+                {% set capabilities = [
+                    {
+                        'icon': '📋',
+                        'title': 'SLA-Backed Services',
+                        'desc': 'Measurable commitments ensuring accountability:',
+                        'features': [
+                            'Guaranteed response times',
+                            'Transparent reporting',
+                            'Performance metrics tracking'
+                        ]
+                    },
+                    {
+                        'icon': '🔮',
+                        'title': 'Predictive Detection',
+                        'desc': 'Early warning systems preventing failures:',
+                        'features': [
+                            'Trend analysis algorithms',
+                            'Capacity exhaustion forecasting',
+                            'Anomaly detection'
+                        ]
+                    },
+                    {
+                        'icon': '🔄',
+                        'title': 'Hybrid Support',
+                        'desc': 'Flexible engagement models:',
+                        'features': [
+                            'Remote-first operations',
+                            'On-site escalation available',
+                            'Seamless handoff protocols'
+                        ]
+                    }
+                ] %}
+                
+                {% for cap in capabilities %}
+                <article class="mon-capability-card">
+                    <div class="mon-capability-icon">{{ cap.icon }}</div>
+                    <h3>{{ cap.title }}</h3>
+                    <p>{{ cap.desc }}</p>
+                    <ul class="mon-capability-list">
+                        {% for item in cap.features %}
+                        <li>{{ item }}</li>
+                        {% endfor %}
+                    </ul>
+                </article>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== STRATEGIC VALUE ===== -->
+    <section class="mon-section mon-value-section">
+        <div class="mon-container">
+            <div class="mon-section-header">
+                <span class="mon-section-label">Transformation</span>
+                <h2>Strategic Value</h2>
+            </div>
+            
+            <div class="mon-transformation">
+                <div class="mon-transform-box mon-transform-from">
+                    <h3>Reactive Cost Centre</h3>
+                </div>
+                
+                <div class="mon-transformation-arrow">↓</div>
+                
+                <div class="mon-transform-box mon-transform-to">
+                    <h3>Proactive Risk Management</h3>
+                </div>
+                
+                <p style="margin-top: var(--mon-space-lg); color: var(--mon-text-secondary); font-size: 1.1rem;">
+                    24/7 monitoring enables trust, continuity, and informed decision-making—
+                    transforming IT from a necessary expense into a strategic asset.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CTA SECTION ===== -->
+    <section class="mon-cta-section">
+        <div class="mon-cta-content">
+            <h2>Achieve Operational Excellence</h2>
+            <p>
+                Let's discuss how structured 24/7 monitoring can deliver confidence that 
+                your systems will not only run—but remain trustworthy under pressure.
+            </p>
+            <div class="mon-cta-buttons">
+                <a href="#" class="mon-btn mon-btn-primary" download>
+                    <i class="bi bi-download"></i>
+                    <span>Download Full White Paper</span>
+                </a>
+                <a href="{{ url_for('main.contact') }}" class="mon-btn mon-btn-secondary">
+                    <span>Schedule Consultation</span>
+                </a>
+            </div>
+        </div>
+    </section>
+</section>
+
+{% endblock %}

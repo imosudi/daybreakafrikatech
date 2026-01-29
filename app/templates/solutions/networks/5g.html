@@ -1,0 +1,1085 @@
+<!-- 5G Readiness & Optimisation  -->
+<!--templates/solutions/networks/5g.html-->
+{% extends "base.html" %}
+
+{% block title %}5G Readiness & Optimisation – Daybreak Afrika Technologies{% endblock %}
+
+{% block extra_css %}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+    /* ========================================
+    5G  - PREMIUM DESIGN
+    Brand-Aligned Theme
+    ======================================== */
+
+    :root {
+        /* Brand Colors - Harmonized */
+        --g5-primary: #00B4D8;
+        --g5-primary-light: #00F5FF;
+        --g5-primary-dark: #0066CC;
+        --g5-secondary: #7CDBFF;
+        --g5-accent: #10b981;
+        --g5-purple: #8B5CF6;
+        --g5-pink: #EC4899;
+        
+        /* Neutrals */
+        --g5-bg-dark: #0A1128;
+        --g5-bg-darker: #050810;
+        --g5-surface: rgba(255, 255, 255, 0.02);
+        --g5-surface-light: rgba(255, 255, 255, 0.05);
+        --g5-border: rgba(0, 180, 216, 0.1);
+        --g5-text-primary: #F8F9FA;
+        --g5-text-secondary: rgba(248, 249, 250, 0.7);
+        --g5-text-muted: rgba(248, 249, 250, 0.5);
+        
+        /* Effects */
+        --g5-glow-primary: rgba(0, 180, 216, 0.3);
+        --g5-glow-accent: rgba(139, 92, 246, 0.3);
+        --g5-shadow-md: 0 8px 24px rgba(0, 0, 0, 0.4);
+        --g5-shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.5);
+        
+        /* Spacing */
+        --g5-space-xs: 0.5rem;
+        --g5-space-sm: 1rem;
+        --g5-space-md: 1.5rem;
+        --g5-space-lg: 2.5rem;
+        --g5-space-xl: 4rem;
+        --g5-space-2xl: 6rem;
+        
+        /* Border Radius */
+        --g5-radius-sm: 8px;
+        --g5-radius-md: 12px;
+        --g5-radius-lg: 16px;
+        
+        /* Typography */
+        --g5-font-sans: 'Space Grotesk', system-ui, sans-serif;
+        --g5-font-mono: 'IBM Plex Mono', monospace;
+        --g5-font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        
+        /* Transitions */
+        --g5-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* ========================================
+    HERO SECTION
+    ======================================== */
+
+    .g5-hero {
+        position: relative;
+        min-height: 85vh;
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+    }
+
+    .g5-hero::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: 
+            radial-gradient(circle at 20% 30%, var(--g5-glow-primary) 0%, transparent 50%),
+            radial-gradient(circle at 80% 70%, var(--g5-glow-accent) 0%, transparent 50%),
+            radial-gradient(circle at 50% 50%, rgba(236, 72, 153, 0.1) 0%, transparent 60%);
+        animation: ambientPulse 12s ease-in-out infinite alternate;
+        opacity: 0.4;
+    }
+
+    @keyframes ambientPulse {
+        0% { transform: scale(1); opacity: 0.3; }
+        100% { transform: scale(1.1); opacity: 0.5; }
+    }
+
+    .g5-hero-content {
+        position: relative;
+        z-index: 10;
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: var(--g5-space-2xl) var(--g5-space-lg);
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: var(--g5-space-2xl);
+        align-items: center;
+    }
+
+    .g5-hero-text {
+        animation: slideInLeft 0.8s ease-out;
+    }
+
+    @keyframes slideInLeft {
+        from { opacity: 0; transform: translateX(-30px); }
+        to { opacity: 1; transform: translateX(0); }
+    }
+
+    .g5-paper-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: var(--g5-space-xs);
+        padding: var(--g5-space-xs) var(--g5-space-md);
+        background: rgba(139, 92, 246, 0.12);
+        border: 1px solid rgba(139, 92, 246, 0.35);
+        border-radius: 100px;
+        font-size: 0.75rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: #8B5CF6;
+        margin-bottom: var(--g5-space-md);
+        animation: fadeInDown 0.6s ease-out;
+    }
+
+    .g5-badge-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 18px;
+        height: 18px;
+        background: #8B5CF6;
+        border-radius: 50%;
+        color: white;
+        font-size: 0.65rem;
+        animation: paperPulse 2s ease-in-out infinite;
+    }
+
+    @keyframes paperPulse {
+        0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(139, 92, 246, 0.7); }
+        50% { transform: scale(1.1); box-shadow: 0 0 0 8px rgba(139, 92, 246, 0); }
+    }
+
+    @keyframes fadeInDown {
+        from { opacity: 0; transform: translateY(-15px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    .g5-hero h1 {
+        font-size: clamp(2.5rem, 6vw, 4.5rem);
+        font-weight: 800;
+        line-height: 1.1;
+        margin: 0 0 var(--g5-space-md);
+        letter-spacing: -0.03em;
+        animation: fadeInUp 0.8s ease-out 0.2s backwards;
+    }
+
+    .g5-hero h1 span {
+        background: linear-gradient(135deg, #8B5CF6 0%, #00B4D8 50%, #EC4899 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    @keyframes fadeInUp {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    .g5-hero-lead {
+        font-size: clamp(1.1rem, 1.8vw, 1.4rem);
+        color: var(--g5-text-secondary);
+        max-width: 600px;
+        margin-bottom: var(--g5-space-xl);
+        line-height: 1.7;
+        animation: fadeInUp 0.8s ease-out 0.4s backwards;
+    }
+
+    .g5-hero-cta {
+        display: flex;
+        gap: var(--g5-space-md);
+        flex-wrap: wrap;
+        animation: fadeInUp 0.8s ease-out 0.6s backwards;
+    }
+
+    /* Hero Visual - 5G Edge Architecture */
+    .g5-hero-visual {
+        animation: slideInRight 0.8s ease-out 0.4s backwards;
+    }
+
+    @keyframes slideInRight {
+        from { opacity: 0; transform: translateX(30px); }
+        to { opacity: 1; transform: translateX(0); }
+    }
+
+    .g5-architecture {
+        background: var(--g5-surface);
+        border: 1px solid var(--g5-border);
+        border-radius: var(--g5-radius-lg);
+        padding: var(--g5-space-xl);
+        box-shadow: var(--g5-shadow-lg);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .g5-architecture::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: linear-gradient(90deg, #8B5CF6, #00B4D8, #EC4899);
+        background-size: 200% 100%;
+        animation: scanLine 3s linear infinite;
+    }
+
+    @keyframes scanLine {
+        0% { background-position: 200% 0; }
+        100% { background-position: -200% 0; }
+    }
+
+    .g5-arch-title {
+        font-family: var(--g5-font-body);
+        font-size: 0.85rem;
+        color: #8B5CF6;
+        font-weight: 600;
+        margin-bottom: var(--g5-space-lg);
+        text-align: center;
+    }
+
+    .g5-edge-layers {
+        display: flex;
+        flex-direction: column;
+        gap: var(--g5-space-md);
+    }
+
+    .g5-edge-layer {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: var(--g5-space-md);
+        align-items: center;
+        padding: var(--g5-space-md);
+        background: rgba(139, 92, 246, 0.05);
+        border: 1px solid rgba(139, 92, 246, 0.2);
+        border-radius: var(--g5-radius-sm);
+        animation: layerSlide 0.6s ease-out backwards;
+    }
+
+    .g5-edge-layer:nth-child(1) { animation-delay: 0.1s; }
+    .g5-edge-layer:nth-child(2) { animation-delay: 0.2s; }
+    .g5-edge-layer:nth-child(3) { animation-delay: 0.3s; }
+
+    @keyframes layerSlide {
+        from { opacity: 0; transform: translateX(-20px); }
+        to { opacity: 1; transform: translateX(0); }
+    }
+
+    .g5-layer-icon {
+        width: 48px;
+        height: 48px;
+        background: linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(236, 72, 153, 0.2));
+        border-radius: var(--g5-radius-sm);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        flex-shrink: 0;
+    }
+
+    .g5-layer-content h4 {
+        font-size: 0.9rem;
+        font-weight: 700;
+        color: var(--g5-text-primary);
+        margin: 0 0 0.25rem;
+    }
+
+    .g5-layer-content p {
+        font-size: 0.75rem;
+        color: var(--g5-text-muted);
+        margin: 0;
+    }
+
+    .g5-latency-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.3rem;
+        padding: 0.3rem 0.6rem;
+        background: rgba(16, 185, 129, 0.1);
+        border: 1px solid rgba(16, 185, 129, 0.3);
+        border-radius: 100px;
+        font-size: 0.7rem;
+        font-weight: 600;
+        color: #10b981;
+        margin-top: 0.5rem;
+    }
+
+    /* ========================================
+    BUTTONS
+    ======================================== */
+
+    .g5-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: var(--g5-space-xs);
+        padding: 1rem 2rem;
+        font-family: var(--g5-font-body);
+        font-size: 1rem;
+        font-weight: 600;
+        text-decoration: none;
+        border-radius: var(--g5-radius-md);
+        transition: var(--g5-transition);
+        cursor: pointer;
+        border: none;
+        white-space: nowrap;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .g5-btn::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+        transform: translateX(-100%);
+        transition: transform 0.6s;
+    }
+
+    .g5-btn:hover::before {
+        transform: translateX(100%);
+    }
+
+    .g5-btn-primary {
+        background: linear-gradient(135deg, #8B5CF6 0%, #00B4D8 100%);
+        color: #FFFFFF;
+        box-shadow: 0 4px 16px rgba(139, 92, 246, 0.3);
+    }
+
+    .g5-btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 30px rgba(139, 92, 246, 0.4);
+        color: #FFFFFF;
+    }
+
+    .g5-btn-secondary {
+        background: transparent;
+        color: #8B5CF6;
+        border: 2px solid #8B5CF6;
+    }
+
+    .g5-btn-secondary:hover {
+        background: rgba(139, 92, 246, 0.1);
+        color: #EC4899;
+        border-color: #EC4899;
+        transform: translateY(-2px);
+    }
+
+    /* ========================================
+    SECTIONS
+    ======================================== */
+
+    .g5-section {
+        padding: var(--g5-space-2xl) var(--g5-space-lg);
+        position: relative;
+    }
+
+    .g5-section--alt {
+        background: var(--g5-bg-dark);
+    }
+
+    .g5-section--border {
+        border-top: 1px solid rgba(0, 180, 216, 0.1);
+    }
+
+    .g5-container {
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+
+    .g5-section-header {
+        max-width: 900px;
+        margin: 0 auto var(--g5-space-xl);
+        text-align: center;
+    }
+
+    .g5-section-label {
+        display: inline-flex;
+        align-items: center;
+        gap: var(--g5-space-xs);
+        font-size: 0.75rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        color: #8B5CF6;
+        margin-bottom: var(--g5-space-sm);
+        padding: 0.4rem 1rem;
+        background: rgba(139, 92, 246, 0.1);
+        border: 1px solid rgba(139, 92, 246, 0.3);
+        border-radius: 100px;
+    }
+
+    .g5-section-label::before {
+        content: '';
+        width: 6px;
+        height: 6px;
+        background: #8B5CF6;
+        border-radius: 50%;
+        animation: labelPulse 2s ease-in-out infinite;
+    }
+
+    @keyframes labelPulse {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.4; }
+    }
+
+    .g5-section h2 {
+        font-size: clamp(2rem, 5vw, 3.5rem);
+        font-weight: 800;
+        line-height: 1.2;
+        margin: 0 0 var(--g5-space-md);
+        letter-spacing: -0.02em;
+    }
+
+    .g5-section-intro {
+        font-size: 1.2rem;
+        color: var(--g5-text-secondary);
+        line-height: 1.7;
+    }
+
+    /* ========================================
+    CAPABILITIES GRID
+    ======================================== */
+
+    .g5-capabilities {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: var(--g5-space-lg);
+        margin-top: var(--g5-space-xl);
+    }
+
+    .g5-capability-card {
+        background: var(--g5-surface);
+        border: 1px solid var(--g5-border);
+        border-radius: var(--g5-radius-lg);
+        padding: var(--g5-space-lg);
+        transition: var(--g5-transition);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .g5-capability-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background: linear-gradient(90deg, #8B5CF6, #00B4D8);
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.4s ease;
+    }
+
+    .g5-capability-card:hover::before {
+        transform: scaleX(1);
+    }
+
+    .g5-capability-card:hover {
+        border-color: #8B5CF6;
+        box-shadow: 0 8px 24px rgba(139, 92, 246, 0.15);
+        transform: translateY(-4px);
+    }
+
+    .g5-capability-icon {
+        width: 56px;
+        height: 56px;
+        background: linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(236, 72, 153, 0.2));
+        border-radius: var(--g5-radius-md);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.75rem;
+        margin-bottom: var(--g5-space-md);
+    }
+
+    .g5-capability-card h3 {
+        font-size: 1.15rem;
+        font-weight: 700;
+        color: var(--g5-text-primary);
+        margin: 0 0 var(--g5-space-sm);
+    }
+
+    .g5-capability-card p {
+        color: var(--g5-text-secondary);
+        margin: 0;
+        line-height: 1.6;
+        font-size: 0.95rem;
+    }
+
+    /* ========================================
+    DESIGN PRINCIPLES
+    ======================================== */
+
+    .g5-principles {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: var(--g5-space-lg);
+        margin-top: var(--g5-space-xl);
+    }
+
+    .g5-principle-card {
+        background: var(--g5-surface);
+        border: 1px solid var(--g5-border);
+        border-radius: var(--g5-radius-lg);
+        padding: var(--g5-space-lg);
+        transition: var(--g5-transition);
+    }
+
+    .g5-principle-card:hover {
+        border-color: #00B4D8;
+        box-shadow: 0 8px 24px rgba(0, 180, 216, 0.15);
+        transform: translateY(-4px);
+    }
+
+    .g5-principle-number {
+        width: 48px;
+        height: 48px;
+        background: linear-gradient(135deg, #8B5CF6, #EC4899);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 800;
+        font-size: 1.2rem;
+        color: white;
+        margin-bottom: var(--g5-space-md);
+    }
+
+    .g5-principle-card h3 {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: var(--g5-text-primary);
+        margin: 0 0 var(--g5-space-sm);
+    }
+
+    .g5-principle-card p {
+        color: var(--g5-text-secondary);
+        margin: 0;
+        line-height: 1.6;
+    }
+
+    /* ========================================
+    USE CASES
+    ======================================== */
+
+    .g5-usecases {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: var(--g5-space-lg);
+        margin-top: var(--g5-space-xl);
+    }
+
+    .g5-usecase-card {
+        background: rgba(16, 185, 129, 0.05);
+        border: 1px solid rgba(16, 185, 129, 0.2);
+        border-radius: var(--g5-radius-lg);
+        padding: var(--g5-space-lg);
+        transition: var(--g5-transition);
+    }
+
+    .g5-usecase-card:hover {
+        border-color: rgba(16, 185, 129, 0.4);
+        box-shadow: 0 8px 24px rgba(16, 185, 129, 0.15);
+        transform: translateY(-4px);
+    }
+
+    .g5-usecase-icon {
+        width: 56px;
+        height: 56px;
+        background: rgba(16, 185, 129, 0.1);
+        border-radius: var(--g5-radius-md);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.75rem;
+        margin-bottom: var(--g5-space-md);
+    }
+
+    .g5-usecase-card h3 {
+        font-size: 1.15rem;
+        font-weight: 700;
+        color: #10b981;
+        margin: 0 0 var(--g5-space-sm);
+    }
+
+    .g5-usecase-card p {
+        color: var(--g5-text-secondary);
+        margin: 0;
+        line-height: 1.6;
+        font-size: 0.95rem;
+    }
+
+    /* ========================================
+    BENEFITS SECTION
+    ======================================== */
+
+    .g5-benefits {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: var(--g5-space-lg);
+        margin-top: var(--g5-space-xl);
+    }
+
+    .g5-benefit-card {
+        background: rgba(0, 180, 216, 0.05);
+        border: 1px solid rgba(0, 180, 216, 0.2);
+        border-radius: var(--g5-radius-lg);
+        padding: var(--g5-space-lg);
+        text-align: center;
+        transition: var(--g5-transition);
+    }
+
+    .g5-benefit-card:hover {
+        border-color: rgba(0, 180, 216, 0.4);
+        box-shadow: 0 8px 24px rgba(0, 180, 216, 0.15);
+        transform: translateY(-4px);
+    }
+
+    .g5-benefit-icon {
+        font-size: 2.5rem;
+        margin-bottom: var(--g5-space-sm);
+    }
+
+    .g5-benefit-card h3 {
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: #00B4D8;
+        margin: 0 0 var(--g5-space-xs);
+    }
+
+    .g5-benefit-card p {
+        color: var(--g5-text-secondary);
+        margin: 0;
+        line-height: 1.6;
+        font-size: 0.95rem;
+    }
+
+    /* ========================================
+    CTA SECTION
+    ======================================== */
+
+    .g5-cta-section {
+        padding: calc(var(--g5-space-2xl) * 1.5) var(--g5-space-lg);
+        text-align: center;
+        background: linear-gradient(165deg, var(--g5-bg-dark) 0%, var(--g5-bg-darker) 100%);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .g5-cta-section::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 800px;
+        height: 800px;
+        background: radial-gradient(circle, rgba(139, 92, 246, 0.3) 0%, transparent 70%);
+        transform: translate(-50%, -50%);
+        animation: ctaPulse 8s ease-in-out infinite;
+    }
+
+    @keyframes ctaPulse {
+        0%, 100% { opacity: 0.2; transform: translate(-50%, -50%) scale(1); }
+        50% { opacity: 0.4; transform: translate(-50%, -50%) scale(1.1); }
+    }
+
+    .g5-cta-content {
+        position: relative;
+        z-index: 1;
+        max-width: 900px;
+        margin: 0 auto;
+    }
+
+    .g5-cta-section h2 {
+        font-size: clamp(2rem, 5vw, 3.5rem);
+        margin-bottom: var(--g5-space-md);
+    }
+
+    .g5-cta-section p {
+        font-size: 1.3rem;
+        color: var(--g5-text-secondary);
+        margin-bottom: var(--g5-space-xl);
+        line-height: 1.7;
+    }
+
+    .g5-cta-buttons {
+        display: flex;
+        gap: var(--g5-space-md);
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    /* ========================================
+    RESPONSIVE
+    ======================================== */
+
+    @media (max-width: 1024px) {
+        .g5-hero-content {
+            grid-template-columns: 1fr;
+            gap: var(--g5-space-xl);
+        }
+        
+        .g5-hero-visual {
+            order: -1;
+        }
+    }
+
+    @media (max-width: 768px) {
+        :root {
+            --g5-space-xl: 3rem;
+            --g5-space-2xl: 4rem;
+        }
+        
+        .g5-hero {
+            min-height: 75vh;
+        }
+        
+        .g5-section {
+            padding: var(--g5-space-xl) var(--g5-space-md);
+        }
+        
+        .g5-hero-cta,
+        .g5-cta-buttons {
+            flex-direction: column;
+            width: 100%;
+        }
+        
+        .g5-btn {
+            width: 100%;
+        }
+    }
+
+    /* ========================================
+    ACCESSIBILITY
+    ======================================== */
+
+    @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.01ms !important;
+        }
+    }
+
+    .g5-btn:focus-visible,
+    .g5-capability-card:focus-visible,
+    .g5-principle-card:focus-visible,
+    .g5-usecase-card:focus-visible {
+        outline: 3px solid #EC4899;
+        outline-offset: 4px;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+
+<section class="g5-hero" aria-labelledby="g5-hero-title">
+    <div class="g5-hero-content">
+        <div class="g5-hero-text">
+            <div class="g5-paper-badge">
+                <div class="g5-badge-icon">5G</div>
+                <span> • Next-Gen Networks</span>
+            </div>
+            
+            <h1 id="g5-hero-title">
+                <span>5G Readiness</span><br>
+                & Optimisation
+            </h1>
+            
+            <p class="g5-hero-lead">
+                Preparing enterprises for private, edge-driven, ultra-low-latency networks. 
+                Beyond bandwidth—building platforms for intelligence at the edge.
+            </p>
+            
+            <div class="g5-hero-cta">
+                <a href="#" class="g5-btn g5-btn-primary" download>
+                    <i class="bi bi-download"></i>
+                    <span>Download PDF</span>
+                </a>
+                <a href="{{ url_for('main.contact') }}" class="g5-btn g5-btn-secondary">
+                    <span>Request Consultation</span>
+                </a>
+            </div>
+        </div>
+        
+        <div class="g5-hero-visual">
+            <div class="g5-architecture">
+                <div class="g5-arch-title">EDGE-FIRST 5G ARCHITECTURE</div>
+                
+                <div class="g5-edge-layers">
+                    <div class="g5-edge-layer">
+                        <div class="g5-layer-icon">📱</div>
+                        <div class="g5-layer-content">
+                            <h4>Device Layer</h4>
+                            <p>IoT sensors, mobile devices, industrial equipment</p>
+                            <span class="g5-latency-badge">⚡ Ultra-low latency</span>
+                        </div>
+                    </div>
+                    
+                    <div class="g5-edge-layer">
+                        <div class="g5-layer-icon">🔷</div>
+                        <div class="g5-layer-content">
+                            <h4>Edge Computing (MEC)</h4>
+                            <p>Local AI inference, real-time analytics, data processing</p>
+                            <span class="g5-latency-badge">⚡ &lt;10ms latency</span>
+                        </div>
+                    </div>
+                    
+                    <div class="g5-edge-layer">
+                        <div class="g5-layer-icon">🌐</div>
+                        <div class="g5-layer-content">
+                            <h4>5G Network Core</h4>
+                            <p>Private LTE/5G, network slicing, orchestration</p>
+                            <span class="g5-latency-badge">⚡ Deterministic QoS</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="solution-content">
+    <!-- ===== ABSTRACT ===== -->
+    <section class="g5-section">
+        <div class="g5-container">
+            <div class="g5-section-header">
+                <span class="g5-section-label">Abstract</span>
+                <h2>Beyond Bandwidth</h2>
+                <p class="g5-section-intro">
+                    5G represents a fundamental shift from connectivity to platform—enabling ultra-low 
+                    latency, deterministic performance, and deep integration between networks and edge computing. 
+                    Not just faster wireless, but a foundation for intelligent, edge-driven systems.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== THE 5G IMPERATIVE ===== -->
+    <section class="g5-section g5-section--alt g5-section--border">
+        <div class="g5-container">
+            <div class="g5-section-header">
+                <span class="g5-section-label">Transformation</span>
+                <h2>The 5G Imperative</h2>
+            </div>
+            
+            <div class="g5-capabilities">
+                <article class="g5-capability-card">
+                    <div class="g5-capability-icon">⚡</div>
+                    <h3>Ultra-Low Latency</h3>
+                    <p>
+                        Single-digit millisecond response times enabling real-time 
+                        control and instantaneous decision systems.
+                    </p>
+                </article>
+
+                <article class="g5-capability-card">
+                    <div class="g5-capability-icon">📊</div>
+                    <h3>High Device Density</h3>
+                    <p>
+                        Support for sensor- and IoT-heavy environments with 
+                        massive device connectivity per cell.
+                    </p>
+                </article>
+
+                <article class="g5-capability-card">
+                    <div class="g5-capability-icon">🔀</div>
+                    <h3>Network Slicing</h3>
+                    <p>
+                        Workload-specific performance guarantees through 
+                        virtualized network segments.
+                    </p>
+                </article>
+
+                <article class="g5-capability-card">
+                    <div class="g5-capability-icon">🔷</div>
+                    <h3>Edge Computing Integration</h3>
+                    <p>
+                        Tight coupling between connectivity and compute for 
+                        intelligence at the network edge.
+                    </p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== DESIGN PRINCIPLES ===== -->
+    <section class="g5-section g5-section--border">
+        <div class="g5-container">
+            <div class="g5-section-header">
+                <span class="g5-section-label">Framework</span>
+                <h2>Design Principles for 5G-Ready Enterprises</h2>
+            </div>
+            
+            <div class="g5-principles">
+                <article class="g5-principle-card">
+                    <div class="g5-principle-number">1</div>
+                    <h3>Incremental Adoption</h3>
+                    <p>
+                        Support current 4G/LTE environments while preparing for 
+                        5G evolution without disruptive forklift upgrades.
+                    </p>
+                </article>
+
+                <article class="g5-principle-card">
+                    <div class="g5-principle-number">2</div>
+                    <h3>Edge-First Architecture</h3>
+                    <p>
+                        Treat compute and intelligence as close to data sources 
+                        as possible for minimal latency.
+                    </p>
+                </article>
+
+                <article class="g5-principle-card">
+                    <div class="g5-principle-number">3</div>
+                    <h3>Interoperability</h3>
+                    <p>
+                        Seamless integration with existing LAN, WAN, fibre, and 
+                        wireless infrastructure.
+                    </p>
+                </article>
+
+                <article class="g5-principle-card">
+                    <div class="g5-principle-number">4</div>
+                    <h3>Deterministic Performance</h3>
+                    <p>
+                        Engineer predictable latency and throughput for 
+                        mission-critical workloads.
+                    </p>
+                </article>
+
+                <article class="g5-principle-card">
+                    <div class="g5-principle-number">5</div>
+                    <h3>Security by Design</h3>
+                    <p>
+                        Embed zero-trust principles across radio, transport, 
+                        and edge computing layers.
+                    </p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== MEC USE CASES ===== -->
+    <section class="g5-section g5-section--alt g5-section--border">
+        <div class="g5-container">
+            <div class="g5-section-header">
+                <span class="g5-section-label">Applications</span>
+                <h2>Edge & MEC Enablement</h2>
+                <p class="g5-section-intro">
+                    Multi-Access Edge Computing unlocks 5G's full potential through ultra-low 
+                    latency application hosting and localized intelligence.
+                </p>
+            </div>
+            
+            <div class="g5-usecases">
+                <article class="g5-usecase-card">
+                    <div class="g5-usecase-icon">📹</div>
+                    <h3>Real-Time Video Analytics</h3>
+                    <p>
+                        Surveillance and monitoring with immediate threat 
+                        detection and automated response.
+                    </p>
+                </article>
+
+                <article class="g5-usecase-card">
+                    <div class="g5-usecase-icon">🏭</div>
+                    <h3>Industrial Automation</h3>
+                    <p>
+                        Control systems requiring deterministic latency and 
+                        real-time operational visibility.
+                    </p>
+                </article>
+
+                <article class="g5-usecase-card">
+                    <div class="g5-usecase-icon">🌡️</div>
+                    <h3>Dense IoT Environments</h3>
+                    <p>
+                        Massive sensor deployments with edge processing 
+                        and intelligent data aggregation.
+                    </p>
+                </article>
+
+                <article class="g5-usecase-card">
+                    <div class="g5-usecase-icon">🤖</div>
+                    <h3>AI-Driven Monitoring</h3>
+                    <p>
+                        Local inference and decision systems without 
+                        cloud dependency or backhaul latency.
+                    </p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== STRATEGIC VALUE ===== -->
+    <section class="g5-section g5-section--border">
+        <div class="g5-container">
+            <div class="g5-section-header">
+                <span class="g5-section-label">Benefits</span>
+                <h2>Strategic Value</h2>
+            </div>
+            
+            <div class="g5-benefits">
+                <article class="g5-benefit-card">
+                    <div class="g5-benefit-icon">🚀</div>
+                    <h3>Future-Proof Connectivity</h3>
+                    <p>
+                        Ready for next-generation workloads without 
+                        architectural redesign.
+                    </p>
+                </article>
+
+                <article class="g5-benefit-card">
+                    <div class="g5-benefit-icon">⚡</div>
+                    <h3>Reduced Latency</h3>
+                    <p>
+                        Real-time and AI-driven applications with 
+                        deterministic performance.
+                    </p>
+                </article>
+
+                <article class="g5-benefit-card">
+                    <div class="g5-benefit-icon">📱</div>
+                    <h3>Enhanced Mobility</h3>
+                    <p>
+                        Improved operational flexibility across 
+                        distributed environments.
+                    </p>
+                </article>
+
+                <article class="g5-benefit-card">
+                    <div class="g5-benefit-icon">🎯</div>
+                    <h3>Business Alignment</h3>
+                    <p>
+                        Network capabilities directly support 
+                        strategic objectives.
+                    </p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CTA SECTION ===== -->
+    <section class="g5-cta-section">
+        <div class="g5-cta-content">
+            <h2>Prepare for the 5G Future</h2>
+            <p>
+                Let's discuss how private LTE/5G and edge computing can transform your 
+                operations with ultra-low latency, deterministic performance, and intelligent systems.
+            </p>
+            <div class="g5-cta-buttons">
+                <a href="#" class="g5-btn g5-btn-primary" download>
+                    <i class="bi bi-download"></i>
+                    <span>Download Full White Paper</span>
+                </a>
+                <a href="{{ url_for('main.contact') }}" class="g5-btn g5-btn-secondary">
+                    <span>Schedule Consultation</span>
+                </a>
+            </div>
+        </div>
+    </section>
+</section>
+
+{% endblock %}

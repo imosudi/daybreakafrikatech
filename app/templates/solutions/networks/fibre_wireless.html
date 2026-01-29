@@ -1,0 +1,1163 @@
+<!-- Fibre & Wireless Solutions  -->
+<!--templates/solutions/networks/fibre_wireless.html-->
+{% extends "base.html" %}
+
+{% block title %}Fibre & Wireless Solutions – Daybreak Afrika Technologies{% endblock %}
+
+{% block extra_css %}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+    /* ========================================
+    CONNECTIVITY  - PREMIUM DESIGN
+    Brand-Aligned Theme
+    ======================================== */
+
+    :root {
+        /* Brand Colors - Harmonized */
+        --conn-primary: #00B4D8;
+        --conn-primary-light: #00F5FF;
+        --conn-primary-dark: #0066CC;
+        --conn-secondary: #7CDBFF;
+        --conn-accent: #10b981;
+        --conn-warning: #f59e0b;
+        --conn-danger: #ef4444;
+        
+        /* Neutrals */
+        --conn-bg-dark: #0A1128;
+        --conn-bg-darker: #050810;
+        --conn-surface: rgba(255, 255, 255, 0.02);
+        --conn-surface-light: rgba(255, 255, 255, 0.05);
+        --conn-border: rgba(0, 180, 216, 0.1);
+        --conn-text-primary: #F8F9FA;
+        --conn-text-secondary: rgba(248, 249, 250, 0.7);
+        --conn-text-muted: rgba(248, 249, 250, 0.5);
+        
+        /* Effects */
+        --conn-glow-primary: rgba(0, 180, 216, 0.3);
+        --conn-glow-accent: rgba(16, 185, 129, 0.2);
+        --conn-shadow-md: 0 8px 24px rgba(0, 0, 0, 0.4);
+        --conn-shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.5);
+        
+        /* Spacing */
+        --conn-space-xs: 0.5rem;
+        --conn-space-sm: 1rem;
+        --conn-space-md: 1.5rem;
+        --conn-space-lg: 2.5rem;
+        --conn-space-xl: 4rem;
+        --conn-space-2xl: 6rem;
+        
+        /* Border Radius */
+        --conn-radius-sm: 8px;
+        --conn-radius-md: 12px;
+        --conn-radius-lg: 16px;
+        
+        /* Typography */
+        --conn-font-sans: 'Space Grotesk', system-ui, sans-serif;
+        --conn-font-mono: 'IBM Plex Mono', monospace;
+        --conn-font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        
+        /* Transitions */
+        --conn-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* ========================================
+    HERO SECTION
+    ======================================== */
+
+    .conn-hero {
+        position: relative;
+        min-height: 85vh;
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+    }
+
+    .conn-hero::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: 
+            radial-gradient(circle at 20% 30%, var(--conn-glow-primary) 0%, transparent 50%),
+            radial-gradient(circle at 80% 70%, var(--conn-glow-accent) 0%, transparent 50%),
+            radial-gradient(circle at 50% 50%, rgba(245, 158, 11, 0.1) 0%, transparent 60%);
+        animation: ambientPulse 12s ease-in-out infinite alternate;
+        opacity: 0.4;
+    }
+
+    @keyframes ambientPulse {
+        0% { transform: scale(1); opacity: 0.3; }
+        100% { transform: scale(1.1); opacity: 0.5; }
+    }
+
+    .conn-hero-content {
+        position: relative;
+        z-index: 10;
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: var(--conn-space-2xl) var(--conn-space-lg);
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: var(--conn-space-2xl);
+        align-items: center;
+    }
+
+    .conn-hero-text {
+        animation: slideInLeft 0.8s ease-out;
+    }
+
+    @keyframes slideInLeft {
+        from { opacity: 0; transform: translateX(-30px); }
+        to { opacity: 1; transform: translateX(0); }
+    }
+
+    .conn-paper-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: var(--conn-space-xs);
+        padding: var(--conn-space-xs) var(--conn-space-md);
+        background: rgba(16, 185, 129, 0.12);
+        border: 1px solid rgba(16, 185, 129, 0.35);
+        border-radius: 100px;
+        font-size: 0.75rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: #10b981;
+        margin-bottom: var(--conn-space-md);
+        animation: fadeInDown 0.6s ease-out;
+    }
+
+    .conn-badge-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 18px;
+        height: 18px;
+        background: #10b981;
+        border-radius: 50%;
+        color: white;
+        font-size: 0.65rem;
+        animation: paperPulse 2s ease-in-out infinite;
+    }
+
+    @keyframes paperPulse {
+        0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+        50% { transform: scale(1.1); box-shadow: 0 0 0 8px rgba(16, 185, 129, 0); }
+    }
+
+    @keyframes fadeInDown {
+        from { opacity: 0; transform: translateY(-15px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    .conn-hero h1 {
+        font-size: clamp(2.5rem, 6vw, 4.5rem);
+        font-weight: 800;
+        line-height: 1.1;
+        margin: 0 0 var(--conn-space-md);
+        letter-spacing: -0.03em;
+        animation: fadeInUp 0.8s ease-out 0.2s backwards;
+    }
+
+    .conn-hero h1 span {
+        background: linear-gradient(135deg, #0066CC 0%, #00B4D8 50%, #10b981 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    @keyframes fadeInUp {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    .conn-hero-lead {
+        font-size: clamp(1.1rem, 1.8vw, 1.4rem);
+        color: var(--conn-text-secondary);
+        max-width: 600px;
+        margin-bottom: var(--conn-space-xl);
+        line-height: 1.7;
+        animation: fadeInUp 0.8s ease-out 0.4s backwards;
+    }
+
+    .conn-hero-cta {
+        display: flex;
+        gap: var(--conn-space-md);
+        flex-wrap: wrap;
+        animation: fadeInUp 0.8s ease-out 0.6s backwards;
+    }
+
+    /* Hero Visual - Hybrid Connectivity Diagram */
+    .conn-hero-visual {
+        animation: slideInRight 0.8s ease-out 0.4s backwards;
+    }
+
+    @keyframes slideInRight {
+        from { opacity: 0; transform: translateX(30px); }
+        to { opacity: 1; transform: translateX(0); }
+    }
+
+    .conn-diagram {
+        background: var(--conn-surface);
+        border: 1px solid var(--conn-border);
+        border-radius: var(--conn-radius-lg);
+        padding: var(--conn-space-xl);
+        box-shadow: var(--conn-shadow-lg);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .conn-diagram::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: linear-gradient(90deg, #0066CC, #00B4D8, #10b981);
+        background-size: 200% 100%;
+        animation: scanLine 3s linear infinite;
+    }
+
+    @keyframes scanLine {
+        0% { background-position: 200% 0; }
+        100% { background-position: -200% 0; }
+    }
+
+    .conn-diagram-title {
+        font-family: var(--conn-font-body);
+        font-size: 0.85rem;
+        color: #00B4D8;
+        font-weight: 600;
+        margin-bottom: var(--conn-space-lg);
+        text-align: center;
+    }
+
+    .conn-network-visual {
+        display: flex;
+        flex-direction: column;
+        gap: var(--conn-space-lg);
+    }
+
+    .conn-link-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: var(--conn-space-md);
+    }
+
+    .conn-endpoint {
+        flex-shrink: 0;
+        width: 80px;
+        height: 80px;
+        background: linear-gradient(135deg, rgba(0, 180, 216, 0.2), rgba(16, 185, 129, 0.2));
+        border: 1px solid var(--conn-border);
+        border-radius: var(--conn-radius-md);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 0.25rem;
+        font-size: 1.75rem;
+        animation: endpointGlow 3s ease-in-out infinite;
+    }
+
+    @keyframes endpointGlow {
+        0%, 100% { box-shadow: 0 0 0 rgba(0, 180, 216, 0); }
+        50% { box-shadow: 0 0 20px rgba(0, 180, 216, 0.4); }
+    }
+
+    .conn-endpoint-label {
+        font-size: 0.65rem;
+        color: var(--conn-text-muted);
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+
+    .conn-link {
+        flex: 1;
+        height: 40px;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .conn-link-line {
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        background: linear-gradient(90deg, #0066CC, #00B4D8);
+        animation: dataFlow 2s linear infinite;
+    }
+
+    @keyframes dataFlow {
+        0% { background-position: 0% 0; }
+        100% { background-position: 200% 0; }
+    }
+
+    .conn-link-label {
+        position: relative;
+        z-index: 1;
+        padding: 0.3rem 0.8rem;
+        background: rgba(0, 180, 216, 0.1);
+        border: 1px solid rgba(0, 180, 216, 0.3);
+        border-radius: 100px;
+        font-size: 0.7rem;
+        font-weight: 600;
+        color: #00F5FF;
+    }
+
+    .conn-link--wireless .conn-link-line {
+        background: linear-gradient(90deg, #10b981, #7CDBFF);
+    }
+
+    .conn-link--wireless .conn-link-label {
+        background: rgba(16, 185, 129, 0.1);
+        border-color: rgba(16, 185, 129, 0.3);
+        color: #10b981;
+    }
+
+    /* ========================================
+    BUTTONS
+    ======================================== */
+
+    .conn-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: var(--conn-space-xs);
+        padding: 1rem 2rem;
+        font-family: var(--conn-font-body);
+        font-size: 1rem;
+        font-weight: 600;
+        text-decoration: none;
+        border-radius: var(--conn-radius-md);
+        transition: var(--conn-transition);
+        cursor: pointer;
+        border: none;
+        white-space: nowrap;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .conn-btn::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+        transform: translateX(-100%);
+        transition: transform 0.6s;
+    }
+
+    .conn-btn:hover::before {
+        transform: translateX(100%);
+    }
+
+    .conn-btn-primary {
+        background: linear-gradient(135deg, #0066CC 0%, #00B4D8 100%);
+        color: #FFFFFF;
+        box-shadow: 0 4px 16px rgba(0, 180, 216, 0.3);
+    }
+
+    .conn-btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 30px rgba(0, 180, 216, 0.4);
+        color: #FFFFFF;
+    }
+
+    .conn-btn-secondary {
+        background: transparent;
+        color: #00B4D8;
+        border: 2px solid #00B4D8;
+    }
+
+    .conn-btn-secondary:hover {
+        background: rgba(0, 180, 216, 0.1);
+        color: #00F5FF;
+        border-color: #00F5FF;
+        transform: translateY(-2px);
+    }
+
+    /* ========================================
+    SECTIONS
+    ======================================== */
+
+    .conn-section {
+        padding: var(--conn-space-2xl) var(--conn-space-lg);
+        position: relative;
+    }
+
+    .conn-section--alt {
+        background: var(--conn-bg-dark);
+    }
+
+    .conn-section--border {
+        border-top: 1px solid rgba(0, 180, 216, 0.1);
+    }
+
+    .conn-container {
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+
+    .conn-section-header {
+        max-width: 900px;
+        margin: 0 auto var(--conn-space-xl);
+        text-align: center;
+    }
+
+    .conn-section-label {
+        display: inline-flex;
+        align-items: center;
+        gap: var(--conn-space-xs);
+        font-size: 0.75rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        color: #00B4D8;
+        margin-bottom: var(--conn-space-sm);
+        padding: 0.4rem 1rem;
+        background: rgba(0, 180, 216, 0.1);
+        border: 1px solid rgba(0, 180, 216, 0.3);
+        border-radius: 100px;
+    }
+
+    .conn-section-label::before {
+        content: '';
+        width: 6px;
+        height: 6px;
+        background: #00B4D8;
+        border-radius: 50%;
+        animation: labelPulse 2s ease-in-out infinite;
+    }
+
+    @keyframes labelPulse {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.4; }
+    }
+
+    .conn-section h2 {
+        font-size: clamp(2rem, 5vw, 3.5rem);
+        font-weight: 800;
+        line-height: 1.2;
+        margin: 0 0 var(--conn-space-md);
+        letter-spacing: -0.02em;
+    }
+
+    .conn-section-intro {
+        font-size: 1.2rem;
+        color: var(--conn-text-secondary);
+        line-height: 1.7;
+    }
+
+    /* ========================================
+    CONNECTIVITY GAP
+    ======================================== */
+
+    .conn-gap-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: var(--conn-space-lg);
+        margin-top: var(--conn-space-xl);
+    }
+
+    .conn-gap-card {
+        background: rgba(239, 68, 68, 0.05);
+        border: 1px solid rgba(239, 68, 68, 0.2);
+        border-radius: var(--conn-radius-lg);
+        padding: var(--conn-space-lg);
+        transition: var(--conn-transition);
+    }
+
+    .conn-gap-card:hover {
+        border-color: rgba(239, 68, 68, 0.4);
+        transform: translateY(-4px);
+        box-shadow: 0 8px 24px rgba(239, 68, 68, 0.15);
+    }
+
+    .conn-gap-icon {
+        width: 56px;
+        height: 56px;
+        background: rgba(239, 68, 68, 0.1);
+        border-radius: var(--conn-radius-md);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.75rem;
+        margin-bottom: var(--conn-space-md);
+    }
+
+    .conn-gap-card h3 {
+        font-size: 1.15rem;
+        font-weight: 700;
+        color: #ef4444;
+        margin: 0 0 var(--conn-space-sm);
+    }
+
+    .conn-gap-card p {
+        color: var(--conn-text-secondary);
+        margin: 0;
+        line-height: 1.6;
+        font-size: 0.95rem;
+    }
+
+    /* ========================================
+    SOLUTION CARDS
+    ======================================== */
+
+    .conn-solutions {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: var(--conn-space-xl);
+        margin-top: var(--conn-space-xl);
+    }
+
+    .conn-solution-card {
+        background: var(--conn-surface);
+        border: 1px solid var(--conn-border);
+        border-radius: var(--conn-radius-lg);
+        padding: var(--conn-space-xl);
+        transition: var(--conn-transition);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .conn-solution-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background: linear-gradient(90deg, #0066CC, #00B4D8);
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.4s ease;
+    }
+
+    .conn-solution-card:hover::before {
+        transform: scaleX(1);
+    }
+
+    .conn-solution-card:hover {
+        border-color: #00B4D8;
+        box-shadow: var(--conn-shadow-lg), 0 0 40px rgba(0, 180, 216, 0.3);
+        transform: translateY(-8px);
+    }
+
+    .conn-solution-icon {
+        width: 64px;
+        height: 64px;
+        background: linear-gradient(135deg, rgba(0, 180, 216, 0.2), rgba(16, 185, 129, 0.2));
+        border-radius: var(--conn-radius-md);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2rem;
+        margin-bottom: var(--conn-space-md);
+    }
+
+    .conn-solution-card h3 {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--conn-text-primary);
+        margin: 0 0 var(--conn-space-md);
+    }
+
+    .conn-solution-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .conn-solution-list li {
+        padding: var(--conn-space-xs) 0;
+        color: var(--conn-text-secondary);
+        display: flex;
+        align-items: center;
+        gap: var(--conn-space-sm);
+    }
+
+    .conn-solution-list li::before {
+        content: '▸';
+        color: #10b981;
+        flex-shrink: 0;
+    }
+
+    /* ========================================
+    HYBRID BENEFITS
+    ======================================== */
+
+    .conn-hybrid-section {
+        background: linear-gradient(135deg, rgba(0, 180, 216, 0.1) 0%, rgba(16, 185, 129, 0.1) 100%);
+        position: relative;
+    }
+
+    .conn-hybrid-section::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: 
+            radial-gradient(circle at 20% 50%, rgba(0, 180, 216, 0.3) 0%, transparent 50%),
+            radial-gradient(circle at 80% 50%, rgba(16, 185, 129, 0.2) 0%, transparent 50%);
+        opacity: 0.3;
+    }
+
+    .conn-hybrid-content {
+        position: relative;
+        z-index: 1;
+        max-width: 900px;
+        margin: var(--conn-space-xl) auto;
+        padding: var(--conn-space-xl);
+        background: rgba(26, 31, 46, 0.8);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(0, 180, 216, 0.2);
+        border-radius: var(--conn-radius-lg);
+    }
+
+    .conn-hybrid-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: var(--conn-space-lg);
+        margin-top: var(--conn-space-lg);
+    }
+
+    .conn-hybrid-feature {
+        text-align: center;
+    }
+
+    .conn-hybrid-feature-icon {
+        font-size: 2.5rem;
+        margin-bottom: var(--conn-space-sm);
+    }
+
+    .conn-hybrid-feature h3 {
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: var(--conn-text-primary);
+        margin: 0 0 var(--conn-space-xs);
+    }
+
+    .conn-hybrid-feature p {
+        color: var(--conn-text-secondary);
+        margin: 0;
+        line-height: 1.6;
+        font-size: 0.95rem;
+    }
+
+    /* ========================================
+    VALUE BENEFITS
+    ======================================== */
+
+    .conn-benefits {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: var(--conn-space-lg);
+        margin-top: var(--conn-space-xl);
+    }
+
+    .conn-benefit-card {
+        background: rgba(16, 185, 129, 0.05);
+        border: 1px solid rgba(16, 185, 129, 0.2);
+        border-radius: var(--conn-radius-lg);
+        padding: var(--conn-space-lg);
+        text-align: center;
+        transition: var(--conn-transition);
+    }
+
+    .conn-benefit-card:hover {
+        border-color: rgba(16, 185, 129, 0.4);
+        box-shadow: 0 8px 24px rgba(16, 185, 129, 0.15);
+        transform: translateY(-4px);
+    }
+
+    .conn-benefit-icon {
+        font-size: 2.5rem;
+        margin-bottom: var(--conn-space-sm);
+    }
+
+    .conn-benefit-card h3 {
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: #10b981;
+        margin: 0 0 var(--conn-space-xs);
+    }
+
+    .conn-benefit-card p {
+        color: var(--conn-text-secondary);
+        margin: 0;
+        line-height: 1.6;
+        font-size: 0.95rem;
+    }
+
+    /* ========================================
+    CTA SECTION
+    ======================================== */
+
+    .conn-cta-section {
+        padding: calc(var(--conn-space-2xl) * 1.5) var(--conn-space-lg);
+        text-align: center;
+        background: linear-gradient(165deg, var(--conn-bg-dark) 0%, var(--conn-bg-darker) 100%);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .conn-cta-section::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 800px;
+        height: 800px;
+        background: radial-gradient(circle, rgba(0, 180, 216, 0.3) 0%, transparent 70%);
+        transform: translate(-50%, -50%);
+        animation: ctaPulse 8s ease-in-out infinite;
+    }
+
+    @keyframes ctaPulse {
+        0%, 100% { opacity: 0.2; transform: translate(-50%, -50%) scale(1); }
+        50% { opacity: 0.4; transform: translate(-50%, -50%) scale(1.1); }
+    }
+
+    .conn-cta-content {
+        position: relative;
+        z-index: 1;
+        max-width: 900px;
+        margin: 0 auto;
+    }
+
+    .conn-cta-section h2 {
+        font-size: clamp(2rem, 5vw, 3.5rem);
+        margin-bottom: var(--conn-space-md);
+    }
+
+    .conn-cta-section p {
+        font-size: 1.3rem;
+        color: var(--conn-text-secondary);
+        margin-bottom: var(--conn-space-xl);
+        line-height: 1.7;
+    }
+
+    .conn-cta-buttons {
+        display: flex;
+        gap: var(--conn-space-md);
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    /* ========================================
+    RESPONSIVE
+    ======================================== */
+
+    @media (max-width: 1024px) {
+        .conn-hero-content {
+            grid-template-columns: 1fr;
+            gap: var(--conn-space-xl);
+        }
+        
+        .conn-hero-visual {
+            order: -1;
+        }
+    }
+
+    @media (max-width: 768px) {
+        :root {
+            --conn-space-xl: 3rem;
+            --conn-space-2xl: 4rem;
+        }
+        
+        .conn-hero {
+            min-height: 75vh;
+        }
+        
+        .conn-section {
+            padding: var(--conn-space-xl) var(--conn-space-md);
+        }
+        
+        .conn-hero-cta,
+        .conn-cta-buttons {
+            flex-direction: column;
+            width: 100%;
+        }
+        
+        .conn-btn {
+            width: 100%;
+        }
+        
+        .conn-endpoint {
+            width: 60px;
+            height: 60px;
+            font-size: 1.3rem;
+        }
+    }
+
+    /* ========================================
+    ACCESSIBILITY
+    ======================================== */
+
+    @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.01ms !important;
+        }
+    }
+
+    .conn-btn:focus-visible,
+    .conn-gap-card:focus-visible,
+    .conn-solution-card:focus-visible,
+    .conn-benefit-card:focus-visible {
+        outline: 3px solid #00F5FF;
+        outline-offset: 4px;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+
+<section class="conn-hero" aria-labelledby="conn-hero-title">
+    <div class="conn-hero-content">
+        <div class="conn-hero-text">
+            <div class="conn-paper-badge">
+                <div class="conn-badge-icon">📡</div>
+                <span> • Hybrid Connectivity</span>
+            </div>
+            
+            <h1 id="conn-hero-title">
+                <span>Fibre & Wireless</span><br>
+                Solutions
+            </h1>
+            
+            <p class="conn-hero-lead">
+                Reliable connectivity where fibre ends and performance still matters. Carrier-grade 
+                fibre combined with enterprise wireless engineering for seamless hybrid networks.
+            </p>
+            
+            <div class="conn-hero-cta">
+                <a href="#" class="conn-btn conn-btn-primary" download>
+                    <i class="bi bi-download"></i>
+                    <span>Download PDF</span>
+                </a>
+                <a href="{{ url_for('main.contact') }}" class="conn-btn conn-btn-secondary">
+                    <span>Request Consultation</span>
+                </a>
+            </div>
+        </div>
+        
+        <div class="conn-hero-visual">
+            <div class="conn-diagram">
+                <div class="conn-diagram-title">HYBRID CONNECTIVITY ARCHITECTURE</div>
+                
+                <div class="conn-network-visual">
+                    <div class="conn-link-row">
+                        <div class="conn-endpoint">
+                            🏢
+                            <span class="conn-endpoint-label">Core</span>
+                        </div>
+                        <div class="conn-link">
+                            <div class="conn-link-line"></div>
+                            <span class="conn-link-label">FIBRE BACKBONE</span>
+                        </div>
+                        <div class="conn-endpoint">
+                            🌐
+                            <span class="conn-endpoint-label">Campus</span>
+                        </div>
+                    </div>
+                    
+                    <div class="conn-link-row">
+                        <div class="conn-endpoint">
+                            🏢
+                            <span class="conn-endpoint-label">Core</span>
+                        </div>
+                        <div class="conn-link conn-link--wireless">
+                            <div class="conn-link-line"></div>
+                            <span class="conn-link-label">WIRELESS LINK</span>
+                        </div>
+                        <div class="conn-endpoint">
+                            🏭
+                            <span class="conn-endpoint-label">Remote</span>
+                        </div>
+                    </div>
+                    
+                    <div class="conn-link-row">
+                        <div class="conn-endpoint">
+                            🌐
+                            <span class="conn-endpoint-label">Campus</span>
+                        </div>
+                        <div class="conn-link conn-link--wireless">
+                            <div class="conn-link-line"></div>
+                            <span class="conn-link-label">P2P WIRELESS</span>
+                        </div>
+                        <div class="conn-endpoint">
+                            📡
+                            <span class="conn-endpoint-label">Edge</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="solution-content">
+    <!-- ===== ABSTRACT ===== -->
+    <section class="conn-section">
+        <div class="conn-container">
+            <div class="conn-section-header">
+                <span class="conn-section-label">Abstract</span>
+                <h2>Beyond Fibre Limitations</h2>
+                <p class="conn-section-intro">
+                    Fibre infrastructure alone cannot meet all operational realities. Geographic constraints, 
+                    deployment costs, and environmental challenges demand hybrid solutions that maintain 
+                    performance, availability, and security across diverse environments.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CONNECTIVITY GAP ===== -->
+    <section class="conn-section conn-section--alt conn-section--border">
+        <div class="conn-container">
+            <div class="conn-section-header">
+                <span class="conn-section-label">Challenge</span>
+                <h2>The Connectivity Gap</h2>
+                <p class="conn-section-intro">
+                    Modern enterprises face critical connectivity challenges across diverse environments.
+                </p>
+            </div>
+            
+            <div class="conn-gap-grid">
+                <article class="conn-gap-card">
+                    <div class="conn-gap-icon">🗺️</div>
+                    <h3>Geographic Constraints</h3>
+                    <p>
+                        Remote or underserved locations lack adequate telecommunications 
+                        infrastructure for traditional fibre deployment.
+                    </p>
+                </article>
+
+                <article class="conn-gap-card">
+                    <div class="conn-gap-icon">💰</div>
+                    <h3>Deployment Costs</h3>
+                    <p>
+                        Prohibitive financial costs and logistical challenges of deploying 
+                        new fibre across difficult terrain or established sites.
+                    </p>
+                </article>
+
+                <article class="conn-gap-card">
+                    <div class="conn-gap-icon">🌡️</div>
+                    <h3>Environmental Challenges</h3>
+                    <p>
+                        Harsh or variable climate conditions demand resilient connectivity 
+                        solutions beyond traditional infrastructure.
+                    </p>
+                </article>
+
+                <article class="conn-gap-card">
+                    <div class="conn-gap-icon">🚀</div>
+                    <h3>Temporary Deployments</h3>
+                    <p>
+                        Mobile operations and temporary sites require high-performance 
+                        connectivity where fixed infrastructure is impractical.
+                    </p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FIBRE SOLUTIONS ===== -->
+    <section class="conn-section conn-section--border">
+        <div class="conn-container">
+            <div class="conn-section-header">
+                <span class="conn-section-label">Foundation</span>
+                <h2>Fibre Infrastructure Solutions</h2>
+                <p class="conn-section-intro">
+                    Carrier-grade fibre designed for longevity, redundancy, and performance consistency.
+                </p>
+            </div>
+            
+            <div class="conn-solutions">
+                <article class="conn-solution-card">
+                    <div class="conn-solution-icon">🔵</div>
+                    <h3>Fibre Capabilities</h3>
+                    <ul class="conn-solution-list">
+                        <li>Fibre backbone design and deployment</li>
+                        <li>Last-mile and campus networks</li>
+                        <li>Optical termination and certification</li>
+                        <li>Ring and redundant topologies</li>
+                    </ul>
+                </article>
+
+                <article class="conn-solution-card">
+                    <div class="conn-solution-icon">📐</div>
+                    <h3>Architectural Approach</h3>
+                    <ul class="conn-solution-list">
+                        <li>Reduced failure domains through redundancy</li>
+                        <li>Predictable latency and throughput</li>
+                        <li>Structured expansion paths</li>
+                        <li>Future-ready capacity planning</li>
+                    </ul>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== WIRELESS SOLUTIONS ===== -->
+    <section class="conn-section conn-section--alt conn-section--border">
+        <div class="conn-container">
+            <div class="conn-section-header">
+                <span class="conn-section-label">Extension</span>
+                <h2>Wireless & Long-Distance Connectivity</h2>
+                <p class="conn-section-intro">
+                    Enterprise-grade wireless engineered with the same rigour as fibre networks.
+                </p>
+            </div>
+            
+            <div class="conn-solutions">
+                <article class="conn-solution-card">
+                    <div class="conn-solution-icon">📡</div>
+                    <h3>Wireless Capabilities</h3>
+                    <ul class="conn-solution-list">
+                        <li>Point-to-point and point-to-multipoint links</li>
+                        <li>Licensed and unlicensed spectrum</li>
+                        <li>Rural, campus, and industrial deployments</li>
+                        <li>High-throughput, low-latency backhaul</li>
+                    </ul>
+                </article>
+
+                <article class="conn-solution-card">
+                    <div class="conn-solution-icon">⚙️</div>
+                    <h3>Engineering Focus</h3>
+                    <ul class="conn-solution-list">
+                        <li>Deterministic performance under load</li>
+                        <li>Environmental resilience and stability</li>
+                        <li>Secure transport for critical data</li>
+                        <li>Seamless network fabric extension</li>
+                    </ul>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== HYBRID ARCHITECTURE ===== -->
+    <section class="conn-section conn-hybrid-section">
+        <div class="conn-container">
+            <div class="conn-section-header">
+                <span class="conn-section-label">Integration</span>
+                <h2>Hybrid Fibre-Wireless Architecture</h2>
+            </div>
+            
+            <div class="conn-hybrid-content">
+                <p style="text-align: center; color: var(--conn-text-secondary); font-size: 1.1rem; margin-bottom: var(--conn-space-lg);">
+                    True value emerges when fibre and wireless are engineered as a unified system.
+                </p>
+                
+                <div class="conn-hybrid-grid">
+                    <div class="conn-hybrid-feature">
+                        <div class="conn-hybrid-feature-icon">🔄</div>
+                        <h3>Seamless Handoff</h3>
+                        <p>
+                            Uninterrupted data flow between fibre and wireless 
+                            segments with automatic transition.
+                        </p>
+                    </div>
+
+                    <div class="conn-hybrid-feature">
+                        <div class="conn-hybrid-feature-icon">🔐</div>
+                        <h3>Consistent Security</h3>
+                        <p>
+                            Uniform security protocols and policy enforcement 
+                            across all network segments.
+                        </p>
+                    </div>
+
+                    <div class="conn-hybrid-feature">
+                        <div class="conn-hybrid-feature-icon">👁️</div>
+                        <h3>Unified Monitoring</h3>
+                        <p>
+                            Single consolidated view of network performance 
+                            and health across all media.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== STRATEGIC VALUE ===== -->
+    <section class="conn-section conn-section--border">
+        <div class="conn-container">
+            <div class="conn-section-header">
+                <span class="conn-section-label">Benefits</span>
+                <h2>Strategic Value</h2>
+            </div>
+            
+            <div class="conn-benefits">
+                <article class="conn-benefit-card">
+                    <div class="conn-benefit-icon">🌐</div>
+                    <h3>Extended Connectivity</h3>
+                    <p>
+                        High-performance networking beyond fibre boundaries 
+                        without sacrificing control or security.
+                    </p>
+                </article>
+
+                <article class="conn-benefit-card">
+                    <div class="conn-benefit-icon">⚡</div>
+                    <h3>Reduced Deployment Time</h3>
+                    <p>
+                        Faster infrastructure rollout with lower costs 
+                        compared to fibre-only deployments.
+                    </p>
+                </article>
+
+                <article class="conn-benefit-card">
+                    <div class="conn-benefit-icon">🛡️</div>
+                    <h3>High Availability</h3>
+                    <p>
+                        Reliable operations in challenging environments 
+                        with proven resilience.
+                    </p>
+                </article>
+
+                <article class="conn-benefit-card">
+                    <div class="conn-benefit-icon">📊</div>
+                    <h3>Edge Workload Support</h3>
+                    <p>
+                        Direct support for surveillance, IoT, and 
+                        edge computing platforms.
+                    </p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CTA SECTION ===== -->
+    <section class="conn-cta-section">
+        <div class="conn-cta-content">
+            <h2>Extend Your Network Beyond Fibre</h2>
+            <p>
+                Let's discuss how hybrid fibre and wireless solutions can deliver reliable, 
+                high-performance connectivity across your entire operational environment.
+            </p>
+            <div class="conn-cta-buttons">
+                <a href="#" class="conn-btn conn-btn-primary" download>
+                    <i class="bi bi-download"></i>
+                    <span>Download Full White Paper</span>
+                </a>
+                <a href="{{ url_for('main.contact') }}" class="conn-btn conn-btn-secondary">
+                    <span>Schedule Consultation</span>
+                </a>
+            </div>
+        </div>
+    </section>
+</section>
+
+{% endblock %}

@@ -1,0 +1,1125 @@
+<!-- Data Centre Design & Optimisation White Paper -->
+<!--templates/resources/whitepapers/datacentre.html-->
+{% extends "base.html" %}
+
+{% block title %}Data Centre Design & Optimisation – Daybreak Afrika Technologies{% endblock %}
+
+{% block extra_css %}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+    /* ========================================
+    DATA CENTRE WHITE PAPER - PREMIUM DESIGN
+    Brand-Aligned Theme
+    ======================================== */
+
+    :root {
+        /* Brand Colors - Harmonized */
+        --dc-primary: #00B4D8;
+        --dc-primary-light: #00F5FF;
+        --dc-primary-dark: #0066CC;
+        --dc-secondary: #7CDBFF;
+        --dc-accent: #10b981;
+        --dc-warning: #f59e0b;
+        
+        /* Neutrals */
+        --dc-bg-dark: #0A1128;
+        --dc-bg-darker: #050810;
+        --dc-surface: rgba(255, 255, 255, 0.02);
+        --dc-surface-light: rgba(255, 255, 255, 0.05);
+        --dc-border: rgba(0, 180, 216, 0.1);
+        --dc-text-primary: #F8F9FA;
+        --dc-text-secondary: rgba(248, 249, 250, 0.7);
+        --dc-text-muted: rgba(248, 249, 250, 0.5);
+        
+        /* Effects */
+        --dc-glow-primary: rgba(0, 180, 216, 0.3);
+        --dc-glow-accent: rgba(16, 185, 129, 0.2);
+        --dc-shadow-md: 0 8px 24px rgba(0, 0, 0, 0.4);
+        --dc-shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.5);
+        
+        /* Spacing */
+        --dc-space-xs: 0.5rem;
+        --dc-space-sm: 1rem;
+        --dc-space-md: 1.5rem;
+        --dc-space-lg: 2.5rem;
+        --dc-space-xl: 4rem;
+        --dc-space-2xl: 6rem;
+        
+        /* Border Radius */
+        --dc-radius-sm: 8px;
+        --dc-radius-md: 12px;
+        --dc-radius-lg: 16px;
+        
+        /* Typography */
+        --dc-font-sans: 'Space Grotesk', system-ui, sans-serif;
+        --dc-font-mono: 'IBM Plex Mono', monospace;
+        --dc-font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        
+        /* Transitions */
+        --dc-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* ========================================
+    HERO SECTION
+    ======================================== */
+
+    .dc-hero {
+        position: relative;
+        min-height: 85vh;
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+    }
+
+    .dc-hero::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: 
+            radial-gradient(circle at 20% 30%, var(--dc-glow-primary) 0%, transparent 50%),
+            radial-gradient(circle at 80% 70%, var(--dc-glow-accent) 0%, transparent 50%),
+            radial-gradient(circle at 50% 50%, rgba(124, 219, 255, 0.1) 0%, transparent 60%);
+        animation: ambientPulse 12s ease-in-out infinite alternate;
+        opacity: 0.4;
+    }
+
+    @keyframes ambientPulse {
+        0% { transform: scale(1); opacity: 0.3; }
+        100% { transform: scale(1.1); opacity: 0.5; }
+    }
+
+    .dc-hero-content {
+        position: relative;
+        z-index: 10;
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: var(--dc-space-2xl) var(--dc-space-lg);
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: var(--dc-space-2xl);
+        align-items: center;
+    }
+
+    .dc-hero-text {
+        animation: slideInLeft 0.8s ease-out;
+    }
+
+    @keyframes slideInLeft {
+        from { opacity: 0; transform: translateX(-30px); }
+        to { opacity: 1; transform: translateX(0); }
+    }
+
+    .dc-paper-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: var(--dc-space-xs);
+        padding: var(--dc-space-xs) var(--dc-space-md);
+        background: rgba(0, 180, 216, 0.12);
+        border: 1px solid rgba(0, 180, 216, 0.35);
+        border-radius: 100px;
+        font-size: 0.75rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: #00B4D8;
+        margin-bottom: var(--dc-space-md);
+        animation: fadeInDown 0.6s ease-out;
+    }
+
+    .dc-badge-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 18px;
+        height: 18px;
+        background: #00B4D8;
+        border-radius: 50%;
+        color: white;
+        font-size: 0.65rem;
+        animation: paperPulse 2s ease-in-out infinite;
+    }
+
+    @keyframes paperPulse {
+        0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(0, 180, 216, 0.7); }
+        50% { transform: scale(1.1); box-shadow: 0 0 0 8px rgba(0, 180, 216, 0); }
+    }
+
+    @keyframes fadeInDown {
+        from { opacity: 0; transform: translateY(-15px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    .dc-hero h1 {
+        font-size: clamp(2.5rem, 6vw, 4.5rem);
+        font-weight: 800;
+        line-height: 1.1;
+        margin: 0 0 var(--dc-space-md);
+        letter-spacing: -0.03em;
+        animation: fadeInUp 0.8s ease-out 0.2s backwards;
+    }
+
+    .dc-hero h1 span {
+        background: linear-gradient(135deg, #0066CC 0%, #00B4D8 50%, #00F5FF 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    @keyframes fadeInUp {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    .dc-hero-lead {
+        font-size: clamp(1.1rem, 1.8vw, 1.4rem);
+        color: var(--dc-text-secondary);
+        max-width: 600px;
+        margin-bottom: var(--dc-space-md);
+        line-height: 1.7;
+        animation: fadeInUp 0.8s ease-out 0.4s backwards;
+    }
+
+    .dc-author-info {
+        display: flex;
+        align-items: center;
+        gap: var(--dc-space-md);
+        padding: var(--dc-space-md);
+        background: rgba(0, 180, 216, 0.05);
+        border-left: 3px solid #00B4D8;
+        border-radius: var(--dc-radius-sm);
+        margin-bottom: var(--dc-space-xl);
+        animation: fadeInUp 0.8s ease-out 0.6s backwards;
+    }
+
+    .dc-author-avatar {
+        flex-shrink: 0;
+        width: 56px;
+        height: 56px;
+        background: linear-gradient(135deg, #00B4D8, #7CDBFF);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        font-size: 1.2rem;
+        color: #0A1128;
+    }
+
+    .dc-author-details h3 {
+        font-size: 1rem;
+        font-weight: 700;
+        color: var(--dc-text-primary);
+        margin: 0 0 0.2rem;
+    }
+
+    .dc-author-details p {
+        font-size: 0.85rem;
+        color: var(--dc-text-muted);
+        margin: 0;
+    }
+
+    .dc-hero-cta {
+        display: flex;
+        gap: var(--dc-space-md);
+        flex-wrap: wrap;
+        animation: fadeInUp 0.8s ease-out 0.8s backwards;
+    }
+
+    /* Hero Visual - Infrastructure Diagram */
+    .dc-hero-visual {
+        animation: slideInRight 0.8s ease-out 0.4s backwards;
+    }
+
+    @keyframes slideInRight {
+        from { opacity: 0; transform: translateX(30px); }
+        to { opacity: 1; transform: translateX(0); }
+    }
+
+    .dc-infrastructure-diagram {
+        background: var(--dc-surface);
+        border: 1px solid var(--dc-border);
+        border-radius: var(--dc-radius-lg);
+        padding: var(--dc-space-lg);
+        box-shadow: var(--dc-shadow-lg);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .dc-infrastructure-diagram::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: linear-gradient(90deg, #0066CC, #00B4D8, #10b981);
+        background-size: 200% 100%;
+        animation: scanLine 3s linear infinite;
+    }
+
+    @keyframes scanLine {
+        0% { background-position: 200% 0; }
+        100% { background-position: -200% 0; }
+    }
+
+    .dc-diagram-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: var(--dc-space-md);
+        padding-bottom: var(--dc-space-sm);
+        border-bottom: 1px solid var(--dc-border);
+    }
+
+    .dc-diagram-title {
+        font-family: var(--dc-font-body);
+        font-size: 0.85rem;
+        color: #00B4D8;
+        font-weight: 600;
+    }
+
+    .dc-diagram-status {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 0.75rem;
+        color: #10b981;
+    }
+
+    .dc-status-dot {
+        width: 8px;
+        height: 8px;
+        background: #10b981;
+        border-radius: 50%;
+        animation: statusBlink 2s ease-in-out infinite;
+    }
+
+    @keyframes statusBlink {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.3; }
+    }
+
+    .dc-layer-grid {
+        display: grid;
+        gap: var(--dc-space-sm);
+    }
+
+    .dc-layer-item {
+        display: flex;
+        align-items: center;
+        gap: var(--dc-space-md);
+        padding: var(--dc-space-sm);
+        background: rgba(0, 180, 216, 0.05);
+        border-left: 3px solid #00B4D8;
+        border-radius: var(--dc-radius-sm);
+        transition: var(--dc-transition);
+        animation: slideInRight 0.5s ease-out backwards;
+    }
+
+    .dc-layer-item:nth-child(1) { animation-delay: 0.1s; border-left-color: #0066CC; }
+    .dc-layer-item:nth-child(2) { animation-delay: 0.2s; border-left-color: #00B4D8; }
+    .dc-layer-item:nth-child(3) { animation-delay: 0.3s; border-left-color: #7CDBFF; }
+    .dc-layer-item:nth-child(4) { animation-delay: 0.4s; border-left-color: #10b981; }
+
+    .dc-layer-item:hover {
+        background: rgba(0, 180, 216, 0.1);
+        transform: translateX(5px);
+    }
+
+    .dc-layer-icon {
+        font-size: 1.5rem;
+    }
+
+    .dc-layer-info {
+        flex: 1;
+    }
+
+    .dc-layer-name {
+        font-size: 0.8rem;
+        font-weight: 600;
+        color: var(--dc-text-primary);
+        margin-bottom: 0.2rem;
+    }
+
+    .dc-layer-desc {
+        font-size: 0.7rem;
+        color: var(--dc-text-muted);
+        font-family: var(--dc-font-body);
+    }
+
+    .dc-layer-metric {
+        font-size: 0.7rem;
+        font-weight: 600;
+        padding: 0.3rem 0.6rem;
+        border-radius: 4px;
+        font-family: var(--dc-font-mono);
+        background: rgba(16, 185, 129, 0.2);
+        color: #10b981;
+    }
+
+    /* ========================================
+    BUTTONS
+    ======================================== */
+
+    .dc-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: var(--dc-space-xs);
+        padding: 1rem 2rem;
+        font-family: var(--dc-font-body);
+        font-size: 1rem;
+        font-weight: 600;
+        text-decoration: none;
+        border-radius: var(--dc-radius-md);
+        transition: var(--dc-transition);
+        cursor: pointer;
+        border: none;
+        white-space: nowrap;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .dc-btn::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+        transform: translateX(-100%);
+        transition: transform 0.6s;
+    }
+
+    .dc-btn:hover::before {
+        transform: translateX(100%);
+    }
+
+    .dc-btn-primary {
+        background: linear-gradient(135deg, #0066CC 0%, #00B4D8 100%);
+        color: #FFFFFF;
+        box-shadow: 0 4px 16px rgba(0, 180, 216, 0.3);
+    }
+
+    .dc-btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 30px rgba(0, 180, 216, 0.4);
+        color: #FFFFFF;
+    }
+
+    .dc-btn-secondary {
+        background: transparent;
+        color: #00B4D8;
+        border: 2px solid #00B4D8;
+    }
+
+    .dc-btn-secondary:hover {
+        background: rgba(0, 180, 216, 0.1);
+        color: #00F5FF;
+        border-color: #00F5FF;
+        transform: translateY(-2px);
+    }
+
+    /* ========================================
+    SECTIONS
+    ======================================== */
+
+    .dc-section {
+        padding: var(--dc-space-2xl) var(--dc-space-lg);
+        position: relative;
+    }
+
+    .dc-section--alt {
+        background: var(--dc-bg-dark);
+    }
+
+    .dc-section--border {
+        border-top: 1px solid rgba(0, 180, 216, 0.1);
+    }
+
+    .dc-container {
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+
+    .dc-section-header {
+        max-width: 900px;
+        margin: 0 auto var(--dc-space-xl);
+        text-align: center;
+    }
+
+    .dc-section-label {
+        display: inline-flex;
+        align-items: center;
+        gap: var(--dc-space-xs);
+        font-size: 0.75rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        color: #00B4D8;
+        margin-bottom: var(--dc-space-sm);
+        padding: 0.4rem 1rem;
+        background: rgba(0, 180, 216, 0.1);
+        border: 1px solid rgba(0, 180, 216, 0.3);
+        border-radius: 100px;
+    }
+
+    .dc-section-label::before {
+        content: '';
+        width: 6px;
+        height: 6px;
+        background: #00B4D8;
+        border-radius: 50%;
+        animation: labelPulse 2s ease-in-out infinite;
+    }
+
+    @keyframes labelPulse {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.4; }
+    }
+
+    .dc-section h2 {
+        font-size: clamp(2rem, 5vw, 3.5rem);
+        font-weight: 800;
+        line-height: 1.2;
+        margin: 0 0 var(--dc-space-md);
+        letter-spacing: -0.02em;
+    }
+
+    .dc-section-intro {
+        font-size: 1.2rem;
+        color: var(--dc-text-secondary);
+        line-height: 1.7;
+    }
+
+    /* ========================================
+    PRINCIPLES GRID
+    ======================================== */
+
+    .dc-principles {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: var(--dc-space-xl);
+        margin-top: var(--dc-space-xl);
+    }
+
+    .dc-principle {
+        position: relative;
+        padding-top: var(--dc-space-md);
+    }
+
+    .dc-principle-number {
+        position: absolute;
+        top: -10px;
+        left: 0;
+        width: 48px;
+        height: 48px;
+        background: linear-gradient(135deg, #00B4D8, #7CDBFF);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 800;
+        font-size: 1.3rem;
+        color: #0A1128;
+        box-shadow: 0 4px 16px rgba(0, 180, 216, 0.3);
+    }
+
+    .dc-principle h3 {
+        font-size: 1.4rem;
+        font-weight: 700;
+        margin: 0 0 var(--dc-space-sm);
+    }
+
+    .dc-principle p {
+        color: var(--dc-text-secondary);
+        line-height: 1.7;
+        margin: 0;
+    }
+
+    /* ========================================
+    ARCHITECTURE SECTIONS
+    ======================================== */
+
+    .dc-arch-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: var(--dc-space-xl);
+        margin-top: var(--dc-space-xl);
+    }
+
+    .dc-arch-card {
+        background: var(--dc-surface);
+        border: 1px solid var(--dc-border);
+        border-radius: var(--dc-radius-lg);
+        padding: var(--dc-space-xl);
+        transition: var(--dc-transition);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .dc-arch-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background: linear-gradient(90deg, #0066CC, #00B4D8);
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.4s ease;
+    }
+
+    .dc-arch-card:hover::before {
+        transform: scaleX(1);
+    }
+
+    .dc-arch-card:hover {
+        border-color: #00B4D8;
+        box-shadow: var(--dc-shadow-lg), 0 0 40px rgba(0, 180, 216, 0.3);
+        transform: translateY(-8px);
+    }
+
+    .dc-arch-icon {
+        width: 64px;
+        height: 64px;
+        background: linear-gradient(135deg, rgba(0, 180, 216, 0.2), rgba(16, 185, 129, 0.2));
+        border-radius: var(--dc-radius-md);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2rem;
+        margin-bottom: var(--dc-space-md);
+    }
+
+    .dc-arch-card h3 {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--dc-text-primary);
+        margin: 0 0 var(--dc-space-md);
+        padding-bottom: var(--dc-space-sm);
+        border-bottom: 2px solid rgba(0, 180, 216, 0.2);
+    }
+
+    .dc-arch-card > p {
+        color: var(--dc-text-secondary);
+        margin-bottom: var(--dc-space-md);
+        line-height: 1.6;
+    }
+
+    .dc-arch-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .dc-arch-list li {
+        padding: var(--dc-space-sm) 0;
+        color: var(--dc-text-secondary);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        display: flex;
+        gap: var(--dc-space-sm);
+    }
+
+    .dc-arch-list li:last-child {
+        border-bottom: none;
+    }
+
+    .dc-arch-list li::before {
+        content: '▸';
+        color: #10b981;
+        flex-shrink: 0;
+    }
+
+    .dc-arch-list strong {
+        color: var(--dc-text-primary);
+        font-weight: 600;
+    }
+
+    /* ========================================
+    METRICS CARDS
+    ======================================== */
+
+    .dc-metrics-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: var(--dc-space-lg);
+        margin-top: var(--dc-space-xl);
+    }
+
+    .dc-metric-card {
+        background: var(--dc-surface);
+        border: 1px solid var(--dc-border);
+        border-radius: var(--dc-radius-lg);
+        padding: var(--dc-space-lg);
+        text-align: center;
+        transition: var(--dc-transition);
+    }
+
+    .dc-metric-card:hover {
+        border-color: #7CDBFF;
+        box-shadow: 0 8px 24px rgba(124, 219, 255, 0.15);
+        transform: translateY(-4px);
+    }
+
+    .dc-metric-icon {
+        font-size: 2.5rem;
+        margin-bottom: var(--dc-space-md);
+    }
+
+    .dc-metric-card h3 {
+        font-size: 1.2rem;
+        font-weight: 700;
+        margin: 0 0 var(--dc-space-xs);
+        color: var(--dc-text-primary);
+    }
+
+    .dc-metric-card p {
+        font-size: 0.95rem;
+        color: var(--dc-text-secondary);
+        margin: 0;
+        line-height: 1.6;
+    }
+
+    /* ========================================
+    CTA SECTION
+    ======================================== */
+
+    .dc-cta-section {
+        padding: calc(var(--dc-space-2xl) * 1.5) var(--dc-space-lg);
+        text-align: center;
+        background: linear-gradient(165deg, var(--dc-bg-dark) 0%, var(--dc-bg-darker) 100%);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .dc-cta-section::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 800px;
+        height: 800px;
+        background: radial-gradient(circle, rgba(0, 180, 216, 0.3) 0%, transparent 70%);
+        transform: translate(-50%, -50%);
+        animation: ctaPulse 8s ease-in-out infinite;
+    }
+
+    @keyframes ctaPulse {
+        0%, 100% { opacity: 0.2; transform: translate(-50%, -50%) scale(1); }
+        50% { opacity: 0.4; transform: translate(-50%, -50%) scale(1.1); }
+    }
+
+    .dc-cta-content {
+        position: relative;
+        z-index: 1;
+        max-width: 900px;
+        margin: 0 auto;
+    }
+
+    .dc-cta-section h2 {
+        font-size: clamp(2rem, 5vw, 3.5rem);
+        margin-bottom: var(--dc-space-md);
+    }
+
+    .dc-cta-section p {
+        font-size: 1.3rem;
+        color: var(--dc-text-secondary);
+        margin-bottom: var(--dc-space-xl);
+        line-height: 1.7;
+    }
+
+    .dc-cta-buttons {
+        display: flex;
+        gap: var(--dc-space-md);
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    /* ========================================
+    RESPONSIVE
+    ======================================== */
+
+    @media (max-width: 1024px) {
+        .dc-hero-content {
+            grid-template-columns: 1fr;
+            gap: var(--dc-space-xl);
+        }
+        
+        .dc-hero-visual {
+            order: -1;
+        }
+    }
+
+    @media (max-width: 768px) {
+        :root {
+            --dc-space-xl: 3rem;
+            --dc-space-2xl: 4rem;
+        }
+        
+        .dc-hero {
+            min-height: 75vh;
+        }
+        
+        .dc-section {
+            padding: var(--dc-space-xl) var(--dc-space-md);
+        }
+        
+        .dc-hero-cta,
+        .dc-cta-buttons {
+            flex-direction: column;
+            width: 100%;
+        }
+        
+        .dc-btn {
+            width: 100%;
+        }
+        
+        .dc-principles,
+        .dc-arch-grid,
+        .dc-metrics-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    /* ========================================
+    ACCESSIBILITY
+    ======================================== */
+
+    @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.01ms !important;
+        }
+    }
+
+    .dc-btn:focus-visible,
+    .dc-arch-card:focus-visible,
+    .dc-metric-card:focus-visible {
+        outline: 3px solid #00F5FF;
+        outline-offset: 4px;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+
+<section class="dc-hero" aria-labelledby="dc-hero-title">
+    <div class="dc-hero-content">
+        <div class="dc-hero-text">
+            <div class="dc-paper-badge">
+                <div class="dc-badge-icon">📄</div>
+                <span>Within Datacentre</span>
+            </div>
+            
+            <h1 id="dc-hero-title">
+                <span>Data Centre Design</span><br>
+                & Optimisation
+            </h1>
+            
+            <p class="dc-hero-lead">
+                A robust, vendor-agnostic framework for small to mid-scale data centre 
+                design. From server rooms to mission-critical facilities.
+            </p>
+            
+            
+            <div class="dc-hero-cta">
+                <a href="#" class="dc-btn dc-btn-primary" download>
+                    <i class="bi bi-download"></i>
+                    <span>Download PDF</span>
+                </a>
+                <a href="{{ url_for('main.contact') }}" class="dc-btn dc-btn-secondary">
+                    <span>Request Consultation</span>
+                </a>
+            </div>
+        </div>
+        
+        <div class="dc-hero-visual">
+            <div class="dc-infrastructure-diagram">
+                <div class="dc-diagram-header">
+                    <div class="dc-diagram-title">INFRASTRUCTURE LAYERS</div>
+                    <div class="dc-diagram-status">
+                        <span class="dc-status-dot"></span>
+                        <span>OPTIMIZED</span>
+                    </div>
+                </div>
+                
+                <div class="dc-layer-grid" role="list">
+                    <div class="dc-layer-item" role="listitem">
+                        <div class="dc-layer-icon">⚡</div>
+                        <div class="dc-layer-info">
+                            <div class="dc-layer-name">Power Architecture</div>
+                            <div class="dc-layer-desc">Dual feeds • N+1 UPS</div>
+                        </div>
+                        <div class="dc-layer-metric">99.99%</div>
+                    </div>
+                    
+                    <div class="dc-layer-item" role="listitem">
+                        <div class="dc-layer-icon">❄️</div>
+                        <div class="dc-layer-info">
+                            <div class="dc-layer-name">Cooling Systems</div>
+                            <div class="dc-layer-desc">Hot/cold aisle • PAC</div>
+                        </div>
+                        <div class="dc-layer-metric">PUE 1.4</div>
+                    </div>
+                    
+                    <div class="dc-layer-item" role="listitem">
+                        <div class="dc-layer-icon">🔌</div>
+                        <div class="dc-layer-info">
+                            <div class="dc-layer-name">Rack & Cabling</div>
+                            <div class="dc-layer-desc">Structured • Labeled</div>
+                        </div>
+                        <div class="dc-layer-metric">READY</div>
+                    </div>
+                    
+                    <div class="dc-layer-item" role="listitem">
+                        <div class="dc-layer-icon">📊</div>
+                        <div class="dc-layer-info">
+                            <div class="dc-layer-name">Capacity Planning</div>
+                            <div class="dc-layer-desc">Predictive modeling</div>
+                        </div>
+                        <div class="dc-layer-metric">ACTIVE</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="solution-content">
+    <!-- ===== ABSTRACT ===== -->
+    <section class="dc-section">
+        <div class="dc-container">
+            <div class="dc-section-header">
+                <span class="dc-section-label">Abstract</span>
+                <h2>Mission-Critical Infrastructure</h2>
+                <p class="dc-section-intro">
+                    As organisations increasingly depend on digital infrastructure for critical economic, 
+                    governmental, and social functions, server rooms have evolved into mission-critical 
+                    facilities requiring extreme power density, superior cooling, absolute fault tolerance, 
+                    and total operational predictability.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== DESIGN PRINCIPLES ===== -->
+    <section class="dc-section dc-section--alt dc-section--border">
+        <div class="dc-container">
+            <div class="dc-section-header">
+                <span class="dc-section-label">Framework</span>
+                <h2>Five Design Principles</h2>
+            </div>
+            
+            <div class="dc-principles">
+                {% set principles = [
+                    {
+                        'num': '1',
+                        'title': 'Right-Sized Resilience',
+                        'desc': 'Design for appropriate redundancy (N+1), ensuring mission-critical uptime without hyperscale overbuild costs.'
+                    },
+                    {
+                        'num': '2',
+                        'title': 'Workload-Aware Engineering',
+                        'desc': 'Let AI, video analytics, and high-throughput workloads drive design parameters rather than generic server counts.'
+                    },
+                    {
+                        'num': '3',
+                        'title': 'Modularity',
+                        'desc': 'Infrastructure scaled in discrete, testable increments without introducing single points of failure.'
+                    },
+                    {
+                        'num': '4',
+                        'title': 'Operational Clarity',
+                        'desc': 'Intuitive layout supporting rapid fault diagnosis, safe maintenance, and reduced MTTR.'
+                    },
+                    {
+                        'num': '5',
+                        'title': 'Lifecycle Efficiency',
+                        'desc': 'Optimization over entire operational lifespan: PUE, maintenance complexity, and sustainable costs.'
+                    }
+                ] %}
+                
+                {% for principle in principles %}
+                <article class="dc-principle">
+                    <div class="dc-principle-number">{{ principle.num }}</div>
+                    <h3>{{ principle.title }}</h3>
+                    <p>{{ principle.desc }}</p>
+                </article>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== POWER ARCHITECTURE ===== -->
+    <section class="dc-section dc-section--border">
+        <div class="dc-container">
+            <div class="dc-section-header">
+                <span class="dc-section-label">Power Systems</span>
+                <h2>Power Architecture</h2>
+                <p class="dc-section-intro">
+                    Effective power delivery is the foundation of data centre reliability, 
+                    ensuring stable, clean, and continuously monitored electrical supply.
+                </p>
+            </div>
+            
+            <div class="dc-arch-grid">
+                <article class="dc-arch-card">
+                    <div class="dc-arch-icon">🔌</div>
+                    <h3>Power Sourcing</h3>
+                    <p>Ensuring stable, redundant electrical supply:</p>
+                    <ul class="dc-arch-list">
+                        <li><strong>Dual utility feeds</strong> – Geographically diverse for single-point-of-failure mitigation</li>
+                        <li><strong>UPS systems</strong> – Sized for graceful shutdown and short-term autonomy</li>
+                        <li><strong>Intelligent PDUs</strong> – Per-rack monitoring for proactive capacity management</li>
+                    </ul>
+                </article>
+
+                <article class="dc-arch-card">
+                    <div class="dc-arch-icon">🔄</div>
+                    <h3>Redundancy Planning</h3>
+                    <p>Resilience through appropriate redundancy:</p>
+                    <ul class="dc-arch-list">
+                        <li><strong>N+1 UPS</strong> – Single component failure doesn't interrupt critical loads</li>
+                        <li><strong>Segregated loads</strong> – Critical and non-critical power paths separated</li>
+                        <li><strong>Fault isolation</strong> – Enhanced maintenance and streamlined operations</li>
+                    </ul>
+                </article>
+
+                <article class="dc-arch-card">
+                    <div class="dc-arch-icon">🤖</div>
+                    <h3>AI & High-Density</h3>
+                    <p>Accommodating asymmetric GPU workloads:</p>
+                    <ul class="dc-arch-list">
+                        <li><strong>Burst power demand</strong> – Overhead for rapid, high-amplitude spikes</li>
+                        <li><strong>GPU thermal envelopes</strong> – Integrated power and cooling strategy</li>
+                        <li><strong>Future density</strong> – Reserve capacity for predictable increases</li>
+                    </ul>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== COOLING STRATEGY ===== -->
+    <section class="dc-section dc-section--alt dc-section--border">
+        <div class="dc-container">
+            <div class="dc-section-header">
+                <span class="dc-section-label">Thermal Management</span>
+                <h2>Cooling Strategy</h2>
+                <p class="dc-section-intro">
+                    Efficient thermal management requires precise airflow design and targeted 
+                    cooling technologies for high-density IT equipment.
+                </p>
+            </div>
+            
+            <div class="dc-arch-grid">
+                <article class="dc-arch-card">
+                    <div class="dc-arch-icon">🌬️</div>
+                    <h3>Airflow Design</h3>
+                    <p>Preventing hot/cold air mixing:</p>
+                    <ul class="dc-arch-list">
+                        <li><strong>Hot/Cold Aisle Containment</strong> – Physical segregation maximizes efficiency</li>
+                        <li><strong>Front-to-Back Discipline</strong> – Strict adherence to standard cooling path</li>
+                        <li><strong>Recirculation Prevention</strong> – Sealed cutouts and blanking panels</li>
+                    </ul>
+                </article>
+
+                <article class="dc-arch-card">
+                    <div class="dc-arch-icon">❄️</div>
+                    <h3>Cooling Technologies</h3>
+                    <p>Aligned with power density requirements:</p>
+                    <ul class="dc-arch-list">
+                        <li><strong>Precision AC (PAC)</strong> – Precise temperature and humidity control</li>
+                        <li><strong>In-Row Heat Exchangers</strong> – Localized cooling for dense GPU racks</li>
+                        <li><strong>Environmental Monitoring</strong> – Real-time sensors enable predictive adjustment</li>
+                    </ul>
+                </article>
+
+                <article class="dc-arch-card">
+                    <div class="dc-arch-icon">📐</div>
+                    <h3>Rack Layout</h3>
+                    <p>Standardization and organization:</p>
+                    <ul class="dc-arch-list">
+                        <li><strong>Consistent standards</strong> – Uniform depth and load ratings</li>
+                        <li><strong>Infrastructure separation</strong> – Compute, storage, networking isolated</li>
+                        <li><strong>Airflow-aligned cabling</strong> – Dedicated pathways prevent obstruction</li>
+                    </ul>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CAPACITY PLANNING ===== -->
+    <section class="dc-section dc-section--border">
+        <div class="dc-container">
+            <div class="dc-section-header">
+                <span class="dc-section-label">Optimization</span>
+                <h2>Capacity Planning & Metrics</h2>
+                <p class="dc-section-intro">
+                    Continuous, iterative capacity planning through predictive modeling 
+                    based on real-time operational data.
+                </p>
+            </div>
+            
+            <div class="dc-metrics-grid">
+                {% set metrics = [
+                    {
+                        'icon': '📊',
+                        'title': 'Power Utilisation (PUE)',
+                        'desc': 'Track ratio of total facility power to IT equipment power for efficiency analysis'
+                    },
+                    {
+                        'icon': '⚡',
+                        'title': 'Rack-Level Density',
+                        'desc': 'Monitor power per rack to identify and manage high-density thermal zones'
+                    },
+                    {
+                        'icon': '🌡️',
+                        'title': 'Cooling Headroom',
+                        'desc': 'Measure remaining cooling capacity relative to current heat load'
+                    },
+                    {
+                        'icon': '📈',
+                        'title': 'Workload Growth Velocity',
+                        'desc': 'Track demand increase rate to drive infrastructure upgrade timelines'
+                    }
+                ] %}
+                
+                {% for metric in metrics %}
+                <article class="dc-metric-card">
+                    <div class="dc-metric-icon">{{ metric.icon }}</div>
+                    <h3>{{ metric.title }}</h3>
+                    <p>{{ metric.desc }}</p>
+                </article>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CTA SECTION ===== -->
+    <section class="dc-cta-section">
+        <div class="dc-cta-content">
+            <h2>Ready to Optimise Your Data Centre?</h2>
+            <p>
+                Let's discuss how this framework can transform your infrastructure from 
+                informal server rooms to professionally engineered, mission-critical facilities.
+            </p>
+            <div class="dc-cta-buttons">
+                <a href="#" class="dc-btn dc-btn-primary" download>
+                    <i class="bi bi-download"></i>
+                    <span>Download Full White Paper</span>
+                </a>
+                <a href="{{ url_for('main.contact') }}" class="dc-btn dc-btn-secondary">
+                    <span>Schedule Consultation</span>
+                </a>
+            </div>
+        </div>
+    </section>
+</section>
+
+{% endblock %}

@@ -1,21 +1,702 @@
 <!-- templates/solutions/networking.html -->
- {% extends "base.html" %}
-{% block title %}Networking & Connectivity Solutions{% endblock %}
+{% extends "base.html" %}
+
+{% block title %}Networking & Connectivity Solutions – Daybreak Afrika Technologies{% endblock %}
+
+{% block extra_css %}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+    /* ========================================
+    NETWORKING SOLUTIONS - PREMIUM DESIGN
+    ======================================== */
+
+    :root {
+        /* Brand Colors - Harmonized */
+        --net-primary: #00B4D8;
+        --net-primary-light: #00F5FF;
+        --net-primary-dark: #0066CC;
+        --net-secondary: #7CDBFF;
+        --net-accent: #10b981;
+        --net-purple: #8B5CF6;
+        
+        /* Neutrals */
+        --net-bg-dark: #0A1128;
+        --net-surface: rgba(255, 255, 255, 0.02);
+        --net-surface-light: rgba(255, 255, 255, 0.05);
+        --net-border: rgba(0, 180, 216, 0.1);
+        --net-text-primary: #F8F9FA;
+        --net-text-secondary: rgba(248, 249, 250, 0.7);
+        --net-text-muted: rgba(248, 249, 250, 0.5);
+        
+        /* Effects */
+        --net-glow-primary: rgba(0, 180, 216, 0.3);
+        --net-shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.5);
+        
+        /* Spacing */
+        --net-space-xs: 0.5rem;
+        --net-space-sm: 1rem;
+        --net-space-md: 1.5rem;
+        --net-space-lg: 2.5rem;
+        --net-space-xl: 4rem;
+        --net-space-2xl: 6rem;
+        
+        /* Border Radius */
+        --net-radius-sm: 8px;
+        --net-radius-md: 12px;
+        --net-radius-lg: 16px;
+        
+        /* Transitions */
+        --net-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* ========================================
+    HERO SECTION
+    ======================================== */
+
+    .net-hero {
+        position: relative;
+        min-height: 70vh;
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+        padding: 6rem 2rem 4rem;
+    }
+
+    .net-hero::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: 
+            radial-gradient(circle at 30% 40%, var(--net-glow-primary) 0%, transparent 50%),
+            radial-gradient(circle at 70% 60%, rgba(16, 185, 129, 0.2) 0%, transparent 50%);
+        animation: ambientPulse 12s ease-in-out infinite alternate;
+        opacity: 0.4;
+    }
+
+    @keyframes ambientPulse {
+        0% { transform: scale(1); opacity: 0.3; }
+        100% { transform: scale(1.1); opacity: 0.5; }
+    }
+
+    .net-hero-content {
+        position: relative;
+        z-index: 10;
+        max-width: 1200px;
+        margin: 0 auto;
+        text-align: center;
+        animation: fadeInUp 0.8s ease-out;
+    }
+
+    @keyframes fadeInUp {
+        from { opacity: 0; transform: translateY(30px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    .net-hero h1 {
+        font-size: clamp(2.5rem, 5vw, 4.5rem);
+        font-weight: 800;
+        line-height: 1.2;
+        margin: 0 0 var(--net-space-md);
+        letter-spacing: -0.02em;
+    }
+
+    .net-hero h1 span {
+        background: linear-gradient(135deg, #0066CC 0%, #00B4D8 50%, #00F5FF 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    .net-hero-lead {
+        font-size: clamp(1.1rem, 1.5vw, 1.35rem);
+        color: var(--net-text-secondary);
+        max-width: 700px;
+        margin: 0 auto;
+        line-height: 1.7;
+    }
+
+    /* ========================================
+    SECTIONS
+    ======================================== */
+
+    .net-section {
+        padding: var(--net-space-2xl) var(--net-space-lg);
+        position: relative;
+    }
+
+    .net-section--alt {
+        background: var(--net-bg-dark);
+    }
+
+    .net-section--border {
+        border-top: 1px solid var(--net-border);
+    }
+
+    .net-container {
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+
+    .net-section-header {
+        max-width: 900px;
+        margin: 0 auto var(--net-space-xl);
+        text-align: center;
+    }
+
+    .net-section-label {
+        display: inline-flex;
+        align-items: center;
+        gap: var(--net-space-xs);
+        font-size: 0.75rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        color: #00B4D8;
+        margin-bottom: var(--net-space-sm);
+        padding: 0.4rem 1rem;
+        background: rgba(0, 180, 216, 0.1);
+        border: 1px solid rgba(0, 180, 216, 0.3);
+        border-radius: 100px;
+    }
+
+    .net-section-label::before {
+        content: '';
+        width: 6px;
+        height: 6px;
+        background: #00B4D8;
+        border-radius: 50%;
+        animation: labelPulse 2s ease-in-out infinite;
+    }
+
+    @keyframes labelPulse {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.4; }
+    }
+
+    .net-section h2 {
+        font-size: clamp(2rem, 4vw, 3rem);
+        font-weight: 800;
+        line-height: 1.2;
+        margin: 0 0 var(--net-space-md);
+        letter-spacing: -0.02em;
+    }
+
+    .net-section-intro {
+        font-size: 1.15rem;
+        color: var(--net-text-secondary);
+        line-height: 1.7;
+    }
+
+    /* ========================================
+    FEATURED SOLUTIONS
+    ======================================== */
+
+    .net-featured-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: var(--net-space-xl);
+        margin-top: var(--net-space-xl);
+    }
+
+    .net-featured-card {
+        background: var(--net-surface);
+        border: 1px solid var(--net-border);
+        border-radius: var(--net-radius-lg);
+        padding: var(--net-space-xl);
+        transition: var(--net-transition);
+        position: relative;
+        overflow: hidden;
+        text-decoration: none;
+        display: block;
+    }
+
+    .net-featured-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: linear-gradient(90deg, #0066CC, #00B4D8, #10b981);
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.4s ease;
+    }
+
+    .net-featured-card:hover::before {
+        transform: scaleX(1);
+    }
+
+    .net-featured-card:hover {
+        border-color: #00B4D8;
+        box-shadow: var(--net-shadow-lg), 0 0 40px rgba(0, 180, 216, 0.3);
+        transform: translateY(-8px);
+    }
+
+    .net-featured-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: var(--net-space-xs);
+        padding: 0.4rem 0.8rem;
+        background: rgba(16, 185, 129, 0.12);
+        border: 1px solid rgba(16, 185, 129, 0.35);
+        border-radius: 100px;
+        font-size: 0.7rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: #10b981;
+        margin-bottom: var(--net-space-md);
+    }
+
+    .net-featured-badge--purple {
+        background: rgba(139, 92, 246, 0.12);
+        border-color: rgba(139, 92, 246, 0.35);
+        color: #8B5CF6;
+    }
+
+    .net-featured-icon {
+        width: 64px;
+        height: 64px;
+        background: linear-gradient(135deg, rgba(0, 180, 216, 0.2), rgba(16, 185, 129, 0.2));
+        border-radius: var(--net-radius-md);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2rem;
+        margin-bottom: var(--net-space-md);
+    }
+
+    .net-featured-card h3 {
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin: 0 0 var(--net-space-sm);
+        color: var(--net-text-primary);
+    }
+
+    .net-featured-card p {
+        color: var(--net-text-secondary);
+        line-height: 1.6;
+        margin-bottom: var(--net-space-md);
+    }
+
+    .net-featured-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--net-space-xs);
+        margin-bottom: var(--net-space-md);
+    }
+
+    .net-featured-tag {
+        padding: 0.3rem 0.7rem;
+        background: rgba(0, 180, 216, 0.1);
+        border: 1px solid rgba(0, 180, 216, 0.3);
+        border-radius: 100px;
+        font-size: 0.75rem;
+        color: #00F5FF;
+    }
+
+    .net-featured-link {
+        display: inline-flex;
+        align-items: center;
+        gap: var(--net-space-xs);
+        color: #00B4D8;
+        font-weight: 600;
+        transition: var(--net-transition);
+    }
+
+    .net-featured-card:hover .net-featured-link {
+        color: #00F5FF;
+        gap: var(--net-space-sm);
+    }
+
+    /* ========================================
+    CAPABILITIES GRID
+    ======================================== */
+
+    .net-capabilities {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: var(--net-space-lg);
+        margin-top: var(--net-space-xl);
+    }
+
+    .net-capability-card {
+        background: var(--net-surface);
+        border: 1px solid var(--net-border);
+        border-radius: var(--net-radius-lg);
+        padding: var(--net-space-lg);
+        transition: var(--net-transition);
+    }
+
+    .net-capability-card:hover {
+        border-color: #7CDBFF;
+        box-shadow: 0 8px 24px rgba(124, 219, 255, 0.15);
+        transform: translateY(-4px);
+    }
+
+    .net-capability-icon {
+        width: 48px;
+        height: 48px;
+        background: linear-gradient(135deg, rgba(0, 180, 216, 0.2), rgba(16, 185, 129, 0.2));
+        border-radius: var(--net-radius-md);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        margin-bottom: var(--net-space-md);
+    }
+
+    .net-capability-card h3 {
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: var(--net-text-primary);
+        margin: 0 0 var(--net-space-xs);
+    }
+
+    .net-capability-card p {
+        color: var(--net-text-secondary);
+        margin: 0;
+        line-height: 1.6;
+        font-size: 0.95rem;
+    }
+
+    /* ========================================
+    CTA SECTION
+    ======================================== */
+
+    .net-cta-section {
+        padding: calc(var(--net-space-2xl) * 1.5) var(--net-space-lg);
+        text-align: center;
+        background: linear-gradient(165deg, var(--net-bg-dark) 0%, #050810 100%);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .net-cta-section::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 800px;
+        height: 800px;
+        background: radial-gradient(circle, rgba(0, 180, 216, 0.3) 0%, transparent 70%);
+        transform: translate(-50%, -50%);
+        animation: ctaPulse 8s ease-in-out infinite;
+    }
+
+    @keyframes ctaPulse {
+        0%, 100% { opacity: 0.2; transform: translate(-50%, -50%) scale(1); }
+        50% { opacity: 0.4; transform: translate(-50%, -50%) scale(1.1); }
+    }
+
+    .net-cta-content {
+        position: relative;
+        z-index: 1;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .net-cta-section h2 {
+        font-size: clamp(2rem, 4vw, 3rem);
+        margin-bottom: var(--net-space-md);
+    }
+
+    .net-cta-section p {
+        font-size: 1.2rem;
+        color: var(--net-text-secondary);
+        margin-bottom: var(--net-space-xl);
+        line-height: 1.7;
+    }
+
+    .net-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: var(--net-space-xs);
+        padding: 1rem 2rem;
+        font-size: 1rem;
+        font-weight: 600;
+        text-decoration: none;
+        border-radius: var(--net-radius-md);
+        transition: var(--net-transition);
+        cursor: pointer;
+        border: none;
+        white-space: nowrap;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .net-btn::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+        transform: translateX(-100%);
+        transition: transform 0.6s;
+    }
+
+    .net-btn:hover::before {
+        transform: translateX(100%);
+    }
+
+    .net-btn-primary {
+        background: linear-gradient(135deg, #0066CC 0%, #00B4D8 100%);
+        color: #FFFFFF;
+        box-shadow: 0 4px 16px rgba(0, 180, 216, 0.3);
+    }
+
+    .net-btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 30px rgba(0, 180, 216, 0.4);
+        color: #FFFFFF;
+    }
+
+    /* ========================================
+    RESPONSIVE
+    ======================================== */
+
+    @media (max-width: 768px) {
+        :root {
+            --net-space-xl: 3rem;
+            --net-space-2xl: 4rem;
+        }
+        
+        .net-hero {
+            min-height: 60vh;
+            padding: 5rem 1.5rem 3rem;
+        }
+        
+        .net-section {
+            padding: var(--net-space-xl) var(--net-space-md);
+        }
+        
+        .net-featured-grid,
+        .net-capabilities {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    /* ========================================
+    ACCESSIBILITY
+    ======================================== */
+
+    @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.01ms !important;
+        }
+    }
+
+    .net-featured-card:focus-visible,
+    .net-capability-card:focus-visible,
+    .net-btn:focus-visible {
+        outline: 3px solid #00F5FF;
+        outline-offset: 4px;
+    }
+</style>
+{% endblock %}
 
 {% block content %}
-<section class="hero" style="min-height: 60vh;">
-    <div class="hero-content">
-        <h1>Networking & Connectivity</h1>
-        <p>High-speed, resilient, and future-ready networks.</p>
+
+<!-- ================= HERO ================= -->
+<section class="net-hero" aria-labelledby="networking-heading">
+    <div class="net-hero-content">
+        <h1 id="networking-heading">
+            <span>Networking & Connectivity</span> Solutions
+        </h1>
+        <p class="net-hero-lead">
+            High-speed, resilient, and future-ready networks. Enterprise-grade infrastructure 
+            from edge to core, supporting mission-critical operations.
+        </p>
     </div>
 </section>
 
-<section class="solution-content">
-    <ul>
-        <li>Enterprise LAN & WAN</li>
-        <li>Fibre and wireless solutions</li>
-        <li>5G readiness and optimisation</li>
-        <li>Network security and monitoring</li>
-    </ul>
+<!-- ================= FEATURED SOLUTIONS ================= -->
+<section class="net-section" aria-labelledby="featured-heading">
+    <div class="net-container">
+        <div class="net-section-header">
+            <span class="net-section-label">Featured Solutions</span>
+            <h2 id="featured-heading">Next-Generation Network Infrastructure</h2>
+            <p class="net-section-intro">
+                Explore our comprehensive networking solutions designed to deliver high availability, 
+                security, and performance across distributed enterprise environments.
+            </p>
+        </div>
+        
+        <div class="net-featured-grid">
+            <!-- Enterprise LAN & WAN -->
+            <a href="{{ url_for('solutions.Enterprise_Networking') }}" class="net-featured-card">
+                <div class="net-featured-badge">
+                    🏢 Enterprise Grade
+                </div>
+                <div class="net-featured-icon">🌐</div>
+                <h3>Enterprise LAN & WAN</h3>
+                <p>
+                    High-availability, secure networks for mission-critical operations. Fault-tolerant 
+                    architecture with deterministic performance and zero-trust security.
+                </p>
+                <div class="net-featured-tags">
+                    <span class="net-featured-tag">Tier III</span>
+                    <span class="net-featured-tag">Zero-Trust</span>
+                    <span class="net-featured-tag">SD-WAN</span>
+                </div>
+                <span class="net-featured-link">
+                    Explore Architecture
+                    <i class="bi bi-arrow-right"></i>
+                </span>
+            </a>
+
+            <!-- Fibre & Wireless -->
+            <a href="{{ url_for('solutions.Fibre_Wireless') }}" class="net-featured-card">
+                <div class="net-featured-badge">
+                    📡 Hybrid Connectivity
+                </div>
+                <div class="net-featured-icon">🔗</div>
+                <h3>Fibre & Wireless Solutions</h3>
+                <p>
+                    Reliable connectivity where fibre ends and performance still matters. Carrier-grade 
+                    fibre combined with enterprise wireless for seamless hybrid networks.
+                </p>
+                <div class="net-featured-tags">
+                    <span class="net-featured-tag">Carrier-Grade</span>
+                    <span class="net-featured-tag">P2P/P2MP</span>
+                    <span class="net-featured-tag">Last-Mile</span>
+                </div>
+                <span class="net-featured-link">
+                    View Solutions
+                    <i class="bi bi-arrow-right"></i>
+                </span>
+            </a>
+
+            <!-- 5G Readiness -->
+            <a href="{{ url_for('solutions.5G') }}" class="net-featured-card">
+                <div class="net-featured-badge net-featured-badge--purple">
+                    ⚡ Next-Gen
+                </div>
+                <div class="net-featured-icon">📱</div>
+                <h3>5G Readiness & Optimisation</h3>
+                <p>
+                    Private, edge-driven, ultra-low-latency networks. Preparing enterprises for 5G 
+                    with MEC, network slicing, and intelligent edge computing.
+                </p>
+                <div class="net-featured-tags">
+                    <span class="net-featured-tag">Private 5G</span>
+                    <span class="net-featured-tag">Edge MEC</span>
+                    <span class="net-featured-tag">&lt;10ms</span>
+                </div>
+                <span class="net-featured-link">
+                    Learn More
+                    <i class="bi bi-arrow-right"></i>
+                </span>
+            </a>
+        </div>
+    </div>
 </section>
+
+<!-- ================= CORE CAPABILITIES ================= -->
+<section class="net-section net-section--alt net-section--border" aria-labelledby="capabilities-heading">
+    <div class="net-container">
+        <div class="net-section-header">
+            <span class="net-section-label">Core Capabilities</span>
+            <h2 id="capabilities-heading">Comprehensive Network Services</h2>
+        </div>
+        
+        <div class="net-capabilities">
+            <article class="net-capability-card">
+                <div class="net-capability-icon">🔐</div>
+                <h3>Network Security</h3>
+                <p>
+                    Zero-trust architecture with segmentation, IDS/IPS, and 
+                    continuous threat monitoring across all network layers.
+                </p>
+            </article>
+
+            <article class="net-capability-card">
+                <div class="net-capability-icon">📊</div>
+                <h3>Performance Monitoring</h3>
+                <p>
+                    Real-time visibility into network health, capacity trends, 
+                    and predictive analytics for proactive management.
+                </p>
+            </article>
+
+            <article class="net-capability-card">
+                <div class="net-capability-icon">🔄</div>
+                <h3>High Availability Design</h3>
+                <p>
+                    Redundant topologies with automated failover ensuring 
+                    continuous operations and minimal downtime.
+                </p>
+            </article>
+
+            <article class="net-capability-card">
+                <div class="net-capability-icon">☁️</div>
+                <h3>Cloud Integration</h3>
+                <p>
+                    Seamless hybrid and multi-cloud connectivity with optimized 
+                    paths and consistent policy enforcement.
+                </p>
+            </article>
+
+            <article class="net-capability-card">
+                <div class="net-capability-icon">⚙️</div>
+                <h3>Network Automation</h3>
+                <p>
+                    Infrastructure-as-code deployments with automated 
+                    provisioning, configuration, and orchestration.
+                </p>
+            </article>
+
+            <article class="net-capability-card">
+                <div class="net-capability-icon">🎯</div>
+                <h3>Quality of Service</h3>
+                <p>
+                    Traffic prioritization and bandwidth management for 
+                    latency-sensitive and business-critical applications.
+                </p>
+            </article>
+
+            <article class="net-capability-card">
+                <div class="net-capability-icon">📈</div>
+                <h3>Capacity Planning</h3>
+                <p>
+                    Data-driven growth forecasting and right-sizing 
+                    recommendations for optimal resource utilization.
+                </p>
+            </article>
+
+            <article class="net-capability-card">
+                <div class="net-capability-icon">🛠️</div>
+                <h3>Lifecycle Management</h3>
+                <p>
+                    End-to-end support from design through deployment, 
+                    maintenance, and continuous optimization.
+                </p>
+            </article>
+        </div>
+    </div>
+</section>
+
+<!-- ================= CTA SECTION ================= -->
+<section class="net-cta-section">
+    <div class="net-cta-content">
+        <h2>Ready to Transform Your Network Infrastructure?</h2>
+        <p>
+            Let's discuss how our networking expertise can deliver the reliability, 
+            performance, and security your enterprise demands.
+        </p>
+        <a href="{{ url_for('main.contact') }}" class="net-btn net-btn-primary">
+            <span>Schedule Consultation</span>
+            <i class="bi bi-arrow-right"></i>
+        </a>
+    </div>
+</section>
+
 {% endblock %}
